@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MxProgramCell" id="gTV-IL-0wX" customClass="MxProgramCell" customModule="Sanskar" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="250" height="100"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="250" height="100"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="feu-NP-X8F">
+                        <rect key="frame" x="0.0" y="0.0" width="250" height="100"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tTv-ZS-FWU">
+                                <rect key="frame" x="0.0" y="0.0" width="250" height="100"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Now Playing" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7EE-Td-c24">
+                                <rect key="frame" x="40" y="66" width="170" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="8bW-am-cnw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <color key="textColor" systemColor="systemRedColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C1p-hB-mbu">
+                                <rect key="frame" x="20" y="88" width="210" height="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <color key="textColor" red="1" green="0.1857388616" blue="0.57339501380000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mpy-mg-89O">
+                                <rect key="frame" x="0.0" y="0.0" width="250" height="100"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="7EE-Td-c24" firstAttribute="leading" secondItem="feu-NP-X8F" secondAttribute="leading" constant="40" id="ANJ-4o-LN0"/>
+                            <constraint firstAttribute="trailing" secondItem="C1p-hB-mbu" secondAttribute="trailing" constant="20" symbolic="YES" id="AZB-nC-7v4"/>
+                            <constraint firstItem="Mpy-mg-89O" firstAttribute="leading" secondItem="feu-NP-X8F" secondAttribute="leading" id="EBK-R3-Zpg"/>
+                            <constraint firstAttribute="trailing" secondItem="tTv-ZS-FWU" secondAttribute="trailing" id="JoV-kz-i0Q"/>
+                            <constraint firstItem="C1p-hB-mbu" firstAttribute="top" secondItem="7EE-Td-c24" secondAttribute="bottom" constant="2" id="LMl-sr-L4n"/>
+                            <constraint firstAttribute="trailing" secondItem="Mpy-mg-89O" secondAttribute="trailing" id="Pa1-dr-DY9"/>
+                            <constraint firstItem="tTv-ZS-FWU" firstAttribute="top" secondItem="feu-NP-X8F" secondAttribute="top" id="Txf-It-yvX"/>
+                            <constraint firstAttribute="bottom" secondItem="C1p-hB-mbu" secondAttribute="bottom" id="V1g-1t-H98"/>
+                            <constraint firstItem="Mpy-mg-89O" firstAttribute="top" secondItem="feu-NP-X8F" secondAttribute="top" id="Z8Z-Ms-EKn"/>
+                            <constraint firstAttribute="trailing" secondItem="7EE-Td-c24" secondAttribute="trailing" constant="40" id="Zdn-JK-W14"/>
+                            <constraint firstItem="tTv-ZS-FWU" firstAttribute="leading" secondItem="feu-NP-X8F" secondAttribute="leading" id="bC5-OO-PzI"/>
+                            <constraint firstAttribute="bottom" secondItem="tTv-ZS-FWU" secondAttribute="bottom" id="cYh-qU-PL4"/>
+                            <constraint firstAttribute="bottom" secondItem="Mpy-mg-89O" secondAttribute="bottom" id="d0i-xp-sg0"/>
+                            <constraint firstItem="C1p-hB-mbu" firstAttribute="leading" secondItem="feu-NP-X8F" secondAttribute="leading" constant="20" symbolic="YES" id="lZd-yw-nEo"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="feu-NP-X8F" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="iY9-Q1-TNk"/>
+                <constraint firstItem="feu-NP-X8F" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="p6h-5p-Jco"/>
+                <constraint firstAttribute="trailing" secondItem="feu-NP-X8F" secondAttribute="trailing" id="pgO-hn-SSs"/>
+                <constraint firstAttribute="bottom" secondItem="feu-NP-X8F" secondAttribute="bottom" id="xRd-I7-Rt5"/>
+            </constraints>
+            <size key="customSize" width="294" height="70"/>
+            <connections>
+                <outlet property="image" destination="tTv-ZS-FWU" id="JYQ-KE-hye"/>
+                <outlet property="lView" destination="feu-NP-X8F" id="jhX-ks-acr"/>
+                <outlet property="play" destination="7EE-Td-c24" id="Gy3-fw-WzJ"/>
+                <outlet property="progBtn" destination="Mpy-mg-89O" id="jht-UV-Cr9"/>
+                <outlet property="totalLbl" destination="C1p-hB-mbu" id="qBQ-0O-XG4"/>
+            </connections>
+            <point key="canvasLocation" x="307.24637681159425" y="109.15178571428571"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="mandirdetailTableViewCell" rowHeight="350" id="KGk-i7-Jjw" customClass="mandirdetailTableViewCell" customModule="Sanskar" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Shiv mandir" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KBk-Oo-44X">
+                        <rect key="frame" x="10" y="0.0" width="210" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="bl3-cj-kir"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                        <color key="textColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nabinagar (Aurangabad) " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1oc-iu-lnk">
+                        <rect key="frame" x="10" y="30" width="305" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="MlY-wY-uOh"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="kedarnath temple is a famous " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xe9-wk-OAY">
+                        <rect key="frame" x="10" y="273" width="240" height="27"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description -:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KAn-9o-7ML">
+                        <rect key="frame" x="10" y="245" width="120" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="vvU-f2-wwy"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                        <color key="textColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iJ0-eM-PBM">
+                        <rect key="frame" x="0.0" y="60" width="320" height="180"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="180" id="PaL-Cl-pFF"/>
+                        </constraints>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QSm-4b-z8W">
+                        <rect key="frame" x="250" y="275" width="70" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="70" id="d89-8j-BGd"/>
+                        </constraints>
+                        <color key="tintColor" systemColor="systemRedColor"/>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" title="more">
+                            <fontDescription key="titleFontDescription" type="system" pointSize="12"/>
+                        </buttonConfiguration>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="Xe9-wk-OAY" secondAttribute="bottom" id="1Y7-gm-OJu"/>
+                    <constraint firstItem="1oc-iu-lnk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="3bc-qK-7vT"/>
+                    <constraint firstItem="KAn-9o-7ML" firstAttribute="top" secondItem="iJ0-eM-PBM" secondAttribute="bottom" constant="5" id="9D3-zM-t8f"/>
+                    <constraint firstItem="iJ0-eM-PBM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="AlY-nt-bzx"/>
+                    <constraint firstAttribute="trailing" secondItem="1oc-iu-lnk" secondAttribute="trailing" constant="5" id="JFD-Un-ODX"/>
+                    <constraint firstItem="KAn-9o-7ML" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="REo-cU-qEO"/>
+                    <constraint firstAttribute="trailing" secondItem="iJ0-eM-PBM" secondAttribute="trailing" id="Tlr-Td-4jh"/>
+                    <constraint firstItem="KBk-Oo-44X" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="YdB-o2-L8v"/>
+                    <constraint firstAttribute="bottom" secondItem="QSm-4b-z8W" secondAttribute="bottom" id="ZpU-nA-fZJ"/>
+                    <constraint firstAttribute="trailing" secondItem="KBk-Oo-44X" secondAttribute="trailing" constant="100" id="dCr-dI-zVb"/>
+                    <constraint firstItem="Xe9-wk-OAY" firstAttribute="top" secondItem="KAn-9o-7ML" secondAttribute="bottom" constant="3" id="emw-lp-61C"/>
+                    <constraint firstItem="1oc-iu-lnk" firstAttribute="top" secondItem="KBk-Oo-44X" secondAttribute="bottom" constant="5" id="ggT-ws-rDH"/>
+                    <constraint firstAttribute="trailing" secondItem="QSm-4b-z8W" secondAttribute="trailing" id="hJL-Us-vOQ"/>
+                    <constraint firstItem="iJ0-eM-PBM" firstAttribute="top" secondItem="1oc-iu-lnk" secondAttribute="bottom" constant="5" id="kK0-tU-oa6"/>
+                    <constraint firstItem="Xe9-wk-OAY" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="r27-KQ-QKg"/>
+                    <constraint firstItem="KBk-Oo-44X" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="tmd-3N-imT"/>
+                    <constraint firstItem="QSm-4b-z8W" firstAttribute="top" secondItem="iJ0-eM-PBM" secondAttribute="bottom" constant="35" id="wqe-l6-Tsk"/>
+                    <constraint firstItem="QSm-4b-z8W" firstAttribute="leading" secondItem="Xe9-wk-OAY" secondAttribute="trailing" id="yEi-ZC-a8h"/>
+                    <constraint firstAttribute="trailing" secondItem="KAn-9o-7ML" secondAttribute="trailing" constant="190" id="zGa-hp-owz"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="decscrptiondetaillbl" destination="Xe9-wk-OAY" id="7cc-Rz-Evq"/>
+                <outlet property="descriptionlbl" destination="KAn-9o-7ML" id="DMW-44-B2C"/>
+                <outlet property="morebtn" destination="QSm-4b-z8W" id="yOz-S3-4b9"/>
+                <outlet property="sliderimg" destination="iJ0-eM-PBM" id="Ftz-Ft-Ita"/>
+                <outlet property="templenamelbl" destination="KBk-Oo-44X" id="qYK-zj-wrh"/>
+                <outlet property="templeplacelbl" destination="1oc-iu-lnk" id="e91-GX-cQe"/>
+            </connections>
+            <point key="canvasLocation" x="-27.480916030534349" y="-11.267605633802818"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

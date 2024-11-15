@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>18307011231-q2ntfp15ldevip2otra0ocflecpbn2pd.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.18307011231-q2ntfp15ldevip2otra0ocflecpbn2pd</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>18307011231-ohtbcgetgtc0op5cq0t51j9ukvdgo2g4.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDgM4u_TxlqAYyGJuklbGafkv17UryWt_k</string>
+	<key>GCM_SENDER_ID</key>
+	<string>18307011231</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.sanskargroup.sanskarTV</string>
+	<key>PROJECT_ID</key>
+	<string>totalbhakti-c4cec</string>
+	<key>STORAGE_BUCKET</key>
+	<string>totalbhakti-c4cec.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:18307011231:ios:284cf2f7447a85971d48aa</string>
+	<key>DATABASE_URL</key>
+	<string>https://totalbhakti-c4cec.firebaseio.com</string>
+</dict>
+</plist>

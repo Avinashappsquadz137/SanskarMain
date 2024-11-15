@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="mainpoojaTableViewCell" customModule="Sanskar" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="india" translatesAutoresizingMaskIntoConstraints="NO" id="c9C-t5-3Zc">
+                        <rect key="frame" x="10" y="20" width="300" height="200"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="200" id="FbW-uH-d2T"/>
+                        </constraints>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3ln-IH-0Pj">
+                        <rect key="frame" x="0.0" y="250" width="320" height="50"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="7FM-hu-KjG">
+                                <rect key="frame" x="5" y="0.0" width="310" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eh7-Nz-US5">
+                                        <rect key="frame" x="0.0" y="0.0" width="60" height="50"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="Hands1"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y0W-qC-VMO">
+                                        <rect key="frame" x="80" y="0.0" width="60" height="50"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="Flowers2"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cho-sd-92s">
+                                        <rect key="frame" x="160" y="0.0" width="60" height="50"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="Bell 1"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eKo-VK-O9t">
+                                        <rect key="frame" x="240" y="0.0" width="50" height="50"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="lamp2"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2WA-bZ-yIo">
+                                        <rect key="frame" x="310" y="0.0" width="0.0" height="50"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="Ladoo1"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="7FM-hu-KjG" firstAttribute="leading" secondItem="3ln-IH-0Pj" secondAttribute="leading" constant="5" id="SJr-hk-b8E"/>
+                            <constraint firstItem="7FM-hu-KjG" firstAttribute="top" secondItem="3ln-IH-0Pj" secondAttribute="top" id="jPm-Hd-K8X"/>
+                            <constraint firstAttribute="trailing" secondItem="7FM-hu-KjG" secondAttribute="trailing" constant="5" id="oXg-JP-UgP"/>
+                            <constraint firstAttribute="bottom" secondItem="7FM-hu-KjG" secondAttribute="bottom" id="z4K-le-pZ6"/>
+                        </constraints>
+                    </view>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="templepilar" translatesAutoresizingMaskIntoConstraints="NO" id="Hmo-oR-Lwl">
+                        <rect key="frame" x="10" y="10" width="300" height="220"/>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="Hmo-oR-Lwl" secondAttribute="trailing" constant="10" id="EPt-Fn-oUY"/>
+                    <constraint firstItem="3ln-IH-0Pj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="EZz-UD-ltG"/>
+                    <constraint firstItem="3ln-IH-0Pj" firstAttribute="top" secondItem="c9C-t5-3Zc" secondAttribute="bottom" constant="30" id="ULs-i2-Bzq"/>
+                    <constraint firstItem="Hmo-oR-Lwl" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Vc8-Ar-kZq"/>
+                    <constraint firstAttribute="trailing" secondItem="3ln-IH-0Pj" secondAttribute="trailing" id="XmQ-Ch-4CN"/>
+                    <constraint firstAttribute="trailing" secondItem="c9C-t5-3Zc" secondAttribute="trailing" constant="10" id="Zul-3Q-XGx"/>
+                    <constraint firstItem="3ln-IH-0Pj" firstAttribute="top" secondItem="Hmo-oR-Lwl" secondAttribute="bottom" constant="20" id="c5Y-Ff-fFp"/>
+                    <constraint firstAttribute="bottom" secondItem="3ln-IH-0Pj" secondAttribute="bottom" id="gJ3-a0-Xpk"/>
+                    <constraint firstItem="c9C-t5-3Zc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="naw-vW-dKw"/>
+                    <constraint firstItem="c9C-t5-3Zc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="p0h-jK-F6I"/>
+                    <constraint firstItem="Hmo-oR-Lwl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="ric-JG-99U"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="bellbtn" destination="cho-sd-92s" id="61h-qK-Ssq"/>
+                <outlet property="btnstackview" destination="7FM-hu-KjG" id="qo9-8c-KV8"/>
+                <outlet property="flowerbtn" destination="Y0W-qC-VMO" id="X60-Kk-Fra"/>
+                <outlet property="handbtn" destination="eh7-Nz-US5" id="SSt-6m-4GM"/>
+                <outlet property="laddubtn" destination="2WA-bZ-yIo" id="k44-0G-Gga"/>
+                <outlet property="mainpoojaimage" destination="c9C-t5-3Zc" id="hhb-40-xBv"/>
+                <outlet property="thalibtn" destination="eKo-VK-O9t" id="p0w-xJ-y5K"/>
+            </connections>
+            <point key="canvasLocation" x="77.862595419847324" y="-11.267605633802818"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="Bell 1" width="60" height="60"/>
+        <image name="Flowers2" width="60" height="60"/>
+        <image name="Hands1" width="60" height="60"/>
+        <image name="Ladoo1" width="60" height="60"/>
+        <image name="india" width="170.66667175292969" height="170.66667175292969"/>
+        <image name="lamp2" width="60" height="60"/>
+        <image name="templepilar" width="567" height="425"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="News" customModule="Sanskar" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="0Cj-Ek-Vao" customClass="NewsDragable" customModule="Sanskar" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Guru_banner" translatesAutoresizingMaskIntoConstraints="NO" id="uiQ-n2-XMT">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="200" id="xlI-zN-xEY"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" tag="110" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sanskar" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zoL-6h-53T">
+                    <rect key="frame" x="5" y="202" width="310" height="21.5"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" tag="130" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date and time" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ph-Jj-7ZU">
+                    <rect key="frame" x="5" y="255.5" width="75" height="13.5"/>
+                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
+                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" tag="150" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+2K View" textAlignment="right" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0jO-5Z-wzP">
+                    <rect key="frame" x="272" y="261.5" width="43" height="12"/>
+                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="10"/>
+                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" tag="120" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="fjshdkf" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dhq-4b-dlC">
+                    <rect key="frame" x="5" y="228.5" width="310" height="17"/>
+                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="15"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="4xH-dv-bYV"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="uiQ-n2-XMT" firstAttribute="leading" secondItem="0Cj-Ek-Vao" secondAttribute="leading" id="0BX-UF-4Zc"/>
+                <constraint firstAttribute="bottom" secondItem="0jO-5Z-wzP" secondAttribute="bottom" constant="5" id="1g8-O8-JJ0"/>
+                <constraint firstItem="dhq-4b-dlC" firstAttribute="trailing" secondItem="zoL-6h-53T" secondAttribute="trailing" id="5tR-YM-qpd"/>
+                <constraint firstItem="dhq-4b-dlC" firstAttribute="top" secondItem="zoL-6h-53T" secondAttribute="bottom" constant="5" id="FBC-bh-iFc"/>
+                <constraint firstItem="zoL-6h-53T" firstAttribute="leading" secondItem="0Cj-Ek-Vao" secondAttribute="leading" constant="5" id="IVM-hq-cVY"/>
+                <constraint firstItem="dhq-4b-dlC" firstAttribute="leading" secondItem="zoL-6h-53T" secondAttribute="leading" id="Obi-b2-Roa"/>
+                <constraint firstAttribute="trailing" secondItem="0jO-5Z-wzP" secondAttribute="trailing" constant="5" id="U35-fK-X1R"/>
+                <constraint firstItem="zoL-6h-53T" firstAttribute="top" secondItem="uiQ-n2-XMT" secondAttribute="bottom" constant="2" id="fKN-ke-eVA"/>
+                <constraint firstAttribute="bottom" secondItem="9Ph-Jj-7ZU" secondAttribute="bottom" constant="9.5" id="n05-76-CPo"/>
+                <constraint firstItem="9Ph-Jj-7ZU" firstAttribute="top" secondItem="dhq-4b-dlC" secondAttribute="bottom" constant="10" id="sJT-Fl-ylo"/>
+                <constraint firstAttribute="trailing" secondItem="zoL-6h-53T" secondAttribute="trailing" constant="5" id="tcU-lY-7oo"/>
+                <constraint firstItem="9Ph-Jj-7ZU" firstAttribute="leading" secondItem="0Cj-Ek-Vao" secondAttribute="leading" constant="5" id="veg-Vg-yvc"/>
+                <constraint firstAttribute="trailing" secondItem="uiQ-n2-XMT" secondAttribute="trailing" id="wLD-H0-LV1"/>
+                <constraint firstItem="uiQ-n2-XMT" firstAttribute="top" secondItem="0Cj-Ek-Vao" secondAttribute="top" id="zWk-1f-ZOb"/>
+            </constraints>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                    <real key="value" value="20"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                    <real key="value" value="10"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                    <size key="value" width="0.5" height="0.5"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                    <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                    <real key="value" value="0.80000000000000004"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="dateTimeLbl" destination="9Ph-Jj-7ZU" id="ldl-Pq-WTW"/>
+                <outlet property="descriptionLbl" destination="dhq-4b-dlC" id="Wwv-Ha-RRA"/>
+                <outlet property="imgView" destination="uiQ-n2-XMT" id="MsO-l9-FvT"/>
+                <outlet property="titleLbl" destination="zoL-6h-53T" id="yws-Zx-Cgm"/>
+                <outlet property="totalViewsLbl" destination="0jO-5Z-wzP" id="MCb-zB-VEq"/>
+            </connections>
+            <point key="canvasLocation" x="-839" y="-235"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Guru_banner" width="339" height="81"/>
+    </resources>
+</document>

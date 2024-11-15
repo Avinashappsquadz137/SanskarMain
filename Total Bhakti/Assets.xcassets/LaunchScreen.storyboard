@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ak3-mG-IrN">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ekW-yZ-2p1">
+            <objects>
+                <viewController id="Ak3-mG-IrN" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="z5p-v0-t1G">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sign-up-background" translatesAutoresizingMaskIntoConstraints="NO" id="7S7-1f-qgb">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash_logo" translatesAutoresizingMaskIntoConstraints="NO" id="MND-Sn-6Hw">
+                                <rect key="frame" x="124.5" y="306.5" width="126" height="54"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="DOW-of-XTX" firstAttribute="trailing" secondItem="7S7-1f-qgb" secondAttribute="trailing" id="BNj-Qd-Mo2"/>
+                            <constraint firstItem="7S7-1f-qgb" firstAttribute="leading" secondItem="DOW-of-XTX" secondAttribute="leading" id="MPc-bs-t59"/>
+                            <constraint firstItem="MND-Sn-6Hw" firstAttribute="centerX" secondItem="z5p-v0-t1G" secondAttribute="centerX" id="hWL-rd-gX6"/>
+                            <constraint firstItem="7S7-1f-qgb" firstAttribute="top" secondItem="DOW-of-XTX" secondAttribute="top" id="kqW-og-cpl"/>
+                            <constraint firstItem="DOW-of-XTX" firstAttribute="bottom" secondItem="7S7-1f-qgb" secondAttribute="bottom" id="m1R-5O-Phi"/>
+                            <constraint firstItem="MND-Sn-6Hw" firstAttribute="centerY" secondItem="z5p-v0-t1G" secondAttribute="centerY" id="ydk-Aj-Cmy"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="DOW-of-XTX"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BUt-RE-aJ6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1601" y="-1411"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="sign-up-background" width="640" height="1136"/>
+        <image name="splash_logo" width="126" height="54.5"/>
+    </resources>
+</document>

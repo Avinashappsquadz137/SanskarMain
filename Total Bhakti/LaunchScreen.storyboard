@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ak3-mG-IrN">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ekW-yZ-2p1">
+            <objects>
+                <viewController id="Ak3-mG-IrN" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="z5p-v0-t1G">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7S7-1f-qgb">
+                                <rect key="frame" x="0.0" y="-60" width="375" height="767"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sanskar logo new" translatesAutoresizingMaskIntoConstraints="NO" id="MND-Sn-6Hw">
+                                <rect key="frame" x="46" y="254" width="283" height="159"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="DOW-of-XTX"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="DOW-of-XTX" firstAttribute="trailing" secondItem="7S7-1f-qgb" secondAttribute="trailing" id="BNj-Qd-Mo2"/>
+                            <constraint firstItem="7S7-1f-qgb" firstAttribute="leading" secondItem="DOW-of-XTX" secondAttribute="leading" id="MPc-bs-t59"/>
+                            <constraint firstItem="MND-Sn-6Hw" firstAttribute="centerX" secondItem="z5p-v0-t1G" secondAttribute="centerX" id="hWL-rd-gX6"/>
+                            <constraint firstItem="7S7-1f-qgb" firstAttribute="top" secondItem="DOW-of-XTX" secondAttribute="top" constant="-60" id="kqW-og-cpl"/>
+                            <constraint firstItem="DOW-of-XTX" firstAttribute="bottom" secondItem="7S7-1f-qgb" secondAttribute="bottom" constant="-40" id="m1R-5O-Phi"/>
+                            <constraint firstItem="MND-Sn-6Hw" firstAttribute="centerY" secondItem="z5p-v0-t1G" secondAttribute="centerY" id="ydk-Aj-Cmy"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BUt-RE-aJ6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1600.8" y="-1411.8440779610196"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="sanskar logo new" width="283" height="159"/>
+    </resources>
+</document>

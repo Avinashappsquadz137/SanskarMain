@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="MxChannelCell" customModule="Sanskar" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Ml-2N-dmT">
+                        <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HO0-Zl-e2L">
+                                <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="HO0-Zl-e2L" firstAttribute="top" secondItem="4Ml-2N-dmT" secondAttribute="top" id="gVW-QT-ui3"/>
+                            <constraint firstAttribute="bottom" secondItem="HO0-Zl-e2L" secondAttribute="bottom" id="hUj-dL-JoS"/>
+                            <constraint firstAttribute="trailing" secondItem="HO0-Zl-e2L" secondAttribute="trailing" id="rJm-2S-uyi"/>
+                            <constraint firstItem="HO0-Zl-e2L" firstAttribute="leading" secondItem="4Ml-2N-dmT" secondAttribute="leading" id="z77-bT-OPM"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="4Ml-2N-dmT" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="K9W-by-Osu"/>
+                <constraint firstItem="4Ml-2N-dmT" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="RqE-AL-UHT"/>
+                <constraint firstAttribute="trailing" secondItem="4Ml-2N-dmT" secondAttribute="trailing" id="iDk-Wu-19z"/>
+                <constraint firstAttribute="bottom" secondItem="4Ml-2N-dmT" secondAttribute="bottom" id="sAy-Wn-aaW"/>
+            </constraints>
+            <connections>
+                <outlet property="cView" destination="4Ml-2N-dmT" id="qtQ-7c-EdR"/>
+                <outlet property="img" destination="HO0-Zl-e2L" id="RA8-U3-Afo"/>
+            </connections>
+            <point key="canvasLocation" x="131.15942028985509" y="71.986607142857139"/>
+        </collectionViewCell>
+    </objects>
+</document>
