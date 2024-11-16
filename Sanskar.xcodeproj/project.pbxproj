@@ -3804,7 +3804,6 @@
 		C716DBA02B346207000222D5 /* paymentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = paymentTableViewCell.swift; sourceTree = "<group>"; };
 		C716DBA12B346207000222D5 /* paymentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = paymentTableViewCell.xib; sourceTree = "<group>"; };
 		C716DC4C2B3465DC000222D5 /* Newpaymentvc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Newpaymentvc.swift; sourceTree = "<group>"; };
-		C71B81222CE7822A0071CD33 /* sanskarlogo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sanskarlogo.mp4; sourceTree = "<group>"; };
 		C72BFC962B23164100F06035 /* loginrecordcell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginrecordcell.swift; sourceTree = "<group>"; };
 		C72C50FE2B11D231006A5389 /* Loginviewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loginviewcontroller.swift; sourceTree = "<group>"; };
 		C7320B3F2BD92CCB00AA9BAF /* paymentalertcell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = paymentalertcell.swift; sourceTree = "<group>"; };
@@ -10698,7 +10697,6 @@
 			isa = PBXGroup;
 			children = (
 				C75E93C62C1722E1009AA8D3 /* spalshviewcontroller.swift */,
-				C71B81222CE7822A0071CD33 /* sanskarlogo.mp4 */,
 			);
 			path = Splashscreen;
 			sourceTree = "<group>";
@@ -10915,6 +10913,7 @@
 			);
 			mainGroup = A3406C4A2003894400F5A0E6;
 			packageReferences = (
+				C78885ED2C254DE5007B3FFF /* XCRemoteSwiftPackageReference "googleads-mobile-ios-examples" */,
 			);
 			productRefGroup = A3406C542003894400F5A0E6 /* Products */;
 			projectDirPath = "";
@@ -13282,6 +13281,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C78885ED2C254DE5007B3FFF /* XCRemoteSwiftPackageReference "googleads-mobile-ios-examples" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/googleads-mobile-ios-examples.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.22.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCVersionGroup section */
 		A3F8C7ED226715DD00B7DE49 /* CoreDataModel.xcdatamodeld */ = {
