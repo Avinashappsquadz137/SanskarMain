@@ -1,0 +1,181 @@
+{
+  "0.6rc9": {
+    "v1-acs.jsa": {
+      "hash": "32ab307cdcad9210531ddeeb8428c0df"
+    }
+  },
+  "godel": {
+    "v1-config.jsa": {
+      "hash": "a4bbd8088659aec2741a871cc1721f5d"
+    }
+  },
+  "hyper": {
+    "bundles": {
+      "app": {
+        "in.juspay.dotp": {
+          "4.5.1": {
+            "ios": {
+              "v1-index_bundle.jsa": {
+                "hash": "dc6c23a708e31ab3ff5cd92c95228add"
+              }
+            }
+          }
+        },
+        "in.juspay.ec": {
+          "3.16.25": {
+            "ios": {
+              "v1-index_bundle.jsa": {
+                "hash": "dc7831b274c428a9a25beb1f7ff13a2f"
+              }
+            }
+          },
+          "3.18.4": {
+            "ios": {
+              "v1-index_bundle.jsa": {
+                "hash": "aaa9d7218bc7aa46048822e7f47e2363"
+              }
+            }
+          }
+        },
+        "in.juspay.escrow": {
+          "3.4.0": {
+            "ios": {
+              "v1-index_bundle.jsa": {
+                "hash": "fbe29f3c8ba770d6c33e7dd9d05645a7"
+              }
+            }
+          }
+        },
+        "in.juspay.flyer": {
+          "2.5.2": {
+            "ios": {
+              "v1-index_bundle.jsa": {
+                "hash": "bb7deb6478ab61eaf608b450936c454b"
+              }
+            }
+          }
+        },
+        "in.juspay.hyperpay": {
+          "3.73.9-release-20231208.0": {
+            "ios": {
+              "v1-index_bundle.jsa": {
+                "hash": "cadd2227522fa22702978d5f031eae54"
+              }
+            }
+          }
+        },
+        "in.juspay.hyperupi": {
+          "2.2.150": {
+            "ios": {
+              "v1-index_bundle.jsa": {
+                "hash": "3864aaaf7c521e02fada901c436fe3d3"
+              }
+            }
+          }
+        },
+        "in.juspay.inappupi": {
+          "2.0.135": {
+            "ios": {
+              "v1-index_bundle.jsa": {
+                "hash": "9b671aeb1a6edab7606ffe15ea02eadb"
+              }
+            }
+          }
+        },
+        "in.juspay.upiintent": {
+          "4.8.6": {
+            "ios": {
+              "v1-index_bundle.jsa": {
+                "hash": "7764afd81bf565064f71f59f5aad36fa"
+              }
+            }
+          }
+        },
+        "in.juspay.vies": {
+          "2.2.4": {
+            "ios": {
+              "v1-index_bundle.jsa": {
+                "hash": "1ae34799a4de3d42be1d007ff9096e0f"
+              }
+            }
+          }
+        },
+        "tracker": {
+          "2.0.38": {
+            "v1-tracker.jsa": {
+              "hash": "566b7f449ff4879981b5221c5a17fea8"
+            }
+          },
+          "2.1.4": {
+            "v1-tracker.jsa": {
+              "hash": "f1310416e5f4c0a448fa3e6db492fbfe"
+            }
+          }
+        }
+      },
+      "in.juspay.merchants": {
+        "bbdaily": {
+          "ios": {
+            "release": {
+              "config.json": {
+                "hash": "3hkj23h5k23jh52kj3h"
+              }
+            }
+          }
+        },
+        "sanskarott": {
+          "ios": {
+            "release": {
+              "sdk_config.json": {
+                "hash": "75fef58c3ef8341fbef1ea7fd4e73deb"
+              }
+            }
+          }
+        }
+      },
+      "ios": {
+        "release": {
+          "in.juspay.upiintent": {
+            "2.0.0": {
+              "common": {
+                "2.0.151": {
+                  "v1-config.jsa": {
+                    "hash": "9e15ce4352db43b92a9590dd87ebcfa3"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "configs": {
+      "sanskarott": {
+        "in.juspay.hyperpay": {
+          "1.6.3": {
+            "v1-configuration.jsa": {
+              "hash": "97c80e36811ee4f28dc93d7632d45f23"
+            },
+            "v1-icons.jsa": {
+              "hash": "f11d54db482961cc12be31c5748cff2d"
+            },
+            "v1-strings.jsa": {
+              "hash": "cb27ea67fb8aaaddd11f1d535dddca4d"
+            }
+          }
+        }
+      }
+    }
+  },
+  "juspay": {
+    "payments": {
+      "in.juspay.ec": {
+        "release": {
+          "v1-config.jsa": {
+            "hash": "ac0d44c5afa519f554bcf36920bacd76"
+          }
+        }
+      }
+    }
+  }
+}
