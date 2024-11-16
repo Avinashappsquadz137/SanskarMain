@@ -283,7 +283,6 @@
 		C716DC4D2B3465DC000222D5 /* Newpaymentvc.swift in Sources */ = {isa = PBXBuildFile; fileRef = C716DC4C2B3465DC000222D5 /* Newpaymentvc.swift */; };
 		C72BFC972B23164100F06035 /* loginrecordcell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72BFC962B23164100F06035 /* loginrecordcell.swift */; };
 		C72C50FF2B11D231006A5389 /* Loginviewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72C50FE2B11D231006A5389 /* Loginviewcontroller.swift */; };
-		C73086B22C1ACE1D00E9C782 /* sanskarlogo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C73086B12C1ACE1D00E9C782 /* sanskarlogo.mp4 */; };
 		C7320B412BD92CCB00AA9BAF /* paymentalertcell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7320B3F2BD92CCB00AA9BAF /* paymentalertcell.swift */; };
 		C7320B422BD92CCB00AA9BAF /* paymentalertcell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7320B402BD92CCB00AA9BAF /* paymentalertcell.xib */; };
 		C73F0D892B99F54900BCF221 /* holiprogramlistcell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73F0D872B99F54900BCF221 /* holiprogramlistcell.swift */; };
@@ -306,6 +305,7 @@
 		C7E2DF322C41102000CEA89E /* OTPTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E2DE7A2C41101F00CEA89E /* OTPTextField.swift */; };
 		C7E2DF342C41109100CEA89E /* OTPStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E2DF332C41109100CEA89E /* OTPStackView.swift */; };
 		C7E2DF362C4110C000CEA89E /* newotpvc.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E2DF352C4110C000CEA89E /* newotpvc.swift */; };
+		C7E495802CE8764B0062B938 /* sanskarlogo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C7E4957F2CE8764A0062B938 /* sanskarlogo.mp4 */; };
 		C7FC1B6D2C2C483200DA154A /* assestcatalog.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7FC1B6C2C2C483200DA154A /* assestcatalog.xcassets */; };
 		D59F1B632A614CA300770311 /* TBshortsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59F1B622A614CA300770311 /* TBshortsVC.swift */; };
 		D59F1B662A614D5B00770311 /* Shortstablecell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59F1B642A614D5B00770311 /* Shortstablecell.swift */; };
@@ -3807,7 +3807,6 @@
 		C716DC4C2B3465DC000222D5 /* Newpaymentvc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Newpaymentvc.swift; sourceTree = "<group>"; };
 		C72BFC962B23164100F06035 /* loginrecordcell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginrecordcell.swift; sourceTree = "<group>"; };
 		C72C50FE2B11D231006A5389 /* Loginviewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loginviewcontroller.swift; sourceTree = "<group>"; };
-		C73086B12C1ACE1D00E9C782 /* sanskarlogo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = sanskarlogo.mp4; path = ../../../sanskarlogo.mp4; sourceTree = "<group>"; };
 		C7320B3F2BD92CCB00AA9BAF /* paymentalertcell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = paymentalertcell.swift; sourceTree = "<group>"; };
 		C7320B402BD92CCB00AA9BAF /* paymentalertcell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = paymentalertcell.xib; sourceTree = "<group>"; };
 		C73F0D872B99F54900BCF221 /* holiprogramlistcell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = holiprogramlistcell.swift; sourceTree = "<group>"; };
@@ -3830,6 +3829,7 @@
 		C7E2DE7A2C41101F00CEA89E /* OTPTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTPTextField.swift; sourceTree = "<group>"; };
 		C7E2DF332C41109100CEA89E /* OTPStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTPStackView.swift; sourceTree = "<group>"; };
 		C7E2DF352C4110C000CEA89E /* newotpvc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newotpvc.swift; sourceTree = "<group>"; };
+		C7E4957F2CE8764A0062B938 /* sanskarlogo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sanskarlogo.mp4; sourceTree = "<group>"; };
 		C7FC1B6C2C2C483200DA154A /* assestcatalog.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = assestcatalog.xcassets; sourceTree = "<group>"; };
 		D59F1B622A614CA300770311 /* TBshortsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TBshortsVC.swift; sourceTree = "<group>"; };
 		D59F1B642A614D5B00770311 /* Shortstablecell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shortstablecell.swift; sourceTree = "<group>"; };
@@ -10699,7 +10699,7 @@
 			isa = PBXGroup;
 			children = (
 				C75E93C62C1722E1009AA8D3 /* spalshviewcontroller.swift */,
-				C73086B12C1ACE1D00E9C782 /* sanskarlogo.mp4 */,
+				C7E4957F2CE8764A0062B938 /* sanskarlogo.mp4 */,
 			);
 			path = Splashscreen;
 			sourceTree = "<group>";
@@ -11934,7 +11934,6 @@
 				FA80BDED2472A74B008B4AE4 /* music_QueueCell.xib in Resources */,
 				07012616274CBD9A00B39F5C /* channelCell.xib in Resources */,
 				5A5BBACF23E1A723009F1BAD /* ReceiverCell.xib in Resources */,
-				C73086B22C1ACE1D00E9C782 /* sanskarlogo.mp4 in Resources */,
 				044D0D7725FF645700A63EF3 /* VideoView.xib in Resources */,
 				7DB79A8D29C32901002DD2C7 /* RelatedphotosTableViewCell.xib in Resources */,
 				95C2BC0B22593FA90068309E /* ic_play_circle_filled@3x.png in Resources */,
@@ -11944,6 +11943,7 @@
 				C7FC1B6D2C2C483200DA154A /* assestcatalog.xcassets in Resources */,
 				C7B00A1A2AA31788007FAB19 /* editCollectionCell.xib in Resources */,
 				D5D2260D2A86043000C2EA3F /* poojabtnCollectionCell.xib in Resources */,
+				C7E495802CE8764B0062B938 /* sanskarlogo.mp4 in Resources */,
 				95C2BC0922593FA90068309E /* ic_play_circle_filled.png in Resources */,
 				A33303C821F72E3300E411CE /* Lato-Hairline.ttf in Resources */,
 				A33303C621F72E3300E411CE /* Lato-Bold.ttf in Resources */,
