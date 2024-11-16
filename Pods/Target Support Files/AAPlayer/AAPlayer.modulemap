@@ -1,0 +1,6 @@
+framework module AAPlayer {
+  umbrella header "AAPlayer-umbrella.h"
+
+  export *
+  module * { export * }
+}
