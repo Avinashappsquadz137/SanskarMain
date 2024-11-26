@@ -307,6 +307,7 @@
 		C7E2DF362C4110C000CEA89E /* newotpvc.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E2DF352C4110C000CEA89E /* newotpvc.swift */; };
 		C7E7E3C12CE8B530006A00C6 /* sanskarlogo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C7E7E3C02CE8B530006A00C6 /* sanskarlogo.mp4 */; };
 		C7FC1B6D2C2C483200DA154A /* assestcatalog.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7FC1B6C2C2C483200DA154A /* assestcatalog.xcassets */; };
+		C7FFBC952CF5CC61009CDCC1 /* TBHomeVC+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FFBBDD2CF5CC61009CDCC1 /* TBHomeVC+Extension.swift */; };
 		D59F1B632A614CA300770311 /* TBshortsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59F1B622A614CA300770311 /* TBshortsVC.swift */; };
 		D59F1B662A614D5B00770311 /* Shortstablecell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59F1B642A614D5B00770311 /* Shortstablecell.swift */; };
 		D59F1B672A614D5B00770311 /* Shortstablecell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D59F1B652A614D5B00770311 /* Shortstablecell.xib */; };
@@ -3831,6 +3832,7 @@
 		C7E2DF352C4110C000CEA89E /* newotpvc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newotpvc.swift; sourceTree = "<group>"; };
 		C7E7E3C02CE8B530006A00C6 /* sanskarlogo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sanskarlogo.mp4; sourceTree = "<group>"; };
 		C7FC1B6C2C2C483200DA154A /* assestcatalog.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = assestcatalog.xcassets; sourceTree = "<group>"; };
+		C7FFBBDD2CF5CC61009CDCC1 /* TBHomeVC+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TBHomeVC+Extension.swift"; sourceTree = "<group>"; };
 		D59F1B622A614CA300770311 /* TBshortsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TBshortsVC.swift; sourceTree = "<group>"; };
 		D59F1B642A614D5B00770311 /* Shortstablecell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shortstablecell.swift; sourceTree = "<group>"; };
 		D59F1B652A614D5B00770311 /* Shortstablecell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Shortstablecell.xib; sourceTree = "<group>"; };
@@ -4531,6 +4533,7 @@
 				C068E1AC201340A300F1478E /* TBOTPVC.swift */,
 				A38E7AB62004C72200D8B1EC /* MobileVerificationVC.swift */,
 				C041545A2014C58900010116 /* TBHomeVC.swift */,
+				C7FFBBDD2CF5CC61009CDCC1 /* TBHomeVC+Extension.swift */,
 				A357803F2018883600EC4CD7 /* TBProfileVC.swift */,
 				C7B618FA2A16012900A927FB /* TBsearchviedeoViewController.swift */,
 				C06124E021205A8600799266 /* TBHomeTabBar.swift */,
@@ -12204,6 +12207,7 @@
 				C716DC4D2B3465DC000222D5 /* Newpaymentvc.swift in Sources */,
 				072F8C90270B02C300BC41DA /* newPremiumvc.swift in Sources */,
 				7DBEA75B29506E19006A4457 /* TBViewController.swift in Sources */,
+				C7FFBC952CF5CC61009CDCC1 /* TBHomeVC+Extension.swift in Sources */,
 				A3531F5D20286E5300462D8F /* TBHomeCollectionTableCell.swift in Sources */,
 				A35FB341203FE89F00F05E45 /* TBbhajanListVC.swift in Sources */,
 				0710760B2808344A00AC039D /* GuruWallCell.swift in Sources */,

@@ -127,7 +127,8 @@ class TBHomeVC: TBInternetViewController,AAPlayerDelegate,shortCutDelegate,MMPla
     let adUnitID = "ca-app-pub-1618767157139570/5766265057"
      var rewardedAd: GADRewardedAd?
     var record: Int?
-    
+    var playerLayer : AVPlayerLayer? = nil
+    var pipController: AVPictureInPictureController?
     //Advertise Img
     //    @IBOutlet weak var advertiseView: UIView!
     //    @IBOutlet weak var advertiseImg: UIImageView!
@@ -267,7 +268,7 @@ class TBHomeVC: TBInternetViewController,AAPlayerDelegate,shortCutDelegate,MMPla
         let param1: Parameters = ["device_id": device_id]
         print(param1)
         loginuserrecordapi(param1)
-        
+        setupPiP()
     }
     func loadAndShowRewardedAd() {
            GADRewardedAd.load(withAdUnitID: adUnitID, request: GADRequest()) { [weak self] ad, error in
@@ -2323,6 +2324,7 @@ extension TBHomeVC : UICollectionViewDataSource {
                 TV_PlayerHelper.shared.mmPlayer.player?.allowsExternalPlayback = true
                 TV_PlayerHelper.shared.mmPlayer.player?.usesExternalPlaybackWhileExternalScreenIsActive = true
                 TV_PlayerHelper.shared.mmPlayer.player?.play()
+                self.setupPiP()
             }
         }
     }

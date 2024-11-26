@@ -21,6 +21,7 @@ import FirebaseMessaging
 import FirebaseDynamicLinks
 import FirebaseCore
 //import IQKeyboardMsanager
+import AVKit
 import GoogleMobileAds
 let kPrefPreloadTime = "preload_time_sec"
 protocol shortCutDelegate:class {
