@@ -1197,6 +1197,11 @@ class TBHomeVC: TBInternetViewController,AAPlayerDelegate,shortCutDelegate,MMPla
                 vc.channelList = categoryDataArray[sender.tag].channelList
                 self.navigationController?.pushViewController(vc, animated: true)
                 
+            }else if categoryDataArray[sender.tag].type == "live darshan" {
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "TBGuruListViewController") as! TBGuruListViewController
+                vc.headingSting = categoryDataArray[sender.tag].menu_title.capitalizingFirstLetter()
+                vc.menuMasterId = categoryDataArray[sender.tag].id
+                self.navigationController?.pushViewController(vc, animated: true)
             }
             else if  categoryDataArray[sender.tag].type == "guru"{///
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "TBGuruListViewController") as! TBGuruListViewController
@@ -1642,6 +1647,10 @@ extension TBHomeVC : UICollectionViewDataSource {
             let itemCount = min(10, categoryDataArray[collectionView.tag].guruList.count)
             print("guruList.count::::::", itemCount)
             return itemCount
+        case "live darshan":
+            let itemCount = min(50, categoryDataArray[collectionView.tag].liveDarshanList.count)
+            print("liveDarshan.count::::::", itemCount)
+            return itemCount
             
         case "shorts":
             let itemCount = min(10, categoryDataArray[collectionView.tag].shortslist.count)
@@ -1901,8 +1910,34 @@ extension TBHomeVC : UICollectionViewDataSource {
                 return cell
                 
             }
-        
-            else if categoryDataArray[collectionView.tag].type == "guru"{
+             else if categoryDataArray[collectionView.tag].type ==  "live darshan"{
+                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: KEYS.KCELL1, for: indexPath)
+                 let image = cell.viewWithTag(100) as? UIImageView
+                 let viewLbl = cell.viewWithTag(101) as? UILabel
+                 let logo = cell.viewWithTag(201) as? UIImageView
+                 logo?.isHidden = true
+                 viewLbl?.isHidden = true
+                 
+                 let lbl = cell.viewWithTag(200) as? UILabel
+                 let mainView = cell.viewWithTag(300)
+                 let playIcon = cell.viewWithTag(500) as! UIImageView
+                 shadow(cell)
+                 mainView?.layer.cornerRadius = 5.0
+                 lbl?.isHidden = false
+                 
+                 playIcon.isHidden = true
+                 let posts = categoryDataArray[collectionView.tag].liveDarshanList[indexPath.row]    //guruList[indexPath.row]
+                // lbl?.text = posts.title
+                 lbl?.numberOfLines = 2
+                 image?.sd_setIndicatorStyle(.gray)
+                 image?.sd_setShowActivityIndicatorView(true)
+                 image?.layer.cornerRadius = 5.0
+                 image?.clipsToBounds = true
+                 image?.sd_setImage(with: URL(string: posts.thumbnail ?? ""), placeholderImage: UIImage(named: "default_image"), options: .refreshCached, completed: nil)
+                 
+                 return cell
+             }
+               else if categoryDataArray[collectionView.tag].type == "guru"{
                 
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: KEYS.KCELL1, for: indexPath)
                 let image = cell.viewWithTag(100) as? UIImageView
@@ -2451,6 +2486,7 @@ extension TBHomeVC : UICollectionViewDataSource {
 }
 
 //MARK:- UIColection View Delegates Methods.
+@available(iOS 13.0, *)
 extension TBHomeVC : UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
@@ -3459,6 +3495,17 @@ extension TBHomeVC : UICollectionViewDelegateFlowLayout {
                             }
                         }
                     }
+                }else if categoryDataArray[collectionView.tag].type == "live darshan" {
+                    if  categoryDataArray[collectionView.tag].liveDarshanList[indexPath.row].video_type == "0" {
+                        
+
+                    } else {
+                        if let vc = storyBoardNew.instantiateViewController(withIdentifier: CONTROLLERNAMES.KLiveDarshanViewController) as? LiveDarshanViewController {
+                            let post = categoryDataArray[collectionView.tag].liveDarshanList[indexPath.row].video_url
+                            vc.darshanList = post ?? ""
+                            navigationController?.pushViewController(vc, animated: true)
+                        }
+                    }
                 }
                 else if categoryDataArray[collectionView.tag].type == "guru"{
                     let post = categoryDataArray[collectionView.tag].guruList[indexPath.row]
@@ -3788,6 +3835,14 @@ extension TBHomeVC : UITableViewDataSource {
             cell.dataCollectionView.collectionViewLayout.invalidateLayout()
             return cell
             
+        }else if categoryDataArray[indexPath.section].type == "live darshan" {
+            let cell = tableView.dequeueReusableCell(withIdentifier: KEYS.KCELL, for: indexPath) as! TBHomeTableViewCell
+            cell.dataCollectionView.tag = indexPath.section
+            cell.dataCollectionView.delegate = self
+            cell.dataCollectionView.dataSource = self
+            cell.dataCollectionView.reloadData()
+            cell.dataCollectionView.collectionViewLayout.invalidateLayout()
+            return cell
         }
        
         else if categoryDataArray[indexPath.section].type == "guru"{

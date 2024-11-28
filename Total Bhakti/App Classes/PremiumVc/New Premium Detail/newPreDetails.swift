@@ -38,6 +38,7 @@ class newPreDetails: UIViewController, EpisodeDelegate,GetVideoQualityList, MMPl
     var data: [String:Any] = [:]
     var premiumData : [freeModel] = []
     var selectedData : freeModel?
+    var darshanList : LiveDarshan!
     var bandwidthArray = [String]()
     var resolutionArray = [String]()
     var allListData: [[String:Any]] = [[:]]

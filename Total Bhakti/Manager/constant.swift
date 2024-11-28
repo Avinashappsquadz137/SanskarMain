@@ -14,6 +14,7 @@ let reachability = Reachability()!
 var noInternet = false
 
 let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+let storyBoardNew = UIStoryboard(name: "NewScreenLive", bundle: nil)
 let appDelegate = UIApplication.shared.delegate as! AppDelegate
 var currentUser : User!
                                                                                                                        
@@ -143,6 +144,7 @@ struct CONTROLLERNAMES {
     static let wallpaperVc                =     "GuruWallpaperVC"
     static let KPROFILECONTROLLER         =     "activeuserprofileViewController"
     static let Kloginvc                   =     "newloginpage"
+    static let KLiveDarshanViewController =     "LiveDarshanViewController"
     
 }
 

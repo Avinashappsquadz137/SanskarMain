@@ -296,6 +296,10 @@
 		C75B0E082BF4CF1200FBA92F /* shortscommentmodel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75B0E072BF4CF1200FBA92F /* shortscommentmodel.swift */; };
 		C75E93C72C1722E1009AA8D3 /* spalshviewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75E93C62C1722E1009AA8D3 /* spalshviewcontroller.swift */; };
 		C77F08AB2AF4FE68005244DE /* userrecordcell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77F08AA2AF4FE68005244DE /* userrecordcell.swift */; };
+		C78937CC2CF7014800CD973D /* NewScreenLive.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C78937CB2CF7014800CD973D /* NewScreenLive.storyboard */; };
+		C78938862CF7026500CD973D /* LiveDarshanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78938852CF7026500CD973D /* LiveDarshanViewController.swift */; };
+		C78938892CF7062300CD973D /* LiveBhajanModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78938882CF7062300CD973D /* LiveBhajanModel.swift */; };
+		C79574DA2CF8457400EF4EB3 /* live.gif in Resources */ = {isa = PBXBuildFile; fileRef = C79574222CF8457400EF4EB3 /* live.gif */; };
 		C7B00A192AA31788007FAB19 /* editCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B00A172AA31788007FAB19 /* editCollectionCell.swift */; };
 		C7B00A1A2AA31788007FAB19 /* editCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7B00A182AA31788007FAB19 /* editCollectionCell.xib */; };
 		C7B618FB2A16012900A927FB /* TBsearchviedeoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B618FA2A16012900A927FB /* TBsearchviedeoViewController.swift */; };
@@ -3821,6 +3825,10 @@
 		C75B0E072BF4CF1200FBA92F /* shortscommentmodel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shortscommentmodel.swift; sourceTree = "<group>"; };
 		C75E93C62C1722E1009AA8D3 /* spalshviewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = spalshviewcontroller.swift; sourceTree = "<group>"; };
 		C77F08AA2AF4FE68005244DE /* userrecordcell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userrecordcell.swift; sourceTree = "<group>"; };
+		C78937CB2CF7014800CD973D /* NewScreenLive.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewScreenLive.storyboard; sourceTree = "<group>"; };
+		C78938852CF7026500CD973D /* LiveDarshanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveDarshanViewController.swift; sourceTree = "<group>"; };
+		C78938882CF7062300CD973D /* LiveBhajanModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveBhajanModel.swift; sourceTree = "<group>"; };
+		C79574222CF8457400EF4EB3 /* live.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = live.gif; sourceTree = "<group>"; };
 		C7B00A172AA31788007FAB19 /* editCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = editCollectionCell.swift; sourceTree = "<group>"; };
 		C7B00A182AA31788007FAB19 /* editCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = editCollectionCell.xib; sourceTree = "<group>"; };
 		C7B618FA2A16012900A927FB /* TBsearchviedeoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TBsearchviedeoViewController.swift; sourceTree = "<group>"; };
@@ -4417,11 +4425,13 @@
 				C75E93172C1722B9009AA8D3 /* Splashscreen */,
 				A3576AB92004900000D7FFA7 /* Custom Cells */,
 				A3576ABA2004BA0100D7FFA7 /* App Classes */,
+				C79574222CF8457400EF4EB3 /* live.gif */,
 				A3760DA7202DA6AF00340912 /* Assets.xcassets */,
 				C7FC1B6C2C2C483200DA154A /* assestcatalog.xcassets */,
 				C73F0D872B99F54900BCF221 /* holiprogramlistcell.swift */,
 				C73F0E3E2B9B187D00BCF221 /* holimodel.swift */,
 				FAC637CE242E412F00FAD585 /* Main.storyboard */,
+				C78937CB2CF7014800CD973D /* NewScreenLive.storyboard */,
 				C75B0D552BF4C89C00FBA92F /* shortscommentvc.swift */,
 				C75B0E072BF4CF1200FBA92F /* shortscommentmodel.swift */,
 				C73F0D882B99F54900BCF221 /* holiprogramlistcell.xib */,
@@ -4525,6 +4535,7 @@
 		A3576ABB2004BA2200D7FFA7 /* login&signup */ = {
 			isa = PBXGroup;
 			children = (
+				C78938842CF7024000CD973D /* Live Darshan */,
 				C7E2DE7A2C41101F00CEA89E /* OTPTextField.swift */,
 				C7E2DF332C41109100CEA89E /* OTPStackView.swift */,
 				07DF9FC627043EEB00F88CE6 /* scanner */,
@@ -4614,6 +4625,7 @@
 		A36C988120170C510052FE3B /* Model Classes */ = {
 			isa = PBXGroup;
 			children = (
+				C78938872CF705DE00CD973D /* LiveBhajans */,
 				A364375120593A9A007CAF5A /* videos */,
 				A38115E6207219A20081DC99 /* Home page */,
 				A36C31DF203D93CA008A9C05 /* User */,
@@ -10707,6 +10719,22 @@
 			path = Splashscreen;
 			sourceTree = "<group>";
 		};
+		C78938842CF7024000CD973D /* Live Darshan */ = {
+			isa = PBXGroup;
+			children = (
+				C78938852CF7026500CD973D /* LiveDarshanViewController.swift */,
+			);
+			path = "Live Darshan";
+			sourceTree = "<group>";
+		};
+		C78938872CF705DE00CD973D /* LiveBhajans */ = {
+			isa = PBXGroup;
+			children = (
+				C78938882CF7062300CD973D /* LiveBhajanModel.swift */,
+			);
+			path = LiveBhajans;
+			sourceTree = "<group>";
+		};
 		C7B00AC32AA31795007FAB19 /* userprofile */ = {
 			isa = PBXGroup;
 			children = (
@@ -11956,6 +11984,7 @@
 				A340390320AADE87005BCA6B /* AppSettings.storyboard in Resources */,
 				8757D0D826AEF19E0029A38D /* News.xib in Resources */,
 				0701261A274CC1DE00B39F5C /* programCell.xib in Resources */,
+				C78937CC2CF7014800CD973D /* NewScreenLive.storyboard in Resources */,
 				7D7115CB2996721B0095D858 /* sliderpoojaCollectionViewCell.xib in Resources */,
 				D5DD1F532A8637030054D866 /* godwiseTableViewCell.xib in Resources */,
 				A33303CE21F72E3300E411CE /* OFL.txt in Resources */,
@@ -11965,6 +11994,7 @@
 				A3D96016203ED52400670F4B /* credentials.plist in Resources */,
 				07C27412280973C500C9285E /* GuruWallDetailCell.xib in Resources */,
 				C73F0D8A2B99F54900BCF221 /* holiprogramlistcell.xib in Resources */,
+				C79574DA2CF8457400EF4EB3 /* live.gif in Resources */,
 				A363E7D620317BA100127024 /* Total_bhakti_logo_gif.gif in Resources */,
 				FADB9C3F24348BB600020AA3 /* GoogleService-Info.plist in Resources */,
 				FAC63841242E412F00FAD585 /* Main.storyboard in Resources */,
@@ -12281,6 +12311,7 @@
 				87F3903225ADAE7500292328 /* CategoryModel.swift in Sources */,
 				C716DBA22B346207000222D5 /* paymentTableViewCell.swift in Sources */,
 				074E22A928926484003BF135 /* TvPinVC.swift in Sources */,
+				C78938892CF7062300CD973D /* LiveBhajanModel.swift in Sources */,
 				FAAEBB9924C56F1100A771C6 /* TB_Artist_GodsListVC.swift in Sources */,
 				A36C988320170CA20052FE3B /* User.swift in Sources */,
 				07769AAE271D8BD4005EBC28 /* seasonData.swift in Sources */,
@@ -12316,6 +12347,7 @@
 				07289A172706F6AB00DDA137 /* demoFileVc.swift in Sources */,
 				87FF424925D28C4900E80734 /* TBPremiumDataCell.swift in Sources */,
 				A3FA4BEF223636DC0007A73D /* CoreDataModel.xcdatamodeld in Sources */,
+				C78938862CF7026500CD973D /* LiveDarshanViewController.swift in Sources */,
 				C77F08AB2AF4FE68005244DE /* userrecordcell.swift in Sources */,
 				8740E48225A89E8300A8BBA4 /* TBBhagwatCell.swift in Sources */,
 				7D1286F429EFC92B005EA900 /* managedeviceViewController.swift in Sources */,

@@ -223,6 +223,7 @@ class CategoryModel{
     var web_view_news: String
     var web_view_video: String
     var videoList : [videosResult] = []
+    var liveDarshanList : [LiveDarshan] = []
     var bhajanList : [Bhajan] = []
     var channelList : [channelModel] = []
     var shortslist : [shortsmodel] = []
@@ -255,6 +256,13 @@ class CategoryModel{
             let data = dict.ArrayofDict("list")
             _ = data.filter{(dictData) -> Bool in
                 self.videoList.append(videosResult(dictionary:dictData as NSDictionary)!)
+                return true
+            }
+        }
+        if  type == "live darshan"{
+            let data = dict.ArrayofDict("list")
+            _ = data.filter{(dictData) -> Bool in
+                self.liveDarshanList.append(LiveDarshan(dictionary:dictData as NSDictionary)!)
                 return true
             }
         }
