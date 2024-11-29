@@ -1198,7 +1198,7 @@ class TBHomeVC: TBInternetViewController,AAPlayerDelegate,shortCutDelegate,MMPla
                 self.navigationController?.pushViewController(vc, animated: true)
                 
             }else if categoryDataArray[sender.tag].type == "live darshan" {
-                let vc = self.storyboard?.instantiateViewController(withIdentifier: "TBGuruListViewController") as! TBGuruListViewController
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "TBGuruListViewController") as! TBGuruListViewController //TBSeeMoreVideoVc
                 vc.headingSting = categoryDataArray[sender.tag].menu_title.capitalizingFirstLetter()
                 vc.menuMasterId = categoryDataArray[sender.tag].id
                 self.navigationController?.pushViewController(vc, animated: true)
@@ -1927,7 +1927,7 @@ extension TBHomeVC : UICollectionViewDataSource {
                  
                  playIcon.isHidden = true
                  let posts = categoryDataArray[collectionView.tag].liveDarshanList[indexPath.row]    //guruList[indexPath.row]
-                // lbl?.text = posts.title
+                 lbl?.text = ""
                  lbl?.numberOfLines = 2
                  image?.sd_setIndicatorStyle(.gray)
                  image?.sd_setShowActivityIndicatorView(true)
@@ -3498,6 +3498,12 @@ extension TBHomeVC : UICollectionViewDelegateFlowLayout {
                 }else if categoryDataArray[collectionView.tag].type == "live darshan" {
                     if  categoryDataArray[collectionView.tag].liveDarshanList[indexPath.row].video_type == "0" {
                         
+                        if  let vc = storyBoardNew.instantiateViewController(withIdentifier: "LiveYouTubeViewController") as? LiveYouTubeViewController {
+//                            vc.songNo = indexPath.row
+//                            vc.videosArr = categoryDataArray[collectionView.tag].videoList
+                            vc.videodata = categoryDataArray[collectionView.tag].liveDarshanList[indexPath.row].video_url
+                            self.navigationController?.pushViewController(vc, animated: true)
+                        }
 
                     } else {
                         if let vc = storyBoardNew.instantiateViewController(withIdentifier: CONTROLLERNAMES.KLiveDarshanViewController) as? LiveDarshanViewController {
@@ -3507,7 +3513,7 @@ extension TBHomeVC : UICollectionViewDelegateFlowLayout {
                         }
                     }
                 }
-                else if categoryDataArray[collectionView.tag].type == "guru"{
+        else if categoryDataArray[collectionView.tag].type == "guru"{
                     let post = categoryDataArray[collectionView.tag].guruList[indexPath.row]
                     //                homeAllDataArray.guru![indexPath.row]
                     let vc = storyBoard.instantiateViewController(withIdentifier: CONTROLLERNAMES.KGRURDETAILVC) as! TBGuruDetailVC
@@ -3836,7 +3842,7 @@ extension TBHomeVC : UITableViewDataSource {
             return cell
             
         }else if categoryDataArray[indexPath.section].type == "live darshan" {
-            let cell = tableView.dequeueReusableCell(withIdentifier: KEYS.KCELL, for: indexPath) as! TBHomeTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: KEYS.KCELL, for: indexPath) as! TBHomeTableViewCell 
             cell.dataCollectionView.tag = indexPath.section
             cell.dataCollectionView.delegate = self
             cell.dataCollectionView.dataSource = self

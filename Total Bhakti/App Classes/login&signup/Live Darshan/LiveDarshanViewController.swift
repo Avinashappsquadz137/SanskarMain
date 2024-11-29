@@ -9,6 +9,8 @@ import UIKit
 import AVKit
 import AVFoundation
 import SDWebImage
+import YoutubePlayer_in_WKWebView
+import SDWebImage
 
 @available(iOS 13.0, *)
 class LiveDarshanViewController: UIViewController {
@@ -35,10 +37,9 @@ class LiveDarshanViewController: UIViewController {
     }
 
     var darshanList : String = ""
-   
     private var player : AVPlayer? = nil
     private var playerLayer : AVPlayerLayer? = nil
-
+    private var pipController: AVPictureInPictureController?
     override func viewDidLoad() {
         super.viewDidLoad()
     
@@ -48,6 +49,14 @@ class LiveDarshanViewController: UIViewController {
         self.setVideoPlayer()
     
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        self.player?.pause()
+    }
+    
+    @IBAction func bckBtn(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     private func setVideoPlayer() {
         guard let url = URL(string: darshanList) else { return }
         
@@ -62,6 +71,7 @@ class LiveDarshanViewController: UIViewController {
             }
             self.player?.play()
             self.liveimage()
+            self.setupPiP()
         }
     }
     
@@ -84,13 +94,27 @@ class LiveDarshanViewController: UIViewController {
             self.playerLayer?.frame = self.videoPlayer.frame
         })
     }
+    private func setupPiP() {
+           guard let playerLayer = playerLayer else { return }
+           if AVPictureInPictureController.isPictureInPictureSupported() {
+               pipController = AVPictureInPictureController(playerLayer: playerLayer)
+               pipController?.delegate = self
+           } else {
+               print("Picture in Picture is not supported on this device.")
+           }
+       }
     
     private func liveimage() {
-        let gifName: String = "live"
-        if let gifPath = Bundle.main.path(forResource: gifName, ofType: "gif") {
-            let gifURL = URL(fileURLWithPath: gifPath)
-            imgLive.sd_setImage(with: gifURL)
-        }
+//        let gifName: String = "live"
+//        if let gifPath = Bundle.main.path(forResource: gifName, ofType: "gif") {
+//            let gifURL = URL(fileURLWithPath: gifPath)
+//            imgLive.sd_setImage(with: gifURL)
+//        }
+        let gifName = "live"
+            if let gifPath = Bundle.main.path(forResource: gifName, ofType: "gif") {
+                let animatedImage = SDAnimatedImage(contentsOfFile: gifPath)
+                imgLive.image = animatedImage
+            }
     }
     
     @objc private func onTapPlayPause() {
@@ -125,5 +149,24 @@ class LiveDarshanViewController: UIViewController {
                 UIDevice.current.setValue(orientation, forKey: "orientation")
             }
         }
+    }
+}
+@available(iOS 13.0, *)
+extension LiveDarshanViewController: AVPictureInPictureControllerDelegate {
+    func pictureInPictureControllerDidStartPictureInPicture(_ pictureInPictureController: AVPictureInPictureController) {
+        print("PiP Started")
+    }
+    
+    func pictureInPictureControllerDidStopPictureInPicture(_ pictureInPictureController: AVPictureInPictureController) {
+        print("PiP Stopped")
+    }
+    
+    func picture(_ pictureInPictureController: AVPictureInPictureController, failedToStartPictureInPictureWithError error: Error) {
+        print("Failed to start PiP: \(error.localizedDescription)")
+    }
+    
+    func picture(_ pictureInPictureController: AVPictureInPictureController, restoreUserInterfaceForPictureInPictureStopWithCompletionHandler completionHandler: @escaping (Bool) -> Void) {
+        // Restore the UI if needed
+        completionHandler(true)
     }
 }
