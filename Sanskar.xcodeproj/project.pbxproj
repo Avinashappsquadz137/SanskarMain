@@ -302,6 +302,7 @@
 		C79574DA2CF8457400EF4EB3 /* live.gif in Resources */ = {isa = PBXBuildFile; fileRef = C79574222CF8457400EF4EB3 /* live.gif */; };
 		C7B00A192AA31788007FAB19 /* editCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B00A172AA31788007FAB19 /* editCollectionCell.swift */; };
 		C7B00A1A2AA31788007FAB19 /* editCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7B00A182AA31788007FAB19 /* editCollectionCell.xib */; };
+		C7B2F1562CF9F39A0089125B /* LiveYouTubeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B2F09E2CF9F39A0089125B /* LiveYouTubeViewController.swift */; };
 		C7B618FB2A16012900A927FB /* TBsearchviedeoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B618FA2A16012900A927FB /* TBsearchviedeoViewController.swift */; };
 		C7C6E20F2AA5A9F800D4AE43 /* holishowdetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C6E20E2AA5A9F800D4AE43 /* holishowdetail.swift */; };
 		C7C6E2B92AA5AED600D4AE43 /* editnameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C6E2B82AA5AED600D4AE43 /* editnameVC.swift */; };
@@ -3831,6 +3832,7 @@
 		C79574222CF8457400EF4EB3 /* live.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = live.gif; sourceTree = "<group>"; };
 		C7B00A172AA31788007FAB19 /* editCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = editCollectionCell.swift; sourceTree = "<group>"; };
 		C7B00A182AA31788007FAB19 /* editCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = editCollectionCell.xib; sourceTree = "<group>"; };
+		C7B2F09E2CF9F39A0089125B /* LiveYouTubeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LiveYouTubeViewController.swift; path = "../../../../../SanskarTV 2/Total Bhakti/App Classes/login&signup/Live Darshan/LiveYouTubeViewController.swift"; sourceTree = "<group>"; };
 		C7B618FA2A16012900A927FB /* TBsearchviedeoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TBsearchviedeoViewController.swift; sourceTree = "<group>"; };
 		C7C6E20E2AA5A9F800D4AE43 /* holishowdetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = holishowdetail.swift; sourceTree = "<group>"; };
 		C7C6E2B82AA5AED600D4AE43 /* editnameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = editnameVC.swift; sourceTree = "<group>"; };
@@ -10723,6 +10725,7 @@
 			isa = PBXGroup;
 			children = (
 				C78938852CF7026500CD973D /* LiveDarshanViewController.swift */,
+				C7B2F09E2CF9F39A0089125B /* LiveYouTubeViewController.swift */,
 			);
 			path = "Live Darshan";
 			sourceTree = "<group>";
@@ -12222,6 +12225,7 @@
 				878F678A26AAF905000E358E /* FSPageViewLayout.swift in Sources */,
 				048DE31E25FB375E0063F12C /* TBCouponScreenVC.swift in Sources */,
 				877E1D8B25D13D61000ADE33 /* TBPremiumEpisodeFree.swift in Sources */,
+				C7B2F1562CF9F39A0089125B /* LiveYouTubeViewController.swift in Sources */,
 				7DE684162A3D81F1000EECDF /* activeuserCollectionViewCell.swift in Sources */,
 				876B0ACE26D389EE00F5C4A0 /* newTbNewsVc.swift in Sources */,
 				C057178C212B16EB006DFA6C /* mainViewCollcetionCell.swift in Sources */,

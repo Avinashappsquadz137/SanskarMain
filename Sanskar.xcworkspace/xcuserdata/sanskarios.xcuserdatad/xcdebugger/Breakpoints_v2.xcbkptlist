@@ -80,6 +80,21 @@
                   endingLineNumber = "3528"
                   offsetFromSymbolStart = "18300">
                </Location>
+               <Location
+                  uuid = "AA53FEAC-C863-4E09-9CF9-E53BE5639391 - bc80f4600f9ce4a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Sanskar.TBHomeVC.collectionView(_: __C.UICollectionView, didSelectItemAt: Foundation.IndexPath) -&gt; ()"
+                  moduleName = "Sanskar"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sanskarios/Documents/Appsquadz/SanskarTV/Total%20Bhakti/App%20Classes/login&amp;signup/TBHomeVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "3526"
+                  endingLineNumber = "3526"
+                  offsetFromSymbolStart = "18280">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -853,9 +868,9 @@
             filePath = "Total Bhakti/App Classes/login&amp;signup/Live Darshan/LiveDarshanViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
-            landmarkName = "liveimage()"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
+            landmarkName = "willTransition(to:with:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -885,10 +900,10 @@
             filePath = "Total Bhakti/App Classes/login&amp;signup/Live Darshan/LiveDarshanViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
-            landmarkName = "LiveDarshanViewController"
-            landmarkType = "3">
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "imgFullScreenToggle"
+            landmarkType = "24">
             <Locations>
                <Location
                   uuid = "7DCE0055-F5E8-4105-9DAF-635D6F9E4D4E - c6cc288f691fe191"
@@ -918,6 +933,36 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "37"
                   endingLineNumber = "37"
+                  offsetFromSymbolStart = "200">
+               </Location>
+               <Location
+                  uuid = "7DCE0055-F5E8-4105-9DAF-635D6F9E4D4E - c6cc288f691fe1b0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Sanskar.LiveDarshanViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; Sanskar.LiveDarshanViewController"
+                  moduleName = "Sanskar"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sanskarios/Documents/Appsquadz/SanskarTV/Total%20Bhakti/App%20Classes/login&amp;signup/Live%20Darshan/LiveDarshanViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "38"
+                  endingLineNumber = "38"
+                  offsetFromSymbolStart = "212">
+               </Location>
+               <Location
+                  uuid = "7DCE0055-F5E8-4105-9DAF-635D6F9E4D4E - b6f93733a5f8f6f6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Sanskar.LiveDarshanViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;Sanskar.LiveDarshanViewController&gt;"
+                  moduleName = "Sanskar"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sanskarios/Documents/Appsquadz/SanskarTV/Total%20Bhakti/App%20Classes/login&amp;signup/Live%20Darshan/LiveDarshanViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "38"
+                  endingLineNumber = "38"
                   offsetFromSymbolStart = "200">
                </Location>
             </Locations>

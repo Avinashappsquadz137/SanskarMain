@@ -10,7 +10,6 @@ import AVKit
 import AVFoundation
 import SDWebImage
 import YoutubePlayer_in_WKWebView
-import SDWebImage
 
 @available(iOS 13.0, *)
 class LiveDarshanViewController: UIViewController {
@@ -105,16 +104,11 @@ class LiveDarshanViewController: UIViewController {
        }
     
     private func liveimage() {
-//        let gifName: String = "live"
-//        if let gifPath = Bundle.main.path(forResource: gifName, ofType: "gif") {
-//            let gifURL = URL(fileURLWithPath: gifPath)
-//            imgLive.sd_setImage(with: gifURL)
-//        }
-        let gifName = "live"
-            if let gifPath = Bundle.main.path(forResource: gifName, ofType: "gif") {
-                let animatedImage = SDAnimatedImage(contentsOfFile: gifPath)
-                imgLive.image = animatedImage
-            }
+        let gifName: String = "live"
+        if let gifPath = Bundle.main.path(forResource: gifName, ofType: "gif") {
+            let gifURL = URL(fileURLWithPath: gifPath)
+            imgLive.sd_setImage(with: gifURL)
+        }
     }
     
     @objc private func onTapPlayPause() {
