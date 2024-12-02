@@ -145,6 +145,7 @@ struct CONTROLLERNAMES {
     static let KPROFILECONTROLLER         =     "activeuserprofileViewController"
     static let Kloginvc                   =     "newloginpage"
     static let KLiveDarshanViewController =     "LiveDarshanViewController"
+    static let KLiveYouTubeViewController =     "LiveYouTubeViewController"
     
 }
 

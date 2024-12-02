@@ -1198,10 +1198,11 @@ class TBHomeVC: TBInternetViewController,AAPlayerDelegate,shortCutDelegate,MMPla
                 self.navigationController?.pushViewController(vc, animated: true)
                 
             }else if categoryDataArray[sender.tag].type == "live darshan" {
-                let vc = self.storyboard?.instantiateViewController(withIdentifier: "TBGuruListViewController") as! TBGuruListViewController //TBSeeMoreVideoVc
-                vc.headingSting = categoryDataArray[sender.tag].menu_title.capitalizingFirstLetter()
-                vc.menuMasterId = categoryDataArray[sender.tag].id
-                self.navigationController?.pushViewController(vc, animated: true)
+                if let vc = storyBoardNew.instantiateViewController(withIdentifier: "TBLiveDarshanListVC") as? TBLiveDarshanListVC {
+                    vc.headingSting = categoryDataArray[sender.tag].menu_title.capitalizingFirstLetter()
+                    vc.menuMasterId = categoryDataArray[sender.tag].id
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
             }
             else if  categoryDataArray[sender.tag].type == "guru"{///
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "TBGuruListViewController") as! TBGuruListViewController

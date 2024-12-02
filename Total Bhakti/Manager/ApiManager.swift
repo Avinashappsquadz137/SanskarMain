@@ -163,6 +163,7 @@ class APIManager : NSObject {
     let Ksearchvideo             = "videos/video_control/get_videos_by_id"
     let Kpaymentjuspayapi        = "https://app.sanskargroup.in/api_doc/PaymentJusPay/createOrderSanskarPayment"
     let Kdeleteaccountapi        = "user/user_meta/deleteUser"
+    let KviewMoreForAarti         = "videos/video_control/viewMoreForAarti"
 }
 
 //http://app.sanskargroup.in/sanskar/index.php/data_model/videos/Video_control/get_video_meta_data

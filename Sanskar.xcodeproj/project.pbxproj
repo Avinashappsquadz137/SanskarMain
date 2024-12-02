@@ -295,6 +295,10 @@
 		C75B0E062BF4CCEE00FBA92F /* commenttableviewcell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75B0E052BF4CCEE00FBA92F /* commenttableviewcell.swift */; };
 		C75B0E082BF4CF1200FBA92F /* shortscommentmodel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75B0E072BF4CF1200FBA92F /* shortscommentmodel.swift */; };
 		C75E93C72C1722E1009AA8D3 /* spalshviewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75E93C62C1722E1009AA8D3 /* spalshviewcontroller.swift */; };
+		C775FDA72CFB0F5000AAEB8C /* TBLiveDarshanListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C775FDA62CFB0F5000AAEB8C /* TBLiveDarshanListVC.swift */; };
+		C775FDB02CFB28A500AAEB8C /* LiveArtiDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = C775FDAF2CFB28A500AAEB8C /* LiveArtiDetails.swift */; };
+		C775FE6D2CFB413300AAEB8C /* TBLiveDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C775FE6B2CFB413300AAEB8C /* TBLiveDetailCell.swift */; };
+		C775FE6E2CFB413300AAEB8C /* TBLiveDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C775FE6C2CFB413300AAEB8C /* TBLiveDetailCell.xib */; };
 		C77F08AB2AF4FE68005244DE /* userrecordcell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77F08AA2AF4FE68005244DE /* userrecordcell.swift */; };
 		C78937CC2CF7014800CD973D /* NewScreenLive.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C78937CB2CF7014800CD973D /* NewScreenLive.storyboard */; };
 		C78938862CF7026500CD973D /* LiveDarshanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78938852CF7026500CD973D /* LiveDarshanViewController.swift */; };
@@ -3825,6 +3829,10 @@
 		C75B0E052BF4CCEE00FBA92F /* commenttableviewcell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = commenttableviewcell.swift; sourceTree = "<group>"; };
 		C75B0E072BF4CF1200FBA92F /* shortscommentmodel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shortscommentmodel.swift; sourceTree = "<group>"; };
 		C75E93C62C1722E1009AA8D3 /* spalshviewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = spalshviewcontroller.swift; sourceTree = "<group>"; };
+		C775FDA62CFB0F5000AAEB8C /* TBLiveDarshanListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TBLiveDarshanListVC.swift; sourceTree = "<group>"; };
+		C775FDAF2CFB28A500AAEB8C /* LiveArtiDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveArtiDetails.swift; sourceTree = "<group>"; };
+		C775FE6B2CFB413300AAEB8C /* TBLiveDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TBLiveDetailCell.swift; sourceTree = "<group>"; };
+		C775FE6C2CFB413300AAEB8C /* TBLiveDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TBLiveDetailCell.xib; sourceTree = "<group>"; };
 		C77F08AA2AF4FE68005244DE /* userrecordcell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userrecordcell.swift; sourceTree = "<group>"; };
 		C78937CB2CF7014800CD973D /* NewScreenLive.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewScreenLive.storyboard; sourceTree = "<group>"; };
 		C78938852CF7026500CD973D /* LiveDarshanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveDarshanViewController.swift; sourceTree = "<group>"; };
@@ -4510,6 +4518,7 @@
 		A3576ABA2004BA0100D7FFA7 /* App Classes */ = {
 			isa = PBXGroup;
 			children = (
+				C775FDAC2CFB167C00AAEB8C /* SuperClass */,
 				C7B00AC32AA31795007FAB19 /* userprofile */,
 				875EA07425DAC2810086A597 /* TrendingBhajan */,
 				877E1D8525D13D5F000ADE33 /* Premium Episode Free */,
@@ -10721,9 +10730,18 @@
 			path = Splashscreen;
 			sourceTree = "<group>";
 		};
+		C775FDAC2CFB167C00AAEB8C /* SuperClass */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SuperClass;
+			sourceTree = "<group>";
+		};
 		C78938842CF7024000CD973D /* Live Darshan */ = {
 			isa = PBXGroup;
 			children = (
+				C7B2F2192CF9FC3B0089125B /* Cell */,
+				C775FDA62CFB0F5000AAEB8C /* TBLiveDarshanListVC.swift */,
 				C78938852CF7026500CD973D /* LiveDarshanViewController.swift */,
 				C7B2F1602CF9FB330089125B /* LiveYouTubeViewController.swift */,
 			);
@@ -10734,6 +10752,7 @@
 			isa = PBXGroup;
 			children = (
 				C78938882CF7062300CD973D /* LiveBhajanModel.swift */,
+				C775FDAF2CFB28A500AAEB8C /* LiveArtiDetails.swift */,
 			);
 			path = LiveBhajans;
 			sourceTree = "<group>";
@@ -10751,6 +10770,15 @@
 				C7C6E2B82AA5AED600D4AE43 /* editnameVC.swift */,
 			);
 			path = userprofile;
+			sourceTree = "<group>";
+		};
+		C7B2F2192CF9FC3B0089125B /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C775FE6B2CFB413300AAEB8C /* TBLiveDetailCell.swift */,
+				C775FE6C2CFB413300AAEB8C /* TBLiveDetailCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		E10351F61ED00E09B002785D /* Frameworks */ = {
@@ -11997,6 +12025,7 @@
 				A3D96016203ED52400670F4B /* credentials.plist in Resources */,
 				07C27412280973C500C9285E /* GuruWallDetailCell.xib in Resources */,
 				C73F0D8A2B99F54900BCF221 /* holiprogramlistcell.xib in Resources */,
+				C775FE6E2CFB413300AAEB8C /* TBLiveDetailCell.xib in Resources */,
 				C79574DA2CF8457400EF4EB3 /* live.gif in Resources */,
 				A363E7D620317BA100127024 /* Total_bhakti_logo_gif.gif in Resources */,
 				FADB9C3F24348BB600020AA3 /* GoogleService-Info.plist in Resources */,
@@ -12212,6 +12241,7 @@
 				0767C14626FCB8D30080CE3A /* audioCell.swift in Sources */,
 				C7C9C6F62C478DBC00F1B872 /* PKIAPHandler.swift in Sources */,
 				A30A941C214297B90056E461 /* TBchannelTableView.swift in Sources */,
+				C775FDB02CFB28A500AAEB8C /* LiveArtiDetails.swift in Sources */,
 				FA2F8FA1242E3247008E1F86 /* TBGoLiveViewController.swift in Sources */,
 				C0F5A5B821287305000B6976 /* SwipeAnimationType.swift in Sources */,
 				875EA0EC25DAC2CB0086A597 /* TBTrendingBhajanVc.swift in Sources */,
@@ -12266,6 +12296,7 @@
 				D5C54D702A71061700E2F888 /* profileactivecollectioncell.swift in Sources */,
 				7DBEA75529505F06006A4457 /* searchimageTableViewCell.swift in Sources */,
 				D5DD1F522A8637030054D866 /* godwiseTableViewCell.swift in Sources */,
+				C775FE6D2CFB413300AAEB8C /* TBLiveDetailCell.swift in Sources */,
 				0787FD2E28644EFB0082CECD /* versionModel.swift in Sources */,
 				A3E83D1E2239307A00B0AF1A /* SweetAlert.swift in Sources */,
 				078A6B3F271AA93200758F36 /* tableHeader.swift in Sources */,
@@ -12407,6 +12438,7 @@
 				A36C98802017072C0052FE3B /* TBSharedPreference.swift in Sources */,
 				07D4BF5627B11E0C008C658C /* ChannelFlowLayout.swift in Sources */,
 				87F3903825ADAF5D00292328 /* CategoryDataModel.swift in Sources */,
+				C775FDA72CFB0F5000AAEB8C /* TBLiveDarshanListVC.swift in Sources */,
 				5AC312F723B4F02900D3D5A4 /* TBHomePagerCollectionViewCell.swift in Sources */,
 				A3E27F9F220175BB00F1FDE4 /* TBMinimizePlayerView.swift in Sources */,
 				A36C988520170CCF0052FE3B /* Result.swift in Sources */,

@@ -7,49 +7,49 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "979B6757-D84C-4F62-B3BD-CF44CF0EA220"
+            uuid = "9DC80F79-F251-497B-B3C7-8E05C6321746"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Total Bhakti/App Classes/Guru/TBGuruListViewController.swift"
+            filePath = "Total Bhakti/Resources/VideoPlayer/CoverView/CoverA.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "125"
-            endingLineNumber = "125"
-            landmarkName = "getDataApi(_:)"
+            startingLineNumber = "477"
+            endingLineNumber = "477"
+            landmarkName = "updateLiveUserApi(_:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "979B6757-D84C-4F62-B3BD-CF44CF0EA220 - 973e733b877bec10"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Sanskar.TBGuruListViewController.getDataApi(Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; ()"
-                  moduleName = "Sanskar"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sanskarios/Documents/Appsquadz/SanskarTV/Total%20Bhakti/App%20Classes/Guru/TBGuruListViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "125"
-                  endingLineNumber = "125"
-                  offsetFromSymbolStart = "524">
-               </Location>
-               <Location
-                  uuid = "979B6757-D84C-4F62-B3BD-CF44CF0EA220 - ad57a0b5eb576792"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #3 (Swift.Optional&lt;Any&gt;) -&gt; () in Sanskar.TBGuruListViewController.getDataApi(Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; ()"
-                  moduleName = "Sanskar"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sanskarios/Documents/Appsquadz/SanskarTV/Total%20Bhakti/App%20Classes/Guru/TBGuruListViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "126"
-                  endingLineNumber = "126"
-                  offsetFromSymbolStart = "136">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B130F390-D5F4-4410-901F-35332E575D64"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Total Bhakti/App Classes/login&amp;signup/TBHomeVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1202"
+            endingLineNumber = "1202"
+            landmarkName = "tableHeaderBtnAction(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2560C604-6A37-4629-9EFA-2DBE47A25D6A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Total Bhakti/App Classes/login&amp;signup/Live Darshan/TBLiveDarshanListVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
