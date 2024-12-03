@@ -25,6 +25,14 @@ class LiveDarshanViewController: UIViewController {
             print("vdotype will be updated to: \(newValue)")
         }
         didSet {
+            guard !darshanList.isEmpty else {
+                print("darshanList is empty. Skipping UI update.")
+                return
+            }
+            guard !vdotype.isEmpty else {
+                print("darshanList is empty. Skipping UI update.")
+                return
+            }
             updateUI(for: vdotype)
         }
     }
