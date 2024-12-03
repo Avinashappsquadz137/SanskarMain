@@ -1649,7 +1649,7 @@ extension TBHomeVC : UICollectionViewDataSource {
             print("guruList.count::::::", itemCount)
             return itemCount
         case "live darshan":
-            let itemCount = min(50, categoryDataArray[collectionView.tag].liveDarshanList.count)
+            let itemCount = min(10, categoryDataArray[collectionView.tag].liveDarshanList.count)
             print("liveDarshan.count::::::", itemCount)
             return itemCount
             
@@ -3497,12 +3497,13 @@ extension TBHomeVC : UICollectionViewDelegateFlowLayout {
                         }
                     }
                 }else if categoryDataArray[collectionView.tag].type == "live darshan" {
-                    if let vc = storyBoardNew.instantiateViewController(withIdentifier: CONTROLLERNAMES.KLiveDarshanViewController) as? LiveDarshanViewController {
-                        let post = categoryDataArray[collectionView.tag].liveDarshanList[indexPath.row].video_url
-                        vc.darshanList = post ?? ""
-                        vc.vdotype = categoryDataArray[collectionView.tag].liveDarshanList[indexPath.row].video_type ?? ""
-                        navigationController?.pushViewController(vc, animated: true)
+                    guard let vc = storyBoardNew.instantiateViewController(withIdentifier: CONTROLLERNAMES.KLiveDarshanViewController) as? LiveDarshanViewController else {
+                        return
                     }
+                    let liveDarshan = categoryDataArray[collectionView.tag].liveDarshanList[indexPath.row]
+                    vc.vdotype = liveDarshan.video_type ?? ""
+                    vc.darshanList = liveDarshan.video_url ?? ""
+                    navigationController?.pushViewController(vc, animated: true)
                 }
               else if categoryDataArray[collectionView.tag].type == "guru"{
                     let post = categoryDataArray[collectionView.tag].guruList[indexPath.row]
