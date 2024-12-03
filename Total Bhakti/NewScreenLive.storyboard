@@ -59,21 +59,33 @@
                                 <rect key="frame" x="0.0" y="119" width="393" height="221"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="n0m-Fz-RWV">
+                                <rect key="frame" x="0.0" y="340" width="393" height="478"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="mJw-LP-NWc" id="ctG-KV-OIX"/>
+                                    <outlet property="delegate" destination="mJw-LP-NWc" id="qYi-Ho-hJw"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="3ar-E7-gBT"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="n0m-Fz-RWV" firstAttribute="top" secondItem="BPv-gC-mlQ" secondAttribute="bottom" id="5uO-N4-GIM"/>
                             <constraint firstItem="eqy-vP-0wG" firstAttribute="top" secondItem="dnN-Ji-rNO" secondAttribute="bottom" id="8QE-5V-CoY"/>
                             <constraint firstItem="dnN-Ji-rNO" firstAttribute="top" secondItem="3ar-E7-gBT" secondAttribute="top" id="B54-tK-wVC"/>
+                            <constraint firstItem="3ar-E7-gBT" firstAttribute="trailing" secondItem="n0m-Fz-RWV" secondAttribute="trailing" id="Dw9-W9-66q"/>
                             <constraint firstItem="3ar-E7-gBT" firstAttribute="trailing" secondItem="dnN-Ji-rNO" secondAttribute="trailing" constant="10" id="Dya-9l-OwV"/>
                             <constraint firstItem="BPv-gC-mlQ" firstAttribute="leading" secondItem="Uw9-Ld-csL" secondAttribute="leading" id="EkB-RN-kQF"/>
                             <constraint firstItem="eqy-vP-0wG" firstAttribute="leading" secondItem="3ar-E7-gBT" secondAttribute="leading" id="Gqr-hQ-CTU"/>
                             <constraint firstItem="eqy-vP-0wG" firstAttribute="trailing" secondItem="BPv-gC-mlQ" secondAttribute="trailing" id="I59-6s-KOS"/>
                             <constraint firstItem="dnN-Ji-rNO" firstAttribute="leading" secondItem="3ar-E7-gBT" secondAttribute="leading" constant="10" id="Zyd-hj-iI2"/>
+                            <constraint firstItem="3ar-E7-gBT" firstAttribute="bottom" secondItem="n0m-Fz-RWV" secondAttribute="bottom" id="agr-Bu-K9S"/>
                             <constraint firstItem="BPv-gC-mlQ" firstAttribute="trailing" secondItem="Uw9-Ld-csL" secondAttribute="trailing" id="djr-Z4-mPe"/>
                             <constraint firstItem="eqy-vP-0wG" firstAttribute="top" secondItem="BPv-gC-mlQ" secondAttribute="top" id="f9W-zx-5DN"/>
                             <constraint firstItem="eqy-vP-0wG" firstAttribute="leading" secondItem="BPv-gC-mlQ" secondAttribute="leading" id="n6F-qf-tS4"/>
                             <constraint firstItem="BPv-gC-mlQ" firstAttribute="top" secondItem="dnN-Ji-rNO" secondAttribute="bottom" id="rZy-Ul-D8n"/>
+                            <constraint firstItem="n0m-Fz-RWV" firstAttribute="leading" secondItem="3ar-E7-gBT" secondAttribute="leading" id="sKe-e4-YNU"/>
                             <constraint firstItem="eqy-vP-0wG" firstAttribute="bottom" secondItem="BPv-gC-mlQ" secondAttribute="bottom" id="sg1-oK-L4v"/>
                             <constraint firstItem="3ar-E7-gBT" firstAttribute="trailing" secondItem="eqy-vP-0wG" secondAttribute="trailing" id="z5d-GG-Tdn"/>
                         </constraints>
@@ -81,6 +93,7 @@
                     <connections>
                         <outlet property="headerHeight" destination="0XJ-aZ-OjA" id="WLF-K6-jUf"/>
                         <outlet property="playerYoutube" destination="eqy-vP-0wG" id="bRj-Kb-5Ix"/>
+                        <outlet property="tableViewmain" destination="n0m-Fz-RWV" id="QwP-VR-8s5"/>
                         <outlet property="videoPlayer" destination="BPv-gC-mlQ" id="elt-ms-pCq"/>
                     </connections>
                 </viewController>

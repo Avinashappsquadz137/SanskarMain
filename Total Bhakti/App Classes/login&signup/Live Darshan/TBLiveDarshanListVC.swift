@@ -77,7 +77,7 @@ extension TBLiveDarshanListVC {
     }
 }
 
-//MARK: Collection View
+//MARK: TableView View
 @available(iOS 13.0, *)
 extension TBLiveDarshanListVC: UITableViewDelegate, UITableViewDataSource {
     

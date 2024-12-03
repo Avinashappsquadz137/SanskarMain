@@ -11,11 +11,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" rowHeight="244" id="KGk-i7-Jjw" customClass="TBLiveDetailCell" customModule="Sanskar" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="504" height="244"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" rowHeight="268" id="KGk-i7-Jjw" customClass="TBLiveDetailCell" customModule="Sanskar" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="504" height="268"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="504" height="244"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="504" height="268"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fS4-uj-yXu">
@@ -61,19 +61,29 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5wl-sV-Fb1">
+                        <rect key="frame" x="10" y="235" width="484" height="28"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="fS4-uj-yXu" secondAttribute="bottom" constant="10" id="Ay1-7c-K5L"/>
+                    <constraint firstAttribute="bottom" secondItem="5wl-sV-Fb1" secondAttribute="bottom" constant="5" id="Bv3-Pm-WTI"/>
                     <constraint firstItem="fS4-uj-yXu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Nwt-d0-TES"/>
                     <constraint firstItem="fS4-uj-yXu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="YcY-fo-n7P"/>
+                    <constraint firstItem="5wl-sV-Fb1" firstAttribute="top" secondItem="fS4-uj-yXu" secondAttribute="bottom" constant="5" id="eB8-XW-LVq"/>
+                    <constraint firstAttribute="trailing" secondItem="5wl-sV-Fb1" secondAttribute="trailing" constant="10" id="jDe-nk-ReH"/>
+                    <constraint firstItem="5wl-sV-Fb1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="kD9-Cn-rGS"/>
                     <constraint firstAttribute="trailing" secondItem="fS4-uj-yXu" secondAttribute="trailing" constant="10" id="vDZ-c4-LzV"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="imgMain" destination="Vjf-aL-hiu" id="s0M-Hk-fpB"/>
+                <outlet property="lblDesc" destination="5wl-sV-Fb1" id="3gu-ki-L7I"/>
             </connections>
-            <point key="canvasLocation" x="119.08396946564885" y="58.450704225352112"/>
+            <point key="canvasLocation" x="119.08396946564885" y="66.901408450704224"/>
         </tableViewCell>
     </objects>
     <resources>

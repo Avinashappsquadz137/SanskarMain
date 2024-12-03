@@ -12,9 +12,7 @@ class TBLiveDetailCell: UITableViewCell {
     
     
     @IBOutlet weak var imgMain: UIImageView!
-
-    
-  //  @IBOutlet weak var lblDesc: UILabel!
+    @IBOutlet weak var lblDesc: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -25,7 +23,8 @@ class TBLiveDetailCell: UITableViewCell {
         
     
     }
-    func configureCell(imageURL: URL? = nil) {
+    func configureCell(imageURL: URL? = nil, itemName: String? = nil) {
         imgMain?.sd_setImage(with: imageURL, placeholderImage: UIImage(named: "landscape_placeholder"))
+        lblDesc.text = itemName
     }
 }
