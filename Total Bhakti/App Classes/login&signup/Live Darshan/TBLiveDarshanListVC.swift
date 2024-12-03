@@ -97,17 +97,12 @@ extension TBLiveDarshanListVC: UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let video = relatedVidos[indexPath.row]
-        if  video.video_type == "0" {
-            if  let vc = storyBoardNew.instantiateViewController(withIdentifier: CONTROLLERNAMES.KLiveYouTubeViewController) as? LiveYouTubeViewController {
-                vc.videodata = video.video_url
-                self.navigationController?.pushViewController(vc, animated: true)
-            }
-        } else {
-            if let vc = storyBoardNew.instantiateViewController(withIdentifier: CONTROLLERNAMES.KLiveDarshanViewController) as? LiveDarshanViewController {
-                let post = video.video_url
-                vc.darshanList = post ?? ""
-                navigationController?.pushViewController(vc, animated: true)
-            }
+        if let vc = storyBoardNew.instantiateViewController(withIdentifier: CONTROLLERNAMES.KLiveDarshanViewController) as? LiveDarshanViewController {
+            let post = video.video_url
+            vc.darshanList = post ?? ""
+            vc.vdotype = video.video_type ?? ""
+            navigationController?.pushViewController(vc, animated: true)
+            
         }
     }
     

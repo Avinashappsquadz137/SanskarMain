@@ -3497,24 +3497,14 @@ extension TBHomeVC : UICollectionViewDelegateFlowLayout {
                         }
                     }
                 }else if categoryDataArray[collectionView.tag].type == "live darshan" {
-                    if  categoryDataArray[collectionView.tag].liveDarshanList[indexPath.row].video_type == "0" {
-                        
-                        if  let vc = storyBoardNew.instantiateViewController(withIdentifier: "LiveYouTubeViewController") as? LiveYouTubeViewController {
-//                            vc.songNo = indexPath.row
-//                            vc.videosArr = categoryDataArray[collectionView.tag].videoList
-                            vc.videodata = categoryDataArray[collectionView.tag].liveDarshanList[indexPath.row].video_url
-                            self.navigationController?.pushViewController(vc, animated: true)
-                        }
-
-                    } else {
-                        if let vc = storyBoardNew.instantiateViewController(withIdentifier: CONTROLLERNAMES.KLiveDarshanViewController) as? LiveDarshanViewController {
-                            let post = categoryDataArray[collectionView.tag].liveDarshanList[indexPath.row].video_url
-                            vc.darshanList = post ?? ""
-                            navigationController?.pushViewController(vc, animated: true)
-                        }
+                    if let vc = storyBoardNew.instantiateViewController(withIdentifier: CONTROLLERNAMES.KLiveDarshanViewController) as? LiveDarshanViewController {
+                        let post = categoryDataArray[collectionView.tag].liveDarshanList[indexPath.row].video_url
+                        vc.darshanList = post ?? ""
+                        vc.vdotype = categoryDataArray[collectionView.tag].liveDarshanList[indexPath.row].video_type ?? ""
+                        navigationController?.pushViewController(vc, animated: true)
                     }
                 }
-        else if categoryDataArray[collectionView.tag].type == "guru"{
+              else if categoryDataArray[collectionView.tag].type == "guru"{
                     let post = categoryDataArray[collectionView.tag].guruList[indexPath.row]
                     //                homeAllDataArray.guru![indexPath.row]
                     let vc = storyBoard.instantiateViewController(withIdentifier: CONTROLLERNAMES.KGRURDETAILVC) as! TBGuruDetailVC
