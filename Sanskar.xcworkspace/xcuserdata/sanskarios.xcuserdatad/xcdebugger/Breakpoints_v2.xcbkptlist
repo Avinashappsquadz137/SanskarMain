@@ -7,48 +7,48 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "9DC80F79-F251-497B-B3C7-8E05C6321746"
+            uuid = "C6D75F76-ECA9-4DF2-AB16-16C8A7304FB6"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Total Bhakti/Resources/VideoPlayer/CoverView/CoverA.swift"
+            filePath = "Total Bhakti/App Classes/PremiumVc/TBPremiumDetailVc.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "477"
-            endingLineNumber = "477"
-            landmarkName = "updateLiveUserApi(_:)"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "initializer()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "B130F390-D5F4-4410-901F-35332E575D64"
+            uuid = "BDCD9843-7635-4424-8D5F-D5949A853729"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Total Bhakti/App Classes/login&amp;signup/TBHomeVC.swift"
+            filePath = "Total Bhakti/App Classes/PremiumVc/New Premium Detail/newPreDetails.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1202"
-            endingLineNumber = "1202"
-            landmarkName = "tableHeaderBtnAction(_:)"
+            startingLineNumber = "1025"
+            endingLineNumber = "1025"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "2560C604-6A37-4629-9EFA-2DBE47A25D6A"
+            uuid = "210BD823-529F-42CA-A04E-14953849948D"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Total Bhakti/App Classes/login&amp;signup/Live Darshan/TBLiveDarshanListVC.swift"
+            filePath = "Total Bhakti/App Classes/PremiumVc/New Premium Detail/newPreDetails.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "443"
+            endingLineNumber = "443"
+            landmarkName = "getSeletedSpeedRate(playBackSpeed:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
