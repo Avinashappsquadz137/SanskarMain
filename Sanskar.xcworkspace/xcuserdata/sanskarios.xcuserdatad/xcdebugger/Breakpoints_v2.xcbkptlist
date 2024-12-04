@@ -78,10 +78,42 @@
             filePath = "Total Bhakti/App Classes/login&amp;signup/Live Darshan/LiveDarshanViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "1ABA83CC-33D9-49BA-914A-8913E9B20905 - db7050f5f204add9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "@objc Sanskar.LiveDarshanViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "Sanskar"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sanskarios/Documents/Appsquadz/SanskarTV/Total%20Bhakti/App%20Classes/login&amp;signup/Live%20Darshan/LiveDarshanViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "53"
+                  endingLineNumber = "53"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  uuid = "1ABA83CC-33D9-49BA-914A-8913E9B20905 - db7050f5f204ae3a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "@objc Sanskar.LiveDarshanViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "Sanskar"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sanskarios/Documents/Appsquadz/SanskarTV/Total%20Bhakti/App%20Classes/login&amp;signup/Live%20Darshan/LiveDarshanViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "52"
+                  endingLineNumber = "52"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -94,8 +126,8 @@
             filePath = "Total Bhakti/App Classes/login&amp;signup/Live Darshan/LiveDarshanViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -110,42 +142,10 @@
             filePath = "Total Bhakti/App Classes/login&amp;signup/Live Darshan/LiveDarshanViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "167"
-            endingLineNumber = "167"
+            startingLineNumber = "156"
+            endingLineNumber = "156"
             landmarkName = "tableView(_:didSelectRowAt:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "7F1EECD5-7EC6-4C14-8612-0FAA0B1DD7CE - bcb934e7727c4171"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in Sanskar.LiveDarshanViewController.tableView(_: __C.UITableView, didSelectRowAt: Foundation.IndexPath) -&gt; ()"
-                  moduleName = "Sanskar"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sanskarios/Documents/Appsquadz/SanskarTV/Total%20Bhakti/App%20Classes/login&amp;signup/Live%20Darshan/LiveDarshanViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "168"
-                  endingLineNumber = "168"
-                  offsetFromSymbolStart = "272">
-               </Location>
-               <Location
-                  uuid = "7F1EECD5-7EC6-4C14-8612-0FAA0B1DD7CE - bcb934e7727c4092"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in Sanskar.LiveDarshanViewController.tableView(_: __C.UITableView, didSelectRowAt: Foundation.IndexPath) -&gt; ()"
-                  moduleName = "Sanskar"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sanskarios/Documents/Appsquadz/SanskarTV/Total%20Bhakti/App%20Classes/login&amp;signup/Live%20Darshan/LiveDarshanViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "169"
-                  endingLineNumber = "169"
-                  offsetFromSymbolStart = "272">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -192,6 +192,260 @@
                   startingLineNumber = "3506"
                   endingLineNumber = "3506"
                   offsetFromSymbolStart = "16464">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "402CAE5A-68A3-44EC-8CB1-B509D282B91D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Total Bhakti/TBYoutubeVideoVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1087"
+            endingLineNumber = "1087"
+            landmarkName = "playerReady(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2D38D5C1-171B-4599-AEE0-1C989A1207FA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Total Bhakti/TBYoutubeVideoVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "187"
+            endingLineNumber = "187"
+            landmarkName = "youSkipAd()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2F1C514A-B98A-4AB5-829E-6F25AD6E5631"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Total Bhakti/TBYoutubeVideoVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1160"
+            endingLineNumber = "1160"
+            landmarkName = "playerViewDidBecomeReady(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "2F1C514A-B98A-4AB5-829E-6F25AD6E5631 - 77bccd075952202e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "@objc Sanskar.TBYoutubeVideoVC.playerViewDidBecomeReady(__C.WKYTPlayerView) -&gt; ()"
+                  moduleName = "Sanskar"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sanskarios/Documents/Appsquadz/SanskarTV/Total%20Bhakti/TBYoutubeVideoVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "1160"
+                  endingLineNumber = "1160"
+                  offsetFromSymbolStart = "160">
+               </Location>
+               <Location
+                  uuid = "2F1C514A-B98A-4AB5-829E-6F25AD6E5631 - 77bccd075952202e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "@objc Sanskar.TBYoutubeVideoVC.playerViewDidBecomeReady(__C.WKYTPlayerView) -&gt; ()"
+                  moduleName = "Sanskar"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sanskarios/Documents/Appsquadz/SanskarTV/Total%20Bhakti/TBYoutubeVideoVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "1160"
+                  endingLineNumber = "1160"
+                  offsetFromSymbolStart = "64">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1A4FEDAC-BFD0-4E21-B3DA-C17B41369563"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Total Bhakti/TBYoutubeVideoVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1169"
+            endingLineNumber = "1169"
+            landmarkName = "playerView(_:didPlayTime:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "1A4FEDAC-BFD0-4E21-B3DA-C17B41369563 - 190c07094cb4da09"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Sanskar.TBYoutubeVideoVC.playerView(_: __C.WKYTPlayerView, didChangeTo: __C.WKYTPlayerState) -&gt; ()"
+                  moduleName = "Sanskar"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sanskarios/Documents/Appsquadz/SanskarTV/Total%20Bhakti/TBYoutubeVideoVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "1169"
+                  endingLineNumber = "1169"
+                  offsetFromSymbolStart = "84">
+               </Location>
+               <Location
+                  uuid = "1A4FEDAC-BFD0-4E21-B3DA-C17B41369563 - 62a748a25c6cc074"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[0] = Dead&gt; of Sanskar.TBYoutubeVideoVC.playerView(_: __C.WKYTPlayerView, didPlayTime: Swift.Float) -&gt; ()"
+                  moduleName = "Sanskar"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sanskarios/Documents/Appsquadz/SanskarTV/Total%20Bhakti/TBYoutubeVideoVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "1170"
+                  endingLineNumber = "1170"
+                  offsetFromSymbolStart = "216">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "072AC1E4-7007-4D41-9282-CC0B6FD000F4"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Total Bhakti/TBYoutubeVideoVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1173"
+            endingLineNumber = "1173"
+            landmarkName = "playerView(_:didChangeTo:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "072AC1E4-7007-4D41-9282-CC0B6FD000F4 - 190c07094cb4da8d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Sanskar.TBYoutubeVideoVC.playerView(_: __C.WKYTPlayerView, didChangeTo: __C.WKYTPlayerState) -&gt; ()"
+                  moduleName = "Sanskar"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sanskarios/Documents/Appsquadz/SanskarTV/Total%20Bhakti/TBYoutubeVideoVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "1173"
+                  endingLineNumber = "1173"
+                  offsetFromSymbolStart = "1340">
+               </Location>
+               <Location
+                  uuid = "072AC1E4-7007-4D41-9282-CC0B6FD000F4 - 190c07094cb4da8d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Sanskar.TBYoutubeVideoVC.playerView(_: __C.WKYTPlayerView, didChangeTo: __C.WKYTPlayerState) -&gt; ()"
+                  moduleName = "Sanskar"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sanskarios/Documents/Appsquadz/SanskarTV/Total%20Bhakti/TBYoutubeVideoVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "1173"
+                  endingLineNumber = "1173"
+                  offsetFromSymbolStart = "164">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "06C54DCE-14E5-40F7-A6C4-3EE06727BE65"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Total Bhakti/App Classes/login&amp;signup/Live Darshan/LiveDarshanViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+            landmarkName = "LiveDarshanViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "06C54DCE-14E5-40F7-A6C4-3EE06727BE65 - c6cc288f691fe41c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Sanskar.LiveDarshanViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; Sanskar.LiveDarshanViewController"
+                  moduleName = "Sanskar"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sanskarios/Documents/Appsquadz/SanskarTV/Total%20Bhakti/App%20Classes/login&amp;signup/Live%20Darshan/LiveDarshanViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "32">
+               </Location>
+               <Location
+                  uuid = "06C54DCE-14E5-40F7-A6C4-3EE06727BE65 - b6f93733a5f8f35a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Sanskar.LiveDarshanViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;Sanskar.LiveDarshanViewController&gt;"
+                  moduleName = "Sanskar"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sanskarios/Documents/Appsquadz/SanskarTV/Total%20Bhakti/App%20Classes/login&amp;signup/Live%20Darshan/LiveDarshanViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  uuid = "06C54DCE-14E5-40F7-A6C4-3EE06727BE65 - c6cc288f691fe4fd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Sanskar.LiveDarshanViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; Sanskar.LiveDarshanViewController"
+                  moduleName = "Sanskar"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sanskarios/Documents/Appsquadz/SanskarTV/Total%20Bhakti/App%20Classes/login&amp;signup/Live%20Darshan/LiveDarshanViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "32">
+               </Location>
+               <Location
+                  uuid = "06C54DCE-14E5-40F7-A6C4-3EE06727BE65 - b6f93733a5f8f3bb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Sanskar.LiveDarshanViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;Sanskar.LiveDarshanViewController&gt;"
+                  moduleName = "Sanskar"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sanskarios/Documents/Appsquadz/SanskarTV/Total%20Bhakti/App%20Classes/login&amp;signup/Live%20Darshan/LiveDarshanViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "24">
                </Location>
             </Locations>
          </BreakpointContent>

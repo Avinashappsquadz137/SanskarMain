@@ -55,7 +55,7 @@
                                     <constraint firstAttribute="width" secondItem="BPv-gC-mlQ" secondAttribute="height" multiplier="16:9" id="8H4-zR-zPo"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eqy-vP-0wG" customClass="YouTubePlayerView" customModule="YouTubePlayer">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eqy-vP-0wG" customClass="WKYTPlayerView">
                                 <rect key="frame" x="0.0" y="119" width="393" height="221"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>

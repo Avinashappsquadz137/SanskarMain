@@ -1080,6 +1080,9 @@ extension TBYoutubeVideoVC {
 
 extension TBYoutubeVideoVC{
     
+    
+    
+    
     func playerReady(_ videoPlayer: YouTubePlayerView) {
         //        playerView.play()
         //

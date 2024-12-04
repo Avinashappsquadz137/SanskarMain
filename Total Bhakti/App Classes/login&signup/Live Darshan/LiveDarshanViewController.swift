@@ -9,14 +9,13 @@ import UIKit
 import AVKit
 import AVFoundation
 import SDWebImage
-
-import YouTubePlayer
+import YoutubePlayer_in_WKWebView
 
 @available(iOS 13.0, *)
 class LiveDarshanViewController: UIViewController {
     
     @IBOutlet weak var videoPlayer: UIView!
-    @IBOutlet weak var playerYoutube: YouTubePlayerView!
+    @IBOutlet weak var playerYoutube: WKYTPlayerView!
     @IBOutlet weak var headerHeight: NSLayoutConstraint!
     @IBOutlet weak var tableViewmain: UITableView!
     @IBOutlet weak var lblVideoTitle: UILabel!
@@ -95,12 +94,8 @@ class LiveDarshanViewController: UIViewController {
             return
         }
         print("Video ID: \(videoID)")
-        playerYoutube.delegate = self
-        playerYoutube.playerVars = (["playsinline": 1,"controls":1,"modestbranding":1] as AnyObject) as! YouTubePlayerView.YouTubePlayerParameters
-        playerYoutube.loadVideoID(videoID)
-        playerYoutube.contentMode = .scaleToFill
-        playerYoutube.isHidden = false
-        
+        let playVars = ["playsinline": 1, "controls": 1, "modestbranding": 1]
+        playerYoutube.load(withVideoId: videoID, playerVars: playVars)
     }
     
     func uiUpdateCustomPlayer(){
@@ -127,7 +122,6 @@ class LiveDarshanViewController: UIViewController {
     }
     func stopAllPlayers() {
         playerYoutube.isHidden = true
-        playerYoutube.pause()
         videoPlayer.isHidden = true
         TV_PlayerHelper.shared.mmPlayer.player?.pause()
         TV_PlayerHelper.shared.mmPlayer.isHidden = false
@@ -135,12 +129,7 @@ class LiveDarshanViewController: UIViewController {
         }
 }
 
-@available(iOS 13.0, *)
-extension LiveDarshanViewController: YouTubePlayerDelegate {
-    func playerReady(_ videoPlayer: YouTubePlayer.YouTubePlayerView) {
-        playerYoutube.play()
-    }
-}
+
 @available(iOS 13.0, *)
 extension LiveDarshanViewController: UITableViewDelegate, UITableViewDataSource {
     
@@ -169,8 +158,7 @@ extension LiveDarshanViewController: UITableViewDelegate, UITableViewDataSource 
             self.lblVideoTitle.text = video.title
         }
     }
-    
-    
+
 }
 //MARK: API CALLING
 @available(iOS 13.0, *)
@@ -195,5 +183,25 @@ extension LiveDarshanViewController {
                 }
             }
         }
+    }
+}
+@available(iOS 13.0, *)
+extension LiveDarshanViewController: WKYTPlayerViewDelegate {
+    func playerViewDidBecomeReady(_ playerView: WKYTPlayerView) {
+        print("YouTube player ready.")
+        playerView.seek(toSeconds: 0, allowSeekAhead: true)
+        playerView.playVideo()
+    }
+    
+    func playerView(_ playerView: WKYTPlayerView, didChangeTo state: WKYTPlayerState) {
+        print("YouTube player state changed: \(state)")
+    }
+    
+    func playerView(_ playerView: WKYTPlayerView, receivedError error: WKYTPlayerError) {
+        print("YouTube player error: \(error)")
+    }
+    
+    func playerView(_ playerView: WKYTPlayerView, didChangeTo quality: WKYTPlaybackQuality) {
+        print("YouTube player quality changed: \(quality)")
     }
 }
