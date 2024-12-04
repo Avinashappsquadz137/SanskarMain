@@ -3503,6 +3503,7 @@ extension TBHomeVC : UICollectionViewDelegateFlowLayout {
                     let liveDarshan = categoryDataArray[collectionView.tag].liveDarshanList[indexPath.row]
                     vc.vdotype = liveDarshan.video_type ?? ""
                     vc.darshanList = liveDarshan.video_url ?? ""
+                    vc.titleData = liveDarshan.title ?? ""
                     navigationController?.pushViewController(vc, animated: true)
                 }
               else if categoryDataArray[collectionView.tag].type == "guru"{

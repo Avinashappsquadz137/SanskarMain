@@ -111,6 +111,7 @@ extension TBLiveDarshanListVC: UITableViewDelegate, UITableViewDataSource {
         DispatchQueue.main.async {
             vc.darshanList = videoURL
             vc.vdotype = videoType
+            vc.titleData = video.title ?? ""
         }
         navigationController?.pushViewController(vc, animated: true)
     }

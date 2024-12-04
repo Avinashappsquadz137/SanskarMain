@@ -19,6 +19,7 @@ class LiveDarshanViewController: UIViewController {
     @IBOutlet weak var playerYoutube: YouTubePlayerView!
     @IBOutlet weak var headerHeight: NSLayoutConstraint!
     @IBOutlet weak var tableViewmain: UITableView!
+    @IBOutlet weak var lblVideoTitle: UILabel!
     
     var vdotype: String = "" {
         willSet {
@@ -45,6 +46,7 @@ class LiveDarshanViewController: UIViewController {
             print("darshanList is now: \(darshanList)")
         }
     }
+    var titleData = ""
     var relatedVidos = [DataModel]()
     
     override func viewDidLoad() {
@@ -67,6 +69,7 @@ class LiveDarshanViewController: UIViewController {
         let param: Parameters = ["user_id": currentUser.result?.id ?? "163"]
         getMoreForAarti(param)
         updateUI(for: vdotype)
+        self.lblVideoTitle.text = titleData
     }
     
     // MARK: - UI Update Methods
@@ -163,6 +166,7 @@ extension LiveDarshanViewController: UITableViewDelegate, UITableViewDataSource 
         DispatchQueue.main.async {
             self.darshanList = videoURL
             self.vdotype = videoType
+            self.lblVideoTitle.text = video.title
         }
     }
     
