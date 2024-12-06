@@ -40,7 +40,7 @@ class TBSeeMoreVideoVc: TBInternetViewController , UICollectionViewDelegate , UI
     var videosArr : [videosResult] = []
     var tabBarCollectionArr = [Category]()
     var firstTimeData = 0
-    var videoCategoryId = String()
+    var videoCategoryId = "1"
     var dataEnd = 0
     var index = 0
     var data : Category!
@@ -77,7 +77,7 @@ class TBSeeMoreVideoVc: TBInternetViewController , UICollectionViewDelegate , UI
         headerLbl = ["All","Motivational","Spiritual","Devotional"]
         tableView.tableFooterView?.isHidden = true
         noDataLbl = noDataLabelCall1(controllerType: self, tableReference: tableView)
-        
+        tableView.register(UINib(nibName: "TBDetailCell", bundle: nil), forCellReuseIdentifier: "cell")
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture(gesture:)))
         swipeRight.direction = UISwipeGestureRecognizerDirection.right
         self.tableView.addGestureRecognizer(swipeRight)
@@ -143,7 +143,7 @@ class TBSeeMoreVideoVc: TBInternetViewController , UICollectionViewDelegate , UI
         }else {
             searchClicked = 1
             searchBar.resignFirstResponder()
-            let param : Parameters = ["user_id": currentUser.result!.id!,"search_content" : searchBar.text!, "last_video_id" : lastVideoId, "video_category" : videoCategoryId,"limit":"10","menu_master_id":"\(self.menuMasterId)"]
+            let param : Parameters = ["user_id": currentUser.result!.id!,"search_content" : searchBar.text!, "last_video_id" : lastVideoId, "category" : videoCategoryId,"limit":"10","menu_master_id":"\(self.menuMasterId)"]
             getVideosApi(param)
         }
     }
@@ -402,38 +402,35 @@ extension TBSeeMoreVideoVc : UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: KEYS.KCELL) as! TBVideoTableCell2
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? TBDetailCell else {
+            return UITableViewCell()}
         let posts = guruArr[indexPath.row]
-        cell.mainView.layer.cornerRadius = 5.0
-        cell.mainView.dropShadow()
+        cell.img?.sd_setShowActivityIndicatorView(true)
+        cell.img?.sd_setIndicatorStyle(.gray)
+        cell.img.layer.cornerRadius = 4.0
+        cell.img.clipsToBounds = true
+        cell.img.contentMode = .scaleToFill
+        cell.img.sd_setImage(with: URL(string: posts.thumbnail_url ?? ""), placeholderImage: UIImage(named: "default_image"), options: .refreshCached, completed: nil)
         
-//        cell.nameLbl.text = posts.video_title
-//        cell.dercriptionLbl.text = posts.video_desc?.html2String
-//
-//        if posts.views == "0" {
-//            cell.numberOfViewsLbl.text = "No view"
-//        }else if posts.views == "1" {
-//            cell.numberOfViewsLbl.text = "\(posts.views ?? "") View"
-//        }else {
-//            cell.numberOfViewsLbl.text = "\(posts.views ?? "") Views"
-//        }
-//
-        var dataWithLong = LONG_LONG_MAX
-        dataWithLong = Int64(posts.published_date!)!
-        let formatedData = Date(timeIntervalSince1970: (TimeInterval(dataWithLong / 1000)))
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "ccc dd MMM, yyyy hh:mm a"
-//        cell.dateAndTimeLbl.text = dateFormatter.string(from: formatedData)
-        
-        print("thumbnail_url : \(posts.thumbnail_url ?? "")")
-        
-        cell.videoImageView?.sd_setShowActivityIndicatorView(true)
-        cell.videoImageView?.sd_setIndicatorStyle(.gray)
-        cell.videoImageView.layer.cornerRadius = 4.0
-        cell.videoImageView.clipsToBounds = true
-        cell.videoImageView.contentMode = .scaleToFill
-        cell.videoImageView?.sd_setImage(with: URL(string: posts.thumbnail_url!), placeholderImage: UIImage(named: "default_image"), options: .refreshCached, completed: nil)
+//        let cell = tableView.dequeueReusableCell(withIdentifier: KEYS.KCELL) as! TBVideoTableCell2
+//        let posts = guruArr[indexPath.row]
+//        cell.mainView.layer.cornerRadius = 5.0
+//        cell.mainView.dropShadow()
+//        var dataWithLong = LONG_LONG_MAX
+//        dataWithLong = Int64(posts.published_date!)!
+//        let formatedData = Date(timeIntervalSince1970: (TimeInterval(dataWithLong / 1000)))
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "ccc dd MMM, yyyy hh:mm a"
+////        cell.dateAndTimeLbl.text = dateFormatter.string(from: formatedData)
+//        
+//        print("thumbnail_url : \(posts.thumbnail_url ?? "")")
+//        
+//        cell.videoImageView?.sd_setShowActivityIndicatorView(true)
+//        cell.videoImageView?.sd_setIndicatorStyle(.gray)
+//        cell.videoImageView.layer.cornerRadius = 4.0
+//        cell.videoImageView.clipsToBounds = true
+//        cell.videoImageView.contentMode = .scaleToFill
+//        cell.videoImageView?.sd_setImage(with: URL(string: posts.thumbnail_url!), placeholderImage: UIImage(named: "default_image"), options: .refreshCached, completed: nil)
         
         return cell
         
@@ -461,7 +458,7 @@ extension TBSeeMoreVideoVc : UITableViewDataSource {
             lastVideoId = lastVideo.id!
             let param : Parameters
             if userSearched == 1 {
-                param  = ["user_id": currentUser.result!.id!,"search_content" : searchText, "last_video_id" : lastVideo.id , "video_category" : videoCategoryId,"limit":"10"]
+                param  = ["user_id": currentUser.result!.id!,"search_content" : searchText, "last_video_id" : lastVideo.id , "category" : videoCategoryId,"limit":"10"]
                 getVideosApi(param)
             }else {
                 params.updateValue("\(currentPage + 1 )", forKey: "page_no")
@@ -592,9 +589,9 @@ extension TBSeeMoreVideoVc : UISearchBarDelegate {
             searchCrossBtnClicked = 1
             let param : Parameters
             if index == 0 {
-                param = ["user_id": currentUser.result!.id!,"search_content" : "", "last_video_id" : "", "video_category" : "","limit":"10"]
+                param = ["user_id": currentUser.result!.id!,"search_content" : "", "last_video_id" : "", "category" : "","limit":"10"]
             }else {
-                param = ["user_id": currentUser.result!.id!,"search_content" : "", "last_video_id" : "", "video_category" : videoCategoryId,"limit":"10"]
+                param = ["user_id": currentUser.result!.id!,"search_content" : "", "last_video_id" : "", "category" : videoCategoryId,"limit":"10"]
             }
             getVideosApi(param)
         }else {

@@ -290,6 +290,8 @@
 		C73F0E3F2B9B187E00BCF221 /* holimodel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73F0E3E2B9B187D00BCF221 /* holimodel.swift */; };
 		C741432C2C4008640086C632 /* newloginrecordcell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C741432B2C4008640086C632 /* newloginrecordcell.swift */; };
 		C74143E52C41052E0086C632 /* usersuggestionlogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74143E42C41052E0086C632 /* usersuggestionlogin.swift */; };
+		C7559B7B2D0325B800DF5907 /* TBDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7559B792D0325B800DF5907 /* TBDetailCell.swift */; };
+		C7559B7C2D0325B800DF5907 /* TBDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7559B7A2D0325B800DF5907 /* TBDetailCell.xib */; };
 		C75879432B91BE7E00F94D0E /* JuapayStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75879422B91BE7E00F94D0E /* JuapayStatusViewController.swift */; };
 		C75B0D562BF4C89C00FBA92F /* shortscommentvc.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75B0D552BF4C89C00FBA92F /* shortscommentvc.swift */; };
 		C75B0E062BF4CCEE00FBA92F /* commenttableviewcell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75B0E052BF4CCEE00FBA92F /* commenttableviewcell.swift */; };
@@ -3823,6 +3825,8 @@
 		C73F0E3E2B9B187D00BCF221 /* holimodel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = holimodel.swift; sourceTree = "<group>"; };
 		C741432B2C4008640086C632 /* newloginrecordcell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newloginrecordcell.swift; sourceTree = "<group>"; };
 		C74143E42C41052E0086C632 /* usersuggestionlogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = usersuggestionlogin.swift; sourceTree = "<group>"; };
+		C7559B792D0325B800DF5907 /* TBDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TBDetailCell.swift; sourceTree = "<group>"; };
+		C7559B7A2D0325B800DF5907 /* TBDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TBDetailCell.xib; sourceTree = "<group>"; };
 		C75879422B91BE7E00F94D0E /* JuapayStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuapayStatusViewController.swift; sourceTree = "<group>"; };
 		C75B0D552BF4C89C00FBA92F /* shortscommentvc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shortscommentvc.swift; sourceTree = "<group>"; };
 		C75B0E052BF4CCEE00FBA92F /* commenttableviewcell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = commenttableviewcell.swift; sourceTree = "<group>"; };
@@ -4731,6 +4735,8 @@
 				A33E84932032BDC3009E42E0 /* TBVideoListVC.swift */,
 				A334B2C12074DE9E003BAC6C /* TBCommentVC.swift */,
 				8771091225E7F31E00D00BB8 /* TBSeeMoreVideoVc.swift */,
+				C7559B792D0325B800DF5907 /* TBDetailCell.swift */,
+				C7559B7A2D0325B800DF5907 /* TBDetailCell.xib */,
 			);
 			path = videos;
 			sourceTree = "<group>";
@@ -12014,6 +12020,7 @@
 				0701261A274CC1DE00B39F5C /* programCell.xib in Resources */,
 				C78937CC2CF7014800CD973D /* NewScreenLive.storyboard in Resources */,
 				7D7115CB2996721B0095D858 /* sliderpoojaCollectionViewCell.xib in Resources */,
+				C7559B7C2D0325B800DF5907 /* TBDetailCell.xib in Resources */,
 				D5DD1F532A8637030054D866 /* godwiseTableViewCell.xib in Resources */,
 				A33303CE21F72E3300E411CE /* OFL.txt in Resources */,
 				A33303CC21F72E3300E411CE /* Lato-LightItalic.ttf in Resources */,
@@ -12374,6 +12381,7 @@
 				07C4F462285770D500398EF3 /* EmailController.swift in Sources */,
 				078A6B44271AE05800758F36 /* newPreDetails.swift in Sources */,
 				FA15986524335F5700ED4838 /* TBChannelListVC.swift in Sources */,
+				C7559B7B2D0325B800DF5907 /* TBDetailCell.swift in Sources */,
 				07B5B080272D2C0F00A3FA7C /* AppUtility.swift in Sources */,
 				07289A172706F6AB00DDA137 /* demoFileVc.swift in Sources */,
 				87FF424925D28C4900E80734 /* TBPremiumDataCell.swift in Sources */,
