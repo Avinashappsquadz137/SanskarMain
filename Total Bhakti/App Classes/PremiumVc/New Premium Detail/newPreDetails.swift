@@ -1001,52 +1001,55 @@ extension newPreDetails: UICollectionViewDelegateFlowLayout {
 extension newPreDetails: UICollectionViewDelegate{
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        let imageUrl = (premiumData[indexPath.row].thumbnail_url)
         let posts = premiumData[indexPath.row]
         self.didSelect = true
-        self.selectedIndex = indexPath.row
-        selectIndex = indexPath.row
         
-        if posts.is_locked == "0"{
-            titleLbl.text = (posts.season_title)
-            self.descptLbl.text = posts.episode_description
-            self.eposidetitle = posts.episode_title
-            self.titleLbl.text = self.eposidetitle
-            self.episode_id = posts.episode_id
-            print(self.episode_id)
-            self.season_id = posts.season_id
-            print(self.season_id)
+        // Update the selected index
+        let previousIndex = self.selectIndex
+        self.selectIndex = indexPath.row
+        
+        // Reload only the previously selected and currently selected cells
+        let indexPathsToReload = [IndexPath(row: previousIndex, section: 0), IndexPath(row: selectIndex, section: 0)]
+        collectionView.reloadItems(at: indexPathsToReload)
+        
+        if posts.is_locked == "0" {
+            // Update UI and play video
+            titleLbl.text = posts.season_title
+            descptLbl.text = posts.episode_description
+            eposidetitle = posts.episode_title
+            titleLbl.text = eposidetitle
+            episode_id = posts.episode_id
+            season_id = posts.season_id
             videoPlayer.isHidden = true
+            
             if posts.episode_url != "" {
-                playVideo(url:posts.episode_url, image: selectedData!.season_thumbnail ?? "")
-            }else if posts.youtube_url != "" {
+                playVideo(url: posts.episode_url, image: selectedData?.season_thumbnail ?? "")
+            } else if posts.youtube_url != "" {
                 TV_PlayerHelper.shared.mmPlayer.player?.pause()
                 TV_PlayerHelper.shared.mmPlayer.isHidden = false
                 TV_PlayerHelper.shared.mmPlayer.player?.replaceCurrentItem(with: nil)
-                let playvarsDic = ["playsinline": 1,"controls":1,"modestbranding":1]
-                playerView.load(withVideoId: posts.yt_episode_url,playerVars: playvarsDic)
+                let playVarsDic = ["playsinline": 1, "controls": 1, "modestbranding": 1]
+                playerView.load(withVideoId: posts.yt_episode_url, playerVars: playVarsDic)
                 playerView.contentMode = .scaleToFill
                 playerView.isHidden = false
-            }else{
+            } else {
                 guard let token = posts.token else { return }
                 eToken = token
                 getEpisode(token: token)
-                
             }
-        }
-        else{
+        } else {
+            // Show alert for premium subscription
             let alert = UIAlertController(title: appName, message: ALERTS.KSubscribe, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-            alert.addAction(UIAlertAction(title: "Go Premium", style: .default, handler: { (action: UIAlertAction) in
-                let vc =  storyBoard.instantiateViewController(withIdentifier: "TBPremiumPaymentVC")
+            alert.addAction(UIAlertAction(title: "Go Premium", style: .default, handler: { _ in
+                let vc = storyBoard.instantiateViewController(withIdentifier: "TBPremiumPaymentVC")
                 TV_PlayerHelper.shared.mmPlayer.player?.pause()
                 self.navigationController?.pushViewController(vc, animated: true)
-                
             }))
             self.present(alert, animated: true, completion: nil)
         }
     }
+
  }
 
 

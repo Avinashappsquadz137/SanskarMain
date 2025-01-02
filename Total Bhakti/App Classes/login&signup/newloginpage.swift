@@ -62,7 +62,9 @@ class newloginpage: UIViewController {
                     "device_model": "\(UIDevice().type)",
                     "device_id": device_id ?? "",
                     "device_token": deviceTokenStr,
-                    "country_code": "+91"
+                    "country_code": "+91",
+                    "source":"normal",
+                    "login_with_otp":"1"
                 ]
                 print(param1)
                 signInApi(param1)

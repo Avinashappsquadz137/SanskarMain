@@ -2012,6 +2012,7 @@ extension TBHomeVC : UICollectionViewDataSource {
                 let image = cell.viewWithTag(100) as? UIImageView
                 let mainView = cell.viewWithTag(300)
                 let logo = cell.viewWithTag(201) as? UIImageView
+             
                 logo?.isHidden = false
                 if #available(iOS 13.0, *) {
                     logo?.image = UIImage(systemName: "tatacrown")
@@ -2031,6 +2032,14 @@ extension TBHomeVC : UICollectionViewDataSource {
                 
                 if indexPath.row < seasonList.count {
                     let posts = seasonList[indexPath.row]
+                    let progressbar = cell.viewWithTag(1000) as? UIProgressView
+                    if let progressValueString = posts.progress,  // Unwrap the optional
+                       let progressValue = Float(progressValueString) { // Convert String to Float
+                        progressbar?.progress = progressValue / 100.0 // Normalize to 0.0–1.0
+                    } else {
+                        progressbar?.progress = 0.0 // Default value if conversion fails
+                    }
+                    print("posts.progress: ", posts.progress ?? "nil")
                     image?.sd_setIndicatorStyle(.gray)
                     image?.sd_setShowActivityIndicatorView(true)
                     image?.layer.cornerRadius = 5.0
@@ -2066,6 +2075,13 @@ extension TBHomeVC : UICollectionViewDataSource {
                 
                 if indexPath.row < seasonList.count {
                     let posts = seasonList[indexPath.row]
+                    let progressbar = cell.viewWithTag(1000) as? UIProgressView
+                    if let progressValueString = posts.progress,  // Unwrap the optional
+                       let progressValue = Float(progressValueString) { // Convert String to Float
+                        progressbar?.progress = progressValue / 100.0 // Normalize to 0.0–1.0
+                    } else {
+                        progressbar?.progress = 0.0 // Default value if conversion fails
+                    }
                     image?.sd_setIndicatorStyle(.gray)
                     image?.sd_setShowActivityIndicatorView(true)
                     image?.layer.cornerRadius = 5.0
@@ -2093,6 +2109,13 @@ extension TBHomeVC : UICollectionViewDataSource {
                 mainView?.layer.cornerRadius = 5.0
                 
                 let posts = categoryDataArray[collectionView.tag].authwise[indexPath.row]
+                let progressbar = cell.viewWithTag(1000) as? UIProgressView
+                if let progressValueString = posts.progress,  // Unwrap the optional
+                let progressValue = Float(progressValueString) { // Convert String to Float
+                progressbar?.progress = progressValue / 100.0 // Normalize to 0.0–1.0
+                } else {
+                progressbar?.progress = 0.0 // Default value if conversion fails
+                }
                 image?.sd_setIndicatorStyle(.gray)
                 image?.sd_setShowActivityIndicatorView(true)
                 image?.layer.cornerRadius = 5.0
@@ -2118,6 +2141,13 @@ extension TBHomeVC : UICollectionViewDataSource {
                 mainView?.layer.cornerRadius = 5.0
                 
                 let posts = categoryDataArray[collectionView.tag].catwise[indexPath.row]
+                let progressbar = cell.viewWithTag(1000) as? UIProgressView
+                if let progressValueString = posts.progress,  // Unwrap the optional
+                   let progressValue = Float(progressValueString) { // Convert String to Float
+                    progressbar?.progress = progressValue / 100.0 // Normalize to 0.0–1.0
+                } else {
+                    progressbar?.progress = 0.0 // Default value if conversion fails
+                }
                 image?.sd_setIndicatorStyle(.gray)
                 image?.sd_setShowActivityIndicatorView(true)
                 image?.layer.cornerRadius = 5.0
@@ -2136,6 +2166,13 @@ extension TBHomeVC : UICollectionViewDataSource {
                 
                 mainView?.layer.cornerRadius = 5.0
                 let posts = categoryDataArray[collectionView.tag].promotionList[indexPath.row]
+                let progressbar = cell.viewWithTag(1000) as? UIProgressView
+                if let progressValueString = posts.progress,  // Unwrap the optional
+                   let progressValue = Float(progressValueString) { // Convert String to Float
+                    progressbar?.progress = progressValue / 100.0 // Normalize to 0.0–1.0
+                } else {
+                    progressbar?.progress = 0.0 // Default value if conversion fails
+                }
                 image?.sd_setIndicatorStyle(.gray)
                 image?.sd_setShowActivityIndicatorView(true)
                 image?.layer.cornerRadius = 5.0
@@ -2198,6 +2235,13 @@ extension TBHomeVC : UICollectionViewDataSource {
                 
                 mainView?.layer.cornerRadius = 5.0
                 let posts = categoryDataArray[collectionView.tag].freeList[indexPath.row]
+                let progressbar = cell.viewWithTag(1000) as? UIProgressView
+                if let progressValueString = posts.progress,  // Unwrap the optional
+                   let progressValue = Float(progressValueString) { // Convert String to Float
+                    progressbar?.progress = progressValue / 100.0 // Normalize to 0.0–1.0
+                } else {
+                    progressbar?.progress = 0.0 // Default value if conversion fails
+                }
                 image?.sd_setIndicatorStyle(.gray)
                 image?.sd_setShowActivityIndicatorView(true)
                 image?.layer.cornerRadius = 5.0
