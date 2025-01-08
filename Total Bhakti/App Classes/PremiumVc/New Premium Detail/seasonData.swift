@@ -12,7 +12,7 @@ class seasonData: UICollectionViewCell {
     @IBOutlet weak var Image: UIImageView!
     @IBOutlet weak var lockImg: UIImageView!
     @IBOutlet weak var seasonView: UIView!
-    @IBOutlet weak var playView: UIView!
+    @IBOutlet weak var playViewCell: UIView!
     
     @IBOutlet weak var imageweight: NSLayoutConstraint!
     @IBOutlet weak var imageheight: NSLayoutConstraint!

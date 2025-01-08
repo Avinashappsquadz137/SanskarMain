@@ -8756,14 +8756,14 @@
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zhY-tz-N69">
-                            <rect key="frame" x="64" y="9" width="156" height="20.5"/>
+                            <rect key="frame" x="64" y="8.5" width="156" height="20.5"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uz2-cw-ohs">
-                            <rect key="frame" x="64" y="34.5" width="156" height="15.5"/>
+                            <rect key="frame" x="64" y="34" width="156" height="16"/>
                             <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="13"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -13399,7 +13399,7 @@
                                                                                 <outlet property="imageheight" destination="88y-IL-vsx" id="yWI-Sv-0GU"/>
                                                                                 <outlet property="imageweight" destination="OML-fz-m4d" id="Vlg-jh-v5B"/>
                                                                                 <outlet property="lockImg" destination="lbf-IV-4Ml" id="uKp-H0-Hfp"/>
-                                                                                <outlet property="playView" destination="3wB-Ef-pBq" id="b4I-oJ-94A"/>
+                                                                                <outlet property="playViewCell" destination="3wB-Ef-pBq" id="NbE-Ts-RQw"/>
                                                                                 <outlet property="seasonView" destination="GK2-I8-SXz" id="MCD-Ce-ifE"/>
                                                                             </connections>
                                                                         </collectionViewCell>
@@ -16265,10 +16265,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroundholi" translatesAutoresizingMaskIntoConstraints="NO" id="UP3-qR-KvA">
-                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="568"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MbR-Y5-Tp5">
-                                <rect key="frame" x="10" y="100" width="300" height="448"/>
+                                <rect key="frame" x="10" y="100" width="300" height="468"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="65g-Pm-2ka">
                                         <rect key="frame" x="10" y="5" width="280" height="400"/>
@@ -16307,7 +16307,7 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RBU-26-zdp">
-                                        <rect key="frame" x="-10" y="-80" width="320" height="558"/>
+                                        <rect key="frame" x="-10" y="-80" width="320" height="578"/>
                                         <color key="backgroundColor" red="0.36862745098039218" green="0.36862745098039218" blue="0.36862745098039218" alpha="0.68631001655629142" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v05-mS-sCL">
@@ -20511,12 +20511,8 @@
         <designable name="mgs-vC-fS2">
             <size key="intrinsicContentSize" width="72" height="30"/>
         </designable>
-        <designable name="oi9-u4-KXu">
-            <size key="intrinsicContentSize" width="62" height="30"/>
-        </designable>
-        <designable name="rMA-ji-xf8">
-            <size key="intrinsicContentSize" width="65.5" height="28"/>
-        </designable>
+        <designable name="oi9-u4-KXu"/>
+        <designable name="rMA-ji-xf8"/>
         <designable name="sTZ-zc-WCu">
             <size key="intrinsicContentSize" width="35" height="30"/>
         </designable>
@@ -20657,7 +20653,7 @@
         <image name="switch_camera_button" width="45" height="45"/>
         <image name="tatacrown" width="100" height="100"/>
         <image name="text.badge.plus" catalog="system" width="128" height="107"/>
-        <image name="top_bar_logo" width="190" height="82"/>
+        <image name="top_bar_logo" width="95" height="28.5"/>
         <image name="torch_on_button" width="45" height="45"/>
         <image name="tv2" width="30" height="30"/>
         <image name="usericonios" width="24" height="24"/>

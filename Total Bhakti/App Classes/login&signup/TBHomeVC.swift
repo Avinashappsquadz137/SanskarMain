@@ -543,10 +543,10 @@ class TBHomeVC: TBInternetViewController,AAPlayerDelegate,shortCutDelegate,MMPla
         
  //               }
 //        DispatchQueue.main.async(execute: { loader.shareInstance.showLoading(self.view)})
-//        let param : Parameters = ["user_id": "458500","device_type":"2","current_version": "\(UIApplication.release)","profile_id":profile_id]
+        let param : Parameters = ["user_id": currentUser.result?.id ?? "163","device_type":"2","current_version": "\(UIApplication.release)","profile_id":profile_id]
 //        print(param)
        DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 0.3) {
-//            self.getCategoryApi(param)
+            self.getCategoryApi(param)
 //            let params: Parameters = ["user_id": currentUser.result!.id!,"id": self.keydata ]
 //                          print(params)
 //            self.gettvlogin(params)
@@ -3698,7 +3698,7 @@ extension TBHomeVC : UICollectionViewDelegateFlowLayout {
                 vc.selectedData = post
                 vc.selectedString = "season"
                 type = "season"
-                
+                 vc.accessibilityHint = "ContinueWatch"
                 navigationController?.pushViewController(vc, animated: true)
             }
         }

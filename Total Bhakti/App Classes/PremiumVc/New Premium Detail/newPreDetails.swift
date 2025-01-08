@@ -965,15 +965,36 @@ extension newPreDetails: UICollectionViewDataSource {
         print(UserDefaults.standard.object(forKey: "eposidekey"))
         
         let post = premiumData[indexPath.row]
-        if selectIndex == indexPath.row {
-            cell.playView.isHidden = false
-        }else {
-            cell.playView.isHidden = true
-        }
+        // Commenteed By Avinash
+//        if selectIndex == indexPath.row {
+//            cell.playViewCell.isHidden = false
+//        }else {
+//            cell.playViewCell.isHidden = true
+//        }
+//        if post.is_locked == "0"{
+//            cell.lockImg.isHidden = true
+//        }else{
+//            cell.lockImg.isHidden = false
+//        }
+        
         if post.is_locked == "0"{
             cell.lockImg.isHidden = true
         }else{
             cell.lockImg.isHidden = false
+        }
+        if self.accessibilityHint == "ContinueWatch" {
+            if selectedData?.episode_id ?? "" == episodedata {
+                cell.playViewCell.isHidden = false
+            }else {
+                cell.playViewCell.isHidden = true
+            }
+          
+        }else {
+            if selectIndex == indexPath.row {
+                cell.playViewCell.isHidden = false
+            }else {
+                cell.playViewCell.isHidden = true
+            }
         }
         cell.Image.sd_setIndicatorStyle(.gray)
         cell.Image.sd_setImage(with: URL(string: post.thumbnail_url ), placeholderImage: UIImage(named: "default_image"), options: .refreshCached, completed: nil)
