@@ -14,32 +14,10 @@ class APIManager : NSObject {
         }
         return Static.instance
     }
-    //"http://dev.appsquadz.com/sanskar/index.php/data_model/"
-    // let KBASEURL                 = "http://ec2-13-127-166-4.ap-south-1.compute.amazonaws.com/index.php/data_model/"
-    // let KBASEURL                 = "http://164.52.192.251/totalbhakti/index.php/data_model/"
-   //"http://164.52.192.251/index.php/data_model/"
-    
-    // http://192.168.0.165/sanskar/index.php/data_model/  dev
-    // http://192.168.0.165/total/index.php/data_model/  dev
-    
-    // http://dev.appsquadz.com/total/index.php/data_model/bhajan/bhajan/get_bhajan_list
-    
-    //http://164.52.192.251/totalbhakti/index.php/
-    
-    //"http://164.52.192.251/sanskar/index.php/data_model/" // live
-    
-    // /let HOMEDATAAPi = Video_control/home_page_videos // this one changed during indexing by sunil
-    
-    //http://app.sanskargroup.in/sanskar/index.php/auth_panel/login/index  // new live server
-    //http://164.52.192.251/sanskar_staging/index.php/data_model/videos/Video_control/like_channel
-    //http://app.sanskargroup.in/sanskar/index.php/data_model/ // live
-    
-   // http://app.sanskargroup.in/sanskar/index.php/data_model/version/Version/get_version
-
 
     
     let KHTTPSUCCESS             = 200
-    //let KBASEURL                 = "https://app.sanskargroup.in/sanskar_development/data_model/" //Stagging
+ //   let KBASEURL                 = "https://app.sanskargroup.in/sanskar_development/data_model/" //Stagging
     let KBASEURL                 = "https://app.sanskargroup.in/data_model/" //LIVE URL
 //        let KBASEURL                 = "https://dev.sanskargroup.in/data_model/" //Stagging
 //    let KLOGINAPI                = "user/registration/login_authentication"
@@ -166,25 +144,3 @@ class APIManager : NSObject {
     let KviewMoreForAarti         = "videos/video_control/viewMoreForAarti"
 }
 
-//http://app.sanskargroup.in/sanskar/index.php/data_model/videos/Video_control/get_video_meta_data
-//params:-
-//user_id,video_id
-
-//http://app.sanskargroup.in/sanskar/index.php/data_model/bhajan/Bhajan/get_bhajan_meta_data
-// params:-
-//user_id,bhajan_id
-
-
-//http://192.168.0.165/sanskar/index.php/data_model/videos/Video_control/get_related_bhajan
-
-
-//http://182.76.107.25/totalbhakti/
-//http://182.76.107.25/sanskar/
-
-
-//http://164.52.192.251/sanskar/index.php/data_model/videos
-
-
-//http://164.52.192.251/sanskar/index.php/data_model/videos/Video_control/home_page_videos
-
-//Login_record/device_logout

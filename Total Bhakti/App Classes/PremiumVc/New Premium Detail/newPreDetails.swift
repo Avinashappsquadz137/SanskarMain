@@ -10,7 +10,8 @@ import UIKit
 import ExpandableLabel
 import YoutubePlayer_in_WKWebView
 import FittedSheets
-
+import MMPlayerView
+import AVFoundation
 
 struct EncrypteResponse: Decodable {
     let data: EncrypteUrl
@@ -31,7 +32,7 @@ class newPreDetails: UIViewController, EpisodeDelegate,GetVideoQualityList, MMPl
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var playerViewheight: NSLayoutConstraint!
-    
+    @IBOutlet weak var videoLayerPlayer: UIView!
     
     //MARK: Varaiable
     
@@ -56,6 +57,7 @@ class newPreDetails: UIViewController, EpisodeDelegate,GetVideoQualityList, MMPl
     var videoDict : [String : Any] = [:]
     var promo: Bool = false
     var selectIndex: Int = 0
+    var selectIndexvideo: Int = -1
     var videocome:Bool = false
     var videoUrl = ""
     var selectdata = Int()
@@ -63,6 +65,11 @@ class newPreDetails: UIViewController, EpisodeDelegate,GetVideoQualityList, MMPl
     var premiumdataArr: [[String:Any]] = [[:]]
     var categorymatch = ""
     var paymentmethod = ""
+    var coverAView: CoverA?
+    var shouldIgnoreSelectedData = false
+    weak var playLayer: MMPlayerLayer?
+    var savedTime: CMTime?
+    var hideTimer: Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,7 +97,11 @@ class newPreDetails: UIViewController, EpisodeDelegate,GetVideoQualityList, MMPl
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ExitVideoView"), object: nil)
             NotificationCenter.default.addObserver(self, selector: #selector(self.methodOfReceiveNotification(notification:)), name: Notification.Name("ActionSheet"), object: nil)
             prePlay = true
-            updateUi()
+            if let episodeID = selectedData?.episode_id, !episodeID.isEmpty {
+                updateUi(episodeID: episodeID)
+            } else {
+                updateUi()
+            }
             if allListData.count > 0 {
                 allListCount = 2
             }else{
@@ -99,6 +110,9 @@ class newPreDetails: UIViewController, EpisodeDelegate,GetVideoQualityList, MMPl
         }
         goPremiumBtn.layer.cornerRadius = goPremiumBtn.frame.height/5
         goPremiumBtn.clipsToBounds = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        videoLayerPlayer.addGestureRecognizer(tapGesture)
+        videoLayerPlayer.isUserInteractionEnabled = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -106,7 +120,24 @@ class newPreDetails: UIViewController, EpisodeDelegate,GetVideoQualityList, MMPl
        
         liveTap = ""
     }
-    
+    @objc func handleTap() {
+           print("Video tapped")
+        self.videoLayerPlayer.isHidden = true
+        TV_PlayerHelper.shared.mmPlayer.showCover(isShow: true)
+           hideTimer?.invalidate()
+           hideTimer = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false) { _ in
+               self.videoLayerPlayer.isHidden = false
+           }
+        
+           playerView.getPlayerState { state, error in
+               guard error == nil else { return }
+               if state == .playing {
+                   self.playerView.pauseVideo()
+               } else {
+                   self.playerView.playVideo()
+               }
+           }
+       }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         prePum = ""
@@ -114,7 +145,8 @@ class newPreDetails: UIViewController, EpisodeDelegate,GetVideoQualityList, MMPl
             let videotime = player.currentTime()
             let totaltime = player.currentItem?.duration
             
-            let eposideide = UserDefaults.standard.string(forKey: "eposidekey") ?? ""
+            let eposideide = UserDefaults.standard.string(forKey: "eposideID") ?? ""
+            let eposideID = eposideide.isEmpty ? (selectedData?.episode_id ?? "") : eposideide
             UserDefaults.standard.set(selectedData?.season_id ?? "", forKey: "seasonkey")
             UserDefaults.standard.synchronize()
             let seasonId = data["season_id"] as? String ?? ""
@@ -122,19 +154,18 @@ class newPreDetails: UIViewController, EpisodeDelegate,GetVideoQualityList, MMPl
             UserDefaults.standard.set(seasonId, forKey: "season_Id")
             UserDefaults.standard.synchronize()
             let sesiondata = UserDefaults.standard.string(forKey: "season_Id")
-            print(sesiondata)
             if let sesiondata = sesiondata, !sesiondata.isEmpty {
                 print(sesiondata)
                 // Ensure that selectedData is not nil and season_id is a non-empty String
                 let param: Parameters = [
-                    "user_id": "\(currentUser.result?.id ?? "")","media_id": eposideide,"season_id": sesiondata,"pause_at": "\(videotime.seconds)","status": "0","type": "2","total_duration": "\(totaltime?.seconds ?? 0)"]
+                    "user_id": "\(currentUser.result?.id ?? "")","media_id": eposideID,"season_id": sesiondata,"pause_at": "\(videotime.seconds)","status": "0","type": "2","total_duration": "\(totaltime?.seconds ?? 0)"]
                 print(param)
                 continuewatching(param)
             } else if let sesiondataa = UserDefaults.standard.string(forKey: "seasonkey"), !sesiondataa.isEmpty {
                 print(sesiondataa)
                 // Use seasondataa if sesiondata is nil
                 let param: Parameters = [
-                    "user_id": "\(currentUser.result?.id ?? "")","media_id": eposideide,"season_id": sesiondataa,"pause_at": "\(videotime.seconds)","status": "0","type": "2","total_duration": "\(totaltime?.seconds ?? 0)"]
+                    "user_id": "\(currentUser.result?.id ?? "")","media_id": eposideID,"season_id": sesiondataa,"pause_at": "\(videotime.seconds)","status": "0","type": "2","total_duration": "\(totaltime?.seconds ?? 0)"]
                 print(param)
                 continuewatching(param)
             } else {
@@ -156,7 +187,7 @@ class newPreDetails: UIViewController, EpisodeDelegate,GetVideoQualityList, MMPl
         
     }
     func updateUi(){
-        //        playerView.delegate = self
+                playerView.delegate = self
         let playvarsDic = ["playsinline": 1,"controls":1,"modestbranding":1]
         if selectedString == "promotion" || selectedString == "season" || ( selectedString == "category wise season") || (selectedString == "author wise season"){
             //            thumbnailImg?.sd_setImage(with: URL(string: selectedData!.season_thumbnail ?? ""), placeholderImage: UIImage(named: "default_image"), options: .refreshCached, completed: nil)
@@ -176,7 +207,6 @@ class newPreDetails: UIViewController, EpisodeDelegate,GetVideoQualityList, MMPl
             
             let videoURL : URL?
             if selectedData?.promo_video != ""{
-                
                 playVideo(url:selectedData?.promo_video ?? "", image: selectedData!.season_thumbnail ?? "")
             }
             else if selectedData?.short_video != ""{
@@ -334,43 +364,78 @@ class newPreDetails: UIViewController, EpisodeDelegate,GetVideoQualityList, MMPl
         getPremiumlist(param)
         
     }
-    //MARK: MMPlayer
     
-    func playVideo(url: String, image: String){
-        videoPlayer.isHidden = false
+    func updateUi(episodeID : String){
+                playerView.delegate = self
+        let playvarsDic = ["playsinline": 1,"controls":1,"modestbranding":1]
+        if selectedString == "promotion" || selectedString == "season" || ( selectedString == "category wise season") || (selectedString == "author wise season"){
+            //            thumbnailImg?.sd_setImage(with: URL(string: selectedData!.season_thumbnail ?? ""), placeholderImage: UIImage(named: "default_image"), options: .refreshCached, completed: nil)
+            if let seasonTitle = selectedData?.season_title, !seasonTitle.isEmpty {
+                titleLbl.text = seasonTitle
+            } else if let episodeTitle = selectedData?.episode_title, !episodeTitle.isEmpty {
+                titleLbl.text = episodeTitle
+            }
+            if let description = selectedData?.description, !description.isEmpty {
+                descptLbl?.text = description.trimmingCharacters(in: .whitespacesAndNewlines).html2String
+            } else if let episodeDescription = selectedData?.episode_description, !episodeDescription.isEmpty {
+                descptLbl?.text = episodeDescription.trimmingCharacters(in: .whitespacesAndNewlines).html2String
+            }
+            videoPlayer.isHidden = false
+            playerView.isHidden = true
+            playerView.pauseVideo()
+        }
+        param = ["user_id":currentUser.result?.id ?? "", "season_id": selectedData?.season_id ?? "", "page_no": "1","limit": "10","episode_id": selectedData?.episode_id ?? ""]
+      
+        playVideo(url:selectedData?.custom_episode_url ?? "", image: selectedData?.season_thumbnail ?? "", pause_at: selectedData?.pause_at ?? "0")
+        promo = true
+
+        print(param)
+      
+        getPremiumlist(param,episodeId: selectedData?.episode_id ?? "")
+        
+    }
+    
+    //MARK: MMPlayer
+
+    func playVideo(url: String, image: String , pause_at: String = "" ){
         DispatchQueue.global().async {
             self.getUrl(urlStrin: url)
         }
         guard let play = URL(string: url) else { return }
-        print(play)
-        if let pauseString = selectedData?.pause_at, let pausetime = Double(pauseString) {
-            print("Received pause_at: \(pauseString), Converted pausetime: \(pausetime)")
-            let targetTime = CMTime(seconds: pausetime, preferredTimescale: 1)
+        if let pausetime = Double(selectedData?.pause_at ?? "0"), pausetime > 0 {
+            print("Received pause_at: \(pause_at), Converted pausetime: \(pausetime)")
+            let targetTime = CMTime(seconds: pausetime, preferredTimescale: 600)
             print("Calculated targetTime: \(targetTime.seconds)")
+            UserDefaults.standard.set(true, forKey: "isEnabled")
+            
             TV_PlayerHelper.shared.mmPlayer.player?.pause()
             TV_PlayerHelper.shared.mmPlayer.player?.replaceCurrentItem(with: nil)
             TV_PlayerHelper.shared.mmPlayer.set(url: play)
             TV_PlayerHelper.shared.mmPlayer.playView = self.videoPlayer
-            TV_PlayerHelper.shared.mmPlayer.player?.currentItem?.preferredMaximumResolution = CGSize(width: 1280, height: 720)
-            TV_PlayerHelper.shared.mmPlayer.player?.currentItem?.preferredPeakBitRate = 0
-            TV_PlayerHelper.shared.mmPlayer.player?.seek(to: targetTime)
-            
+//           TV_PlayerHelper.shared.mmPlayer.player?.currentItem?.preferredMaximumResolution = CGSize(width: 1280, height: 720)
+//           TV_PlayerHelper.shared.mmPlayer.player?.currentItem?.preferredPeakBitRate = 0
+           TV_PlayerHelper.shared.mmPlayer.player?.seek(to: targetTime)
+            self.coverAView?.statictimerObserver(time: targetTime)
             setPlayerControlVisibility(true)
             TV_PlayerHelper.shared.mmPlayer.player?.play()
         } else {
+            UserDefaults.standard.set(false, forKey: "isEnabled")
             print("pause_at is nil or conversion failed. Playing from the beginning (kCMTimeZero)")
             TV_PlayerHelper.shared.mmPlayer.player?.pause()
             TV_PlayerHelper.shared.mmPlayer.player?.replaceCurrentItem(with: nil)
             TV_PlayerHelper.shared.mmPlayer.set(url: play)
             TV_PlayerHelper.shared.mmPlayer.playView = self.videoPlayer
-            TV_PlayerHelper.shared.mmPlayer.player?.currentItem?.preferredMaximumResolution = CGSize(width: 1280, height: 720)
-            TV_PlayerHelper.shared.mmPlayer.player?.currentItem?.preferredPeakBitRate = 0
+//            TV_PlayerHelper.shared.mmPlayer.player?.currentItem?.preferredMaximumResolution = CGSize(width: 1280, height: 720)
+//            TV_PlayerHelper.shared.mmPlayer.player?.currentItem?.preferredPeakBitRate = 0
             TV_PlayerHelper.shared.mmPlayer.player?.seek(to: kCMTimeZero)
             setPlayerControlVisibility(true)
             TV_PlayerHelper.shared.mmPlayer.player?.play()
         }
+        videoPlayer.isHidden = false
+        playerView.isHidden = false
         TV_PlayerHelper.shared.mmPlayer.resume()
-        TV_PlayerHelper.shared.mmPlayer.setCoverView(enable: true)
+        TV_PlayerHelper.shared.mmPlayer.showCover(isShow: true)
+        TV_PlayerHelper.shared.mmPlayer.autoHideCoverType = .disable
         TV_PlayerHelper.shared.mmPlayer.player?.allowsExternalPlayback = true
         TV_PlayerHelper.shared.mmPlayer.player?.usesExternalPlaybackWhileExternalScreenIsActive = true
         TV_PlayerHelper.shared.mmPlayer.player?.usesExternalPlaybackWhileExternalScreenIsActive = true
@@ -538,6 +603,66 @@ class newPreDetails: UIViewController, EpisodeDelegate,GetVideoQualityList, MMPl
             }
         }
     }
+    func getPremiumlist(_ param : Parameters,episodeId: String){
+        self.uplaodData1(APIManager.sharedInstance.KEpisodeBySeasonId, param) { (response) in
+            DispatchQueue.main.async(execute: {loader.shareInstance.showLoading(self.view)})
+            print(response as Any)
+            if let JSON = response as? NSDictionary {
+                print(JSON)
+                // TBSharedPreference.sharedIntance.clearAllPreference()
+                if JSON.value(forKey: "status") as? Bool == true {
+                    
+                    if let data = JSON["data"] as? [[String: Any]] {
+                        print(data)
+                    
+                            self.titleLbl.text  = data[0]["season_title"] as? String ?? ""
+                            self.categorymatch = data[0]["category_id"] as? String ?? ""
+                            print(self.categorymatch)
+                            UserDefaults.standard.set(self.categorymatch, forKey: "yourDesiredKey")
+                            let storedCategoryMatch = UserDefaults.standard.string(forKey: "yourDesiredKey")
+                            let params = ["user_id":currentUser.result!.id!,"page_no":"1","limit":"50","category_id":storedCategoryMatch]
+                            print(params)
+                            self.hitDatamorelike(params)
+                        
+                    }
+                    self.premiumData.removeAll()
+                    let data = JSON.ArrayofDict("data")
+                    
+                    let is_premium = JSON.value(forKey: "is_premium") as! Int
+                    UserDefaults.standard.set(is_premium, forKey: "is_premium")
+                    UserDefaults.standard.synchronize()
+                    
+                    let premium_is = UserDefaults.standard.string(forKey: "is_premium")
+                    print(premium_is)
+
+                    if let premiumValue = premium_is, premiumValue == "0" {
+                        self.goPremiumBtn.isHidden = false
+                    } else {
+                        self.goPremiumBtn.isHidden = true
+                    }
+
+                    if data.count > 0{
+                        _ = data.filter({ (dict) -> Bool in
+                            self.premiumData.append(freeModel(dict: dict))
+                            return true
+                            self.updateUi()
+                            DispatchQueue.main.async(execute: { loader.shareInstance.hideLoading()})
+                        })
+                    }
+                    if self.promo == true {
+                        for i in self.premiumData {
+                            if i.episode_id == episodeId {
+                                guard let token = i.token else {return}
+                                self.eToken = token
+                                self.getEpisode(token: token)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
     func hitDatamorelike(_ param : Parameters){
     //    self.allListData.removeAll()
         self.uplaodData1(APIManager.sharedInstance.Kmorelikethisapi, param) { response in
@@ -596,7 +721,7 @@ class newPreDetails: UIViewController, EpisodeDelegate,GetVideoQualityList, MMPl
         }
         
     }
-    func getEpisode(token: String){
+    func getEpisode(token: String , pause_at: String = ""){
         var dict = Dictionary<String,Any>()
         dict["user_id"] = currentUser.result?.id ?? "163"
         dict["token"] = token
@@ -612,7 +737,7 @@ class newPreDetails: UIViewController, EpisodeDelegate,GetVideoQualityList, MMPl
                 let result = try JSONDecoder().decode(EncrypteResponse.self, from: data)
                 let urlString = result.data.encrypted_url
                 DispatchQueue.main.async {
-                    self.getDecrepte(token: self.eToken, url: urlString)
+                self.getDecrepte(token: self.eToken, url: urlString ,pause_at: pause_at )
                 }
             }catch{
                 print(error.localizedDescription)
@@ -794,7 +919,7 @@ class newPreDetails: UIViewController, EpisodeDelegate,GetVideoQualityList, MMPl
         }
     }
     
-    func getDecrepte(token: String, url: String ) {
+    func getDecrepte(token: String, url: String , pause_at: String = "") {
         
         var genretedAesKey: Array<Character> = Array()
         var genretedVi: Array<Character> = Array()
@@ -815,7 +940,7 @@ class newPreDetails: UIViewController, EpisodeDelegate,GetVideoQualityList, MMPl
         print(decryptedDataNN as Any)
         guard let urlString = URL(string: decryptedDataNN ?? "") else {return}
         DispatchQueue.main.async {
-            self.playVideo(url: decryptedDataNN ?? "", image: "")
+            self.playVideo(url: decryptedDataNN ?? "", image: "" , pause_at: pause_at)
         }
 
     }
@@ -966,35 +1091,38 @@ extension newPreDetails: UICollectionViewDataSource {
         
         let post = premiumData[indexPath.row]
         // Commenteed By Avinash
-//        if selectIndex == indexPath.row {
-//            cell.playViewCell.isHidden = false
-//        }else {
-//            cell.playViewCell.isHidden = true
-//        }
-//        if post.is_locked == "0"{
-//            cell.lockImg.isHidden = true
-//        }else{
-//            cell.lockImg.isHidden = false
-//        }
+        //        if selectIndex == indexPath.row {
+        //            cell.playViewCell.isHidden = false
+        //        }else {
+        //            cell.playViewCell.isHidden = true
+        //        }
+        //        if post.is_locked == "0"{
+        //            cell.lockImg.isHidden = true
+        //        }else{
+        //            cell.lockImg.isHidden = false
+        //        }
         
         if post.is_locked == "0"{
             cell.lockImg.isHidden = true
         }else{
             cell.lockImg.isHidden = false
         }
-        if self.accessibilityHint == "ContinueWatch" {
-            if selectedData?.episode_id ?? "" == episodedata {
-                cell.playViewCell.isHidden = false
-            }else {
-                cell.playViewCell.isHidden = true
-            }
-          
-        }else {
-            if selectIndex == indexPath.row {
-                cell.playViewCell.isHidden = false
-            }else {
-                cell.playViewCell.isHidden = true
-            }
+
+        if !shouldIgnoreSelectedData, (selectedData?.episode_id ?? "") == episodedata {
+            cell.playViewCell.isHidden = false
+        } else if selectIndexvideo == indexPath.row {
+            cell.playViewCell.isHidden = false
+            shouldIgnoreSelectedData = true
+        } else {
+            cell.playViewCell.isHidden = true
+        }
+  
+        let progressbar = cell.viewWithTag(3000) as? UIProgressView
+        if let progressValueString = post.progress,
+           let progressValue = Float(progressValueString) {
+            progressbar?.progress = progressValue / 100.0
+        } else {
+            progressbar?.progress = 0.0
         }
         cell.Image.sd_setIndicatorStyle(.gray)
         cell.Image.sd_setImage(with: URL(string: post.thumbnail_url ), placeholderImage: UIImage(named: "default_image"), options: .refreshCached, completed: nil)
@@ -1024,11 +1152,13 @@ extension newPreDetails: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let posts = premiumData[indexPath.row]
         self.didSelect = true
-        
-        // Update the selected index
+        let episodedata = premiumData[indexPath.row].episode_id
+        UserDefaults.standard.set(episodedata, forKey: "eposideID")
+        UserDefaults.standard.synchronize()
+
         let previousIndex = self.selectIndex
         self.selectIndex = indexPath.row
-        
+        selectIndexvideo = indexPath.row
         // Reload only the previously selected and currently selected cells
         let indexPathsToReload = [IndexPath(row: previousIndex, section: 0), IndexPath(row: selectIndex, section: 0)]
         collectionView.reloadItems(at: indexPathsToReload)
@@ -1056,7 +1186,7 @@ extension newPreDetails: UICollectionViewDelegate{
             } else {
                 guard let token = posts.token else { return }
                 eToken = token
-                getEpisode(token: token)
+                getEpisode(token: token ,pause_at:  posts.pause_at ?? "")
             }
         } else {
             // Show alert for premium subscription

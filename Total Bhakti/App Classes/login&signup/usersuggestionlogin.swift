@@ -96,7 +96,7 @@ class usersuggestionlogin: UIViewController {
         let device_id = UserDefaults.standard.string(forKey: "device_id")
         let defaultId = "123456789"
         deviceTokanStr = UserDefaults.standard.value(forKey: "device_tokken") as? String ?? id ?? defaultId
-        param1 = ["mobile": selectedMobile, "login_type" : "0" , "login_with":"2","device_type":"2", "device_model":"\(UIDevice().type)","device_id": device_id ?? "", "device_token":deviceTokanStr, "country_code" : "+91"]
+        param1 = ["mobile": selectedMobile, "login_type" : "0" , "login_with":"2","device_type":"2", "device_model":"\(UIDevice().type)","device_id": device_id ?? "", "device_token":deviceTokanStr, "country_code" : "+91","source":"normal","login_with_otp":"1"]
         print(param1)
         
         signInApi(param1, mobile: selectedMobile)

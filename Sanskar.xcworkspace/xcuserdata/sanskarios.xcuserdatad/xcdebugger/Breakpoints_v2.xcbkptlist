@@ -7,16 +7,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "4823A0B1-CFAB-4A52-B387-D4E028F8E8EE"
+            uuid = "B812D84E-2637-45C1-923A-2443BE1B338F"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Total Bhakti/App Classes/PremiumPayment/TBCouponScreenVC.swift"
+            filePath = "Total Bhakti/App Classes/PremiumVc/New Premium Detail/newPreDetails.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "246"
-            endingLineNumber = "246"
-            landmarkName = "showadsinios()"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
+            landmarkName = "handleTap()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BB66C320-40BC-49DE-B19F-0F5583538396"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Total Bhakti/App Classes/PremiumVc/New Premium Detail/newPreDetails.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
+            landmarkName = "handleTap()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

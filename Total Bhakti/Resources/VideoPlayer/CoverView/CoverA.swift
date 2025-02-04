@@ -117,7 +117,6 @@ class CoverA: UIView, MMPlayerCoverViewProtocol, AVRoutePickerViewDelegate {
     
     @objc func update() {
         tap.isEnabled = false
-        print("Avi Tyagi")
         if let isPlaying = TV_PlayerHelper.shared.mmPlayer.player?.isPlaying,isPlaying != true{
             return
         }
@@ -910,7 +909,7 @@ class CoverA: UIView, MMPlayerCoverViewProtocol, AVRoutePickerViewDelegate {
                     seekBarView.isHidden = false
                     liveUser_lbl.isHidden = false
                     btnPlay.isHidden = false
-                    seekBarView.isUserInteractionEnabled = true
+                   // seekBarView.isUserInteractionEnabled = true
                 }else if iscoming == "youtube"{
                     print(labTotal.text!)
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "youSkipAd"), object: nil)
@@ -922,7 +921,7 @@ class CoverA: UIView, MMPlayerCoverViewProtocol, AVRoutePickerViewDelegate {
                     seekBarView.isHidden = false
                     liveUser_lbl.isHidden = false
                     btnPlay.isHidden = false
-                    seekBarView.isUserInteractionEnabled = true
+                   // seekBarView.isUserInteractionEnabled = true
                 }else if iscoming == "LiveTv"{
                     print(labTotal.text!)
                     LiveBtn.isHidden = false
@@ -935,7 +934,7 @@ class CoverA: UIView, MMPlayerCoverViewProtocol, AVRoutePickerViewDelegate {
                     seekBarView.isHidden = false
                     liveUser_lbl.isHidden = false
                     btnPlay.isHidden = false
-                    seekBarView.isUserInteractionEnabled = true
+                  //  seekBarView.isUserInteractionEnabled = true
                 }
 
                 
@@ -960,6 +959,19 @@ class CoverA: UIView, MMPlayerCoverViewProtocol, AVRoutePickerViewDelegate {
         }
     }
     
+    func statictimerObserver(time: CMTime) {
+        currentTime = time
+        if let duration = self.playLayer?.player?.currentItem?.asset.duration ,
+           !isUpdateTime {
+            if self.playSlider.maximumValue != Float(duration.seconds) {
+                self.playSlider.maximumValue = Float(duration.seconds)
+            }
+            self.labCurrent.text = self.convert(second: time.seconds)
+            self.labTotal.text = self.convert(second: duration.seconds-time.seconds)
+            self.playSlider.value = Float(time.seconds)
+            LiveBtn.isHidden = true
+        }
+    }
     
     
     

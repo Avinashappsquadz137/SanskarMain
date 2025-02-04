@@ -292,6 +292,7 @@
 		C74143E52C41052E0086C632 /* usersuggestionlogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74143E42C41052E0086C632 /* usersuggestionlogin.swift */; };
 		C7559B7B2D0325B800DF5907 /* TBDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7559B792D0325B800DF5907 /* TBDetailCell.swift */; };
 		C7559B7C2D0325B800DF5907 /* TBDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7559B7A2D0325B800DF5907 /* TBDetailCell.xib */; };
+		C75641052D4CCDCE0083898C /* GoogleCastSDK-ios-4.6.1_static in Resources */ = {isa = PBXBuildFile; fileRef = C756404D2D4CCDCE0083898C /* GoogleCastSDK-ios-4.6.1_static */; };
 		C75879432B91BE7E00F94D0E /* JuapayStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75879422B91BE7E00F94D0E /* JuapayStatusViewController.swift */; };
 		C75B0D562BF4C89C00FBA92F /* shortscommentvc.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75B0D552BF4C89C00FBA92F /* shortscommentvc.swift */; };
 		C75B0E062BF4CCEE00FBA92F /* commenttableviewcell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75B0E052BF4CCEE00FBA92F /* commenttableviewcell.swift */; };
@@ -2712,7 +2713,6 @@
 		A3F8CD9D226716A100B7DE49 /* SignIn-Module.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SignIn-Module.h"; sourceTree = "<group>"; };
 		A3F8CD9E226716A100B7DE49 /* SignIn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignIn.h; sourceTree = "<group>"; };
 		A3F8CD9F226716A100B7DE49 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		A3F8CDA2226716A100B7DE49 /* GoogleCast.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleCast.framework; sourceTree = "<group>"; };
 		A3F8CDA4226716A100B7DE49 /* .cocoapods.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .cocoapods.yml; sourceTree = "<group>"; };
 		A3F8CDA5226716A100B7DE49 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		A3F8CDA7226716A100B7DE49 /* GoogleSignIn.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleSignIn.framework; sourceTree = "<group>"; };
@@ -3827,6 +3827,7 @@
 		C74143E42C41052E0086C632 /* usersuggestionlogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = usersuggestionlogin.swift; sourceTree = "<group>"; };
 		C7559B792D0325B800DF5907 /* TBDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TBDetailCell.swift; sourceTree = "<group>"; };
 		C7559B7A2D0325B800DF5907 /* TBDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TBDetailCell.xib; sourceTree = "<group>"; };
+		C756404D2D4CCDCE0083898C /* GoogleCastSDK-ios-4.6.1_static */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "GoogleCastSDK-ios-4.6.1_static"; sourceTree = "<group>"; };
 		C75879422B91BE7E00F94D0E /* JuapayStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuapayStatusViewController.swift; sourceTree = "<group>"; };
 		C75B0D552BF4C89C00FBA92F /* shortscommentvc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shortscommentvc.swift; sourceTree = "<group>"; };
 		C75B0E052BF4CCEE00FBA92F /* commenttableviewcell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = commenttableviewcell.swift; sourceTree = "<group>"; };
@@ -7830,17 +7831,9 @@
 		A3F8CDA0226716A100B7DE49 /* google-cast-sdk */ = {
 			isa = PBXGroup;
 			children = (
-				A3F8CDA1226716A100B7DE49 /* GoogleCastSDK-ios-4.3.5_static */,
+				C756404D2D4CCDCE0083898C /* GoogleCastSDK-ios-4.6.1_static */,
 			);
 			path = "google-cast-sdk";
-			sourceTree = "<group>";
-		};
-		A3F8CDA1226716A100B7DE49 /* GoogleCastSDK-ios-4.3.5_static */ = {
-			isa = PBXGroup;
-			children = (
-				A3F8CDA2226716A100B7DE49 /* GoogleCast.framework */,
-			);
-			path = "GoogleCastSDK-ios-4.3.5_static";
 			sourceTree = "<group>";
 		};
 		A3F8CDA3226716A100B7DE49 /* GoogleSignIn */ = {
@@ -12014,6 +12007,7 @@
 				C7E7E3C12CE8B530006A00C6 /* sanskarlogo.mp4 in Resources */,
 				95C2BC0922593FA90068309E /* ic_play_circle_filled.png in Resources */,
 				A33303C821F72E3300E411CE /* Lato-Hairline.ttf in Resources */,
+				C75641052D4CCDCE0083898C /* GoogleCastSDK-ios-4.6.1_static in Resources */,
 				A33303C621F72E3300E411CE /* Lato-Bold.ttf in Resources */,
 				95C2BBFE22593F590068309E /* CoverA.xib in Resources */,
 				0701261E274CCE6C00B39F5C /* timeCell.xib in Resources */,

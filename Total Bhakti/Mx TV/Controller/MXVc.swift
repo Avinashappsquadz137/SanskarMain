@@ -13,6 +13,7 @@ import SDWebImage
 import CoreData
 
 
+
 class MXVc: UIViewController {
     //MARK: - IBoutlet
     @IBOutlet weak var playerView: UIView!
@@ -277,8 +278,8 @@ class MXVc: UIViewController {
         }
         mxDays.value?.append(contentsOf: model?.days?[nDay ?? 6] ?? [])
         mxEvent.value?.append(contentsOf: model?.days?[nDay ?? 6][current ?? 0].events ?? [])
-        dateName.text = model?.days?[nDay ?? 6][0].release_date
-        sDate = dateName.text
+        dateName.text = formattedDate(from:model?.days?[nDay ?? 6][0].release_date)
+        sDate = model?.days?[nDay ?? 6][0].release_date
         currentStatus()
     }
     
@@ -307,7 +308,7 @@ class MXVc: UIViewController {
         change = true
         mxEvent.value?.removeAll()
         mxEvent.value?.append(contentsOf: mxModel?.days?[nDay ?? 6][current ?? 0].events ?? [])
-        dateName.text = mxModel?.days?[nDay ?? 6][current ?? 0].release_date
+        dateName.text = formattedDate(from:mxModel?.days?[nDay ?? 6][current ?? 0].release_date)
         sDate = mxModel?.days?[nDay ?? 6][current ?? 0].release_date
         programCollectionView.reloadData()
         playChannel(with: current ?? 0)
@@ -399,7 +400,11 @@ class MXVc: UIViewController {
         
     }
     
-    
+    func showAlert(message: String) {
+        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Reminder!", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
     
 }
 
@@ -453,12 +458,7 @@ extension MXVc: UICollectionViewDataSource {
                 cell.play.text = "Now Playing"
                 cell.play.backgroundColor = .red
                 cell.play.textColor = .white
-            }else{
-                cell.play.text = "Play Now"
-                cell.play.backgroundColor = .white
-                cell.play.textColor = .red
             }
-            
             cell.progBtn.tag = indexPath.row
             cell.progBtn.addTarget(self, action: #selector(MXVc.onClickedProgram(_:)), for: .touchUpInside)
             return cell
@@ -516,8 +516,13 @@ extension MXVc {
     
     //MARK: - Sender tag
     @objc func onClickedProgram(_ sender: UIButton) {
+        
         print(sender.tag)
         index = sender.tag
+        if self.timeIndex < self.index ?? 0 {
+            self.showAlert(message: "You can't play future videos.")
+            return
+        }
         timer.invalidate()
         programCollectionView.reloadData()
         DispatchQueue.main.asyncAfter(deadline: .now()) {
@@ -539,7 +544,7 @@ extension MXVc {
             url = "\(data?.channel_url ?? "")?start=\(getDate )T00:00:00+05:30&end="
             nDay = 6
             sDate = getDate
-            dateName.text = getDate
+            dateName.text = formattedDate(from:getDate)
         }else{
             url = "\(data?.channel_url ?? "")?start=\(sDate ?? "")T00:00:00+05:30&end=\(sDate ?? "")T24:00:00+05:30"
         }
@@ -737,7 +742,24 @@ extension MXVc {
         
     }
     
-    
+    func formattedDate(from dateString: String?) -> String? {
+        guard let dateString = dateString else { return nil }
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        if let date = formatter.date(from: dateString) {
+            return formattedDate(date)
+        } else {
+            return nil
+        }
+    }
+
+    func formattedDate(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd-MMM-yyyy"
+        formatter.locale = Locale(identifier: "en_US_POSIX") 
+        return formatter.string(from: date).uppercased() // Converts month to uppercase
+    }
+
     
     func currentStatus () {
         let now = Date()

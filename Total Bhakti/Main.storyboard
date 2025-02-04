@@ -11588,7 +11588,7 @@
                                                                     </collectionViewFlowLayout>
                                                                     <cells>
                                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="KCELL1" id="w0K-JQ-TXd">
-                                                                            <rect key="frame" x="0.0" y="7" width="131" height="148"/>
+                                                                            <rect key="frame" x="0.0" y="6.5" width="131" height="148"/>
                                                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                                             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ST6-MK-P5E">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="131" height="148"/>
@@ -13209,6 +13209,10 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="180"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yk4-9a-y7j">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="180"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="rtg-Oq-Gsb">
                                         <rect key="frame" x="0.0" y="180" width="320" height="460"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -13368,6 +13372,16 @@
                                                                                                     <constraint firstItem="Xia-Dp-brl" firstAttribute="centerY" secondItem="3wB-Ef-pBq" secondAttribute="centerY" id="iEa-ia-cqV"/>
                                                                                                 </constraints>
                                                                                             </view>
+                                                                                            <progressView opaque="NO" tag="3000" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="nyl-NX-aRR">
+                                                                                                <rect key="frame" x="5" y="106" width="190" height="4"/>
+                                                                                                <color key="progressTintColor" systemColor="systemRedColor"/>
+                                                                                                <color key="trackTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                                <userDefinedRuntimeAttributes>
+                                                                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                                                        <real key="value" value="0.0"/>
+                                                                                                    </userDefinedRuntimeAttribute>
+                                                                                                </userDefinedRuntimeAttributes>
+                                                                                            </progressView>
                                                                                         </subviews>
                                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                         <constraints>
@@ -13379,6 +13393,9 @@
                                                                                             <constraint firstItem="3wB-Ef-pBq" firstAttribute="leading" secondItem="G0z-PO-34Y" secondAttribute="leading" id="ZxN-Fx-K6b"/>
                                                                                             <constraint firstItem="G0z-PO-34Y" firstAttribute="top" secondItem="GK2-I8-SXz" secondAttribute="top" constant="2" id="b7w-1v-Ly5"/>
                                                                                             <constraint firstAttribute="trailing" secondItem="G0z-PO-34Y" secondAttribute="trailing" constant="2" id="cyK-T5-4Jx"/>
+                                                                                            <constraint firstAttribute="trailing" secondItem="nyl-NX-aRR" secondAttribute="trailing" constant="5" id="ewu-L3-Q8d"/>
+                                                                                            <constraint firstItem="nyl-NX-aRR" firstAttribute="leading" secondItem="GK2-I8-SXz" secondAttribute="leading" constant="5" id="gSE-MD-qw6"/>
+                                                                                            <constraint firstAttribute="bottom" secondItem="nyl-NX-aRR" secondAttribute="bottom" constant="10" id="nns-rK-SBr"/>
                                                                                             <constraint firstItem="Vue-I1-jYg" firstAttribute="top" secondItem="GK2-I8-SXz" secondAttribute="top" constant="7" id="nsl-kW-3os"/>
                                                                                             <constraint firstItem="lbf-IV-4Ml" firstAttribute="centerY" secondItem="GK2-I8-SXz" secondAttribute="centerY" id="oAO-L6-Xdd"/>
                                                                                             <constraint firstAttribute="bottom" secondItem="G0z-PO-34Y" secondAttribute="bottom" constant="2" id="rZQ-ie-JP6"/>
@@ -13549,13 +13566,17 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstItem="yk4-9a-y7j" firstAttribute="leading" secondItem="ASX-8W-1ur" secondAttribute="leading" id="1gd-7E-DWf"/>
                                     <constraint firstItem="cEd-Qw-hYb" firstAttribute="top" secondItem="QHA-h7-Nvy" secondAttribute="top" id="78W-KA-c6z"/>
                                     <constraint firstAttribute="trailing" secondItem="QHA-h7-Nvy" secondAttribute="trailing" id="AZ2-Iu-2OL"/>
                                     <constraint firstItem="rtg-Oq-Gsb" firstAttribute="leading" secondItem="ASX-8W-1ur" secondAttribute="leading" id="Dmb-li-hPO"/>
+                                    <constraint firstAttribute="trailing" secondItem="yk4-9a-y7j" secondAttribute="trailing" id="Hud-PU-F06"/>
+                                    <constraint firstItem="yk4-9a-y7j" firstAttribute="top" secondItem="ASX-8W-1ur" secondAttribute="top" id="I4h-48-Nnu"/>
                                     <constraint firstItem="cEd-Qw-hYb" firstAttribute="leading" secondItem="QHA-h7-Nvy" secondAttribute="leading" id="JRz-zE-X0a"/>
                                     <constraint firstItem="QHA-h7-Nvy" firstAttribute="top" secondItem="ASX-8W-1ur" secondAttribute="top" id="KZ1-K2-3Jv"/>
                                     <constraint firstItem="cEd-Qw-hYb" firstAttribute="bottom" secondItem="QHA-h7-Nvy" secondAttribute="bottom" id="OzJ-Tm-cPQ"/>
                                     <constraint firstItem="rtg-Oq-Gsb" firstAttribute="top" secondItem="QHA-h7-Nvy" secondAttribute="bottom" id="P0l-Ph-VXe"/>
+                                    <constraint firstItem="rtg-Oq-Gsb" firstAttribute="top" secondItem="yk4-9a-y7j" secondAttribute="bottom" id="Sbh-Sp-Dfy"/>
                                     <constraint firstItem="QHA-h7-Nvy" firstAttribute="leading" secondItem="ASX-8W-1ur" secondAttribute="leading" id="Ygo-lO-09I"/>
                                     <constraint firstAttribute="bottom" secondItem="rtg-Oq-Gsb" secondAttribute="bottom" id="iqV-xp-sR9"/>
                                     <constraint firstItem="cEd-Qw-hYb" firstAttribute="trailing" secondItem="QHA-h7-Nvy" secondAttribute="trailing" id="lR5-Yi-ZVz"/>
@@ -13582,12 +13603,13 @@
                         <outlet property="playerView" destination="QHA-h7-Nvy" id="nVx-4Q-daO"/>
                         <outlet property="tableView" destination="rtg-Oq-Gsb" id="5al-4Z-0dN"/>
                         <outlet property="titleLbl" destination="6XF-h7-tWX" id="gYt-wh-9SS"/>
+                        <outlet property="videoLayerPlayer" destination="yk4-9a-y7j" id="emN-rp-KWf"/>
                         <outlet property="videoPlayer" destination="cEd-Qw-hYb" id="cKf-gL-NB9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PFm-pH-rer" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-317" y="3738"/>
+            <point key="canvasLocation" x="-318.75" y="3737.323943661972"/>
         </scene>
         <!--Epsiode Detail Vc-->
         <scene sceneID="aAx-tw-FND">
@@ -20511,8 +20533,12 @@
         <designable name="mgs-vC-fS2">
             <size key="intrinsicContentSize" width="72" height="30"/>
         </designable>
-        <designable name="oi9-u4-KXu"/>
-        <designable name="rMA-ji-xf8"/>
+        <designable name="oi9-u4-KXu">
+            <size key="intrinsicContentSize" width="62" height="30"/>
+        </designable>
+        <designable name="rMA-ji-xf8">
+            <size key="intrinsicContentSize" width="65.5" height="28"/>
+        </designable>
         <designable name="sTZ-zc-WCu">
             <size key="intrinsicContentSize" width="35" height="30"/>
         </designable>
@@ -20585,7 +20611,7 @@
         <image name="hand.thumbsup.fill" catalog="system" width="128" height="121"/>
         <image name="holilogo" width="300" height="169"/>
         <image name="holilogo2" width="1920" height="1080"/>
-        <image name="home_active" width="43" height="40"/>
+        <image name="home_active" width="20.5" height="19"/>
         <image name="home_inactive" width="20.5" height="19"/>
         <image name="icloud.and.arrow.down.fill" catalog="system" width="128" height="111"/>
         <image name="image_slider1" width="358" height="203.5"/>
@@ -20669,49 +20695,49 @@
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="linkColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="quaternaryLabelColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.17647058823529413" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.1764705882" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="secondarySystemBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray4Color">
-            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.81960784310000001" green="0.81960784310000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray6Color">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGrayColor">
-            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGroupedBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemIndigoColor">
-            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemMintColor">
-            <color red="0.0" green="0.7803921568627451" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.78039215689999997" blue="0.74509803919999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemPinkColor">
-            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

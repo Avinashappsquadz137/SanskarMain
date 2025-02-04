@@ -506,9 +506,26 @@ extension MMPlayerLayer {
             return
         }
         
+//        UIView.animate(withDuration: 0.2, animations: { [weak self] in
+//            print("isShow", isShow)
+//            self?.coverView?.alpha = (isShow) ? 1.0 : 0.0
+//        })
         UIView.animate(withDuration: 0.2, animations: { [weak self] in
-            self?.coverView?.alpha = (isShow) ? 1.0 : 0.0
-        })
+            print("isShow", isShow)
+            self?.coverView?.alpha = isShow ? 1.0 : 0.0
+            self?.coverView?.isUserInteractionEnabled = isShow
+        }) { [weak self] _ in
+            // If isShow is true, hide it after 3 seconds
+            if isShow {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) { [weak self] in
+                    UIView.animate(withDuration: 0.2) {
+                        self?.coverView?.alpha = 0.0
+                        self?.coverView?.isUserInteractionEnabled = false
+                    }
+                }
+            }
+        }
+
     }
 }
 
@@ -580,9 +597,17 @@ extension MMPlayerLayer {
                         break
                     }
                 }
-            
-                if let cover = self?.coverView, cover.responds(to: #selector(cover.timerObserver(time:))) {
-                    cover.timerObserver!(time: time)
+                let isEnabled = UserDefaults.standard.bool(forKey: "isEnabled")
+                //print("Stored Bool value: \(isEnabled)")
+               // print("coverView",self?.coverView)
+                if isEnabled {
+                    if let cover = self?.coverView, cover.responds(to: #selector(cover.statictimerObserver(time:))) {
+                        cover.statictimerObserver!(time: time)
+                    }
+                }else {
+                    if let cover = self?.coverView, cover.responds(to: #selector(cover.timerObserver(time:))) {
+                        cover.timerObserver!(time: time)
+                    }
                 }
             })
         }

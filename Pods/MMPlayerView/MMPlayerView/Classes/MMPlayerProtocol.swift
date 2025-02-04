@@ -14,6 +14,7 @@ import SwiftUI
     @objc optional func player(isMuted: Bool)
     
     @objc optional func timerObserver(time: CMTime)
+    @objc optional func statictimerObserver(time: CMTime)
     @objc optional func coverView(isShow: Bool)
     @objc optional func removeObserver()
     @objc optional func addObserver()
