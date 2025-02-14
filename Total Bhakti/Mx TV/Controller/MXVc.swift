@@ -628,6 +628,7 @@ extension MXVc {
 
    
         }
+        self.setDataWithTime()
         loadProgram()
         exact = exactTime()
         guard let playTime = UserDefaults.standard.value(forKey: "playTime") as? Int else {return}
