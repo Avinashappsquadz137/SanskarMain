@@ -50,7 +50,7 @@ class MXVc: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        UserDefaults.standard.set(false, forKey: "isEnabled")
         getProgram()
         getChannel()
         hitData()
