@@ -2076,12 +2076,21 @@ extension TBHomeVC : UICollectionViewDataSource {
                 if indexPath.row < seasonList.count {
                     let posts = seasonList[indexPath.row]
                     let progressbar = cell.viewWithTag(1000) as? UIProgressView
-                    if let progressValueString = posts.progress,  // Unwrap the optional
-                       let progressValue = Float(progressValueString) { // Convert String to Float
-                        progressbar?.progress = progressValue / 100.0 // Normalize to 0.0–1.0
+                    if let progressValueString = posts.progress,
+                       let progressValue = Float(progressValueString) {
+                        progressbar?.progress = progressValue / 100.0
                     } else {
-                        progressbar?.progress = 0.0 // Default value if conversion fails
+                        progressbar?.progress = 0.0
                     }
+                    if let imagelatest = cell.viewWithTag(4000) as? UIImageView {
+                        if posts.newly_released == "1" {
+                            imagelatest.isHidden = false
+                            imagelatest.image = UIImage(named: "newlyReleased")
+                        }else {
+                            imagelatest.isHidden = true
+                        }
+                    }
+                    
                     image?.sd_setIndicatorStyle(.gray)
                     image?.sd_setShowActivityIndicatorView(true)
                     image?.layer.cornerRadius = 5.0

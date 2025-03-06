@@ -855,7 +855,7 @@ class freeModel{
     var is_locked: String?
     var short_desc: String?
     var season_title: String?
-    
+    var newly_released : String?
     //Promotion Model
     var description: String?
     var season_thumbnail: String?
@@ -920,6 +920,7 @@ class freeModel{
         self.status = dict.validatedValue("status")
         self.is_locked = dict.validatedValue("is_locked")
         self.short_desc = dict.validatedValue("short_desc")
+        self.newly_released = dict.validatedValue("newly_released")
         self.season_title = dict.validatedValue("season_title")
         self.token = dict.validatedValue("token")
         self.encrypted_url = dict.validatedValue("encrypted_url")

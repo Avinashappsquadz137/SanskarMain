@@ -431,6 +431,18 @@ extension newPremiumvc: UICollectionViewDataSource {
                 return UICollectionViewCell()
             }
             let data = (((premiumDataArr[collectionView.tag] as [String:Any])["season_details"] as? [[String:Any]] ?? [[:]])[indexPath.row]["vertical_banner"] as? String ?? "")
+            
+            let datas = (((premiumDataArr[collectionView.tag] as [String:Any])["season_details"] as? [[String:Any]] ?? [[:]])[indexPath.row]["newly_released"] as? String ?? "")
+            
+            if let imagelatest = cell.viewWithTag(201) as? UIImageView {
+                if datas == "1" {
+                    imagelatest.isHidden = false
+                    imagelatest.image = UIImage(named: "newlyReleased")
+                }else {
+                    imagelatest.isHidden = true
+                }
+            }
+            
             cell.dataImg.sd_setImage(with: URL(string: data), placeholderImage: UIImage(named: ""), options: .refreshCached, completed: nil)
 //            cell.dataView.layer.cornerRadius = 5.0
 //            cell.dataView.clipsToBounds = true

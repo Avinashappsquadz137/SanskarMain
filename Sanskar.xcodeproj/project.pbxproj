@@ -6474,46 +6474,46 @@
 		A3F8CAAC2267169500B7DE49 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A3F8CBDC2267169600B7DE49 /* AAPlayer */,
-				A3F8CBDE2267169600B7DE49 /* Alamofire */,
-				A3F8CBE22267169600B7DE49 /* CircleProgressView */,
-				076B0AF727034BD8007CB8CF /* CLTypingLabel */,
-				4ADBA7C622FC10B80084C652 /* CountryPickerView */,
-				4ADBA7C822FC10B80084C652 /* CountryPickerView-CountryPickerView */,
-				0754AC732705E45900564419 /* CryptoSwift */,
-				07005D3727AD06BF00ACFB50 /* DropDown */,
-				5A5C06A724111AD000659A0C /* ExpandableLabel */,
-				A3F8CBE42267169600B7DE49 /* FacebookCore */,
-				A3F8CBE62267169600B7DE49 /* FacebookLogin */,
-				A3F8CBE82267169600B7DE49 /* FBSDKCoreKit */,
-				A3F8CBEA2267169600B7DE49 /* FBSDKLoginKit */,
-				073C069A26EA3E460048C60B /* FittedSheets */,
-				0767C17926FCB8D60080CE3A /* FSPagerView */,
-				A3F8CBEE2267169600B7DE49 /* GoogleToolboxForMac */,
-				9397B85D26943EFC0037A511 /* GoogleUtilities */,
-				C78884A62C24658C007B3FFF /* GoogleUtilities-GoogleUtilities_Privacy */,
-				A3F8CBF02267169600B7DE49 /* GTMOAuth2 */,
-				A3F8CBF22267169600B7DE49 /* GTMSessionFetcher */,
-				A3F8CBF42267169600B7DE49 /* IQKeyboardManagerSwift */,
-				07CC649A27B63896009F3186 /* MarqueeLabel */,
-				A3F8CBF62267169600B7DE49 /* MICountryPicker */,
-				FADB9B72243482FA00020AA3 /* MMPlayerView */,
-				9397B85F26943EFC0037A511 /* nanopb */,
-				0787FD6628644EFB0082CECD /* OTPFieldView */,
-				5AEA388E23E3FE8B00EE2571 /* PaddingLabel */,
-				FADB9DCC2434CC4900020AA3 /* Pods-Sanskar */,
-				9397B86126943EFC0037A511 /* PromisesObjC */,
-				C78884A82C24658C007B3FFF /* PromisesObjC-FBLPromises_Privacy */,
-				A3F8CBFC2267169600B7DE49 /* Protobuf */,
-				C7AAB50A2C245F2C00AE510C /* Protobuf-Protobuf_Privacy */,
-				A3F8CBFE2267169600B7DE49 /* ReadMoreTextView */,
-				A3F8CC002267169600B7DE49 /* SDWebImage */,
-				A3F8CC022267169600B7DE49 /* SlideMenuControllerSwift */,
-				876B0BFA26D3A7D900F5C4A0 /* VerticalCardSwiper */,
-				D5DE327F2A80EE7D00FDBD9E /* youtube-ios-player-helper */,
-				D5DE32812A80EE7D00FDBD9E /* youtube-ios-player-helper-Assets */,
-				FA78AC9A243F3BDE0068B2FD /* YouTubePlayer */,
-				87F199AC262ECC440049D4A5 /* YoutubePlayer-in-WKWebView */,
+				A3F8CBDC2267169600B7DE49 /* AAPlayer.framework */,
+				A3F8CBDE2267169600B7DE49 /* Alamofire.framework */,
+				A3F8CBE22267169600B7DE49 /* CircleProgressView.framework */,
+				076B0AF727034BD8007CB8CF /* CLTypingLabel.framework */,
+				4ADBA7C622FC10B80084C652 /* CountryPickerView.framework */,
+				4ADBA7C822FC10B80084C652 /* CountryPickerView.bundle */,
+				0754AC732705E45900564419 /* CryptoSwift.framework */,
+				07005D3727AD06BF00ACFB50 /* DropDown.framework */,
+				5A5C06A724111AD000659A0C /* ExpandableLabel.framework */,
+				A3F8CBE42267169600B7DE49 /* FacebookCore.framework */,
+				A3F8CBE62267169600B7DE49 /* FacebookLogin.framework */,
+				A3F8CBE82267169600B7DE49 /* FBSDKCoreKit.framework */,
+				A3F8CBEA2267169600B7DE49 /* FBSDKLoginKit.framework */,
+				073C069A26EA3E460048C60B /* FittedSheets.framework */,
+				0767C17926FCB8D60080CE3A /* FSPagerView.framework */,
+				A3F8CBEE2267169600B7DE49 /* GoogleToolboxForMac.framework */,
+				9397B85D26943EFC0037A511 /* GoogleUtilities.framework */,
+				C78884A62C24658C007B3FFF /* GoogleUtilities_Privacy.bundle */,
+				A3F8CBF02267169600B7DE49 /* GTMOAuth2.framework */,
+				A3F8CBF22267169600B7DE49 /* GTMSessionFetcher.framework */,
+				A3F8CBF42267169600B7DE49 /* IQKeyboardManagerSwift.framework */,
+				07CC649A27B63896009F3186 /* MarqueeLabel.framework */,
+				A3F8CBF62267169600B7DE49 /* MICountryPicker.framework */,
+				FADB9B72243482FA00020AA3 /* MMPlayerView.framework */,
+				9397B85F26943EFC0037A511 /* nanopb.framework */,
+				0787FD6628644EFB0082CECD /* OTPFieldView.framework */,
+				5AEA388E23E3FE8B00EE2571 /* PaddingLabel.framework */,
+				FADB9DCC2434CC4900020AA3 /* Pods_Sanskar.framework */,
+				9397B86126943EFC0037A511 /* FBLPromises.framework */,
+				C78884A82C24658C007B3FFF /* FBLPromises_Privacy.bundle */,
+				A3F8CBFC2267169600B7DE49 /* Protobuf.framework */,
+				C7AAB50A2C245F2C00AE510C /* Protobuf_Privacy.bundle */,
+				A3F8CBFE2267169600B7DE49 /* ReadMoreTextView.framework */,
+				A3F8CC002267169600B7DE49 /* SDWebImage.framework */,
+				A3F8CC022267169600B7DE49 /* SlideMenuControllerSwift.framework */,
+				876B0BFA26D3A7D900F5C4A0 /* VerticalCardSwiper.framework */,
+				D5DE327F2A80EE7D00FDBD9E /* youtube_ios_player_helper.framework */,
+				D5DE32812A80EE7D00FDBD9E /* Assets.bundle */,
+				FA78AC9A243F3BDE0068B2FD /* YouTubePlayer.framework */,
+				87F199AC262ECC440049D4A5 /* YoutubePlayer_in_WKWebView.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -8287,46 +8287,46 @@
 		A3F8CE41226716A200B7DE49 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A3F8CF71226716A300B7DE49 /* AAPlayer */,
-				A3F8CF73226716A300B7DE49 /* Alamofire */,
-				A3F8CF77226716A300B7DE49 /* CircleProgressView */,
-				076B0B5D27034BD8007CB8CF /* CLTypingLabel */,
-				4ADBA7FA22FC10B80084C652 /* CountryPickerView */,
-				4ADBA7FC22FC10B80084C652 /* CountryPickerView-CountryPickerView */,
-				0754ACDB2705E45900564419 /* CryptoSwift */,
-				07005DA127AD06BF00ACFB50 /* DropDown */,
-				5A5C06F524111AD000659A0C /* ExpandableLabel */,
-				A3F8CF79226716A300B7DE49 /* FacebookCore */,
-				A3F8CF7B226716A300B7DE49 /* FacebookLogin */,
-				A3F8CF7D226716A300B7DE49 /* FBSDKCoreKit */,
-				A3F8CF7F226716A300B7DE49 /* FBSDKLoginKit */,
-				073C06FC26EA3E460048C60B /* FittedSheets */,
-				0767C1DD26FCB8D60080CE3A /* FSPagerView */,
-				A3F8CF83226716A300B7DE49 /* GoogleToolboxForMac */,
-				9397B8C326943EFC0037A511 /* GoogleUtilities */,
-				C78885282C24658C007B3FFF /* GoogleUtilities-GoogleUtilities_Privacy */,
-				A3F8CF85226716A300B7DE49 /* GTMOAuth2 */,
-				A3F8CF87226716A300B7DE49 /* GTMSessionFetcher */,
-				A3F8CF89226716A300B7DE49 /* IQKeyboardManagerSwift */,
-				07CC650627B63896009F3186 /* MarqueeLabel */,
-				A3F8CF8B226716A300B7DE49 /* MICountryPicker */,
-				FADB9BC2243482FA00020AA3 /* MMPlayerView */,
-				9397B8C526943EFC0037A511 /* nanopb */,
-				0787FDD628644EFB0082CECD /* OTPFieldView */,
-				5AEA38DA23E3FE8B00EE2571 /* PaddingLabel */,
-				FADB9E1C2434CC4900020AA3 /* Pods-Sanskar */,
-				9397B8C726943EFC0037A511 /* PromisesObjC */,
-				C788852A2C24658C007B3FFF /* PromisesObjC-FBLPromises_Privacy */,
-				A3F8CF91226716A300B7DE49 /* Protobuf */,
-				C7AAB5842C245F2C00AE510C /* Protobuf-Protobuf_Privacy */,
-				A3F8CF93226716A300B7DE49 /* ReadMoreTextView */,
-				A3F8CF95226716A300B7DE49 /* SDWebImage */,
-				A3F8CF97226716A300B7DE49 /* SlideMenuControllerSwift */,
-				876B0C5826D3A7D900F5C4A0 /* VerticalCardSwiper */,
-				D5DE32F72A80EE7D00FDBD9E /* youtube-ios-player-helper */,
-				D5DE32F92A80EE7D00FDBD9E /* youtube-ios-player-helper-Assets */,
-				FA78ACEA243F3BDE0068B2FD /* YouTubePlayer */,
-				87F199FE262ECC440049D4A5 /* YoutubePlayer-in-WKWebView */,
+				A3F8CF71226716A300B7DE49 /* AAPlayer.framework */,
+				A3F8CF73226716A300B7DE49 /* Alamofire.framework */,
+				A3F8CF77226716A300B7DE49 /* CircleProgressView.framework */,
+				076B0B5D27034BD8007CB8CF /* CLTypingLabel.framework */,
+				4ADBA7FA22FC10B80084C652 /* CountryPickerView.framework */,
+				4ADBA7FC22FC10B80084C652 /* CountryPickerView.bundle */,
+				0754ACDB2705E45900564419 /* CryptoSwift.framework */,
+				07005DA127AD06BF00ACFB50 /* DropDown.framework */,
+				5A5C06F524111AD000659A0C /* ExpandableLabel.framework */,
+				A3F8CF79226716A300B7DE49 /* FacebookCore.framework */,
+				A3F8CF7B226716A300B7DE49 /* FacebookLogin.framework */,
+				A3F8CF7D226716A300B7DE49 /* FBSDKCoreKit.framework */,
+				A3F8CF7F226716A300B7DE49 /* FBSDKLoginKit.framework */,
+				073C06FC26EA3E460048C60B /* FittedSheets.framework */,
+				0767C1DD26FCB8D60080CE3A /* FSPagerView.framework */,
+				A3F8CF83226716A300B7DE49 /* GoogleToolboxForMac.framework */,
+				9397B8C326943EFC0037A511 /* GoogleUtilities.framework */,
+				C78885282C24658C007B3FFF /* GoogleUtilities_Privacy.bundle */,
+				A3F8CF85226716A300B7DE49 /* GTMOAuth2.framework */,
+				A3F8CF87226716A300B7DE49 /* GTMSessionFetcher.framework */,
+				A3F8CF89226716A300B7DE49 /* IQKeyboardManagerSwift.framework */,
+				07CC650627B63896009F3186 /* MarqueeLabel.framework */,
+				A3F8CF8B226716A300B7DE49 /* MICountryPicker.framework */,
+				FADB9BC2243482FA00020AA3 /* MMPlayerView.framework */,
+				9397B8C526943EFC0037A511 /* nanopb.framework */,
+				0787FDD628644EFB0082CECD /* OTPFieldView.framework */,
+				5AEA38DA23E3FE8B00EE2571 /* PaddingLabel.framework */,
+				FADB9E1C2434CC4900020AA3 /* Pods_Sanskar.framework */,
+				9397B8C726943EFC0037A511 /* FBLPromises.framework */,
+				C788852A2C24658C007B3FFF /* FBLPromises_Privacy.bundle */,
+				A3F8CF91226716A300B7DE49 /* Protobuf.framework */,
+				C7AAB5842C245F2C00AE510C /* Protobuf_Privacy.bundle */,
+				A3F8CF93226716A300B7DE49 /* ReadMoreTextView.framework */,
+				A3F8CF95226716A300B7DE49 /* SDWebImage.framework */,
+				A3F8CF97226716A300B7DE49 /* SlideMenuControllerSwift.framework */,
+				876B0C5826D3A7D900F5C4A0 /* VerticalCardSwiper.framework */,
+				D5DE32F72A80EE7D00FDBD9E /* youtube_ios_player_helper.framework */,
+				D5DE32F92A80EE7D00FDBD9E /* Assets.bundle */,
+				FA78ACEA243F3BDE0068B2FD /* YouTubePlayer.framework */,
+				87F199FE262ECC440049D4A5 /* YoutubePlayer_in_WKWebView.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -10117,46 +10117,46 @@
 		A3F8D1D8226716C000B7DE49 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A3F8D308226716C100B7DE49 /* AAPlayer */,
-				A3F8D30A226716C100B7DE49 /* Alamofire */,
-				A3F8D30E226716C100B7DE49 /* CircleProgressView */,
-				076B0B2A27034BD8007CB8CF /* CLTypingLabel */,
-				4ADBA7E022FC10B80084C652 /* CountryPickerView */,
-				4ADBA7E222FC10B80084C652 /* CountryPickerView-CountryPickerView */,
-				0754ACA72705E45900564419 /* CryptoSwift */,
-				07005D6C27AD06BF00ACFB50 /* DropDown */,
-				5A5C06CE24111AD000659A0C /* ExpandableLabel */,
-				A3F8D310226716C100B7DE49 /* FacebookCore */,
-				A3F8D312226716C100B7DE49 /* FacebookLogin */,
-				A3F8D314226716C100B7DE49 /* FBSDKCoreKit */,
-				A3F8D316226716C100B7DE49 /* FBSDKLoginKit */,
-				073C06CB26EA3E460048C60B /* FittedSheets */,
-				0767C1AB26FCB8D60080CE3A /* FSPagerView */,
-				A3F8D31A226716C100B7DE49 /* GoogleToolboxForMac */,
-				9397B89026943EFC0037A511 /* GoogleUtilities */,
-				C78884E72C24658C007B3FFF /* GoogleUtilities-GoogleUtilities_Privacy */,
-				A3F8D31C226716C100B7DE49 /* GTMOAuth2 */,
-				A3F8D31E226716C100B7DE49 /* GTMSessionFetcher */,
-				A3F8D320226716C100B7DE49 /* IQKeyboardManagerSwift */,
-				07CC64D027B63896009F3186 /* MarqueeLabel */,
-				A3F8D322226716C100B7DE49 /* MICountryPicker */,
-				FADB9B9A243482FA00020AA3 /* MMPlayerView */,
-				9397B89226943EFC0037A511 /* nanopb */,
-				0787FD9E28644EFB0082CECD /* OTPFieldView */,
-				5AEA38B423E3FE8B00EE2571 /* PaddingLabel */,
-				FADB9DF42434CC4900020AA3 /* Pods-Sanskar */,
-				9397B89426943EFC0037A511 /* PromisesObjC */,
-				C78884E92C24658C007B3FFF /* PromisesObjC-FBLPromises_Privacy */,
-				A3F8D328226716C100B7DE49 /* Protobuf */,
-				C7AAB5472C245F2C00AE510C /* Protobuf-Protobuf_Privacy */,
-				A3F8D32A226716C100B7DE49 /* ReadMoreTextView */,
-				A3F8D32C226716C100B7DE49 /* SDWebImage */,
-				A3F8D32E226716C100B7DE49 /* SlideMenuControllerSwift */,
-				876B0C2926D3A7D900F5C4A0 /* VerticalCardSwiper */,
-				D5DE32BB2A80EE7D00FDBD9E /* youtube-ios-player-helper */,
-				D5DE32BD2A80EE7D00FDBD9E /* youtube-ios-player-helper-Assets */,
-				FA78ACC2243F3BDE0068B2FD /* YouTubePlayer */,
-				87F199D5262ECC440049D4A5 /* YoutubePlayer-in-WKWebView */,
+				A3F8D308226716C100B7DE49 /* AAPlayer.framework */,
+				A3F8D30A226716C100B7DE49 /* Alamofire.framework */,
+				A3F8D30E226716C100B7DE49 /* CircleProgressView.framework */,
+				076B0B2A27034BD8007CB8CF /* CLTypingLabel.framework */,
+				4ADBA7E022FC10B80084C652 /* CountryPickerView.framework */,
+				4ADBA7E222FC10B80084C652 /* CountryPickerView.bundle */,
+				0754ACA72705E45900564419 /* CryptoSwift.framework */,
+				07005D6C27AD06BF00ACFB50 /* DropDown.framework */,
+				5A5C06CE24111AD000659A0C /* ExpandableLabel.framework */,
+				A3F8D310226716C100B7DE49 /* FacebookCore.framework */,
+				A3F8D312226716C100B7DE49 /* FacebookLogin.framework */,
+				A3F8D314226716C100B7DE49 /* FBSDKCoreKit.framework */,
+				A3F8D316226716C100B7DE49 /* FBSDKLoginKit.framework */,
+				073C06CB26EA3E460048C60B /* FittedSheets.framework */,
+				0767C1AB26FCB8D60080CE3A /* FSPagerView.framework */,
+				A3F8D31A226716C100B7DE49 /* GoogleToolboxForMac.framework */,
+				9397B89026943EFC0037A511 /* GoogleUtilities.framework */,
+				C78884E72C24658C007B3FFF /* GoogleUtilities_Privacy.bundle */,
+				A3F8D31C226716C100B7DE49 /* GTMOAuth2.framework */,
+				A3F8D31E226716C100B7DE49 /* GTMSessionFetcher.framework */,
+				A3F8D320226716C100B7DE49 /* IQKeyboardManagerSwift.framework */,
+				07CC64D027B63896009F3186 /* MarqueeLabel.framework */,
+				A3F8D322226716C100B7DE49 /* MICountryPicker.framework */,
+				FADB9B9A243482FA00020AA3 /* MMPlayerView.framework */,
+				9397B89226943EFC0037A511 /* nanopb.framework */,
+				0787FD9E28644EFB0082CECD /* OTPFieldView.framework */,
+				5AEA38B423E3FE8B00EE2571 /* PaddingLabel.framework */,
+				FADB9DF42434CC4900020AA3 /* Pods_Sanskar.framework */,
+				9397B89426943EFC0037A511 /* FBLPromises.framework */,
+				C78884E92C24658C007B3FFF /* FBLPromises_Privacy.bundle */,
+				A3F8D328226716C100B7DE49 /* Protobuf.framework */,
+				C7AAB5472C245F2C00AE510C /* Protobuf_Privacy.bundle */,
+				A3F8D32A226716C100B7DE49 /* ReadMoreTextView.framework */,
+				A3F8D32C226716C100B7DE49 /* SDWebImage.framework */,
+				A3F8D32E226716C100B7DE49 /* SlideMenuControllerSwift.framework */,
+				876B0C2926D3A7D900F5C4A0 /* VerticalCardSwiper.framework */,
+				D5DE32BB2A80EE7D00FDBD9E /* youtube_ios_player_helper.framework */,
+				D5DE32BD2A80EE7D00FDBD9E /* Assets.bundle */,
+				FA78ACC2243F3BDE0068B2FD /* YouTubePlayer.framework */,
+				87F199D5262ECC440049D4A5 /* YoutubePlayer_in_WKWebView.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -11007,962 +11007,842 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		07005D3727AD06BF00ACFB50 /* DropDown */ = {
+		07005D3727AD06BF00ACFB50 /* DropDown.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = DropDown;
 			path = DropDown.framework;
 			remoteRef = 07005D3627AD06BF00ACFB50 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		07005D6C27AD06BF00ACFB50 /* DropDown */ = {
+		07005D6C27AD06BF00ACFB50 /* DropDown.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = DropDown;
 			path = DropDown.framework;
 			remoteRef = 07005D6B27AD06BF00ACFB50 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		07005DA127AD06BF00ACFB50 /* DropDown */ = {
+		07005DA127AD06BF00ACFB50 /* DropDown.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = DropDown;
 			path = DropDown.framework;
 			remoteRef = 07005DA027AD06BF00ACFB50 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		073C069A26EA3E460048C60B /* FittedSheets */ = {
+		073C069A26EA3E460048C60B /* FittedSheets.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = FittedSheets;
 			path = FittedSheets.framework;
 			remoteRef = 073C069926EA3E460048C60B /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		073C06CB26EA3E460048C60B /* FittedSheets */ = {
+		073C06CB26EA3E460048C60B /* FittedSheets.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = FittedSheets;
 			path = FittedSheets.framework;
 			remoteRef = 073C06CA26EA3E460048C60B /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		073C06FC26EA3E460048C60B /* FittedSheets */ = {
+		073C06FC26EA3E460048C60B /* FittedSheets.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = FittedSheets;
 			path = FittedSheets.framework;
 			remoteRef = 073C06FB26EA3E460048C60B /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		0754AC732705E45900564419 /* CryptoSwift */ = {
+		0754AC732705E45900564419 /* CryptoSwift.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = CryptoSwift;
 			path = CryptoSwift.framework;
 			remoteRef = 0754AC722705E45900564419 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		0754ACA72705E45900564419 /* CryptoSwift */ = {
+		0754ACA72705E45900564419 /* CryptoSwift.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = CryptoSwift;
 			path = CryptoSwift.framework;
 			remoteRef = 0754ACA62705E45900564419 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		0754ACDB2705E45900564419 /* CryptoSwift */ = {
+		0754ACDB2705E45900564419 /* CryptoSwift.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = CryptoSwift;
 			path = CryptoSwift.framework;
 			remoteRef = 0754ACDA2705E45900564419 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		0767C17926FCB8D60080CE3A /* FSPagerView */ = {
+		0767C17926FCB8D60080CE3A /* FSPagerView.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = FSPagerView;
 			path = FSPagerView.framework;
 			remoteRef = 0767C17826FCB8D60080CE3A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		0767C1AB26FCB8D60080CE3A /* FSPagerView */ = {
+		0767C1AB26FCB8D60080CE3A /* FSPagerView.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = FSPagerView;
 			path = FSPagerView.framework;
 			remoteRef = 0767C1AA26FCB8D60080CE3A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		0767C1DD26FCB8D60080CE3A /* FSPagerView */ = {
+		0767C1DD26FCB8D60080CE3A /* FSPagerView.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = FSPagerView;
 			path = FSPagerView.framework;
 			remoteRef = 0767C1DC26FCB8D60080CE3A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		076B0AF727034BD8007CB8CF /* CLTypingLabel */ = {
+		076B0AF727034BD8007CB8CF /* CLTypingLabel.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = CLTypingLabel;
 			path = CLTypingLabel.framework;
 			remoteRef = 076B0AF627034BD8007CB8CF /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		076B0B2A27034BD8007CB8CF /* CLTypingLabel */ = {
+		076B0B2A27034BD8007CB8CF /* CLTypingLabel.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = CLTypingLabel;
 			path = CLTypingLabel.framework;
 			remoteRef = 076B0B2927034BD8007CB8CF /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		076B0B5D27034BD8007CB8CF /* CLTypingLabel */ = {
+		076B0B5D27034BD8007CB8CF /* CLTypingLabel.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = CLTypingLabel;
 			path = CLTypingLabel.framework;
 			remoteRef = 076B0B5C27034BD8007CB8CF /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		0787FD6628644EFB0082CECD /* OTPFieldView */ = {
+		0787FD6628644EFB0082CECD /* OTPFieldView.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = OTPFieldView;
 			path = OTPFieldView.framework;
 			remoteRef = 0787FD6528644EFB0082CECD /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		0787FD9E28644EFB0082CECD /* OTPFieldView */ = {
+		0787FD9E28644EFB0082CECD /* OTPFieldView.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = OTPFieldView;
 			path = OTPFieldView.framework;
 			remoteRef = 0787FD9D28644EFB0082CECD /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		0787FDD628644EFB0082CECD /* OTPFieldView */ = {
+		0787FDD628644EFB0082CECD /* OTPFieldView.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = OTPFieldView;
 			path = OTPFieldView.framework;
 			remoteRef = 0787FDD528644EFB0082CECD /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		07CC649A27B63896009F3186 /* MarqueeLabel */ = {
+		07CC649A27B63896009F3186 /* MarqueeLabel.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = MarqueeLabel;
 			path = MarqueeLabel.framework;
 			remoteRef = 07CC649927B63896009F3186 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		07CC64D027B63896009F3186 /* MarqueeLabel */ = {
+		07CC64D027B63896009F3186 /* MarqueeLabel.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = MarqueeLabel;
 			path = MarqueeLabel.framework;
 			remoteRef = 07CC64CF27B63896009F3186 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		07CC650627B63896009F3186 /* MarqueeLabel */ = {
+		07CC650627B63896009F3186 /* MarqueeLabel.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = MarqueeLabel;
 			path = MarqueeLabel.framework;
 			remoteRef = 07CC650527B63896009F3186 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		4ADBA7C622FC10B80084C652 /* CountryPickerView */ = {
+		4ADBA7C622FC10B80084C652 /* CountryPickerView.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = CountryPickerView;
 			path = CountryPickerView.framework;
 			remoteRef = 4ADBA7C522FC10B80084C652 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		4ADBA7C822FC10B80084C652 /* CountryPickerView-CountryPickerView */ = {
+		4ADBA7C822FC10B80084C652 /* CountryPickerView.bundle */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			name = "CountryPickerView-CountryPickerView";
 			path = CountryPickerView.bundle;
 			remoteRef = 4ADBA7C722FC10B80084C652 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		4ADBA7E022FC10B80084C652 /* CountryPickerView */ = {
+		4ADBA7E022FC10B80084C652 /* CountryPickerView.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = CountryPickerView;
 			path = CountryPickerView.framework;
 			remoteRef = 4ADBA7DF22FC10B80084C652 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		4ADBA7E222FC10B80084C652 /* CountryPickerView-CountryPickerView */ = {
+		4ADBA7E222FC10B80084C652 /* CountryPickerView.bundle */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			name = "CountryPickerView-CountryPickerView";
 			path = CountryPickerView.bundle;
 			remoteRef = 4ADBA7E122FC10B80084C652 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		4ADBA7FA22FC10B80084C652 /* CountryPickerView */ = {
+		4ADBA7FA22FC10B80084C652 /* CountryPickerView.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = CountryPickerView;
 			path = CountryPickerView.framework;
 			remoteRef = 4ADBA7F922FC10B80084C652 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		4ADBA7FC22FC10B80084C652 /* CountryPickerView-CountryPickerView */ = {
+		4ADBA7FC22FC10B80084C652 /* CountryPickerView.bundle */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			name = "CountryPickerView-CountryPickerView";
 			path = CountryPickerView.bundle;
 			remoteRef = 4ADBA7FB22FC10B80084C652 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		5A5C06A724111AD000659A0C /* ExpandableLabel */ = {
+		5A5C06A724111AD000659A0C /* ExpandableLabel.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = ExpandableLabel;
 			path = ExpandableLabel.framework;
 			remoteRef = 5A5C06A624111AD000659A0C /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		5A5C06CE24111AD000659A0C /* ExpandableLabel */ = {
+		5A5C06CE24111AD000659A0C /* ExpandableLabel.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = ExpandableLabel;
 			path = ExpandableLabel.framework;
 			remoteRef = 5A5C06CD24111AD000659A0C /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		5A5C06F524111AD000659A0C /* ExpandableLabel */ = {
+		5A5C06F524111AD000659A0C /* ExpandableLabel.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = ExpandableLabel;
 			path = ExpandableLabel.framework;
 			remoteRef = 5A5C06F424111AD000659A0C /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		5AEA388E23E3FE8B00EE2571 /* PaddingLabel */ = {
+		5AEA388E23E3FE8B00EE2571 /* PaddingLabel.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = PaddingLabel;
 			path = PaddingLabel.framework;
 			remoteRef = 5AEA388D23E3FE8B00EE2571 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		5AEA38B423E3FE8B00EE2571 /* PaddingLabel */ = {
+		5AEA38B423E3FE8B00EE2571 /* PaddingLabel.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = PaddingLabel;
 			path = PaddingLabel.framework;
 			remoteRef = 5AEA38B323E3FE8B00EE2571 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		5AEA38DA23E3FE8B00EE2571 /* PaddingLabel */ = {
+		5AEA38DA23E3FE8B00EE2571 /* PaddingLabel.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = PaddingLabel;
 			path = PaddingLabel.framework;
 			remoteRef = 5AEA38D923E3FE8B00EE2571 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		876B0BFA26D3A7D900F5C4A0 /* VerticalCardSwiper */ = {
+		876B0BFA26D3A7D900F5C4A0 /* VerticalCardSwiper.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = VerticalCardSwiper;
 			path = VerticalCardSwiper.framework;
 			remoteRef = 876B0BF926D3A7D900F5C4A0 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		876B0C2926D3A7D900F5C4A0 /* VerticalCardSwiper */ = {
+		876B0C2926D3A7D900F5C4A0 /* VerticalCardSwiper.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = VerticalCardSwiper;
 			path = VerticalCardSwiper.framework;
 			remoteRef = 876B0C2826D3A7D900F5C4A0 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		876B0C5826D3A7D900F5C4A0 /* VerticalCardSwiper */ = {
+		876B0C5826D3A7D900F5C4A0 /* VerticalCardSwiper.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = VerticalCardSwiper;
 			path = VerticalCardSwiper.framework;
 			remoteRef = 876B0C5726D3A7D900F5C4A0 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		87F199AC262ECC440049D4A5 /* YoutubePlayer-in-WKWebView */ = {
+		87F199AC262ECC440049D4A5 /* YoutubePlayer_in_WKWebView.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = "YoutubePlayer-in-WKWebView";
 			path = YoutubePlayer_in_WKWebView.framework;
 			remoteRef = 87F199AB262ECC440049D4A5 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		87F199D5262ECC440049D4A5 /* YoutubePlayer-in-WKWebView */ = {
+		87F199D5262ECC440049D4A5 /* YoutubePlayer_in_WKWebView.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = "YoutubePlayer-in-WKWebView";
 			path = YoutubePlayer_in_WKWebView.framework;
 			remoteRef = 87F199D4262ECC440049D4A5 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		87F199FE262ECC440049D4A5 /* YoutubePlayer-in-WKWebView */ = {
+		87F199FE262ECC440049D4A5 /* YoutubePlayer_in_WKWebView.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = "YoutubePlayer-in-WKWebView";
 			path = YoutubePlayer_in_WKWebView.framework;
 			remoteRef = 87F199FD262ECC440049D4A5 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		9397B85D26943EFC0037A511 /* GoogleUtilities */ = {
+		9397B85D26943EFC0037A511 /* GoogleUtilities.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = GoogleUtilities;
 			path = GoogleUtilities.framework;
 			remoteRef = 9397B85C26943EFC0037A511 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		9397B85F26943EFC0037A511 /* nanopb */ = {
+		9397B85F26943EFC0037A511 /* nanopb.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = nanopb;
 			path = nanopb.framework;
 			remoteRef = 9397B85E26943EFC0037A511 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		9397B86126943EFC0037A511 /* PromisesObjC */ = {
+		9397B86126943EFC0037A511 /* FBLPromises.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = PromisesObjC;
 			path = FBLPromises.framework;
 			remoteRef = 9397B86026943EFC0037A511 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		9397B89026943EFC0037A511 /* GoogleUtilities */ = {
+		9397B89026943EFC0037A511 /* GoogleUtilities.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = GoogleUtilities;
 			path = GoogleUtilities.framework;
 			remoteRef = 9397B88F26943EFC0037A511 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		9397B89226943EFC0037A511 /* nanopb */ = {
+		9397B89226943EFC0037A511 /* nanopb.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = nanopb;
 			path = nanopb.framework;
 			remoteRef = 9397B89126943EFC0037A511 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		9397B89426943EFC0037A511 /* PromisesObjC */ = {
+		9397B89426943EFC0037A511 /* FBLPromises.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = PromisesObjC;
 			path = FBLPromises.framework;
 			remoteRef = 9397B89326943EFC0037A511 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		9397B8C326943EFC0037A511 /* GoogleUtilities */ = {
+		9397B8C326943EFC0037A511 /* GoogleUtilities.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = GoogleUtilities;
 			path = GoogleUtilities.framework;
 			remoteRef = 9397B8C226943EFC0037A511 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		9397B8C526943EFC0037A511 /* nanopb */ = {
+		9397B8C526943EFC0037A511 /* nanopb.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = nanopb;
 			path = nanopb.framework;
 			remoteRef = 9397B8C426943EFC0037A511 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		9397B8C726943EFC0037A511 /* PromisesObjC */ = {
+		9397B8C726943EFC0037A511 /* FBLPromises.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = PromisesObjC;
 			path = FBLPromises.framework;
 			remoteRef = 9397B8C626943EFC0037A511 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		A3F8CBDC2267169600B7DE49 /* AAPlayer */ = {
+		A3F8CBDC2267169600B7DE49 /* AAPlayer.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = AAPlayer;
 			path = AAPlayer.framework;
 			remoteRef = A3F8CBDB2267169600B7DE49 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		A3F8CBDE2267169600B7DE49 /* Alamofire */ = {
+		A3F8CBDE2267169600B7DE49 /* Alamofire.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = Alamofire;
 			path = Alamofire.framework;
 			remoteRef = A3F8CBDD2267169600B7DE49 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		A3F8CBE22267169600B7DE49 /* CircleProgressView */ = {
+		A3F8CBE22267169600B7DE49 /* CircleProgressView.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = CircleProgressView;
 			path = CircleProgressView.framework;
 			remoteRef = A3F8CBE12267169600B7DE49 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		A3F8CBE42267169600B7DE49 /* FacebookCore */ = {
+		A3F8CBE42267169600B7DE49 /* FacebookCore.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = FacebookCore;
 			path = FacebookCore.framework;
 			remoteRef = A3F8CBE32267169600B7DE49 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		A3F8CBE62267169600B7DE49 /* FacebookLogin */ = {
+		A3F8CBE62267169600B7DE49 /* FacebookLogin.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = FacebookLogin;
 			path = FacebookLogin.framework;
 			remoteRef = A3F8CBE52267169600B7DE49 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		A3F8CBE82267169600B7DE49 /* FBSDKCoreKit */ = {
+		A3F8CBE82267169600B7DE49 /* FBSDKCoreKit.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = FBSDKCoreKit;
 			path = FBSDKCoreKit.framework;
 			remoteRef = A3F8CBE72267169600B7DE49 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		A3F8CBEA2267169600B7DE49 /* FBSDKLoginKit */ = {
+		A3F8CBEA2267169600B7DE49 /* FBSDKLoginKit.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = FBSDKLoginKit;
 			path = FBSDKLoginKit.framework;
 			remoteRef = A3F8CBE92267169600B7DE49 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		A3F8CBEE2267169600B7DE49 /* GoogleToolboxForMac */ = {
+		A3F8CBEE2267169600B7DE49 /* GoogleToolboxForMac.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = GoogleToolboxForMac;
 			path = GoogleToolboxForMac.framework;
 			remoteRef = A3F8CBED2267169600B7DE49 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		A3F8CBF02267169600B7DE49 /* GTMOAuth2 */ = {
+		A3F8CBF02267169600B7DE49 /* GTMOAuth2.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = GTMOAuth2;
 			path = GTMOAuth2.framework;
 			remoteRef = A3F8CBEF2267169600B7DE49 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		A3F8CBF22267169600B7DE49 /* GTMSessionFetcher */ = {
+		A3F8CBF22267169600B7DE49 /* GTMSessionFetcher.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = GTMSessionFetcher;
 			path = GTMSessionFetcher.framework;
 			remoteRef = A3F8CBF12267169600B7DE49 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		A3F8CBF42267169600B7DE49 /* IQKeyboardManagerSwift */ = {
+		A3F8CBF42267169600B7DE49 /* IQKeyboardManagerSwift.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = IQKeyboardManagerSwift;
 			path = IQKeyboardManagerSwift.framework;
 			remoteRef = A3F8CBF32267169600B7DE49 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		A3F8CBF62267169600B7DE49 /* MICountryPicker */ = {
+		A3F8CBF62267169600B7DE49 /* MICountryPicker.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = MICountryPicker;
 			path = MICountryPicker.framework;
 			remoteRef = A3F8CBF52267169600B7DE49 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		A3F8CBFC2267169600B7DE49 /* Protobuf */ = {
+		A3F8CBFC2267169600B7DE49 /* Protobuf.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = Protobuf;
 			path = Protobuf.framework;
 			remoteRef = A3F8CBFB2267169600B7DE49 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		A3F8CBFE2267169600B7DE49 /* ReadMoreTextView */ = {
+		A3F8CBFE2267169600B7DE49 /* ReadMoreTextView.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = ReadMoreTextView;
 			path = ReadMoreTextView.framework;
 			remoteRef = A3F8CBFD2267169600B7DE49 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		A3F8CC002267169600B7DE49 /* SDWebImage */ = {
+		A3F8CC002267169600B7DE49 /* SDWebImage.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = SDWebImage;
 			path = SDWebImage.framework;
 			remoteRef = A3F8CBFF2267169600B7DE49 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		A3F8CC022267169600B7DE49 /* SlideMenuControllerSwift */ = {
+		A3F8CC022267169600B7DE49 /* SlideMenuControllerSwift.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = SlideMenuControllerSwift;
 			path = SlideMenuControllerSwift.framework;
 			remoteRef = A3F8CC012267169600B7DE49 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		A3F8CF71226716A300B7DE49 /* AAPlayer */ = {
+		A3F8CF71226716A300B7DE49 /* AAPlayer.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = AAPlayer;
 			path = AAPlayer.framework;
 			remoteRef = A3F8CF70226716A300B7DE49 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		A3F8CF73226716A300B7DE49 /* Alamofire */ = {
+		A3F8CF73226716A300B7DE49 /* Alamofire.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = Alamofire;
 			path = Alamofire.framework;
 			remoteRef = A3F8CF72226716A300B7DE49 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		A3F8CF77226716A300B7DE49 /* CircleProgressView */ = {
+		A3F8CF77226716A300B7DE49 /* CircleProgressView.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = CircleProgressView;
 			path = CircleProgressView.framework;
 			remoteRef = A3F8CF76226716A300B7DE49 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		A3F8CF79226716A300B7DE49 /* FacebookCore */ = {
+		A3F8CF79226716A300B7DE49 /* FacebookCore.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = FacebookCore;
 			path = FacebookCore.framework;
 			remoteRef = A3F8CF78226716A300B7DE49 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		A3F8CF7B226716A300B7DE49 /* FacebookLogin */ = {
+		A3F8CF7B226716A300B7DE49 /* FacebookLogin.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = FacebookLogin;
 			path = FacebookLogin.framework;
 			remoteRef = A3F8CF7A226716A300B7DE49 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		A3F8CF7D226716A300B7DE49 /* FBSDKCoreKit */ = {
+		A3F8CF7D226716A300B7DE49 /* FBSDKCoreKit.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = FBSDKCoreKit;
 			path = FBSDKCoreKit.framework;
 			remoteRef = A3F8CF7C226716A300B7DE49 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		A3F8CF7F226716A300B7DE49 /* FBSDKLoginKit */ = {
+		A3F8CF7F226716A300B7DE49 /* FBSDKLoginKit.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = FBSDKLoginKit;
 			path = FBSDKLoginKit.framework;
 			remoteRef = A3F8CF7E226716A300B7DE49 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		A3F8CF83226716A300B7DE49 /* GoogleToolboxForMac */ = {
+		A3F8CF83226716A300B7DE49 /* GoogleToolboxForMac.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = GoogleToolboxForMac;
 			path = GoogleToolboxForMac.framework;
 			remoteRef = A3F8CF82226716A300B7DE49 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		A3F8CF85226716A300B7DE49 /* GTMOAuth2 */ = {
+		A3F8CF85226716A300B7DE49 /* GTMOAuth2.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = GTMOAuth2;
 			path = GTMOAuth2.framework;
 			remoteRef = A3F8CF84226716A300B7DE49 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		A3F8CF87226716A300B7DE49 /* GTMSessionFetcher */ = {
+		A3F8CF87226716A300B7DE49 /* GTMSessionFetcher.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = GTMSessionFetcher;
 			path = GTMSessionFetcher.framework;
 			remoteRef = A3F8CF86226716A300B7DE49 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		A3F8CF89226716A300B7DE49 /* IQKeyboardManagerSwift */ = {
+		A3F8CF89226716A300B7DE49 /* IQKeyboardManagerSwift.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = IQKeyboardManagerSwift;
 			path = IQKeyboardManagerSwift.framework;
 			remoteRef = A3F8CF88226716A300B7DE49 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		A3F8CF8B226716A300B7DE49 /* MICountryPicker */ = {
+		A3F8CF8B226716A300B7DE49 /* MICountryPicker.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = MICountryPicker;
 			path = MICountryPicker.framework;
 			remoteRef = A3F8CF8A226716A300B7DE49 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		A3F8CF91226716A300B7DE49 /* Protobuf */ = {
+		A3F8CF91226716A300B7DE49 /* Protobuf.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = Protobuf;
 			path = Protobuf.framework;
 			remoteRef = A3F8CF90226716A300B7DE49 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		A3F8CF93226716A300B7DE49 /* ReadMoreTextView */ = {
+		A3F8CF93226716A300B7DE49 /* ReadMoreTextView.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = ReadMoreTextView;
 			path = ReadMoreTextView.framework;
 			remoteRef = A3F8CF92226716A300B7DE49 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		A3F8CF95226716A300B7DE49 /* SDWebImage */ = {
+		A3F8CF95226716A300B7DE49 /* SDWebImage.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = SDWebImage;
 			path = SDWebImage.framework;
 			remoteRef = A3F8CF94226716A300B7DE49 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		A3F8CF97226716A300B7DE49 /* SlideMenuControllerSwift */ = {
+		A3F8CF97226716A300B7DE49 /* SlideMenuControllerSwift.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = SlideMenuControllerSwift;
 			path = SlideMenuControllerSwift.framework;
 			remoteRef = A3F8CF96226716A300B7DE49 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		A3F8D308226716C100B7DE49 /* AAPlayer */ = {
+		A3F8D308226716C100B7DE49 /* AAPlayer.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = AAPlayer;
 			path = AAPlayer.framework;
 			remoteRef = A3F8D307226716C100B7DE49 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		A3F8D30A226716C100B7DE49 /* Alamofire */ = {
+		A3F8D30A226716C100B7DE49 /* Alamofire.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = Alamofire;
 			path = Alamofire.framework;
 			remoteRef = A3F8D309226716C100B7DE49 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		A3F8D30E226716C100B7DE49 /* CircleProgressView */ = {
+		A3F8D30E226716C100B7DE49 /* CircleProgressView.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = CircleProgressView;
 			path = CircleProgressView.framework;
 			remoteRef = A3F8D30D226716C100B7DE49 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		A3F8D310226716C100B7DE49 /* FacebookCore */ = {
+		A3F8D310226716C100B7DE49 /* FacebookCore.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = FacebookCore;
 			path = FacebookCore.framework;
 			remoteRef = A3F8D30F226716C100B7DE49 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		A3F8D312226716C100B7DE49 /* FacebookLogin */ = {
+		A3F8D312226716C100B7DE49 /* FacebookLogin.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = FacebookLogin;
 			path = FacebookLogin.framework;
 			remoteRef = A3F8D311226716C100B7DE49 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		A3F8D314226716C100B7DE49 /* FBSDKCoreKit */ = {
+		A3F8D314226716C100B7DE49 /* FBSDKCoreKit.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = FBSDKCoreKit;
 			path = FBSDKCoreKit.framework;
 			remoteRef = A3F8D313226716C100B7DE49 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		A3F8D316226716C100B7DE49 /* FBSDKLoginKit */ = {
+		A3F8D316226716C100B7DE49 /* FBSDKLoginKit.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = FBSDKLoginKit;
 			path = FBSDKLoginKit.framework;
 			remoteRef = A3F8D315226716C100B7DE49 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		A3F8D31A226716C100B7DE49 /* GoogleToolboxForMac */ = {
+		A3F8D31A226716C100B7DE49 /* GoogleToolboxForMac.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = GoogleToolboxForMac;
 			path = GoogleToolboxForMac.framework;
 			remoteRef = A3F8D319226716C100B7DE49 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		A3F8D31C226716C100B7DE49 /* GTMOAuth2 */ = {
+		A3F8D31C226716C100B7DE49 /* GTMOAuth2.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = GTMOAuth2;
 			path = GTMOAuth2.framework;
 			remoteRef = A3F8D31B226716C100B7DE49 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		A3F8D31E226716C100B7DE49 /* GTMSessionFetcher */ = {
+		A3F8D31E226716C100B7DE49 /* GTMSessionFetcher.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = GTMSessionFetcher;
 			path = GTMSessionFetcher.framework;
 			remoteRef = A3F8D31D226716C100B7DE49 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		A3F8D320226716C100B7DE49 /* IQKeyboardManagerSwift */ = {
+		A3F8D320226716C100B7DE49 /* IQKeyboardManagerSwift.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = IQKeyboardManagerSwift;
 			path = IQKeyboardManagerSwift.framework;
 			remoteRef = A3F8D31F226716C100B7DE49 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		A3F8D322226716C100B7DE49 /* MICountryPicker */ = {
+		A3F8D322226716C100B7DE49 /* MICountryPicker.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = MICountryPicker;
 			path = MICountryPicker.framework;
 			remoteRef = A3F8D321226716C100B7DE49 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		A3F8D328226716C100B7DE49 /* Protobuf */ = {
+		A3F8D328226716C100B7DE49 /* Protobuf.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = Protobuf;
 			path = Protobuf.framework;
 			remoteRef = A3F8D327226716C100B7DE49 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		A3F8D32A226716C100B7DE49 /* ReadMoreTextView */ = {
+		A3F8D32A226716C100B7DE49 /* ReadMoreTextView.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = ReadMoreTextView;
 			path = ReadMoreTextView.framework;
 			remoteRef = A3F8D329226716C100B7DE49 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		A3F8D32C226716C100B7DE49 /* SDWebImage */ = {
+		A3F8D32C226716C100B7DE49 /* SDWebImage.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = SDWebImage;
 			path = SDWebImage.framework;
 			remoteRef = A3F8D32B226716C100B7DE49 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		A3F8D32E226716C100B7DE49 /* SlideMenuControllerSwift */ = {
+		A3F8D32E226716C100B7DE49 /* SlideMenuControllerSwift.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = SlideMenuControllerSwift;
 			path = SlideMenuControllerSwift.framework;
 			remoteRef = A3F8D32D226716C100B7DE49 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		C78884A62C24658C007B3FFF /* GoogleUtilities-GoogleUtilities_Privacy */ = {
+		C78884A62C24658C007B3FFF /* GoogleUtilities_Privacy.bundle */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			name = "GoogleUtilities-GoogleUtilities_Privacy";
 			path = GoogleUtilities_Privacy.bundle;
 			remoteRef = C78884A52C24658C007B3FFF /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		C78884A82C24658C007B3FFF /* PromisesObjC-FBLPromises_Privacy */ = {
+		C78884A82C24658C007B3FFF /* FBLPromises_Privacy.bundle */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			name = "PromisesObjC-FBLPromises_Privacy";
 			path = FBLPromises_Privacy.bundle;
 			remoteRef = C78884A72C24658C007B3FFF /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		C78884E72C24658C007B3FFF /* GoogleUtilities-GoogleUtilities_Privacy */ = {
+		C78884E72C24658C007B3FFF /* GoogleUtilities_Privacy.bundle */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			name = "GoogleUtilities-GoogleUtilities_Privacy";
 			path = GoogleUtilities_Privacy.bundle;
 			remoteRef = C78884E62C24658C007B3FFF /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		C78884E92C24658C007B3FFF /* PromisesObjC-FBLPromises_Privacy */ = {
+		C78884E92C24658C007B3FFF /* FBLPromises_Privacy.bundle */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			name = "PromisesObjC-FBLPromises_Privacy";
 			path = FBLPromises_Privacy.bundle;
 			remoteRef = C78884E82C24658C007B3FFF /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		C78885282C24658C007B3FFF /* GoogleUtilities-GoogleUtilities_Privacy */ = {
+		C78885282C24658C007B3FFF /* GoogleUtilities_Privacy.bundle */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			name = "GoogleUtilities-GoogleUtilities_Privacy";
 			path = GoogleUtilities_Privacy.bundle;
 			remoteRef = C78885272C24658C007B3FFF /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		C788852A2C24658C007B3FFF /* PromisesObjC-FBLPromises_Privacy */ = {
+		C788852A2C24658C007B3FFF /* FBLPromises_Privacy.bundle */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			name = "PromisesObjC-FBLPromises_Privacy";
 			path = FBLPromises_Privacy.bundle;
 			remoteRef = C78885292C24658C007B3FFF /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		C7AAB50A2C245F2C00AE510C /* Protobuf-Protobuf_Privacy */ = {
+		C7AAB50A2C245F2C00AE510C /* Protobuf_Privacy.bundle */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			name = "Protobuf-Protobuf_Privacy";
 			path = Protobuf_Privacy.bundle;
 			remoteRef = C7AAB5092C245F2C00AE510C /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		C7AAB5472C245F2C00AE510C /* Protobuf-Protobuf_Privacy */ = {
+		C7AAB5472C245F2C00AE510C /* Protobuf_Privacy.bundle */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			name = "Protobuf-Protobuf_Privacy";
 			path = Protobuf_Privacy.bundle;
 			remoteRef = C7AAB5462C245F2C00AE510C /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		C7AAB5842C245F2C00AE510C /* Protobuf-Protobuf_Privacy */ = {
+		C7AAB5842C245F2C00AE510C /* Protobuf_Privacy.bundle */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			name = "Protobuf-Protobuf_Privacy";
 			path = Protobuf_Privacy.bundle;
 			remoteRef = C7AAB5832C245F2C00AE510C /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		D5DE327F2A80EE7D00FDBD9E /* youtube-ios-player-helper */ = {
+		D5DE327F2A80EE7D00FDBD9E /* youtube_ios_player_helper.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = "youtube-ios-player-helper";
 			path = youtube_ios_player_helper.framework;
 			remoteRef = D5DE327E2A80EE7D00FDBD9E /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		D5DE32812A80EE7D00FDBD9E /* youtube-ios-player-helper-Assets */ = {
+		D5DE32812A80EE7D00FDBD9E /* Assets.bundle */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			name = "youtube-ios-player-helper-Assets";
 			path = Assets.bundle;
 			remoteRef = D5DE32802A80EE7D00FDBD9E /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		D5DE32BB2A80EE7D00FDBD9E /* youtube-ios-player-helper */ = {
+		D5DE32BB2A80EE7D00FDBD9E /* youtube_ios_player_helper.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = "youtube-ios-player-helper";
 			path = youtube_ios_player_helper.framework;
 			remoteRef = D5DE32BA2A80EE7D00FDBD9E /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		D5DE32BD2A80EE7D00FDBD9E /* youtube-ios-player-helper-Assets */ = {
+		D5DE32BD2A80EE7D00FDBD9E /* Assets.bundle */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			name = "youtube-ios-player-helper-Assets";
 			path = Assets.bundle;
 			remoteRef = D5DE32BC2A80EE7D00FDBD9E /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		D5DE32F72A80EE7D00FDBD9E /* youtube-ios-player-helper */ = {
+		D5DE32F72A80EE7D00FDBD9E /* youtube_ios_player_helper.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = "youtube-ios-player-helper";
 			path = youtube_ios_player_helper.framework;
 			remoteRef = D5DE32F62A80EE7D00FDBD9E /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		D5DE32F92A80EE7D00FDBD9E /* youtube-ios-player-helper-Assets */ = {
+		D5DE32F92A80EE7D00FDBD9E /* Assets.bundle */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			name = "youtube-ios-player-helper-Assets";
 			path = Assets.bundle;
 			remoteRef = D5DE32F82A80EE7D00FDBD9E /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		FA78AC9A243F3BDE0068B2FD /* YouTubePlayer */ = {
+		FA78AC9A243F3BDE0068B2FD /* YouTubePlayer.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = YouTubePlayer;
 			path = YouTubePlayer.framework;
 			remoteRef = FA78AC99243F3BDE0068B2FD /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		FA78ACC2243F3BDE0068B2FD /* YouTubePlayer */ = {
+		FA78ACC2243F3BDE0068B2FD /* YouTubePlayer.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = YouTubePlayer;
 			path = YouTubePlayer.framework;
 			remoteRef = FA78ACC1243F3BDE0068B2FD /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		FA78ACEA243F3BDE0068B2FD /* YouTubePlayer */ = {
+		FA78ACEA243F3BDE0068B2FD /* YouTubePlayer.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = YouTubePlayer;
 			path = YouTubePlayer.framework;
 			remoteRef = FA78ACE9243F3BDE0068B2FD /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		FADB9B72243482FA00020AA3 /* MMPlayerView */ = {
+		FADB9B72243482FA00020AA3 /* MMPlayerView.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = MMPlayerView;
 			path = MMPlayerView.framework;
 			remoteRef = FADB9B71243482FA00020AA3 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		FADB9B9A243482FA00020AA3 /* MMPlayerView */ = {
+		FADB9B9A243482FA00020AA3 /* MMPlayerView.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = MMPlayerView;
 			path = MMPlayerView.framework;
 			remoteRef = FADB9B99243482FA00020AA3 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		FADB9BC2243482FA00020AA3 /* MMPlayerView */ = {
+		FADB9BC2243482FA00020AA3 /* MMPlayerView.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = MMPlayerView;
 			path = MMPlayerView.framework;
 			remoteRef = FADB9BC1243482FA00020AA3 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		FADB9DCC2434CC4900020AA3 /* Pods-Sanskar */ = {
+		FADB9DCC2434CC4900020AA3 /* Pods_Sanskar.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = "Pods-Sanskar";
 			path = Pods_Sanskar.framework;
 			remoteRef = FADB9DCB2434CC4900020AA3 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		FADB9DF42434CC4900020AA3 /* Pods-Sanskar */ = {
+		FADB9DF42434CC4900020AA3 /* Pods_Sanskar.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = "Pods-Sanskar";
 			path = Pods_Sanskar.framework;
 			remoteRef = FADB9DF32434CC4900020AA3 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		FADB9E1C2434CC4900020AA3 /* Pods-Sanskar */ = {
+		FADB9E1C2434CC4900020AA3 /* Pods_Sanskar.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			name = "Pods-Sanskar";
 			path = Pods_Sanskar.framework;
 			remoteRef = FADB9E1B2434CC4900020AA3 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
