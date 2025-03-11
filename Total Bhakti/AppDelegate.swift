@@ -513,80 +513,63 @@ class AppDelegate: UIResponder, UIApplicationDelegate , UNUserNotificationCenter
             }
         }
     }
-    
-    func CallAPI(_ param : Parameters, url:String){
-        
-        
-        Alamofire.upload(multipartFormData: { multipartFormData in
+
+    func CallAPI(_ param: Parameters, url: String) {
+        let fullURL = APIManager.sharedInstance.KBASEURL + url
+
+        AF.upload(multipartFormData: { multipartFormData in
             for (key, value) in param {
-                multipartFormData.append((value as AnyObject).data(using: String.Encoding.utf8.rawValue)!, withName: key )
+                if let stringValue = value as? String, let data = stringValue.data(using: .utf8) {
+                    multipartFormData.append(data, withName: key)
+                }
             }
-        }, to: APIManager.sharedInstance.KBASEURL+url, method: .get, headers: nil,
-        encodingCompletion: { encodingResult in
-            switch encodingResult {
-            case .success(let upload, _, _):
-                upload.responseJSON { response in
-                    debugPrint(response)
-                    DispatchQueue.main.async(execute: { loader.shareInstance.hideLoading()})
-                    if let responseData = response.response {
-                        switch responseData.statusCode {
-                        case APIManager.sharedInstance.KHTTPSUCCESS:
-                            guard let result = response.result.value else {
-                                return
-                            }
-                            print(result)
-                            
-                            let dict = result as? Dictionary<String,Any>
-                            let data = dict?["data"] as? Dictionary<String,Any>
-                            //                            UserDefaults.standard.setValue("0", forKey: "is_premium_active")
-                            is_premium_active = "1"
-                            let is_hardUpdate = data!.validatedValue("is_hard_update_ios")
-                            UserDefaults.standard.set(data!.validatedValue("aws_sms_ios"), forKey: "sms")
-                            let AvailableVersion  = data!.validatedValue("ios")
-                            let CurrentVersion = UIApplication.release
-                            if is_hardUpdate == "1"{
-                                if CurrentVersion < AvailableVersion{
-                                    AlertController.alert(title: "Sanskar", message: "Available in a new version , you are using an old version", buttons: ["Not Now","Update"]//buttons: ["Update"] //
-                                    ) { (action, index) in
-                                        if index != 0{
-                                            let urlStr = "itms-apps://itunes.apple.com/app/apple-store/id1497508487?mt=8"
-                                            if #available(iOS 10.0, *) {
-                                                UIApplication.shared.open(URL(string: urlStr)!, options: [:], completionHandler: nil)
-                                            } else {
-                                                UIApplication.shared.openURL(URL(string: urlStr)!)
-                                            }
-                                        }
-                                    }
+        }, to: fullURL, method: .post, headers: nil)
+        .uploadProgress { progress in
+            print("Upload Progress: \(progress.fractionCompleted)")
+        }
+        .responseJSON { response in
+            DispatchQueue.main.async {
+                loader.shareInstance.hideLoading()
+            }
+
+            switch response.result {
+            case .success(let value):
+                print("Response JSON: \(value)")
+
+                guard let dict = value as? [String: Any],
+                      let data = dict["data"] as? [String: Any] else {
+                    print("Error: Response format is invalid")
+                    return
+                }
+
+                let isPremiumActive = "1" // This should be saved where needed
+                
+                if let isHardUpdate = data["is_hard_update_ios"] as? String,
+                   let availableVersion = data["ios"] as? String,
+                   let currentVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+                    
+                    if isHardUpdate == "1", currentVersion < availableVersion {
+                        AlertController.alert(
+                            title: "Sanskar",
+                            message: "A new version is available. You are using an old version.",
+                            buttons: ["Not Now", "Update"]
+                        ) { (action, index) in
+                            if index != 0 {
+                                if let url = URL(string: "itms-apps://itunes.apple.com/app/apple-store/id1497508487?mt=8") {
+                                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
                                 }
                             }
-                            
-                        default:
-                            break
                         }
-                    }
-                    
-                    if let err = response.result.error as? URLError {
-                        if err.code == .notConnectedToInternet{
-                            AlertController.alert(title: ALERTS.kNoInterNetConnection)
-                        }
-                        else if err.code == .timedOut{
-                            // AlertController.alert(title: "Connection time out")
-                        }else if err.code == .networkConnectionLost{
-                            // AlertController.alert(title: "Network Connection Lost")
-                        }
-                    } else {
-                        // AlertController.alert(title: ALERTS.kNoInterNetConnection)
                     }
                 }
-                
-            case .failure(let encodingError):
-                DispatchQueue.main.async(execute: { loader.shareInstance.hideLoading()})
-                // AlertController.alert(title: ALERTS.KSOMETHINGWRONG)
-                print("error:\(encodingError)")
+
+            case .failure(let error):
+                print("API Call Failed: \(error.localizedDescription)")
+
             }
-        })
-        
+        }
     }
+
 }
 
 
@@ -687,83 +670,83 @@ extension AppDelegate{
 //        }
 //    }
     
-    func universalLinkApi(_ param : Parameters, url:String){
-
-        Alamofire.upload(multipartFormData: { multipartFormData in
-            for (key, value) in param {
-                print("key::\(key),,value::\(value)")
-                print("url::",url)
-                multipartFormData.append((value as AnyObject).data(using: String.Encoding.utf8.rawValue)!, withName: key )
-            }
-        }, to: APIManager.sharedInstance.KBASEURL+url, method: .post, headers: nil,
-        encodingCompletion: { encodingResult in
-            switch encodingResult {
-            case .success(let upload, _, _):
-                upload.responseJSON { response in
-                    debugPrint(response)
-                    DispatchQueue.main.async(execute: { loader.shareInstance.hideLoading()})
-                    if let responseData = response.response {
-                        switch responseData.statusCode {
-                        case APIManager.sharedInstance.KHTTPSUCCESS:
-                            guard let result = response.result.value else {
-                                return
-                            }
-                            print(result)
-
-                            switch universalType {
-                            case "1":
-                                print("Video switch::::")
-                                    
-
-                                if let JSON = result as? NSDictionary {
-                                    print(JSON)
-                                    
-
-                                    let data = JSON["data"] as? NSDictionary
-//                                        JSON.ArrayofDict("data")
-
-                                    self.videoList.append(videosResult(dictionary: data!)!)
-                                    let post = self.videoList[0]
-                                    
-                                  
-
-                                    UIViewController().navigatToHomeScreen()
-//                                    TBHomeVC.instance.postData = post
-                                }
-                            case "2":
-                                print("Bhajan switch::::")
-                            case "3":
-                                print("News switch::::")
-                            default:
-                                break
-                            }
-                        default:
-                            break
-                        }
-                    }
-
-                    if let err = response.result.error as? URLError {
-                        if err.code == .notConnectedToInternet{
-                            AlertController.alert(title: ALERTS.kNoInterNetConnection)
-                        }
-                        else if err.code == .timedOut{
-                            // AlertController.alert(title: "Connection time out")
-                        }else if err.code == .networkConnectionLost{
-                            // AlertController.alert(title: "Network Connection Lost")
-                        }
-                    } else {
-                        // AlertController.alert(title: ALERTS.kNoInterNetConnection)
-                    }
-                }
-
-            case .failure(let encodingError):
-                DispatchQueue.main.async(execute: { loader.shareInstance.hideLoading()})
-                // AlertController.alert(title: ALERTS.KSOMETHINGWRONG)
-                print("error:\(encodingError)")
-            }
-        })
-
-    }
+//    func universalLinkApi(_ param : Parameters, url:String){
+//
+//        AF.upload(multipartFormData: { multipartFormData in
+//            for (key, value) in param {
+//                print("key::\(key),,value::\(value)")
+//                print("url::",url)
+//                multipartFormData.append((value as AnyObject).data(using: String.Encoding.utf8.rawValue)!, withName: key )
+//            }
+//        }, to: APIManager.sharedInstance.KBASEURL+url, method: .post, headers: nil,
+//        encodingCompletion: { encodingResult in
+//            switch encodingResult {
+//            case .success(let upload, _, _):
+//                upload.responseJSON { response in
+//                    debugPrint(response)
+//                    DispatchQueue.main.async(execute: { loader.shareInstance.hideLoading()})
+//                    if let responseData = response.response {
+//                        switch responseData.statusCode {
+//                        case APIManager.sharedInstance.KHTTPSUCCESS:
+//                            guard let result = response.result.value else {
+//                                return
+//                            }
+//                            print(result)
+//
+//                            switch universalType {
+//                            case "1":
+//                                print("Video switch::::")
+//                                    
+//
+//                                if let JSON = result as? NSDictionary {
+//                                    print(JSON)
+//                                    
+//
+//                                    let data = JSON["data"] as? NSDictionary
+////                                        JSON.ArrayofDict("data")
+//
+//                                    self.videoList.append(videosResult(dictionary: data!)!)
+//                                    let post = self.videoList[0]
+//                                    
+//                                  
+//
+//                                    UIViewController().navigatToHomeScreen()
+////                                    TBHomeVC.instance.postData = post
+//                                }
+//                            case "2":
+//                                print("Bhajan switch::::")
+//                            case "3":
+//                                print("News switch::::")
+//                            default:
+//                                break
+//                            }
+//                        default:
+//                            break
+//                        }
+//                    }
+//
+//                    if let err = response.result.error as? URLError {
+//                        if err.code == .notConnectedToInternet{
+//                            AlertController.alert(title: ALERTS.kNoInterNetConnection)
+//                        }
+//                        else if err.code == .timedOut{
+//                            // AlertController.alert(title: "Connection time out")
+//                        }else if err.code == .networkConnectionLost{
+//                            // AlertController.alert(title: "Network Connection Lost")
+//                        }
+//                    } else {
+//                        // AlertController.alert(title: ALERTS.kNoInterNetConnection)
+//                    }
+//                }
+//
+//            case .failure(let encodingError):
+//                DispatchQueue.main.async(execute: { loader.shareInstance.hideLoading()})
+//                // AlertController.alert(title: ALERTS.KSOMETHINGWRONG)
+//                print("error:\(encodingError)")
+//            }
+//        })
+//
+//    }
 }
 
 

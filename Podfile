@@ -5,7 +5,7 @@ target 'Sanskar' do
 
   # Pods for Total Bhakti.
    pod 'Google/SignIn'
-  pod 'Alamofire', '~> 4.5'
+  pod 'Alamofire'
   pod 'FacebookCore'
   pod 'FacebookLogin'
   pod 'MICountryPicker'

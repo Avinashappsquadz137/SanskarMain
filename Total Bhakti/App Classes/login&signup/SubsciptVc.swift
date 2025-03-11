@@ -78,7 +78,7 @@ class SubsciptVc: UIViewController {
     func getPremium() {
         var dict = Dictionary<String,Any>()
         dict["user_id"] = currentUser.result?.id ?? "163"
-        HttpHelper.apiCallWithout(postData: dict as NSDictionary, url: "user/user_meta/get_user_premium_plan_details", identifire: "") { result, response, error, data in
+        HttpHelper.apiCallWithout(postData: dict as NSDictionary, url: "user/user_meta/get_user_premium_plan_details",identifier: "") { result, response, error, data in
             guard let data = data, error == nil else {
                 return
             }

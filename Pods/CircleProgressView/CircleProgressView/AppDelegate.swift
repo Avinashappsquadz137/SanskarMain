@@ -39,13 +39,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-        
-        UserDefaults.standard.removeObject(forKey: "isDownloadAudio")
-        UserDefaults.standard.removeObject(forKey: "AudioNo")
-        
-        UserDefaults.standard.removeObject(forKey: "isDownloadVideo")
-        UserDefaults.standard.removeObject(forKey: "VideoNo")
-        
     }
 
 

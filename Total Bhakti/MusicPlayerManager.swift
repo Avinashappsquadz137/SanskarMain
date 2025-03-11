@@ -251,38 +251,35 @@ class MusicPlayerManager{
     }
     // MARK:- recent played songs API
     
-    func recentViewHit(_ param : Parameters) {
-        
-        print(param)
-        
-        Alamofire.upload(multipartFormData: { multipartFormData in
+    func recentViewHit(_ param: [String: Any]) {
+        let url = APIManager.sharedInstance.KBASEURL + APIManager.sharedInstance.KRECENTVIEWAPI
+
+        AF.upload(multipartFormData: { multipartFormData in
             for (key, value) in param {
-                multipartFormData.append((value as AnyObject).data(using: String.Encoding.utf8.rawValue)!, withName: key )
-            }
-        }, to: APIManager.sharedInstance.KBASEURL+APIManager.sharedInstance.KRECENTVIEWAPI, method: .post, headers: nil,
-           encodingCompletion: { encodingResult in
-            switch encodingResult {
-            case .success(let upload, _, _):
-                upload.responseJSON { response in
-                    debugPrint(response)
-                    if let responseData = response.response {
-                        switch responseData.statusCode {
-                        case APIManager.sharedInstance.KHTTPSUCCESS:
-                            guard let result = response.result.value else {
-                                return
-                            }
-                            return
-                        default:
-                            break
-                        }
-                    }
+                print("key::::::\(key)----value:::::\(value)")
+
+                if let stringValue = value as? String, let data = stringValue.data(using: .utf8) {
+                    multipartFormData.append(data, withName: key)
+                } else {
+                    print("Unsupported value type for key: \(key)")
                 }
-            case .failure(let encodingError):
-                print(encodingError)
             }
-        })
+        }, to: url, method: .post)
+        .responseJSON { response in
+            switch response.result {
+            case .success(let jsonResponse):
+                if let statusCode = response.response?.statusCode, statusCode == APIManager.sharedInstance.KHTTPSUCCESS {
+                    print("Success Response: \(jsonResponse)")
+                } else {
+                    print("Failed with status code: \(response.response?.statusCode ?? -1)")
+                }
+
+            case .failure(let error):
+                print("Upload failed: \(error.localizedDescription)")
+            }
+        }
     }
-    
+
     // MARK:- call this function didFinishLaunching in appDelegate this function create session for AVPlayer
     func playAudioBackground() {
         do {
@@ -351,54 +348,50 @@ extension MusicPlayerManager{
         }
     }
     //MARK:- Played bhajan count send.
-    func bhajanCountSendApi(_ param : Parameters){
+    func bhajanCountSendApi(_ param: [String: Any]) {
+        let url = APIManager.sharedInstance.KBASEURL + APIManager.sharedInstance.KBhajanCount
 
-        Alamofire.upload(multipartFormData: { multipartFormData in
+        AF.upload(multipartFormData: { multipartFormData in
             for (key, value) in param {
-                multipartFormData.append((value as AnyObject).data(using: String.Encoding.utf8.rawValue)!, withName: key )
+                print("key::::::\(key)----value:::::\(value)")
+
+                if let stringValue = value as? String, let data = stringValue.data(using: .utf8) {
+                    multipartFormData.append(data, withName: key)
+                } else {
+                    print("Unsupported value type for key: \(key)")
+                }
             }
-        }, to: APIManager.sharedInstance.KBASEURL+APIManager.sharedInstance.KBhajanCount, method: .post, headers: nil,
-        encodingCompletion: { encodingResult in
-            switch encodingResult {
-            case .success(let upload, _, _):
-                upload.responseJSON { response in
-                    debugPrint(response)
-                    DispatchQueue.main.async(execute: { loader.shareInstance.hideLoading()})
-                    if let responseData = response.response {
-                        switch responseData.statusCode {
-                        case APIManager.sharedInstance.KHTTPSUCCESS:
-                            guard let result = response.result.value else {
-                                return
-                            }
-                            print(result)
+        }, to: url, method: .post)
+        .responseJSON { response in
+            DispatchQueue.main.async {
+                loader.shareInstance.hideLoading()
+            }
 
-                        default:
-                            break
-                        }
-                    }
-
-                    if let err = response.result.error as? URLError {
-                        if err.code == .notConnectedToInternet{
-                            AlertController.alert(title: ALERTS.kNoInterNetConnection)
-                        }
-                        else if err.code == .timedOut{
-                            // AlertController.alert(title: "Connection time out")
-                        }else if err.code == .networkConnectionLost{
-                            // AlertController.alert(title: "Network Connection Lost")
-                        }
-                    } else {
-                        // AlertController.alert(title: ALERTS.kNoInterNetConnection)
-                    }
+            switch response.result {
+            case .success(let jsonResponse):
+                if let statusCode = response.response?.statusCode, statusCode == APIManager.sharedInstance.KHTTPSUCCESS {
+                    print("Success Response: \(jsonResponse)")
+                } else {
+                    print("Failed with status code: \(response.response?.statusCode ?? -1)")
                 }
 
-            case .failure(let encodingError):
-                DispatchQueue.main.async(execute: { loader.shareInstance.hideLoading()})
-                // AlertController.alert(title: ALERTS.KSOMETHINGWRONG)
-                print("error:\(encodingError)")
+            case .failure(let error):
+                print("Upload failed with error: \(error.localizedDescription)")
+                DispatchQueue.main.async {
+                    if let urlError = error as? URLError {
+                        if urlError.code == .notConnectedToInternet {
+                            AlertController.alert(title: ALERTS.kNoInterNetConnection)
+                        } else if urlError.code == .timedOut {
+                            AlertController.alert(title: "Connection time out")
+                        } else if urlError.code == .networkConnectionLost {
+                            AlertController.alert(title: "Network Connection Lost")
+                        }
+                    }
+                }
             }
-        })
-
+        }
     }
+
     func nextSong(){
         let nextIndex = MusicPlayerManager.shared.song_no+1
         var bhajanId = ""

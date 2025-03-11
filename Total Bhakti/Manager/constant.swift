@@ -318,202 +318,184 @@ extension UIViewController {
         return false
     }
     
-    func uplaodData(_ url: String, _ param : Parameters , _ success:@escaping (_ response: Any?) -> ()) {
-       // DispatchQueue.main.async(execute: { loader.shareInstance.showLoading(self.view) })
-        Alamofire.upload(multipartFormData: { multipartFormData in
+    func uplaodData(_ url: String, _ param: [String: Any], _ success: @escaping (_ response: Any?) -> ()) {
+        let fullURL = APIManager.sharedInstance.KBASEURL + url
+        
+        AF.upload(multipartFormData: { multipartFormData in
             for (key, value) in param {
                 print("key::::::\(key)----value:::::\(value)")
-                multipartFormData.append((value as AnyObject).data(using: String.Encoding.utf8.rawValue)!, withName: key )
+                
+                if let stringValue = value as? String, let data = stringValue.data(using: .utf8) {
+                    multipartFormData.append(data, withName: key)
+                } else if let dataValue = value as? Data {
+                    multipartFormData.append(dataValue, withName: key)
+                } else {
+                    print("Unsupported value type for key: \(key)")
+                }
             }
-        }, to: APIManager.sharedInstance.KBASEURL+url, method: .post, headers: nil,
-           encodingCompletion: { encodingResult in
-            switch encodingResult {
-            case .success(let upload, _, _):
-                upload.responseJSON { response in
-                    debugPrint(response)
-                    if let responseData = response.response {
-                        switch responseData.statusCode {
-                        case APIManager.sharedInstance.KHTTPSUCCESS:
-                            guard let result = response.result.value else {
-                                success("")
-                                return
-                            }
-                            success(result)
-                            return
-                        default:
-                            break
-                        }
-                    }
+        }, to: fullURL, method: .post)
+        .responseJSON { response in
+            DispatchQueue.main.async {
+                loader.shareInstance.hideLoading()
+            }
+            
+            switch response.result {
+            case .success(let jsonResponse):
+                if let statusCode = response.response?.statusCode, statusCode == APIManager.sharedInstance.KHTTPSUCCESS {
+                    success(jsonResponse)
+                } else {
                     success(nil)
-                    DispatchQueue.main.async(execute: { loader.shareInstance.hideLoading()})
-                    if let err = response.result.error as? URLError {
-                        if err.code == .notConnectedToInternet || err.code == .timedOut {
-                        DispatchQueue.main.async(execute: { loader.shareInstance.hideLoading() })
-//                self.addAlert(ALERTS.KERROR, message: ALERTS.kNoInterNetConnection, buttonTitle: ALERTS.kAlertOK)
-                        } else {
-//                self.addAlert(ALERTS.KERROR, message: ALERTS.kNoInterNetConnection, buttonTitle: ALERTS.kAlertOK)
-                        }
-                    } else {
-//                self.addAlert(ALERTS.KERROR, message: ALERTS.kNoInterNetConnection, buttonTitle: ALERTS.kAlertOK)
-                    }
                 }
                 
-            case .failure(let encodingError):
-                 DispatchQueue.main.async(execute: { loader.shareInstance.hideLoading()})
+            case .failure(let error):
+                print("Upload failed with error: \(error.localizedDescription)")
+                if let urlError = error as? URLError,
+                   urlError.code == .notConnectedToInternet || urlError.code == .timedOut {
+                    print("No internet connection or request timed out.")
+                }
                 success(nil)
-//                self.addAlert(ALERTS.KERROR, message: ALERTS.KSOMETHINGWRONG, buttonTitle: ALERTS.kAlertOK)
-                print("error:\(encodingError)")
             }
-        })
+        }
     }
-    
-    func uplaodDataHeader(_ url: String, _ param : Parameters ,header: HTTPHeaders ,_ success:@escaping (_ response: Any?) -> ()) {
-       // DispatchQueue.main.async(execute: { loader.shareInstance.showLoading(self.view) })
-        Alamofire.upload(multipartFormData: { multipartFormData in
+
+    func uplaodDataHeader(_ url: String, _ param: [String: Any], header: HTTPHeaders, _ success: @escaping (_ response: Any?) -> ()) {
+        let fullURL = APIManager.sharedInstance.KBASEURL + url
+        
+        AF.upload(multipartFormData: { multipartFormData in
             for (key, value) in param {
                 print("key::::::\(key)----value:::::\(value)")
-                multipartFormData.append((value as AnyObject).data(using: String.Encoding.utf8.rawValue)!, withName: key )
+                
+                if let stringValue = value as? String, let data = stringValue.data(using: .utf8) {
+                    multipartFormData.append(data, withName: key)
+                } else if let dataValue = value as? Data {
+                    multipartFormData.append(dataValue, withName: key)
+                } else {
+                    print("Unsupported value type for key: \(key)")
+                }
             }
-        }, to: APIManager.sharedInstance.KBASEURL+url, method: .post, headers: header,
-           encodingCompletion: { encodingResult in
-            switch encodingResult {
-            case .success(let upload, _, _):
-                upload.responseJSON { response in
-                    debugPrint(response)
-                    if let responseData = response.response {
-                        switch responseData.statusCode {
-                        case APIManager.sharedInstance.KHTTPSUCCESS:
-                            guard let result = response.result.value else {
-                                success("")
-                                return
-                            }
-                            success(result)
-                            return
-                        default:
-                            break
-                        }
-                    }
+        }, to: fullURL, method: .post, headers: header)
+        .responseJSON { response in
+            DispatchQueue.main.async {
+                loader.shareInstance.hideLoading()
+            }
+            
+            switch response.result {
+            case .success(let jsonResponse):
+                if let statusCode = response.response?.statusCode, statusCode == APIManager.sharedInstance.KHTTPSUCCESS {
+                    success(jsonResponse)
+                } else {
                     success(nil)
-                    DispatchQueue.main.async(execute: { loader.shareInstance.hideLoading()})
-                    if let err = response.result.error as? URLError {
-                        if err.code == .notConnectedToInternet || err.code == .timedOut {
-                        DispatchQueue.main.async(execute: { loader.shareInstance.hideLoading() })
-                self.addAlert(ALERTS.KERROR, message: ALERTS.kNoInterNetConnection, buttonTitle: ALERTS.kAlertOK)
-                        } else {
-                self.addAlert(ALERTS.KERROR, message: ALERTS.kNoInterNetConnection, buttonTitle: ALERTS.kAlertOK)
-                        }
-                    } else {
-                self.addAlert(ALERTS.KERROR, message: ALERTS.kNoInterNetConnection, buttonTitle: ALERTS.kAlertOK)
+                }
+                
+            case .failure(let error):
+                print("Upload failed with error: \(error.localizedDescription)")
+                if let urlError = error as? URLError,
+                   urlError.code == .notConnectedToInternet || urlError.code == .timedOut {
+                    DispatchQueue.main.async {
+                        loader.shareInstance.hideLoading()
+                        // self.addAlert(ALERTS.KERROR, message: ALERTS.kNoInterNetConnection, buttonTitle: ALERTS.kAlertOK)
+                    }
+                }
+                success(nil)
+            }
+        }
+    }
+
+
+
+    func uplaodData1(_ url: String, _ param: Parameters, _ success: @escaping (_ response: Any?) -> ()) {
+        let fullURL = APIManager.sharedInstance.KBASEURL + url
+
+        AF.upload(multipartFormData: { multipartFormData in
+            for (key, value) in param {
+                print("key:::\(key), value:::::\(value)")
+                
+                if let stringValue = value as? String, let data = stringValue.data(using: .utf8) {
+                    multipartFormData.append(data, withName: key)
+                }
+            }
+        }, to: fullURL, method: .post, headers: nil)
+        .uploadProgress { progress in
+            print("Upload Progress: \(progress.fractionCompleted)")
+        }
+        .responseJSON { response in
+            DispatchQueue.main.async {
+                loader.shareInstance.hideLoading()
+            }
+
+            switch response.result {
+            case .success(let value):
+                print("Response JSON: \(value)")
+
+                guard let responseDict = value as? [String: Any] else {
+                    print("Invalid response format")
+                    success(nil)
+                    return
+                }
+                
+                success(responseDict)
+
+            case .failure(let error):
+                print("Upload Failed: \(error.localizedDescription)")
+
+                if let urlError = error.asAFError?.underlyingError as? URLError {
+                    switch urlError.code {
+                    case .notConnectedToInternet:
+                        print("No Internet Connection")
+                    case .timedOut:
+                        print("Request Timed Out")
+                    default:
+                        break
                     }
                 }
                 
-            case .failure(let encodingError):
-                 DispatchQueue.main.async(execute: { loader.shareInstance.hideLoading()})
                 success(nil)
-//                self.addAlert(ALERTS.KERROR, message: ALERTS.KSOMETHINGWRONG, buttonTitle: ALERTS.kAlertOK)
-                print("error:\(encodingError)")
             }
-        })
+        }
     }
 
     
-    
-    func uplaodData1(_ url: String, _ param : Parameters , _ success:@escaping (_ response: Any?) -> ()) {
-        Alamofire.upload(multipartFormData: { multipartFormData in
+    func uplaodData2(_ url: String, _ param: [String: Any], _ success: @escaping (_ response: Any?) -> ()) {
+        AF.upload(multipartFormData: { multipartFormData in
             for (key, value) in param {
-                print("key:::\(key),value:::::\(value)")
-                multipartFormData.append((value as AnyObject).data(using: String.Encoding.utf8.rawValue)!, withName: key )
+                print("key:::\(key), value:::::\(value)")
+
+                if let stringValue = value as? String, let data = stringValue.data(using: .utf8) {
+                    multipartFormData.append(data, withName: key)
+                } else {
+                    print("Unsupported value type for key: \(key)")
+                }
             }
-        }, to: APIManager.sharedInstance.KBASEURL+url, method: .post, headers: nil,
-           encodingCompletion: { encodingResult in
-            switch encodingResult {
-            case .success(let upload, _, _):
-                upload.responseJSON { response in
-                    debugPrint(response)
-                    if let responseData = response.response {
-                        switch responseData.statusCode {
-                        case APIManager.sharedInstance.KHTTPSUCCESS:
-                            guard let result = response.result.value else {
-                                success("")
-                                return
-                            }
-                            success(result)
-                            return
-                        default:
-                            break
+        }, to: url, method: .post)
+        .responseJSON { response in
+            DispatchQueue.main.async {
+                loader.shareInstance.hideLoading()
+            }
+
+            switch response.result {
+            case .success(let jsonResponse):
+                if let statusCode = response.response?.statusCode, statusCode == APIManager.sharedInstance.KHTTPSUCCESS {
+                    success(jsonResponse)
+                } else {
+                    success(nil)
+                }
+
+            case .failure(let error):
+                print("Upload failed: \(error.localizedDescription)")
+                DispatchQueue.main.async {
+                    if let urlError = error as? URLError {
+                        if urlError.code == .notConnectedToInternet {
+                            print("No internet connection")
+                        } else if urlError.code == .timedOut {
+                            print("Connection timed out")
                         }
                     }
                     success(nil)
-                    DispatchQueue.main.async(execute: { loader.shareInstance.hideLoading()})
-                    if let err = response.result.error as? URLError {
-                        if err.code == .notConnectedToInternet || err.code == .timedOut {
-                            DispatchQueue.main.async(execute: { loader.shareInstance.hideLoading() })
-//                            self.addAlert(ALERTS.KERROR, message: ALERTS.kNoInterNetConnection, buttonTitle: ALERTS.kAlertOK)
-                        } else {
-//                            self.addAlert(ALERTS.KERROR, message: ALERTS.kNoInterNetConnection, buttonTitle: ALERTS.kAlertOK)
-                        }
-                    } else {
-//                        self.addAlert(ALERTS.KERROR, message: ALERTS.kNoInterNetConnection, buttonTitle: ALERTS.kAlertOK)
-                    }
                 }
-                
-            case .failure(let encodingError):
-                DispatchQueue.main.async(execute: { loader.shareInstance.hideLoading()})
-                success(nil)
-//                self.addAlert(ALERTS.KERROR, message: ALERTS.KSOMETHINGWRONG, buttonTitle: ALERTS.kAlertOK)
-                print("error:\(encodingError)")
             }
-        })
+        }
     }
-    
-    func uplaodData2(_ url: String, _ param : Parameters , _ success:@escaping (_ response: Any?) -> ()) {
-        Alamofire.upload(multipartFormData: { multipartFormData in
-            for (key, value) in param {
-                print("key:::\(key),value:::::\(value)")
-                multipartFormData.append((value as AnyObject).data(using: String.Encoding.utf8.rawValue)!, withName: key )
-            }
-        }, to: url, method: .post, headers: nil,
-           encodingCompletion: { encodingResult in
-            switch encodingResult {
-            case .success(let upload, _, _):
-                upload.responseJSON { response in
-                    debugPrint(response)
-                    if let responseData = response.response {
-                        switch responseData.statusCode {
-                        case APIManager.sharedInstance.KHTTPSUCCESS:
-                            guard let result = response.result.value else {
-                                success("")
-                                return
-                            }
-                            success(result)
-                            return
-                        default:
-                            break
-                        }
-                    }
-                    success(nil)
-                    DispatchQueue.main.async(execute: { loader.shareInstance.hideLoading()})
-                    if let err = response.result.error as? URLError {
-                        if err.code == .notConnectedToInternet || err.code == .timedOut {
-                            DispatchQueue.main.async(execute: { loader.shareInstance.hideLoading() })
-//                            self.addAlert(ALERTS.KERROR, message: ALERTS.kNoInterNetConnection, buttonTitle: ALERTS.kAlertOK)
-                        } else {
-//                            self.addAlert(ALERTS.KERROR, message: ALERTS.kNoInterNetConnection, buttonTitle: ALERTS.kAlertOK)
-                        }
-                    } else {
-//                        self.addAlert(ALERTS.KERROR, message: ALERTS.kNoInterNetConnection, buttonTitle: ALERTS.kAlertOK)
-                    }
-                }
-                
-            case .failure(let encodingError):
-                DispatchQueue.main.async(execute: { loader.shareInstance.hideLoading()})
-                success(nil)
-//                self.addAlert(ALERTS.KERROR, message: ALERTS.KSOMETHINGWRONG, buttonTitle: ALERTS.kAlertOK)
-                print("error:\(encodingError)")
-            }
-        })
-    }
-    
+
     //MARK:- recentViewHit.
     func recentViewHit(_ param : Parameters) {
        // loader.shareInstance.hideLoading()

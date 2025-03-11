@@ -326,113 +326,113 @@ class PlayerView: UIView,UIGestureRecognizerDelegate,UITableViewDataSource,UITab
     
     
     //MARK:- Download all audio data.
-    func downloadVideo()
-    {
-        if self.isDowloadingInQueue == true
-        {
-            //   self.downloadBtn.isUserInteractionEnabled = false
-            _ = SweetAlert().showAlert("", subTitle: "video is already added on Queue", style: AlertStyle.error)
-            return
-        }
-        let tempData = dataToShow
-        
-        let context = appDelegate.persistentContainer.viewContext
-        if let tempVideo = try? context.fetch(TBVideos.fetchRequest()) as? [TBVideos] {
-            
-            if let theVideo = tempVideo {
-                
-                let tempVideourl = dataToShow.video_url?.components(separatedBy: ".com")
-                let source = "http://52.204.183.54:1935/vods3/"+"_definst_/mp4:amazons3/bhaktiappproduction" + (tempVideourl?[1])! + "/playlist.m3u8"
-                
-                if let VideoUrl = URL(string: source) {
-                    // then lets create your document folder url
-                    let documentsDirectoryURL =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-                    // lets create your destination file url
-                    let destinationUrl = documentsDirectoryURL.appendingPathComponent(VideoUrl.lastPathComponent)
-                    print(destinationUrl)
-                    
-                    for dic in tempVideo!
-                    {
-                        if dic.id == dataToShow.id
-                        {
-                            //                            self.downloadBtn.isUserInteractionEnabled = true
-                            _ = SweetAlert().showAlert("", subTitle: "This Video Already Downloaded", style: AlertStyle.success)
-                            return
-                            
-                        }
-                    }
-                    
-                    // to check if it exists before downloading it
-                    if FileManager.default.fileExists(atPath: destinationUrl.path) {
-                        print("The file already exists at path")
-                        //                        self.downloadBtn.isUserInteractionEnabled = true
-                        
-                        _ = SweetAlert().showAlert("", subTitle: "This Video Already Downloaded", style: AlertStyle.success)
-                    }
-                    else
-                    {
-                        let destination = DownloadRequest.suggestedDownloadDestination(for: .documentDirectory)
-                        Alamofire.download(dataToShow.video_url as! URLConvertible , method: .get, parameters: nil,encoding: JSONEncoding.default,headers: nil,to: destination).downloadProgress(closure: { (progress) in
-                            
-                            self.isDowloadingInQueue = true
-                            //                            self.downloadBtn.isUserInteractionEnabled = true
-                            
-                            if tempData?.id == self.dataToShow.id
-                            {
-                                //                                self.downloadProgress.isHidden = false
-                                //                                self.downloadProgress.progress = Double(progress.fractionCompleted)
-                            }
-                            //    self.downloadBtn.isUserInteractionEnabled = false
-                            //progress closure
-                            print(progress)
-                        }).response(completionHandler: { (DefaultDownloadResponse) in
-                            //here you able to access the DefaultDownloadResponse
-                            //result closure
-                            
-                            if self.isDowloadingInQueue == true
-                            {
-                                self.isDowloadingInQueue = false
-                            }
-                            
-                            if DefaultDownloadResponse.error != nil
-                            {
-                                //                                self.downloadProgress.progress = 0.00
-                                return
-                            }
-                            //                            self.downloadProgress.progress = 0.00
-                            
-                            let userEntity = NSEntityDescription.entity(forEntityName: "TBVideos", in: context)!
-                            let video = NSManagedObject(entity: userEntity, insertInto: context)
-                            
-                            video.setValue(tempData!.id, forKeyPath: "id")
-                            video.setValue(tempData!.video_title, forKey: "video_title")
-                            let urlString: String =  (DefaultDownloadResponse.destinationURL?.path)!
-                            video.setValue(urlString, forKey: "video_url")
-                            
-                            print(urlString)
-                            
-                            video.setValue(tempData!.author_name, forKey: "author_name")
-                            video.setValue(tempData!.thumbnail_url, forKey: "thumbnail_url")
-                            video.setValue(tempData!.video_desc, forKey: "video_desc")
-                            
-                            if self.dataToShow.id == tempData?.id
-                            {
-                                //                                self.downloadBtn.setImage(UIImage(named: "download_complete.png"), for: .normal)
-                            }
-                        })
-                    }
-                    do {
-                        try context.save()
-                    } catch {
-                        print("Failed saving")
-                    }
-                    
-                }
-            }
-            
-        }
-        
-    }
+  //  func downloadVideo()
+//    {
+//        if self.isDowloadingInQueue == true
+//        {
+//            //   self.downloadBtn.isUserInteractionEnabled = false
+//            _ = SweetAlert().showAlert("", subTitle: "video is already added on Queue", style: AlertStyle.error)
+//            return
+//        }
+//        let tempData = dataToShow
+//        
+//        let context = appDelegate.persistentContainer.viewContext
+//        if let tempVideo = try? context.fetch(TBVideos.fetchRequest()) as? [TBVideos] {
+//            
+//            if let theVideo = tempVideo {
+//                
+//                let tempVideourl = dataToShow.video_url?.components(separatedBy: ".com")
+//                let source = "http://52.204.183.54:1935/vods3/"+"_definst_/mp4:amazons3/bhaktiappproduction" + (tempVideourl?[1])! + "/playlist.m3u8"
+//                
+//                if let VideoUrl = URL(string: source) {
+//                    // then lets create your document folder url
+//                    let documentsDirectoryURL =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+//                    // lets create your destination file url
+//                    let destinationUrl = documentsDirectoryURL.appendingPathComponent(VideoUrl.lastPathComponent)
+//                    print(destinationUrl)
+//                    
+//                    for dic in tempVideo!
+//                    {
+//                        if dic.id == dataToShow.id
+//                        {
+//                            //                            self.downloadBtn.isUserInteractionEnabled = true
+//                            _ = SweetAlert().showAlert("", subTitle: "This Video Already Downloaded", style: AlertStyle.success)
+//                            return
+//                            
+//                        }
+//                    }
+//                    
+//                    // to check if it exists before downloading it
+//                    if FileManager.default.fileExists(atPath: destinationUrl.path) {
+//                        print("The file already exists at path")
+//                        //                        self.downloadBtn.isUserInteractionEnabled = true
+//                        
+//                        _ = SweetAlert().showAlert("", subTitle: "This Video Already Downloaded", style: AlertStyle.success)
+//                    }
+//                    else
+//                    {
+//                        let destination = DownloadRequest.suggestedDownloadDestination(for: .documentDirectory)
+//                        AF.download(dataToShow.video_url as! URLConvertible , method: .get, parameters: nil,encoding: JSONEncoding.default,headers: nil,to: destination).downloadProgress(closure: { (progress) in
+//                            
+//                            self.isDowloadingInQueue = true
+//                            //                            self.downloadBtn.isUserInteractionEnabled = true
+//                            
+//                            if tempData?.id == self.dataToShow.id
+//                            {
+//                                //                                self.downloadProgress.isHidden = false
+//                                //                                self.downloadProgress.progress = Double(progress.fractionCompleted)
+//                            }
+//                            //    self.downloadBtn.isUserInteractionEnabled = false
+//                            //progress closure
+//                            print(progress)
+//                        }).response(completionHandler: { (DefaultDownloadResponse) in
+//                            //here you able to access the DefaultDownloadResponse
+//                            //result closure
+//                            
+//                            if self.isDowloadingInQueue == true
+//                            {
+//                                self.isDowloadingInQueue = false
+//                            }
+//                            
+//                            if DefaultDownloadResponse.error != nil
+//                            {
+//                                //                                self.downloadProgress.progress = 0.00
+//                                return
+//                            }
+//                            //                            self.downloadProgress.progress = 0.00
+//                            
+//                            let userEntity = NSEntityDescription.entity(forEntityName: "TBVideos", in: context)!
+//                            let video = NSManagedObject(entity: userEntity, insertInto: context)
+//                            
+//                            video.setValue(tempData!.id, forKeyPath: "id")
+//                            video.setValue(tempData!.video_title, forKey: "video_title")
+//                            let urlString: String =  (DefaultDownloadResponse.destinationURL?.path)!
+//                            video.setValue(urlString, forKey: "video_url")
+//                            
+//                            print(urlString)
+//                            
+//                            video.setValue(tempData!.author_name, forKey: "author_name")
+//                            video.setValue(tempData!.thumbnail_url, forKey: "thumbnail_url")
+//                            video.setValue(tempData!.video_desc, forKey: "video_desc")
+//                            
+//                            if self.dataToShow.id == tempData?.id
+//                            {
+//                                //                                self.downloadBtn.setImage(UIImage(named: "download_complete.png"), for: .normal)
+//                            }
+//                        })
+//                    }
+//                    do {
+//                        try context.save()
+//                    } catch {
+//                        print("Failed saving")
+//                    }
+//                    
+//                }
+//            }
+//            
+//        }
+//        
+//    }
     
     
     func shareData() {

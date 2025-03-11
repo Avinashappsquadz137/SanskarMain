@@ -4,6 +4,7 @@
 [![Platform](https://img.shields.io/badge/Platform-iOS-00BCD4.svg)](http://cocoapods.org/pods/CountryPickerView)
 [![Version](https://img.shields.io/cocoapods/v/CountryPickerView.svg?style=flat)](http://cocoapods.org/pods/CountryPickerView)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![SPM compatible](https://img.shields.io/badge/SPM-compatible-4BC51D.svg?style=flat)](https://swift.org/package-manager)
 [![License](https://img.shields.io/badge/License-MIT-8D6E63.svg)](https://github.com/kizitonwose/CountryPickerView/blob/master/LICENSE.md)
 
 CountryPickerView is a simple, customizable view for selecting countries in iOS apps.
@@ -20,6 +21,11 @@ You can clone/download the repository and run the [demo project](https://github.
 ## Installation
 
 > Note that 3.x releases are Swift 5 compatible. For the Swift 4 compatibility, use 2.x releases. For the Swift 3 compatibility, use 1.x releases.
+
+### Swift Package Manager
+[Swift Package Manager](https://swift.org/package-manager) is a dependency manager built into Xcode.
+
+If you are using Xcode 11 or higher, go to `File / Swift Packages / Add Package Dependency…` and enter package repository URL https://github.com/kizitonwose/CountryPickerView.git then follow the instructions.
 
 ### Cocoapods
 
@@ -97,6 +103,7 @@ class DemoViewController: UIViewController, CountryPickerViewDelegate, CountryPi
 |:-:|:-:|:-:|
 |showCountryCodeInView|Show or hide the country code(e.g NG) on the view.|true|
 |showPhoneCodeInView|Show or hide the phone code(e.g +234) on the view.|true|
+|showCountryNameInView|Show or hide the country name(e.g Nigeria) on the view.|false|
 |font|The font of the phone/country code text.|system font|
 |textColor|The color of the phone/country code text.|black|
 |flagSpacingInView|The spacing between the flag image and the phone code text.|8px|
@@ -104,6 +111,7 @@ class DemoViewController: UIViewController, CountryPickerViewDelegate, CountryPi
 |delegate|An instance of `CountryPickerViewDelegate` type.|nil|
 |dataSource|An instance of `CountryPickerViewDataSource` type.|nil|
 
+Note: The properties `showCountryCodeInView` and `showCountryNameInView` can't both be enabled at the same time. Enabling one to will disable the other. You can only show all properties on the list(see `CountryPickerViewDataSource`).
 
 #### CountryPickerViewDelegate
 - Called when the user selects a country from the list or when you manually set the `selectedCountry` property of the `CountryPickerView`
@@ -221,6 +229,24 @@ The datasource methods define the internal(country list) ViewController's behavi
   func showPhoneCodeInList(in countryPickerView: CountryPickerView) -> Bool
   ```
 
+- Show the country code alongside the country name on the list. e.g Nigeria (NG). If `true`, searches are also performed against the country codes. Default value is `false`
+  
+  ```swift    
+  func showCountryCodeInList(in countryPickerView: CountryPickerView) -> Bool
+  ```
+
+- Show a checkmark on the selected country on the list. Default value is `true`
+  
+  ```swift    
+  func showCheckmarkInList(in countryPickerView: CountryPickerView) -> Bool
+  ```
+
+- The locale used to display country names on the list. Default value is the current locale.
+  
+  ```swift    
+  func localeForCountryNameInList(in countryPickerView: CountryPickerView) -> Locale
+  ```
+
 ### Using CountryPickerView with UITextField
 
 A good use case for `CountryPickerView` is when used as the left view of a phone number input field.
@@ -273,6 +299,26 @@ if let nav = self.navigationController {
 ```
 Don't forget to set a delegate to be notified when the use selects a country from the list. An example of how to use the internal picker view controller is included in the demo project.
 
+
+### Creating Country instances
+
+You can create `Country` instances with any of these methods in `CountryPickerView` class:
+
+```swift
+let countryPickerView = CountryPickerView()
+let country = countryPickerView.getCountryByName("Nigeria")
+let country2 = countryPickerView.getCountryByCode("NG")
+let country3 = countryPickerView.getCountryByPhoneCode("+234")
+```
+
+You can also set the selected country using these helper methods:
+
+```swift
+let countryPickerView = CountryPickerView()
+countryPickerView.setCountryByName("Nigeria")
+countryPickerView.setCountryByCode("NG")
+countryPickerView.setCountryByPhoneCode("+234")
+```
 
 ## License
 

@@ -28,7 +28,7 @@ SOFTWARE.
 
 ## Alamofire
 
-Copyright (c) 2014-2018 Alamofire Software Foundation (http://alamofire.org/)
+Copyright (c) 2014-2022 Alamofire Software Foundation (http://alamofire.org/)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -130,7 +130,7 @@ Fabric: Copyright 2018 Google, Inc. All Rights Reserved. Use of this software is
 
 ## CryptoSwift
 
-Copyright (C) 2014-2017 Marcin Krzyżanowski <marcin.krzyzanowski@gmail.com>
+Copyright (C) 2014-3099 Marcin Krzyżanowski <marcin.krzyzanowski@gmail.com>
 This software is provided 'as-is', without any express or implied warranty.
 
 In no event will the authors be held liable for any damages arising from the use of this software.
@@ -783,7 +783,7 @@ SOFTWARE.
 
 ## Google-Mobile-Ads-SDK
 
-Copyright 2021 Google
+Copyright 2025 Google LLC
 
 ## Google
 
@@ -1005,7 +1005,7 @@ Copyright 2018 Google
 
 ## GoogleUserMessagingPlatform
 
-Copyright 2021 Google
+Copyright 2024 Google LLC
 
 ## GoogleUtilities
 

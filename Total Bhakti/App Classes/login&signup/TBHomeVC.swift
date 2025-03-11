@@ -21,7 +21,7 @@ var post: channelModel!
 var homeAllDataArray : HomeAllData!
 var channelTableArr  = [channelModel]()
 
-class TBHomeVC: TBInternetViewController,AAPlayerDelegate,shortCutDelegate,MMPlayerLayerProtocol,GetVideoQualityList, GCKSessionManagerListener, GCKUIMiniMediaControlsViewControllerDelegate,GADFullScreenContentDelegate{
+class TBHomeVC: TBInternetViewController,AAPlayerDelegate,shortCutDelegate,MMPlayerLayerProtocol,GetVideoQualityList, GCKSessionManagerListener, GCKUIMiniMediaControlsViewControllerDelegate,FullScreenContentDelegate{
     
     let window = UIApplication.shared.keyWindow
     /* The player state. */
@@ -125,7 +125,7 @@ class TBHomeVC: TBInternetViewController,AAPlayerDelegate,shortCutDelegate,MMPla
     var shortsvalue = ""
     var holivalue = ""
     let adUnitID = "ca-app-pub-1618767157139570/5766265057"
-     var rewardedAd: GADRewardedAd?
+    var rewardedAd: InterstitialAd? //GADInterstitialAd
     var record: Int?
     var playerLayer : AVPlayerLayer? = nil
     var pipController: AVPictureInPictureController?
@@ -140,57 +140,57 @@ class TBHomeVC: TBInternetViewController,AAPlayerDelegate,shortCutDelegate,MMPla
         
         self.holieventbtn.isHidden = true
         self.holieventimg.isHidden = true
-
-         let shortsValue = UserDefaults.standard.object(forKey: "shortdataKey") as? String
+        
+        let shortsValue = UserDefaults.standard.object(forKey: "shortdataKey") as? String
         let holiValue = UserDefaults.standard.object(forKey: "holidataKey") as? String
         self.shortsvalue = shortsValue ?? ""
-            print("Shorts Value: \(self.shortsvalue)")
+        print("Shorts Value: \(self.shortsvalue)")
         self.holivalue = holiValue ?? ""
         print(self.holivalue)
-            if !self.shortsvalue.isEmpty {
-                let vc = self.storyboard?.instantiateViewController(withIdentifier: "TBshortsVC") as! TBshortsVC
-                vc.deeplinkshortid = self.shortsvalue
-                UserDefaults.standard.removeObject(forKey: "shortdataKey")
+        if !self.shortsvalue.isEmpty {
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "TBshortsVC") as! TBshortsVC
+            vc.deeplinkshortid = self.shortsvalue
+            UserDefaults.standard.removeObject(forKey: "shortdataKey")
+            UserDefaults.standard.synchronize()
+            navigationController?.pushViewController(vc, animated: true)
+        } else if !self.holivalue.isEmpty   {
+            if currentUser.result?.id == "163" {
+                
+                self.dismiss(animated: true) {
+                    let vc = self.storyboard!.instantiateViewController(withIdentifier: "newloginpage") as! newloginpage
+                    if #available(iOS 15.0, *) {
+                        if let sheet = vc.sheetPresentationController {
+                            var customDetent: UISheetPresentationController.Detent?
+                            if #available(iOS 16.0, *) {
+                                customDetent = UISheetPresentationController.Detent.custom { context in
+                                    return 450 // Replace with your desired height
+                                }
+                                sheet.detents = [customDetent!]
+                                sheet.largestUndimmedDetentIdentifier = customDetent!.identifier
+                            }
+                            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+                            sheet.prefersGrabberVisible = true
+                            sheet.preferredCornerRadius = 24
+                        }
+                    }
+                    UIApplication.shared.keyWindow?.rootViewController?.present(vc, animated: true, completion: nil)
+                }
+            }else{
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "activeuserprofileViewController") as!  activeuserprofileViewController
+                vc.guruid = self.holivalue
+                print(vc.guruid)
+                UserDefaults.standard.removeObject(forKey: "holidataKey")
                 UserDefaults.standard.synchronize()
                 navigationController?.pushViewController(vc, animated: true)
-            } else if !self.holivalue.isEmpty   {
-                if currentUser.result?.id == "163" {
-                   
-                    self.dismiss(animated: true) {
-                        let vc = self.storyboard!.instantiateViewController(withIdentifier: "newloginpage") as! newloginpage
-                        if #available(iOS 15.0, *) {
-                            if let sheet = vc.sheetPresentationController {
-                                var customDetent: UISheetPresentationController.Detent?
-                                if #available(iOS 16.0, *) {
-                                    customDetent = UISheetPresentationController.Detent.custom { context in
-                                        return 450 // Replace with your desired height
-                                    }
-                                    sheet.detents = [customDetent!]
-                                    sheet.largestUndimmedDetentIdentifier = customDetent!.identifier
-                                }
-                                sheet.prefersScrollingExpandsWhenScrolledToEdge = false
-                                sheet.prefersGrabberVisible = true
-                                sheet.preferredCornerRadius = 24
-                            }
-                        }
-                        UIApplication.shared.keyWindow?.rootViewController?.present(vc, animated: true, completion: nil)
-                    }
-                    }else{
-                        let vc = self.storyboard?.instantiateViewController(withIdentifier: "activeuserprofileViewController") as!  activeuserprofileViewController
-                        vc.guruid = self.holivalue
-                        print(vc.guruid)
-                        UserDefaults.standard.removeObject(forKey: "holidataKey")
-                        UserDefaults.standard.synchronize()
-                        navigationController?.pushViewController(vc, animated: true)
-                    }
-                 }
+            }
+        }
         else {
             print("haala")
         }
         
         let sesiondata = UserDefaults.standard.string(forKey: "season_Id")
         print(sesiondata)
-
+        
         print("device_tokken::::",deviceTokanStr)
         TV_PlayerHelper.shared.mmPlayer.mmDelegate = self
         if universalType == "1" || universalType == "2" || universalType == "3"{
@@ -199,7 +199,7 @@ class TBHomeVC: TBInternetViewController,AAPlayerDelegate,shortCutDelegate,MMPla
         }
         epgPlay = false
         
-//        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(TBHomeVC.advertiseImgTappedMethod(_:)))
+        //        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(TBHomeVC.advertiseImgTappedMethod(_:)))
         castUpdate()
         DispatchQueue.main.async(execute: { loader.shareInstance.showLoading(self.view)})
         UserDefaults.standard.removeObject(forKey: "CurrentChannel")
@@ -220,11 +220,11 @@ class TBHomeVC: TBInternetViewController,AAPlayerDelegate,shortCutDelegate,MMPla
         
         lbl = noDataLabelCall(controllerType: self, tableReference: tableView)
         tableView.tableFooterView = UIView(frame: CGRect.zero)
-//        if currentUser.status == true {
-//            currentUser = User.init(dictionary: TBSharedPreference.sharedIntance.getUserData()!)
-//        }else {
-//            currentUser = nil
-//        }
+        //        if currentUser.status == true {
+        //            currentUser = User.init(dictionary: TBSharedPreference.sharedIntance.getUserData()!)
+        //        }else {
+        //            currentUser = nil
+        //        }
         
         pullToRefresh()
         
@@ -235,7 +235,7 @@ class TBHomeVC: TBInternetViewController,AAPlayerDelegate,shortCutDelegate,MMPla
         headerView.layer.shadowOpacity = 0.4
         headerView.layer.masksToBounds = false
         headerView.layer.shadowRadius = 0.0
-
+        
         let button = UIButton()
         button.tag = 0
         
@@ -258,74 +258,74 @@ class TBHomeVC: TBInternetViewController,AAPlayerDelegate,shortCutDelegate,MMPla
         updateVersion()
         NotificationCenter.default.addObserver(self, selector: #selector(SkipAd), name: NSNotification.Name("SkipAd"), object: nil)
         let device_id = UserDefaults.standard.string(forKey: "device_id")
-
+        
         let param : Parameters = ["user_id": currentUser.result?.id,"device_type":"2","current_version": "\(UIApplication.release)","profile_id":profile_id,"device_id": "\(device_id ?? "")"]
         print(param)
-       
-            self.getCategoryApi(param)
         
-      
+        self.getCategoryApi(param)
+        
+        
         let param1: Parameters = ["device_id": device_id]
         print(param1)
         loginuserrecordapi(param1)
         setupPiP()
     }
     func loadAndShowRewardedAd() {
-           GADRewardedAd.load(withAdUnitID: adUnitID, request: GADRequest()) { [weak self] ad, error in
-               if let error = error {
-                   print("Failed to load rewarded ad with error: \(error.localizedDescription)")
-                   return
-               }
-               self?.rewardedAd = ad
-               self?.rewardedAd?.fullScreenContentDelegate = self
-               print("Rewarded ad loaded.")
-               self?.showRewardedAd()
-           }
-       }
+        GADRewardedAd.load(with: adUnitID, request: GADRequest()) { [weak self] ad, error in
+            if let error = error {
+                print("Failed to load rewarded ad with error: \(error.localizedDescription)")
+                return
+            }
+            self?.rewardedAd = ad
+            self?.rewardedAd?.fullScreenContentDelegate = self
+            print("Rewarded ad loaded.")
+            self?.showRewardedAd()
+        }
+    }
     func showRewardedAd() {
-           if let ad = rewardedAd {
-               ad.present(fromRootViewController: self) {
-                   let reward = ad.adReward
-                   print("User earned reward of \(reward.amount) \(reward.type).")
-               }
-           } else {
-               print("Ad wasn't ready.")
-               loadAndShowRewardedAd()
-           }
-       }
+        if let ad = rewardedAd {
+            ad.present(fromRootViewController: self) {
+                let reward = ad.adReward
+                print("User earned reward of \(reward.amount) \(reward.type).")
+            }
+        } else {
+            print("Ad wasn't ready.")
+            loadAndShowRewardedAd()
+        }
+    }
     
     func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
-           print("Ad did fail to present full screen content with error: \(error.localizedDescription)")
-           loadAndShowRewardedAd()
-       }
-
-       func adDidPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-           print("Ad did present full screen content.")
-       }
-
-       func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-           print("Ad did dismiss full screen content.")
-           presentAlert()
-       }
-
+        print("Ad did fail to present full screen content with error: \(error.localizedDescription)")
+        loadAndShowRewardedAd()
+    }
+    
+    func adDidPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        print("Ad did present full screen content.")
+    }
+    
+    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        print("Ad did dismiss full screen content.")
+        presentAlert()
+    }
+    
     func presentAlert() {
-            let alert = UIAlertController(title: "", message: "To Continue Enjoying Ads-free Subscribe to Premium", preferredStyle: .alert)
+        let alert = UIAlertController(title: "", message: "To Continue Enjoying Ads-free Subscribe to Premium", preferredStyle: .alert)
         let goPremiumAction = UIAlertAction(title: "Subscribe", style: .default, handler: { action in
             
             // This will navigate to the premium page
             self.showPremiumPage()
         })
         
-            let notNowAction = UIAlertAction(title: "Not Now", style: .cancel, handler: { action in
-                // This will dismiss the alert
-                alert.dismiss(animated: true, completion: nil)
-            })
+        let notNowAction = UIAlertAction(title: "Not Now", style: .cancel, handler: { action in
+            // This will dismiss the alert
+            alert.dismiss(animated: true, completion: nil)
+        })
         
-            alert.addAction(goPremiumAction)
-            alert.addAction(notNowAction)
-            
-            self.present(alert, animated: true, completion: nil)
-        }
+        alert.addAction(goPremiumAction)
+        alert.addAction(notNowAction)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
     
     func loginuserrecordapi(_ param1: Parameters) {
         self.uplaodData(APIManager.sharedInstance.KuserRecord, param1) { (response) in
@@ -336,19 +336,19 @@ class TBHomeVC: TBInternetViewController,AAPlayerDelegate,shortCutDelegate,MMPla
                 if JSON.value(forKey: "status") as? Bool == true {
                     let recorddata = self.recorduserdata
                     print(recorddata)
-                       UserDefaults.standard.set(recorddata, forKey: "recorddata")
+                    UserDefaults.standard.set(recorddata, forKey: "recorddata")
                     
                 }
             }
         }
     }
-        func showPremiumPage() {
-            // Assuming "PremiumViewController" is the identifier for your premium page view controller in the storyboard
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            if let premiumVC = storyboard.instantiateViewController(withIdentifier: "TBPremiumPaymentVC") as? TBPremiumPaymentVC {
-                self.navigationController?.pushViewController(premiumVC, animated: true)
-            }
+    func showPremiumPage() {
+        // Assuming "PremiumViewController" is the identifier for your premium page view controller in the storyboard
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let premiumVC = storyboard.instantiateViewController(withIdentifier: "TBPremiumPaymentVC") as? TBPremiumPaymentVC {
+            self.navigationController?.pushViewController(premiumVC, animated: true)
         }
+    }
     func startTimer() {
         //MARK: TIMER EXECUTION
         //        newTime.invalidate()// just in case you had existing `Timer`, `invalidate` it before we lose our reference to it
@@ -366,27 +366,36 @@ class TBHomeVC: TBInternetViewController,AAPlayerDelegate,shortCutDelegate,MMPla
     func touchInVideoRect(contain: Bool) {
         print("\(contain)")
     }
-    func universalLinkApi(_ param : Parameters, url:String){
-        Alamofire.upload(multipartFormData: { multipartFormData in
+    func universalLinkApi(_ param: Parameters, url: String) {
+        let fullURL = APIManager.sharedInstance.KBASEURL + url
+
+        AF.upload(multipartFormData: { multipartFormData in
             for (key, value) in param {
-                print("key::\(key),,value::\(value)")
-                print("url::",url)
-                multipartFormData.append((value as AnyObject).data(using: String.Encoding.utf8.rawValue)!, withName: key )
+                print("key::\(key), value::\(value)")
+                print("url::", url)
+
+                if let stringValue = value as? String, let data = stringValue.data(using: .utf8) {
+                    multipartFormData.append(data, withName: key)
+                }
             }
-        }, to: APIManager.sharedInstance.KBASEURL+url, method: .post, headers: nil,
-                         encodingCompletion: { encodingResult in
-            switch encodingResult {
-            case .success(let upload, _, _):
-                upload.responseJSON { response in
-                    debugPrint(response)
-                    DispatchQueue.main.async(execute: { loader.shareInstance.hideLoading()})
-                    if let responseData = response.response {
-                        switch responseData.statusCode {
-                        case APIManager.sharedInstance.KHTTPSUCCESS:
-                            guard let result = response.result.value else {
-                                return
-                            }
-                            print(result)
+        }, to: fullURL, method: .post, headers: nil)
+        .uploadProgress { progress in
+            print("Upload Progress: \(progress.fractionCompleted)")
+        }
+        .responseJSON { response in
+            DispatchQueue.main.async {
+                loader.shareInstance.hideLoading()
+            }
+
+            switch response.result {
+            case .success(let value):
+                debugPrint(value)
+                if let json = value as? NSDictionary, let responseData = response.response {
+                    switch responseData.statusCode {
+                    case APIManager.sharedInstance.KHTTPSUCCESS:
+                        print(json)
+
+                        if let universalType = universalType as? String {
                             switch universalType {
                             case "1":
                                 print("Video switch::::")
@@ -401,7 +410,7 @@ class TBHomeVC: TBInternetViewController,AAPlayerDelegate,shortCutDelegate,MMPla
                                 TBHomeTabBar.currentInstance?.bhajan_lbl.textColor = #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1)
                                 TBHomeTabBar.currentInstance?.livetvlbl.textColor = #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1)
                                 TBHomeTabBar.currentInstance?.premium_lbl.textColor = #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1)
-                                if let JSON = result as? NSDictionary {
+                                if let JSON = json as? NSDictionary {
                                     print(JSON)
                                     let data = JSON["data"] as? NSDictionary
                                     self.videoList.append(videosResult(dictionary: data!)!)
@@ -428,7 +437,7 @@ class TBHomeVC: TBInternetViewController,AAPlayerDelegate,shortCutDelegate,MMPla
                                 TBHomeTabBar.currentInstance?.livetvlbl.textColor = #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1)
                                 TBHomeTabBar.currentInstance?.premium_lbl.textColor = #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1)
                                 
-                                if let JSON = result as? NSDictionary {
+                                if let JSON = json as? NSDictionary {
                                     print(JSON)
                                     let data = JSON["data"] as? NSDictionary
                                     self.bhajanList.append(trendingBhajanModel(dict: data! as! Dictionary<String, Any>))
@@ -459,17 +468,17 @@ class TBHomeVC: TBInternetViewController,AAPlayerDelegate,shortCutDelegate,MMPla
                                 TBHomeTabBar.currentInstance?.img_videos.tintColor = #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1)
                                 TBHomeTabBar.currentInstance?.img_guru.tintColor = #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1)
                                 TBHomeTabBar.currentInstance?.img_premium.tintColor = #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1)
-                                 TBHomeTabBar.currentInstance?.home_lbl.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+                                TBHomeTabBar.currentInstance?.home_lbl.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
                                 TBHomeTabBar.currentInstance?.videos_lbl.textColor = #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1)
                                 TBHomeTabBar.currentInstance?.bhajan_lbl.textColor = #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1)
                                 TBHomeTabBar.currentInstance?.livetvlbl.textColor = #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1)
                                 TBHomeTabBar.currentInstance?.premium_lbl.textColor = #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1)
                                 
-                                if let JSON = result as? NSDictionary {
+                                if let JSON = json as? NSDictionary {
                                     print(JSON)
                                     let data = JSON["data"] as? NSDictionary
                                     //      JSON.ArrayofDict("data")
-                                 self.newList.append(News(dictionary: data!)!)
+                                    self.newList.append(News(dictionary: data!)!)
                                     let post = self.newList[0]
                                     let vc : TBNewsDetailVC = storyBoard.instantiateViewController(withIdentifier: CONTROLLERNAMES.KNEWSDETAILSVC) as! TBNewsDetailVC
                                     
@@ -477,34 +486,24 @@ class TBHomeVC: TBInternetViewController,AAPlayerDelegate,shortCutDelegate,MMPla
                                     vc.dataToShow = post
                                     self.navigationController?.pushViewController(vc, animated: true)
                                 }
-                    
+                                
                             default:
                                 break
                             }
+                        }
                         default:
                             break
                         }
                     }
-                    if let err = response.result.error as? URLError {
-                        if err.code == .notConnectedToInternet{
-                            AlertController.alert(title: ALERTS.kNoInterNetConnection)
-                        }
-                        else if err.code == .timedOut{
-                            // AlertController.alert(title: "Connection time out")
-                        }else if err.code == .networkConnectionLost{
-                            // AlertController.alert(title: "Network Connection Lost")
-                        }
-                    } else {
-                        // AlertController.alert(title: ALERTS.kNoInterNetConnection)
-                    }
-                }
+                    
+                
                 
             case .failure(let encodingError):
                 DispatchQueue.main.async(execute: { loader.shareInstance.hideLoading()})
                 // AlertController.alert(title: ALERTS.KSOMETHINGWRONG)
                 print("error:\(encodingError)")
             }
-        })
+        }
         
     }
     
@@ -1323,7 +1322,7 @@ class TBHomeVC: TBInternetViewController,AAPlayerDelegate,shortCutDelegate,MMPla
         tableView.addSubview(refreshControl)
     }
     func updateVersion() {
-        HttpHelper.apiCallWithout(postData: [:], url: "version/Version/get_version", identifire: "") { result, response, error, data in
+        HttpHelper.apiCallWithout(postData: [:], url: "version/Version/get_version", identifier: "") { result, response, error, data in
             if let Json = data,(response?["status"] as? Bool == true), response != nil {
                 let decoder = JSONDecoder()
                 do{

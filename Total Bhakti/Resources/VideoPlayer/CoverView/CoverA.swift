@@ -462,7 +462,7 @@ class CoverA: UIView, MMPlayerCoverViewProtocol, AVRoutePickerViewDelegate {
     
     //MARK:- UpdateLiveUser
     func updateLiveUserApi(_ param : Parameters) {
-        self.uplaodData1(APIManager.sharedInstance.KUpdateLiveUsers , param) { (response) in
+        self.uploadData1(APIManager.sharedInstance.KUpdateLiveUsers , param) { (response) in
             
             DispatchQueue.main.async(execute: { loader.shareInstance.hideLoading()})
             print(response as Any)
@@ -493,34 +493,25 @@ class CoverA: UIView, MMPlayerCoverViewProtocol, AVRoutePickerViewDelegate {
         print("last_channel_id::",last_channel_id ?? "")
         let param: Parameters = ["user_id": currentUser.result?.id ?? "", "channel_id":"", "last_channel_id":last_channel_id ?? ""]
         
-        self.uplaodData1(APIManager.sharedInstance.KUpdateLiveUsers , param) { (response) in
-            
-            DispatchQueue.main.async(execute: { loader.shareInstance.hideLoading()})
-            print(response as Any)
-            
+        self.uploadData1(APIManager.sharedInstance.KUpdateLiveUsers, param) { (response) in
+            DispatchQueue.main.async {
+                loader.shareInstance.hideLoading()
+            }
+
             if let JSON = response as? NSDictionary {
                 print(JSON)
                 if JSON.value(forKey: "status") as? Bool == true {
-                    
                     UserDefaults.standard.setValue(self.current_channel_id, forKey: "last_channel_id")
-                    let param: Parameters = ["channel_id":self.current_channel_id ?? ""]
+                    let param: Parameters = ["channel_id": self.current_channel_id ?? ""]
                     self.liveUserCountApi(param)
-                    
                 }
-                else{
-                    
-                }
-            }
-            else{
-                //                self.addAlert(ALERTS.KERROR, message: ALERTS.KSOMETHINGWRONG, buttonTitle: ALERTS.kAlertOK)
             }
         }
     }
     
     //MARK:- liveUserCount
     func liveUserCountApi(_ param : Parameters) {
-        self.uplaodData1(APIManager.sharedInstance.KGetLiveUserCount , param) { (response) in
-            
+            self.uploadData1(APIManager.sharedInstance.KGetLiveUserCount, param) { (response) in
             DispatchQueue.main.async(execute: { loader.shareInstance.hideLoading()})
             print(response as Any)
             
@@ -751,7 +742,7 @@ class CoverA: UIView, MMPlayerCoverViewProtocol, AVRoutePickerViewDelegate {
     
     func hitPlayTime(_ parm: Parameters) {
         
-        uplaodData1(APIManager.sharedInstance.playTime, parm) { response in
+        uploadData1(APIManager.sharedInstance.playTime, parm) { response in
             if let Json = response as? NSDictionary {
                 if Json["status"] as? Bool == true {
                     print(Json["status"] as Any)
@@ -1054,7 +1045,7 @@ extension CoverA{
             url = "videos/Video_control/like_channel"
         }
         
-        self.uplaodData1(url, param) { (response) in
+        self.uploadData1(url, param) { (response) in
             print(response as Any)
             if let JSON = response as? NSDictionary {
                 print(JSON)
@@ -1084,46 +1075,48 @@ extension CoverA{
 
 
 extension CoverA{
-    func uplaodData1(_ url: String, _ param : Parameters , _ success:@escaping (_ response: Any?) -> ()) {
-        Alamofire.upload(multipartFormData: { multipartFormData in
+
+    func uploadData1(_ url: String, _ param: Parameters, _ success: @escaping (_ response: Any?) -> ()) {
+        let fullURL = APIManager.sharedInstance.KBASEURL + url
+
+        AF.upload(multipartFormData: { multipartFormData in
             for (key, value) in param {
-                multipartFormData.append((value as AnyObject).data(using: String.Encoding.utf8.rawValue)!, withName: key )
+                if let stringValue = value as? String, let data = stringValue.data(using: .utf8) {
+                    multipartFormData.append(data, withName: key)
+                }
             }
-        }, to: APIManager.sharedInstance.KBASEURL+url, method: .post, headers: nil,
-        encodingCompletion: { encodingResult in
-            switch encodingResult {
-            case .success(let upload, _, _):
-                upload.responseJSON { response in
-                    debugPrint(response)
-                    if let responseData = response.response {
-                        switch responseData.statusCode {
-                        case APIManager.sharedInstance.KHTTPSUCCESS:
-                            guard let result = response.result.value else {
-                                success("")
-                                return
-                            }
-                            success(result)
-                            return
-                        default:
-                            break
-                        }
-                    }
-                    success(nil)
-                    DispatchQueue.main.async(execute: { loader.shareInstance.hideLoading()})
-                    if let err = response.result.error as? URLError {
-                        if err.code == .notConnectedToInternet || err.code == .timedOut {
-                            
-                        }
+        }, to: fullURL, method: .post, headers: nil)
+        .uploadProgress { progress in
+            print("Upload Progress: \(progress.fractionCompleted)")
+        }
+        .responseJSON { response in
+            DispatchQueue.main.async {
+                loader.shareInstance.hideLoading()
+            }
+            
+            switch response.result {
+            case .success(let value):
+                print("Response JSON: \(value)")
+                success(value)
+                
+            case .failure(let error):
+                print("Upload Failed: \(error.localizedDescription)")
+                
+                if let urlError = error.asAFError?.underlyingError as? URLError {
+                    switch urlError.code {
+                    case .notConnectedToInternet:
+                        print("No Internet Connection")
+                    case .timedOut:
+                        print("Request Timed Out")
+                    default:
+                        break
                     }
                 }
-                
-            case .failure(let encodingError):
-                
                 success(nil)
-                print("error:\(encodingError)")
             }
-        })
+        }
     }
+
 }
 
 

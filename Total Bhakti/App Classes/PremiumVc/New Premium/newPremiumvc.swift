@@ -11,7 +11,7 @@ import MMPlayerView
 import YoutubePlayer_in_WKWebView
 import GoogleMobileAds
 
-class newPremiumvc: TBInternetViewController, WKYTPlayerViewDelegate,GADFullScreenContentDelegate {
+class newPremiumvc: TBInternetViewController, WKYTPlayerViewDelegate,FullScreenContentDelegate {
     
     //MARK:- IBOutlet
     
@@ -35,7 +35,7 @@ class newPremiumvc: TBInternetViewController, WKYTPlayerViewDelegate,GADFullScre
     var refreshControl: UIRefreshControl!
     var pullToRefreshOn = false
     let adUnitID = "ca-app-pub-1618767157139570/5766265057"
-     var rewardedAd: GADRewardedAd?
+    var rewardedAd: RewardedAd?
    
   
     
@@ -89,7 +89,7 @@ class newPremiumvc: TBInternetViewController, WKYTPlayerViewDelegate,GADFullScre
     
     
     func loadAndShowRewardedAd() {
-           GADRewardedAd.load(withAdUnitID: adUnitID, request: GADRequest()) { [weak self] ad, error in
+        RewardedAd.load(with: adUnitID, request: Request()) { [weak self] ad, error in
                if let error = error {
                    print("Failed to load rewarded ad with error: \(error.localizedDescription)")
                    return
@@ -102,7 +102,7 @@ class newPremiumvc: TBInternetViewController, WKYTPlayerViewDelegate,GADFullScre
        }
     func showRewardedAd() {
            if let ad = rewardedAd {
-               ad.present(fromRootViewController: self) {
+               ad.present(from: self) {
                    let reward = ad.adReward
                    print("User earned reward of \(reward.amount) \(reward.type).")
                }
@@ -112,7 +112,7 @@ class newPremiumvc: TBInternetViewController, WKYTPlayerViewDelegate,GADFullScre
            }
        }
     
-    func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
+    func ad(_ ad: FullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
            print("Ad did fail to present full screen content with error: \(error.localizedDescription)")
            loadAndShowRewardedAd()
        }

@@ -39,15 +39,27 @@ class HttpHelper: NSObject {
         return escapedAddress
         
     }
-    class func setHeader() -> Dictionary<String, String> {
-        
-        var dict = Dictionary<String,String>()
-        
-        dict["jwt"] = ""
-       
-        return dict
-    }
-    
+//    class func setHeader() -> Dictionary<String, String> {
+//        
+//        var dict = Dictionary<String,String>()
+//        
+//        dict["jwt"] = ""
+//       
+//        return dict
+//    }
+    class func setHeader() -> HTTPHeaders {
+            var headers: HTTPHeaders = [:]
+            
+            if let jwtToken = UserDefaults.standard.string(forKey: "jwtToken"), !jwtToken.isEmpty {
+                headers["Authorization"] = "Bearer \(jwtToken)"
+            } else {
+                print("Warning: JWT Token is empty or missing")
+            }
+            
+            headers["Content-Type"] = "application/json"
+            
+            return headers
+        }
     class func json(from object:AnyObject) -> String? {
         guard let data = try? JSONSerialization.data(withJSONObject: object, options: []) else {
             return nil
@@ -82,206 +94,189 @@ class HttpHelper: NSObject {
     ///   - url: API Url
     ///   - identifire: Option identifier to handle check
     ///   - completionHandler: response handling code
-    class func apiCall(postData:NSDictionary, url: String, identifire : String = "",  completionHandler: @escaping responseHandler) {
-        let path: String = HttpHelper.getFullPath(path: url)
-     
-        print("Request URL ->  \(path)")
-        print("Request parameter ->  \(postData.jsonStringRepresentation?.description ?? "")")
-        
-        print("Request Header ->  \(HttpHelper.setHeader().jsonStringRepresentation?.description ?? "")")
+    typealias ResponseHandler = (_ success: Bool, _ response: NSDictionary?, _ error: NSError?, _ data: Data?) -> Void
 
-        Alamofire.upload(
-            multipartFormData: { multipartFormData in
-                for (key, value) in postData {
-                    if value is NSArray{
-                        let str = HttpHelper.json(from:(value as AnyObject))
-                        multipartFormData.append((str as AnyObject).data(using: String.Encoding.utf8.rawValue)!, withName: key as! String)
-                    }
-                    else{
-                        multipartFormData.append((value as AnyObject).data(using: String.Encoding.utf8.rawValue)!, withName: key as! String)
-                    }
-                }
-            },
-            to: path,
-            headers:HttpHelper.setHeader(),
-            encodingCompletion: { encodingResult in
-                switch encodingResult {
-                case .success(let upload, _, _):
-                    upload.uploadProgress(closure: { (Progress) in
-                        print("Upload Progress: \(Progress.fractionCompleted)")
-                    })
-                    upload.responseJSON { response in
-                      //  print("HTTP URLResponse -> \(String(describing: response.response))")
-
-                        if response.result.value is NSDictionary
-                        {
-                            print("HTTP Response Value -> \((response.result.value as! NSDictionary).jsonStringRepresentation ?? "")")
-                            
-                            completionHandler(true,response.result.value as! NSDictionary?,nil,response.data)
-                        }
-                        else{
-                            print("HTTP Response Value -> \(String(describing: response.result.value))")
-                            
-                            completionHandler(true,nil,nil,response.data)
-                        }
-                    }
-                case .failure(let encodingError):
-//                    Loader.hideLoader()
-                    print(encodingError)
-                    completionHandler(false,nil,encodingError as NSError?,nil)
-                }
-            }
-        )
-    }
-    
-    class func apiCallWithout(postData:NSDictionary,url: String,identifire : String, completionHandler: @escaping responseHandler ) {
-        let path: String = HttpHelper.getFullPath(path: url)
-        
-        print("Request URL ->  \(path)")
-        print("Request parameter ->  \(postData.jsonStringRepresentation?.description ?? "")")
-        
-        
-        Alamofire.upload(
-            multipartFormData: { multipartFormData in
-                for (key, value) in postData {
-                    if value is NSArray{
-                        let str = HttpHelper.json(from:(value as AnyObject))
-                        multipartFormData.append((str as AnyObject).data(using: String.Encoding.utf8.rawValue)!, withName: key as! String)
-                    }
-                    else{
-                        multipartFormData.append((value as AnyObject).data(using: String.Encoding.utf8.rawValue)!, withName: key as! String)
-                    }
-                }
-            },
-            to: path,
-            headers:[:],
-            encodingCompletion: { encodingResult in
-                switch encodingResult {
-                case .success(let upload, _, _):
-                    upload.uploadProgress(closure: { (Progress) in
-                        print("Upload Progress: \(Progress.fractionCompleted)")
-                    })
-                    upload.responseJSON { response in
-                        //  print("HTTP URLResponse -> \(String(describing: response.response))")
-
-                          if response.result.value is NSDictionary
-                          {
-                              print("HTTP Response Value -> \((response.result.value as! NSDictionary).jsonStringRepresentation ?? "")")
-                              
-                              completionHandler(true,response.result.value as! NSDictionary?,nil,response.data)
-                          }
-                          else{
-                              print("HTTP Response Value -> \(String(describing: response.result.value))")
-                              
-                              completionHandler(true,nil,nil,response.data)
-                          }
-                      }
-                case .failure(let encodingError):
-//                    Loader.hideLoader()
-                    print(encodingError)
-                    completionHandler(false,nil,encodingError as NSError?,nil)
-                }
-            }
-        )
-    }
-
-    
-    class func apiCall2(postData:NSDictionary,url: String,identifire : String, completionHandler: @escaping (_ result: Bool, _ response: NSDictionary?, _ error: NSError?, _ errorMessage: String?) -> Void) {
-        let path: String = HttpHelper.getFullPath(path: url)
-        
-        print(path)
-        print(postData)
-        Alamofire.upload(
-            multipartFormData: { multipartFormData in
-                for (key, value) in postData {
-                    print(key , value)
-                    if value is NSArray{
-                        let str = HttpHelper.json(from:(value as AnyObject))
-                        multipartFormData.append((str as AnyObject).data(using: String.Encoding.utf8.rawValue)!, withName: key as! String)
-                    }
-                    else{
-                        multipartFormData.append((value as AnyObject).data(using: String.Encoding.utf8.rawValue)!, withName: key as! String)
-                    }
-                }
-            },
-            to: path,
-            headers:HttpHelper.setHeader(),
-            encodingCompletion: { encodingResult in
-                switch encodingResult {
-                case .success(let upload, _, _):
-                    upload.uploadProgress(closure: { (Progress) in
-                        print("Upload Progress: \(Progress.fractionCompleted)")
-                    })
-                    upload.responseString { response in
-                        debugPrint(upload.responseString)
-                        if response.result.value is NSDictionary
-                        {
-                            completionHandler(true,response.result.value as! NSDictionary?,nil,"response")
-                        }
-                        else{
-                            completionHandler(true,nil,nil,"response")
-                        }
-                    }
-                case .failure(let encodingError):
-//                    Loader.hideLoader()
-                    print(encodingError)
-                    completionHandler(false,nil,encodingError as NSError?,"response")
-                }
-            }
-        )
-    }
-    
-    // MARK: MULTIPART POST
-    class func apiCall1(_ postData:NSDictionary, _ url: String , _ identifire : String, completionHandler: @escaping (_ result: Bool, _ response: NSDictionary?, _ error: NSError?, _ errorMessage: String?) -> Void) {
-        let path: String = HttpHelper.getFullPath(path: url)
-
-        Alamofire.upload(
-            multipartFormData: { multipartFormData in
-                for (key, value) in postData {
-                    print(key , value)
-                    if value is NSArray{
-                        let str = HttpHelper.json(from:(value as AnyObject))
-                        multipartFormData.append((str as AnyObject).data(using: String.Encoding.utf8.rawValue)!, withName: key as! String)
-                    }
-                    else{
-                        multipartFormData.append((value as AnyObject).data(using: String.Encoding.utf8.rawValue)!, withName: key as! String)
-                    }
-                }
-            },
-            to: path,
-            headers: [:],
-            encodingCompletion: { encodingResult in
-                switch encodingResult {
-                case .success(let upload, _, _):
-                    upload.uploadProgress(closure: { (Progress) in
-                        print("Upload Progress: \(Progress.fractionCompleted)")
-                    })
-                    upload.responseJSON { response in
-                        debugPrint(response)
-                        completionHandler(true,response.result.value as! NSDictionary?,nil,"response")
-                    }
-                case .failure(let encodingError):
-//                    Loader.hideLoader()
-                    print(encodingError)
-                    completionHandler(false,nil,encodingError as NSError?,"response")
-                }
-            }
-        )
-    }
-    //get request
-    class func getDetailFromYouTubeURL(url:String, completionHandler: @escaping (_ result: Bool, _ response: NSDictionary?, _ error: NSError?, _ errorMessage: String?) -> Void) {
-        Alamofire.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: [:]).responseJSON { (response) in
-            debugPrint(response)
+    class func apiCall(postData: NSDictionary, url: String, identifier: String = "", completionHandler: @escaping ResponseHandler) {
             
-            if let dict = response.result.value{
-                completionHandler(true, dict as? NSDictionary ,nil,"response")
+            let path: String = HttpHelper.getFullPath(path: url)
+            
+            print("Request URL -> \(path)")
+            print("Request parameter -> \(postData.jsonStringRepresentation?.description ?? "")")
+           //print("Request Header -> \(HttpHelper.setHeader().jsonStringRepresentation?.description ?? "")")
+            
+            AF.upload(multipartFormData: { multipartFormData in
+                for (key, value) in postData {
+                    if let arrayValue = value as? NSArray {
+                        if let jsonString = HttpHelper.json(from: arrayValue) {
+                            if let jsonData = jsonString.data(using: .utf8) {
+                                multipartFormData.append(jsonData, withName: key as! String)
+                            }
+                        }
+                    } else if let stringValue = value as? String {
+                        if let stringData = stringValue.data(using: .utf8) {
+                            multipartFormData.append(stringData, withName: key as! String)
+                        }
+                    }
+                }
+            }, to: path, headers: HttpHelper.setHeader())
+            .uploadProgress { progress in
+                print("Upload Progress: \(progress.fractionCompleted)")
             }
-            else{
-//                Loader.hideLoader()
-                completionHandler(false,nil,response.result.error as NSError?,"response")
+            .responseJSON { response in
+                switch response.result {
+                case .success(let value):
+                    if let responseDict = value as? NSDictionary {
+                        print("HTTP Response Value -> \(responseDict.jsonStringRepresentation ?? "")")
+                        completionHandler(true, responseDict, nil, response.data)
+                    } else {
+                        print("HTTP Response Value -> \(value)")
+                        completionHandler(true, nil, nil, response.data)
+                    }
+                case .failure(let error):
+                    print("Upload Error: \(error.localizedDescription)")
+                    completionHandler(false, nil, error as NSError, response.data)
+                }
             }
         }
-    }
+    
+    class func apiCallWithout(postData: NSDictionary, url: String, identifier: String, completionHandler: @escaping ResponseHandler) {
+            
+            let path: String = HttpHelper.getFullPath(path: url)
+            
+            print("Request URL -> \(path)")
+            print("Request parameter -> \(postData.jsonStringRepresentation?.description ?? "")")
+            
+            AF.upload(multipartFormData: { multipartFormData in
+                for (key, value) in postData {
+                    if let arrayValue = value as? NSArray {
+                        if let jsonString = HttpHelper.json(from: arrayValue),
+                           let jsonData = jsonString.data(using: .utf8) {
+                            multipartFormData.append(jsonData, withName: key as! String)
+                        }
+                    } else if let stringValue = value as? String {
+                        if let stringData = stringValue.data(using: .utf8) {
+                            multipartFormData.append(stringData, withName: key as! String)
+                        }
+                    }
+                }
+            }, to: path, headers: [:])
+            .uploadProgress { progress in
+                print("Upload Progress: \(progress.fractionCompleted)")
+            }
+            .responseJSON { response in
+                switch response.result {
+                case .success(let value):
+                    if let responseDict = value as? NSDictionary {
+                        print("HTTP Response Value -> \(responseDict.jsonStringRepresentation ?? "")")
+                        completionHandler(true, responseDict, nil, response.data)
+                    } else {
+                        print("HTTP Response Value -> \(value)")
+                        completionHandler(true, nil, nil, response.data)
+                    }
+                case .failure(let error):
+                    print("Upload Error: \(error.localizedDescription)")
+                    completionHandler(false, nil, error as NSError, response.data)
+                }
+            }
+        }
+
+    
+//    class func apiCall2(postData:NSDictionary,url: String,identifire : String, completionHandler: @escaping (_ result: Bool, _ response: NSDictionary?, _ error: NSError?, _ errorMessage: String?) -> Void) {
+//        let path: String = HttpHelper.getFullPath(path: url)
+//        
+//        print(path)
+//        print(postData)
+//        AF.upload(
+//            multipartFormData: { multipartFormData in
+//                for (key, value) in postData {
+//                    print(key , value)
+//                    if value is NSArray{
+//                        let str = HttpHelper.json(from:(value as AnyObject))
+//                        multipartFormData.append((str as AnyObject).data(using: String.Encoding.utf8.rawValue)!, withName: key as! String)
+//                    }
+//                    else{
+//                        multipartFormData.append((value as AnyObject).data(using: String.Encoding.utf8.rawValue)!, withName: key as! String)
+//                    }
+//                }
+//            },
+//            to: path,
+//            headers:HttpHelper.setHeader(),
+//            encodingCompletion: { encodingResult in
+//                switch encodingResult {
+//                case .success(let upload, _, _):
+//                    upload.uploadProgress(closure: { (Progress) in
+//                        print("Upload Progress: \(Progress.fractionCompleted)")
+//                    })
+//                    upload.responseString { response in
+//                        debugPrint(upload.responseString)
+//                        if response.result.value is NSDictionary
+//                        {
+//                            completionHandler(true,response.result.value as! NSDictionary?,nil,"response")
+//                        }
+//                        else{
+//                            completionHandler(true,nil,nil,"response")
+//                        }
+//                    }
+//                case .failure(let encodingError):
+////                    Loader.hideLoader()
+//                    print(encodingError)
+//                    completionHandler(false,nil,encodingError as NSError?,"response")
+//                }
+//            }
+//        )
+//    }
+    
+    // MARK: MULTIPART POST
+//    class func apiCall1(_ postData:NSDictionary, _ url: String , _ identifire : String, completionHandler: @escaping (_ result: Bool, _ response: NSDictionary?, _ error: NSError?, _ errorMessage: String?) -> Void) {
+//        let path: String = HttpHelper.getFullPath(path: url)
+//
+//        Alamofire.upload(
+//            multipartFormData: { multipartFormData in
+//                for (key, value) in postData {
+//                    print(key , value)
+//                    if value is NSArray{
+//                        let str = HttpHelper.json(from:(value as AnyObject))
+//                        multipartFormData.append((str as AnyObject).data(using: String.Encoding.utf8.rawValue)!, withName: key as! String)
+//                    }
+//                    else{
+//                        multipartFormData.append((value as AnyObject).data(using: String.Encoding.utf8.rawValue)!, withName: key as! String)
+//                    }
+//                }
+//            },
+//            to: path,
+//            headers: [:],
+//            encodingCompletion: { encodingResult in
+//                switch encodingResult {
+//                case .success(let upload, _, _):
+//                    upload.uploadProgress(closure: { (Progress) in
+//                        print("Upload Progress: \(Progress.fractionCompleted)")
+//                    })
+//                    upload.responseJSON { response in
+//                        debugPrint(response)
+//                        completionHandler(true,response.result.value as! NSDictionary?,nil,"response")
+//                    }
+//                case .failure(let encodingError):
+////                    Loader.hideLoader()
+//                    print(encodingError)
+//                    completionHandler(false,nil,encodingError as NSError?,"response")
+//                }
+//            }
+//        )
+//    }
+    //get request
+//    class func getDetailFromYouTubeURL(url:String, completionHandler: @escaping (_ result: Bool, _ response: NSDictionary?, _ error: NSError?, _ errorMessage: String?) -> Void) {
+//        Alamofire.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: [:]).responseJSON { (response) in
+//            debugPrint(response)
+//            
+//            if let dict = response.result.value{
+//                completionHandler(true, dict as? NSDictionary ,nil,"response")
+//            }
+//            else{
+////                Loader.hideLoader()
+//                completionHandler(false,nil,response.result.error as NSError?,"response")
+//            }
+//        }
+//    }
 }
 
 struct BodyStringEncoding: ParameterEncoding {

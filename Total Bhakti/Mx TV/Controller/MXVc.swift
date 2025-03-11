@@ -6,13 +6,14 @@
 //  Copyright © 2022 MAC MINI. All rights reserved.
 //
 
+
 import UIKit
 import MarqueeLabel
 import FittedSheets
 import SDWebImage
 import CoreData
-
-
+import MMPlayerView
+import AVKit
 
 class MXVc: UIViewController {
     //MARK: - IBoutlet
@@ -45,8 +46,9 @@ class MXVc: UIViewController {
     var change: Bool = false
     var completionBlock:vCB?
     var completionBlock2:vCB2?
-    
-    
+    var adCompleted = false
+    var playerLayer = MMPlayerLayer()
+   // var hideTimer: Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,13 +64,15 @@ class MXVc: UIViewController {
             DispatchQueue.main.async {
 
                 if (safeData?.count ?? 0) != 0 {
-                    self?.playCurrent()
+                    self?.fetchVASTAd() //self?.playCurrent()
                 }
                 self?.channelCollectionView.reloadData()
                 self?.programCollectionView.reloadData()
             }
         }
-        
+//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+//        playerView.addGestureRecognizer(tapGesture)
+//        playerView.isUserInteractionEnabled = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -151,6 +155,105 @@ class MXVc: UIViewController {
         
     }
     
+//    @objc func handleTap() {
+//           print("Video tapped")
+//        self.playerView.isHidden = true
+//        TV_PlayerHelper.shared.mmPlayer.showCover(isShow: true)
+//           hideTimer?.invalidate()
+//           hideTimer = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false) { _ in
+//               self.playerView.isHidden = false
+//           }
+//
+//        playView.getPlayerState { state, error in
+//               guard error == nil else { return }
+//               if state == .playing {
+//                   self.playView.pauseVideo()
+//               } else {
+//                   self.playView.playVideo()
+//               }
+//           }
+//       }
+    
+    func fetchVASTAd() {
+        let adTagURL = "https://pubads.g.doubleclick.net/gampad/live/ads?iu=/8323530/STV_IndiaTV_Sanskar_CTV_Mid-roll&description_url=https%3A%2F%2Fwww.indiatvnews.com%2F&tfcd=0&npa=0&sz=1x1%7C400x300%7C640x480&min_ad_duration=0&max_ad_duration=240000&gdfp_req=1&unviewed_position_start=1&output=vast&env=vp&impl=s&correlator=&vad_type=linear"
+        
+            guard let vastURL = URL(string: adTagURL) else {
+                print("❌ Invalid VAST URL")
+                return
+            }
+
+            var request = URLRequest(url: vastURL)
+            request.setValue("Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X) AppleWebKit/537.36 (KHTML, like Gecko) Version/16.0 Mobile/15E148 Safari/537.36", forHTTPHeaderField: "User-Agent")
+
+            URLSession.shared.dataTask(with: request) { data, response, error in
+                if let error = error {
+                    print("❌ Error fetching VAST XML:", error.localizedDescription)
+                    DispatchQueue.main.async {
+                        self.playCurrent()
+                    }
+                    return
+                }
+
+                guard let data = data, let xmlString = String(data: data, encoding: .utf8) else {
+                    print("❌ No data received")
+                    DispatchQueue.main.async {
+                        self.playCurrent()
+                    }
+                    return
+                }
+
+                print("✅ VAST XML Fetched:", xmlString)
+                
+                let parser = VASTParser()
+                if let vastAdURL = parser.parseVAST(xmlString: xmlString) {
+                    print("✅ Parsed VAST Ad URL:", vastAdURL)
+                    DispatchQueue.main.async {
+                        self.playAd(url: URL(string: vastAdURL)!)
+                    }
+                } else {
+                    print("❌ No valid MediaFile found in VAST")
+                    DispatchQueue.main.async {
+                        self.playCurrent()
+                    }
+                }
+            }.resume()
+        }
+
+    func playAd(url: URL) {
+     
+        TV_PlayerHelper.shared.mmPlayer.player?.replaceCurrentItem(with: nil)
+        TV_PlayerHelper.shared.mmPlayer.player?.seek(to: kCMTimeZero)
+        TV_PlayerHelper.shared.mmPlayer.set(url: url)
+        TV_PlayerHelper.shared.mmPlayer.playView = self.playerView
+        TV_PlayerHelper.shared.mmPlayer.player?.currentItem?.preferredMaximumResolution = CGSize(width: 1280, height: 720)
+        TV_PlayerHelper.shared.mmPlayer.player?.currentItem?.preferredPeakBitRate = 0
+        TV_PlayerHelper.shared.mmPlayer.resume()
+        if let cover = TV_PlayerHelper.shared.mmPlayer.coverView as? CoverA {
+            cover.playSlider.isHidden = true
+            cover.forwardActionBtn.isHidden = true
+            cover.backwardActionBtn.isHidden = true
+        }
+
+        TV_PlayerHelper.shared.mmPlayer.player?.allowsExternalPlayback = true
+        TV_PlayerHelper.shared.mmPlayer.player?.usesExternalPlaybackWhileExternalScreenIsActive = true
+        TV_PlayerHelper.shared.mmPlayer.player?.play()
+        NotificationCenter.default.addObserver(
+                self,
+                selector: #selector(adDidFinishPlaying),
+                name: .AVPlayerItemDidPlayToEndTime,
+                object: TV_PlayerHelper.shared.mmPlayer.player?.currentItem
+            )
+
+    }
+    @objc func adDidFinishPlaying(_ notification: Notification) {
+        print("✅ Ad playback completed. Resuming main content.")
+        NotificationCenter.default.removeObserver(self, name: .AVPlayerItemDidPlayToEndTime, object: nil)
+        
+        self.adCompleted = true
+       // self.playerLayer.invalidate()
+        self.playCurrent()  // Resume main video
+    }
+
     //MARK: - collectionview attachment
     func getProgram() {
         
@@ -229,31 +332,38 @@ class MXVc: UIViewController {
     
     //MARK: - HTTP Request to get data
     func hitData() {
-        
-        var dict = Dictionary<String,Any>()
+        var dict: [String: Any] = [:]
         dict["user_id"] = currentUser.result?.id ?? "163"
-        DispatchQueue.main.async(execute: {loader.shareInstance.showLoading(self.view)})
+
+        DispatchQueue.main.async { loader.shareInstance.showLoading(self.view) }
+
         HttpHelper.apiCallWithout(postData: dict as NSDictionary,
                                   url: APIManager.sharedInstance.tvGuide,
-                                  identifire: "") { result, response, error, data in
-            DispatchQueue.main.async(execute: {loader.shareInstance.hideLoading()})
-            if let Json = data,(response?["status"] as? Bool == true), response != nil {
-                print(Json)
-                let decoder = JSONDecoder()
-                do{
-                    let safeData = try decoder.decode(MxModel.self, from: Json)
-                    self.mxModel = safeData
-                    print(self.mxModel)
-                    self.setdata(safeData)
-                    print(self.setdata(safeData))
-                    
-                }catch {
-                    print(error.localizedDescription)
-                }
+                                  identifier: "") { success, response, error, data in
+            DispatchQueue.main.async { loader.shareInstance.hideLoading() }
+
+            guard success, let response = response, let status = response["status"] as? Bool, status else {
+                print("Error: \(error?.localizedDescription ?? "Unknown error")")
+                return
+            }
+
+            guard let jsonData = data else {
+                print("Error: No data received")
+                return
+            }
+
+            let decoder = JSONDecoder()
+            do {
+                let safeData = try decoder.decode(MxModel.self, from: jsonData)
+                self.mxModel = safeData
+                print(self.mxModel)
+                self.setdata(safeData)
+            } catch {
+                print("Decoding error: \(error.localizedDescription)")
             }
         }
-        
     }
+
     
     func hitPlayTime(_ parm: Parameters) {
         
@@ -648,28 +758,6 @@ extension MXVc {
         }
     }
     
-    
-    // comment by avi tyagi
-//    func setDataWithTime(){
-//
-//        guard let pro = mxModel?.days?[nDay ?? 6][current ?? 0].events else {return}
-//        for no in 0..<pro.count {
-//            if let start = pro[no].start_time_milliseconds,let end = pro[no].end_time_milliseconds{
-//                let sPoint = start / 1000
-//                let ePoint = end / 1000
-//                for i in sPoint..<ePoint{
-//                    if extact == i {
-//                        timeIndex = no
-//                        break
-//                    }
-//                }
-//            }
-//
-//        }
-//
-//
-//    }
-    
     func setDataWithTime() {
         guard let pro = mxModel?.days?[nDay ?? 6][current ?? 0].events else { return }
         for no in 0..<pro.count {
@@ -712,6 +800,11 @@ extension MXVc {
         mxEvent.value?.removeAll()
         mxEvent.value?.append(contentsOf: mxDays.value?[current ?? 0].events ?? [])
         DispatchQueue.main.async {
+            if let cover = TV_PlayerHelper.shared.mmPlayer.coverView as? CoverA {
+                cover.playSlider.isHidden = false
+                cover.forwardActionBtn.isHidden = false
+                cover.backwardActionBtn.isHidden = false
+            }
             self.setDataWithTime()
             self.loadProgram()
         }
@@ -757,7 +850,7 @@ extension MXVc {
     func formattedDate(_ date: Date) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd-MMM-yyyy"
-        formatter.locale = Locale(identifier: "en_US_POSIX") 
+        formatter.locale = Locale(identifier: "en_US_POSIX")
         return formatter.string(from: date).uppercased() // Converts month to uppercase
     }
 
@@ -836,7 +929,6 @@ extension MXVc: GetVideoQualityList {
                     self.bandwidthArray.append(str[0])
                 }
                 return subUrl
-                
             } catch {
                 // contents could not be loaded
             }
@@ -893,5 +985,34 @@ extension MXVc: GetVideoQualityList {
         
         let window = UIApplication.shared.keyWindow
         window?.rootViewController!.present(sheetController, animated: false, completion: nil)
+    }
+}
+
+ 
+class VASTParser: NSObject, XMLParserDelegate {
+    private var mediaFileURLs: [String] = []
+    private var currentElement = ""
+    private var currentText = ""
+
+    func parseVAST(xmlString: String) -> String? {
+        guard let data = xmlString.data(using: .utf8) else { return nil }
+        let parser = XMLParser(data: data)
+        parser.delegate = self
+        parser.parse()
+        
+        return mediaFileURLs.first(where: { $0.contains(".mp4") }) ?? mediaFileURLs.first
+    }
+
+    func parser(_ parser: XMLParser, didStartElement elementName: String,
+                namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String: String] = [:]) {
+        currentElement = elementName
+        currentText = ""
+    }
+
+    func parser(_ parser: XMLParser, foundCharacters string: String) {
+        if currentElement == "MediaFile", string.contains("http") {
+            let trimmedURL = string.trimmingCharacters(in: .whitespacesAndNewlines)
+            mediaFileURLs.append(trimmedURL)
+        }
     }
 }

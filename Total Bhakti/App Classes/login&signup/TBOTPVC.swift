@@ -331,63 +331,71 @@ class TBOTPVC: TBInternetViewController {
     func updateProfileApi() {
         dict["otp_verification"] = "1"
         dict["otp"] = nil
-        let url =  APIManager.sharedInstance.KBASEURL + APIManager.sharedInstance.KOTPAPI
-        DispatchQueue.main.async(execute: {loader.shareInstance.showLoading(self.view)})
-        Alamofire.upload(multipartFormData: { (multipartFormData) in
-            for (key, value) in self.dict {
-                if key == "profile_picture"{
-                    let milliseconds = Int64(Date().timeIntervalSince1970 * 1000.0)
-                    let milisIsStirng = "\(milliseconds)"
-                    let filename = "\(milisIsStirng).png"
-                    let imageData = UIImagePNGRepresentation(value as! UIImage) as NSData?
-                    multipartFormData.append((imageData! as Data) as Data, withName: key , fileName: filename as String, mimeType: "image/png")
-                } else {
-                    multipartFormData.append((value as AnyObject).data(using: String.Encoding.utf8.rawValue)!, withName: key)
-                }
-            }
-        }, usingThreshold: UInt64(), to: url, method: .post , headers: nil, encodingCompletion: { (encodingResult) in
-            switch encodingResult {
-            case .success(let upload, _, _):
-                upload.uploadProgress(closure: { (Progress) in
-                    print("Upload Progress: \(Progress.fractionCompleted)")
-                })
-                upload.responseJSON(completionHandler: { (response) in
-                    debugPrint(response)
-                    switch response.result {
-                    case .success(_):
-                        DispatchQueue.main.async(execute: {loader.shareInstance.hideLoading()})
-                        if let JSON = response.result.value as? NSDictionary {
-                            currentUser = User.init(dictionary: JSON)
-                            if JSON.value(forKey: "status") as! Bool == true  {
-                                TBSharedPreference.sharedIntance.setUserData(currentUser)
-                                isComeFromProfile = 0
-                                let vc = storyBoard.instantiateViewController(withIdentifier: CONTROLLERNAMES.KHOME)
-                                self.navigationController?.pushViewController(vc, animated: true)
-                            } else {
-                                self.addAlert(appName, message: currentUser.message!, buttonTitle: ALERTS.kAlertOK)
-                            }
-                        }
-                        break
-                    case .failure(let encodingError):
-                        if let err = encodingError as? URLError, err.code == .notConnectedToInternet || err.code == .timedOut {
-                            self.addAlert(appName , message: ALERTS.kNoInterNetConnection, buttonTitle: ALERTS.kAlertOK)
-                        } else {
-                            DispatchQueue.main.async(execute: { loader.shareInstance.hideLoading()})
-                            //                            self.addAlert(appName, message: ALERTS.KSOMETHINGWRONG, buttonTitle: ALERTS.kAlertOK)
-                        }
-                    }
-                })
-            case .failure(let encodingError):
-                if let err = encodingError as? URLError, err.code == .notConnectedToInternet || err.code == .timedOut {
-                    self.addAlert(appName , message: ALERTS.kNoInterNetConnection, buttonTitle: ALERTS.kAlertOK)
-                } else {
-                    //                    self.addAlert(appName, message: ALERTS.KSOMETHINGWRONG, buttonTitle: ALERTS.kAlertOK)
-                }
-            }
-        })
+        let url = APIManager.sharedInstance.KBASEURL + APIManager.sharedInstance.KOTPAPI
         
+        DispatchQueue.main.async {
+            loader.shareInstance.showLoading(self.view)
+        }
+        
+        AF.upload(multipartFormData: { multipartFormData in
+            for (key, value) in self.dict {
+                if key == "profile_picture", let image = value as? UIImage {
+                    let milliseconds = Int64(Date().timeIntervalSince1970 * 1000.0)
+                    let filename = "\(milliseconds).png"
+                    if let imageData = image.UIImagePNGRepresentation() {
+                        multipartFormData.append(imageData, withName: key, fileName: filename, mimeType: "image/png")
+                    } else {
+                        print("Failed to convert image to PNG data")
+                    }
+                } else if let stringValue = value as? String, let data = stringValue.data(using: .utf8) {
+                    multipartFormData.append(data, withName: key)
+                } else {
+                    print("Unsupported value type for key: \(key)")
+                }
+            }
+        }, to: url, method: .post)
+        .uploadProgress { progress in
+            print("Upload Progress: \(progress.fractionCompleted)")
+        }
+        .responseJSON { response in
+            DispatchQueue.main.async {
+                loader.shareInstance.hideLoading()
+            }
+            
+            switch response.result {
+            case .success(let jsonResponse):
+                guard let resultDict = jsonResponse as? [String: Any] else {
+                    print("Invalid response format")
+                    return
+                }
+                
+                let status = resultDict["status"] as? Bool ?? false
+                let message = resultDict["message"] as? String ?? "Unknown error"
+                
+                if status {
+                    currentUser = User(dictionary: resultDict as NSDictionary)
+                    TBSharedPreference.sharedIntance.setUserData(currentUser)
+                    isComeFromProfile = 0
+                    
+                    DispatchQueue.main.async {
+                        let vc = storyBoard.instantiateViewController(withIdentifier: CONTROLLERNAMES.KHOME)
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        self.addAlert(appName, message: message, buttonTitle: ALERTS.kAlertOK)
+                    }
+                }
+                
+            case .failure(let error):
+                print("Upload failed with error: \(error.localizedDescription)")
+//                if let err = encodingError as? URLError, err.code == .notConnectedToInternet || err.code == .timedOut {
+//                    self.addAlert(appName , message: ALERTS.kNoInterNetConnection, buttonTitle: ALERTS.kAlertOK)
+//                } 
+            }
+        }
     }
-    
+
     //MARK:- resendOtp.
     func resendOtp() {
         var param1 : Parameters = [:]

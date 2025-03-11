@@ -30,7 +30,7 @@ class GuruWallpaperVC: UIViewController {
         DispatchQueue.main.async(execute: {loader.shareInstance.showLoading(self.view)})
         HttpHelper.apiCallWithout(postData: dict as NSDictionary,
                                   url: "wallpaper/wallpaper/get_wallpaper_menu?",
-                                  identifire: "") { result, response, error, data in
+                                  identifier: "") { result, response, error, data in
             DispatchQueue.main.async(execute: {loader.shareInstance.hideLoading()})
             guard let data = data, error == nil else {
                 return

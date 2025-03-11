@@ -945,46 +945,72 @@ extension TBhajanVC {
                         }
                         else
                         {
-                            let destination = DownloadRequest.suggestedDownloadDestination(for: .documentDirectory)
-                            Alamofire.download(tempData.media_file , method: .get, parameters: nil,encoding: JSONEncoding.default,headers: nil,to: destination).downloadProgress(closure: { (progress) in
-                                
-//                                self.downloadProgress.progress = Double(progress.fractionCompleted)
-                                
-                                
-                                // MARK:-  progress closure
-                                print(progress)
-                            }).response(completionHandler: { (DefaultDownloadResponse) in
-                                // MARK:- here you able to access the DefaultDownloadResponse
-                                // MARK:- result closure
-//                                self.downloadProgress.progress = 0.00
-                                
-                                if DefaultDownloadResponse.error != nil
-                                {
-//                                    self.downloadProgress.progress = 0.00
-                                    return
+                            guard let mediaFileURL = tempData.media_file else {
+                                print("Invalid media file URL")
+                                return
+                            }
+
+                            let destination: DownloadRequest.Destination = { _, _ in
+                                let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+                                let fileURL = documentsURL.appendingPathComponent("\(tempData.id).mp3")
+                                return (fileURL, [.removePreviousFile, .createIntermediateDirectories])
+                            }
+
+                            AF.download(mediaFileURL, to: destination)
+                                .downloadProgress { progress in
+                                    DispatchQueue.main.async {
+                                        print("Download Progress: \(progress.fractionCompleted)")
+                                        // Uncomment if using UI progress indicator
+                                        // self.downloadProgress.progress = Float(progress.fractionCompleted)
+                                    }
                                 }
-                                
-                                let userEntity = NSEntityDescription.entity(forEntityName: "Audio", in: context)!
-                                let audio = NSManagedObject(entity: userEntity, insertInto: context)
-                                audio.setValue(tempData.id, forKeyPath: "id")
-                                audio.setValue(tempData.title, forKey: "title")
-                                
-                                if  DefaultDownloadResponse.destinationURL?.path != nil{
-                                    let urlString: String =  (DefaultDownloadResponse.destinationURL?.path)!
-                                    audio.setValue(urlString, forKey: "media_file")
-                                    print(urlString)
+                                .response { response in
+                                    DispatchQueue.main.async {
+                                        // Uncomment if using UI progress indicator
+                                        // self.downloadProgress.progress = 0.00
+                                    }
+
+                                    if let error = response.error {
+                                        print("Download failed: \(error.localizedDescription)")
+                                        return
+                                    }
+
+                                    guard let filePath = response.fileURL?.path else {
+                                        print("File path not found")
+                                        return
+                                    }
+
+                                    print("Downloaded file path: \(filePath)")
+
+                                    // Save to Core Data
+                                    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+                                    let entity = NSEntityDescription.entity(forEntityName: "Audio", in: context)!
+                                    let audio = NSManagedObject(entity: entity, insertInto: context)
+
+                                    audio.setValue(tempData.id, forKey: "id")
+                                    audio.setValue(tempData.title, forKey: "title")
+                                    audio.setValue(filePath, forKey: "media_file")
+                                    audio.setValue(tempData.artist_name, forKey: "artist_name")
+                                    audio.setValue(tempData.image, forKey: "image")
+                                    audio.setValue(tempData.is_like, forKey: "is_like")
+                                    audio.setValue(tempData.likes, forKey: "likes")
+                                    audio.setValue(tempData.artist_name, forKey: "desp")
+
+                                    do {
+                                        try context.save()
+                                        print("Audio file saved to Core Data")
+                                    } catch {
+                                        print("Failed to save audio file: \(error.localizedDescription)")
+                                    }
+
+                                    // UI Updates
+                                    DispatchQueue.main.async {
+                                        self.downloadbtn.isUserInteractionEnabled = true
+                                        // Uncomment if using UI elements
+                                        // self.downloadbtn.setImage(UIImage(named: "downloaded_complete"), for: .normal)
+                                        // self.downloadbtn.text = "Downloaded"
+                                    }
                                 }
-                                
-                                audio.setValue(tempData.artist_name, forKey: "artist_name")
-                                audio.setValue(tempData.image, forKey: "image")
-                                audio.setValue(tempData.is_like, forKey: "is_like")
-                                audio.setValue(tempData.likes, forKey: "likes")
-                                audio.setValue(tempData.artist_name, forKey: "desp")
-                                
-                                self.downloadbtn.isUserInteractionEnabled = true
-                              //  self.downloadbtn.setImage(UIImage(named: "downloaded_complete"), for: .normal)
-//                                self.downloadbtn.text = "Downloaded"
-                            })
                         }
                         do {
                             try context.save()
@@ -1020,46 +1046,67 @@ extension TBhajanVC {
                         }
                         else
                         {
-                            let destination = DownloadRequest.suggestedDownloadDestination(for: .documentDirectory)
-                            Alamofire.download(tempData.media_file! , method: .get, parameters: nil,encoding: JSONEncoding.default,headers: nil,to: destination).downloadProgress(closure: { (progress) in
-                                
-//                                self.downloadProgress.progress = Double(progress.fractionCompleted)
-                                
-                                
-                                // MARK:-  progress closure
-                                print(progress)
-                            }).response(completionHandler: { (DefaultDownloadResponse) in
-                                // MARK:- here you able to access the DefaultDownloadResponse
-                                // MARK:- result closure
-//                                self.downloadProgress.progress = 0.00
-                                
-                                if DefaultDownloadResponse.error != nil
-                                {
-//                                    self.downloadProgress.progress = 0.00
-                                    return
+                            guard let mediaFileURL = tempData.media_file else {
+                                print("Invalid media file URL")
+                                return
+                            }
+
+                            let destination: DownloadRequest.Destination = { _, _ in
+                                let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+                                let fileURL = documentsURL.appendingPathComponent("\(tempData.id).mp3")
+                                return (fileURL, [.removePreviousFile, .createIntermediateDirectories])
+                            }
+
+                            AF.download(mediaFileURL, to: destination)
+                                .downloadProgress { progress in
+                                    DispatchQueue.main.async {
+                                        print("Download Progress: \(progress.fractionCompleted)")
+                                        // Uncomment if using a UI progress indicator
+                                        // self.downloadProgress.progress = Float(progress.fractionCompleted)
+                                    }
                                 }
-                                
-                                let userEntity = NSEntityDescription.entity(forEntityName: "Audio", in: context)!
-                                let audio = NSManagedObject(entity: userEntity, insertInto: context)
-                                audio.setValue(tempData.id, forKeyPath: "id")
-                                audio.setValue(tempData.title, forKey: "title")
-                                
-                                if  DefaultDownloadResponse.destinationURL?.path != nil{
-                                    let urlString: String =  (DefaultDownloadResponse.destinationURL?.path)!
-                                    audio.setValue(urlString, forKey: "media_file")
-                                    print(urlString)
+                                .response { response in
+                                    if let error = response.error {
+                                        print("Download failed: \(error.localizedDescription)")
+                                        return
+                                    }
+
+                                    guard let filePath = response.fileURL?.path else {
+                                        print("File path not found")
+                                        return
+                                    }
+
+                                    print("Downloaded file path: \(filePath)")
+
+                                    // Save to Core Data
+                                    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+                                    let entity = NSEntityDescription.entity(forEntityName: "Audio", in: context)!
+                                    let audio = NSManagedObject(entity: entity, insertInto: context)
+
+                                    audio.setValue(tempData.id, forKey: "id")
+                                    audio.setValue(tempData.title, forKey: "title")
+                                    audio.setValue(filePath, forKey: "media_file")
+                                    audio.setValue(tempData.artist_name, forKey: "artist_name")
+                                    audio.setValue(tempData.image, forKey: "image")
+                                    audio.setValue(tempData.is_like, forKey: "is_like")
+                                    audio.setValue(tempData.likes, forKey: "likes")
+                                    audio.setValue(tempData.artist_name, forKey: "desp")
+
+                                    do {
+                                        try context.save()
+                                        print("Audio file saved to Core Data")
+                                    } catch {
+                                        print("Failed to save audio file: \(error.localizedDescription)")
+                                    }
+
+                                    // UI Updates
+                                    DispatchQueue.main.async {
+                                        self.downloadbtn.isUserInteractionEnabled = true
+                                        // Uncomment if using UI elements
+                                        // self.downloadbtn.setImage(UIImage(named: "downloaded_complete"), for: .normal)
+                                        // self.downloadbtn.text = "Downloaded"
+                                    }
                                 }
-                                
-                                audio.setValue(tempData.artist_name, forKey: "artist_name")
-                                audio.setValue(tempData.image, forKey: "image")
-                                audio.setValue(tempData.is_like, forKey: "is_like")
-                                audio.setValue(tempData.likes, forKey: "likes")
-                                audio.setValue(tempData.artist_name, forKey: "desp")
-                                
-                                self.downloadbtn.isUserInteractionEnabled = true
-                               // self.downloadbtn.setImage(UIImage(named: "downloaded_complete"), for: .normal)
-//                                self.downloadbtn.text = "Downloaded"
-                            })
                         }
                         do {
                             try context.save()

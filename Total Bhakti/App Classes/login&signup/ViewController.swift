@@ -51,91 +51,68 @@ class ViewController: TBInternetViewController {
         googleBtn.layer.cornerRadius = googleBtn.frame.size.height / 2
         
     }
-    
-    func CallSOCIALAPI(_ param : Parameters, url:String){
-        
-        Alamofire.upload(multipartFormData: { multipartFormData in
+
+    func CallSOCIALAPI(_ param: [String: Any], url: String) {
+        let fullURL = APIManager.sharedInstance.KBASEURL + url
+
+        AF.upload(multipartFormData: { multipartFormData in
             for (key, value) in param {
-                multipartFormData.append((value as AnyObject).data(using: String.Encoding.utf8.rawValue)!, withName: key )
+                print("key::::::\(key)----value:::::\(value)")
+
+                if let stringValue = value as? String, let data = stringValue.data(using: .utf8) {
+                    multipartFormData.append(data, withName: key)
+                } else if let dataValue = value as? Data {
+                    multipartFormData.append(dataValue, withName: key)
+                } else {
+                    print("Unsupported value type for key: \(key)")
+                }
             }
-        }, to: APIManager.sharedInstance.KBASEURL+url, method: .post, headers: nil,
-           encodingCompletion: { encodingResult in
-            switch encodingResult {
-            case .success(let upload, _, _):
-                upload.responseJSON { response in
-                    debugPrint(response)
-                    DispatchQueue.main.async(execute: { loader.shareInstance.hideLoading()})
-                    if let responseData = response.response {
-                        switch responseData.statusCode {
-                        case APIManager.sharedInstance.KHTTPSUCCESS:
-                            guard let result = response.result.value else {
-                                return
-                            }
+        }, to: fullURL, method: .post)
+        .responseJSON { response in
+            DispatchQueue.main.async {
+                loader.shareInstance.hideLoading()
+            }
 
-                            print(result)
-                            let data = ((result as! NSDictionary)["data"] as! NSDictionary)
+            switch response.result {
+            case .success(let jsonResponse):
+                guard let resultDict = jsonResponse as? [String: Any],
+                      let data = resultDict["data"] as? [String: Any] else {
+                    print("Invalid response format")
+                    return
+                }
 
-                            let is_apple = data["is_apple"] as! String
-                            let is_facebook = data["is_facebook"] as! String
-                            let is_google = data["is_google"] as! String
-                            guard let iso = data["iso"] as? String else {return}
-                            isoStatus = iso
-                            UserDefaults.standard.set(iso, forKey: "iso")
-                            if is_apple == "1"{ //Apple visible
-                                self.appleBtn.isHidden = true
-                            }
-                            else{
-                                self.appleBtn.isHidden = false
-                            }
-                            if is_facebook == "1"{ //Facebook visible
-                                self.faceBookBtn.isHidden = true
-                            }
-                            else{
-                                self.faceBookBtn.isHidden = false
-                            }
-                            if is_google == "1"{ //Google visible
-                                self.googleBtn.isHidden = true
-//                                self.appleBtn.isHidden = false
-//                                self.googleBtn.isHidden = false
-//                                self.orView.isHidden = false
-                            }
-                            else{
-                                self.googleBtn.isHidden = false
-//                                self.appleBtn.isHidden = true
-//                                self.googleBtn.isHidden = true
-                            }
-                            
-                            if is_facebook == "1" || is_google == "1" || is_apple == "1"{
-                                self.orView.isHidden = false
-                            }
-                        default:
-                            break
-                        }
-                        
-                    }
-                    
-                    if let err = response.result.error as? URLError {
-                        if err.code == .notConnectedToInternet{
+                let isApple = data["is_apple"] as? String ?? "0"
+                let isFacebook = data["is_facebook"] as? String ?? "0"
+                let isGoogle = data["is_google"] as? String ?? "0"
+                let iso = data["iso"] as? String ?? ""
+
+                DispatchQueue.main.async {
+                    isoStatus = iso
+                    UserDefaults.standard.set(iso, forKey: "iso")
+
+                    self.appleBtn.isHidden = (isApple == "1")
+                    self.faceBookBtn.isHidden = (isFacebook == "1")
+                    self.googleBtn.isHidden = (isGoogle == "1")
+                    self.orView.isHidden = !(isApple == "1" || isFacebook == "1" || isGoogle == "1")
+                }
+
+            case .failure(let error):
+                print("Upload failed with error: \(error.localizedDescription)")
+                if let urlError = error as? URLError {
+                    DispatchQueue.main.async {
+                        if urlError.code == .notConnectedToInternet {
                             AlertController.alert(title: ALERTS.kNoInterNetConnection)
+                        } else if urlError.code == .timedOut {
+                            AlertController.alert(title: "Connection timeout")
+                        } else if urlError.code == .networkConnectionLost {
+                            AlertController.alert(title: "Network Connection Lost")
                         }
-                        else if err.code == .timedOut{
-                            // AlertController.alert(title: "Connection time out")
-                        }else if err.code == .networkConnectionLost{
-                            // AlertController.alert(title: "Network Connection Lost")
-                        }
-                    } else {
-                        // AlertController.alert(title: ALERTS.kNoInterNetConnection)
                     }
                 }
-                
-            case .failure(let encodingError):
-                DispatchQueue.main.async(execute: { loader.shareInstance.hideLoading()})
-                // AlertController.alert(title: ALERTS.KSOMETHINGWRONG)
-                print("error:\(encodingError)")
             }
-        })
-        
+        }
     }
+
     func reloadData() {
         self.orView.setNeedsDisplay()
 //        self.orView.setNeedsDisplay()

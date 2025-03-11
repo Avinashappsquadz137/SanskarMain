@@ -58,6 +58,10 @@ public class SheetViewController: UIViewController {
     public override var childForStatusBarStyle: UIViewController? {
         childViewController
     }
+	
+    public override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return childViewController.supportedInterfaceOrientations
+    }
     
     public static var hasBlurBackground = false
     public var hasBlurBackground = SheetViewController.hasBlurBackground {
@@ -106,6 +110,15 @@ public class SheetViewController: UIViewController {
         get { return self.contentViewController.cornerRadius }
         set { self.contentViewController.cornerRadius = newValue }
     }
+
+    @available(iOS 13.0, *)
+    public static var cornerCurve: CALayerCornerCurve = .circular
+
+    @available(iOS 13.0, *)
+    public var cornerCurve: CALayerCornerCurve {
+        get { return self.contentViewController.cornerCurve }
+        set { self.contentViewController.cornerCurve = newValue }
+    }
     
     public static var gripSize: CGSize = CGSize (width: 50, height: 6)
     public var gripSize: CGSize {
@@ -136,6 +149,7 @@ public class SheetViewController: UIViewController {
     public var shouldDismiss: ((SheetViewController) -> Bool)?
     public var didDismiss: ((SheetViewController) -> Void)?
     public var sizeChanged: ((SheetViewController, SheetSize, CGFloat) -> Void)?
+    public var panGestureShouldBegin: ((UIPanGestureRecognizer) -> Bool?)?
     
     public private(set) var contentViewController: SheetContentViewController
     var overlayView = UIView()
@@ -199,7 +213,7 @@ public class SheetViewController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.additionalSafeAreaInsets = UIEdgeInsets(top: -self.options.pullBarHeight, left: 0, bottom: 0, right: 0)
+        self.compatibleAdditionalSafeAreaInsets = UIEdgeInsets(top: -self.options.pullBarHeight, left: 0, bottom: 0, right: 0)
         
         self.view.backgroundColor = UIColor.clear
         self.addPanGestureRecognizer()
@@ -335,7 +349,7 @@ public class SheetViewController: UIViewController {
             if (self.options.useFullScreenMode) {
                 top = 0
             } else {
-                top = max(12, UIApplication.shared.windows.first(where:  { $0.isKeyWindow })?.safeAreaInsets.top ?? 12)
+                top = max(12, UIApplication.shared.windows.first(where:  { $0.isKeyWindow })?.compatibleSafeAreaInsets.top ?? 12)
             }
             $0.bottom.pinToSuperview()
             $0.top.pinToSuperview(inset: top, relation: .greaterThanOrEqual).priority = UILayoutPriority(999)
@@ -374,7 +388,11 @@ public class SheetViewController: UIViewController {
             newHeight = minHeight
         }
         if newHeight > maxHeight {
-            newHeight = maxHeight
+            if options.isRubberBandEnabled {
+                newHeight = logConstraintValueForYPosition(verticalLimit: maxHeight, yPosition: newHeight)
+            } else {
+                newHeight = maxHeight
+            }
         }
         
         switch gesture.state {
@@ -402,14 +420,14 @@ public class SheetViewController: UIViewController {
             case .ended:
                 let velocity = (0.2 * gesture.velocity(in: self.view).y)
                 var finalHeight = newHeight - offset - velocity
-                if velocity > 500 {
+                if velocity > options.pullDismissThreshod {
                     // They swiped hard, always just close the sheet when they do
                     finalHeight = -1
                 }
                 
                 let animationDuration = TimeInterval(abs(velocity*0.0002) + 0.2)
                 
-                guard finalHeight > 0 || !self.dismissOnPull else {
+                guard finalHeight > 0 || !(self.dismissOnPull && self.shouldDismiss?(self) ?? true) else {
                     // Dismiss
                     UIView.animate(
                         withDuration: animationDuration,
@@ -478,7 +496,7 @@ public class SheetViewController: UIViewController {
                 break // Do nothing
         }
     }
-    
+
     private func registerKeyboardObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardShown(_:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardDismissed(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -518,7 +536,7 @@ public class SheetViewController: UIViewController {
         if self.options.useFullScreenMode {
             fullscreenHeight = self.view.bounds.height - self.minimumSpaceAbovePullBar
         } else {
-            fullscreenHeight = self.view.bounds.height - self.view.safeAreaInsets.top - self.minimumSpaceAbovePullBar
+            fullscreenHeight = self.view.bounds.height - self.view.compatibleSafeAreaInsets.top - self.minimumSpaceAbovePullBar
         }
         switch (size) {
             case .fixed(let height):
@@ -528,11 +546,19 @@ public class SheetViewController: UIViewController {
             case .intrinsic:
                 contentHeight = self.contentViewController.preferredHeight + self.keyboardHeight
             case .percent(let percent):
+                if (percent > 1) {
+                    debugPrint("Size percent should be less than or equal to 1.0, but was set to \(percent))")
+                }
                 contentHeight = (self.view.bounds.height) * CGFloat(percent) + self.keyboardHeight
             case .marginFromTop(let margin):
                 contentHeight = (self.view.bounds.height) - margin + self.keyboardHeight
         }
         return min(fullscreenHeight, contentHeight)
+    }
+
+    // https://medium.com/thoughts-on-thoughts/recreating-apple-s-rubber-band-effect-in-swift-dbf981b40f35
+    private func logConstraintValueForYPosition(verticalLimit: CGFloat, yPosition : CGFloat) -> CGFloat {
+      return verticalLimit * (1 + log10(yPosition/verticalLimit))
     }
     
     public func resize(to size: SheetSize,
@@ -690,6 +716,10 @@ extension SheetViewController: UIGestureRecognizerDelegate {
     
     public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         guard let panGestureRecognizer = gestureRecognizer as? InitialTouchPanGestureRecognizer, let childScrollView = self.childScrollView, let point = panGestureRecognizer.initialTouchLocation else { return true }
+        
+        if let pan = gestureRecognizer as? UIPanGestureRecognizer, let closure = panGestureShouldBegin, let should = closure(pan) {
+            return should
+        }
         
         let pointInChildScrollView = self.view.convert(point, to: childScrollView).y - childScrollView.contentOffset.y
         

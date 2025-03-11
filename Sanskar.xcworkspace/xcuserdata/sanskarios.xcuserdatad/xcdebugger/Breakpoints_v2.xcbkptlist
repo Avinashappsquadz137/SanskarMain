@@ -7,32 +7,48 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "B812D84E-2637-45C1-923A-2443BE1B338F"
+            uuid = "F23D7467-FE42-469E-AB1E-5B50480C5965"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Total Bhakti/App Classes/PremiumVc/New Premium Detail/newPreDetails.swift"
+            filePath = "Total Bhakti/App Classes/login&amp;signup/TBHomeVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "135"
-            endingLineNumber = "135"
-            landmarkName = "handleTap()"
+            startingLineNumber = "1226"
+            endingLineNumber = "1226"
+            landmarkName = "tableHeaderBtnAction(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "BB66C320-40BC-49DE-B19F-0F5583538396"
+            uuid = "B4483418-DF79-4A0F-8932-D52A12E6812B"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Total Bhakti/App Classes/PremiumVc/New Premium Detail/newPreDetails.swift"
+            filePath = "Total Bhakti/App Classes/PremiumVc/New Premium/newPremiumvc.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
-            landmarkName = "handleTap()"
+            startingLineNumber = "182"
+            endingLineNumber = "182"
+            landmarkName = "hitPremiumData(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0BFCF137-4B52-4153-B4E8-B46F5FB8B107"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Total Bhakti/App Classes/PremiumVc/TBPremiumVc.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
+            landmarkName = "getPremiumListApi(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

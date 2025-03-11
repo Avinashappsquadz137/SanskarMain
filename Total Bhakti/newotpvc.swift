@@ -403,61 +403,73 @@ class newotpvc: UIViewController {
     func updateProfileApi() {
         dict["otp_verification"] = "1"
         dict["otp"] = nil
-        let url =  APIManager.sharedInstance.KBASEURL + APIManager.sharedInstance.KOTPAPI
-        DispatchQueue.main.async(execute: {loader.shareInstance.showLoading(self.view)})
-        Alamofire.upload(multipartFormData: { (multipartFormData) in
+        let url = APIManager.sharedInstance.KBASEURL + APIManager.sharedInstance.KOTPAPI
+
+        DispatchQueue.main.async {
+            loader.shareInstance.showLoading(self.view)
+        }
+
+        AF.upload(multipartFormData: { multipartFormData in
             for (key, value) in self.dict {
-                if key == "profile_picture"{
+                if key == "profile_picture", let image = value as? UIImage {
                     let milliseconds = Int64(Date().timeIntervalSince1970 * 1000.0)
-                    let milisIsStirng = "\(milliseconds)"
-                    let filename = "\(milisIsStirng).png"
-                    let imageData = UIImagePNGRepresentation(value as! UIImage) as NSData?
-                    multipartFormData.append((imageData! as Data) as Data, withName: key , fileName: filename as String, mimeType: "image/png")
-                } else {
-                    multipartFormData.append((value as AnyObject).data(using: String.Encoding.utf8.rawValue)!, withName: key)
-                }
-            }
-        }, usingThreshold: UInt64(), to: url, method: .post , headers: nil, encodingCompletion: { (encodingResult) in
-            switch encodingResult {
-            case .success(let upload, _, _):
-                upload.uploadProgress(closure: { (Progress) in
-                    print("Upload Progress: \(Progress.fractionCompleted)")
-                })
-                upload.responseJSON(completionHandler: { (response) in
-                    debugPrint(response)
-                    switch response.result {
-                    case .success(_):
-                        DispatchQueue.main.async(execute: {loader.shareInstance.hideLoading()})
-                        if let JSON = response.result.value as? NSDictionary {
-                            currentUser = User.init(dictionary: JSON)
-                            if JSON.value(forKey: "status") as! Bool == true  {
-                                TBSharedPreference.sharedIntance.setUserData(currentUser)
-                                isComeFromProfile = 0
-                                let vc = storyBoard.instantiateViewController(withIdentifier: CONTROLLERNAMES.KHOME)
-                                self.navigationController?.pushViewController(vc, animated: true)
-                            } else {
-                                self.addAlert(appName, message: currentUser.message!, buttonTitle: ALERTS.kAlertOK)
-                            }
-                        }
-                        break
-                    case .failure(let encodingError):
-                        if let err = encodingError as? URLError, err.code == .notConnectedToInternet || err.code == .timedOut {
-                            self.addAlert(appName , message: ALERTS.kNoInterNetConnection, buttonTitle: ALERTS.kAlertOK)
-                        } else {
-                            DispatchQueue.main.async(execute: { loader.shareInstance.hideLoading()})
-                            //                            self.addAlert(appName, message: ALERTS.KSOMETHINGWRONG, buttonTitle: ALERTS.kAlertOK)
-                        }
+                    let filename = "\(milliseconds).png"
+                    
+                    if let imageData = image.UIImagePNGRepresentation() {
+                        multipartFormData.append(imageData, withName: key, fileName: filename, mimeType: "image/png")
                     }
-                })
-            case .failure(let encodingError):
-                if let err = encodingError as? URLError, err.code == .notConnectedToInternet || err.code == .timedOut {
-                    self.addAlert(appName , message: ALERTS.kNoInterNetConnection, buttonTitle: ALERTS.kAlertOK)
-                } else {
-                    //                    self.addAlert(appName, message: ALERTS.KSOMETHINGWRONG, buttonTitle: ALERTS.kAlertOK)
+                } else if let stringValue = value as? String, let data = stringValue.data(using: .utf8) {
+                    multipartFormData.append(data, withName: key)
                 }
             }
-        })
+        }, to: url, method: .post, headers: nil)
+        .uploadProgress { progress in
+            print("Upload Progress: \(progress.fractionCompleted)")
+        }
+        .responseJSON { response in
+            DispatchQueue.main.async {
+                loader.shareInstance.hideLoading()
+            }
+
+            switch response.result {
+            case .success(let value):
+                print("Response JSON: \(value)")
+
+                guard let json = value as? [String: Any] else {
+                    print("Invalid response format")
+                    return
+                }
+
+                let currentUser = User(dictionary: json as NSDictionary)
+                if let status = json["status"] as? Bool, status {
+                    TBSharedPreference.sharedIntance.setUserData(currentUser!)
+                    isComeFromProfile = 0
+
+                    let vc = storyBoard.instantiateViewController(withIdentifier: CONTROLLERNAMES.KHOME)
+                    self.navigationController?.pushViewController(vc, animated: true)
+                } else {
+                    if let currentUser = currentUser, let message = currentUser.message {
+                        self.addAlert(appName, message: message, buttonTitle: ALERTS.kAlertOK)
+                    }
+                }
+
+            case .failure(let error):
+                print("Upload Failed: \(error.localizedDescription)")
+
+                if let urlError = error.asAFError?.underlyingError as? URLError {
+                    switch urlError.code {
+                    case .notConnectedToInternet:
+                        self.addAlert(appName, message: ALERTS.kNoInterNetConnection, buttonTitle: ALERTS.kAlertOK)
+                    case .timedOut:
+                        self.addAlert(appName, message: "Request timed out. Please try again.", buttonTitle: ALERTS.kAlertOK)
+                    default:
+                        break
+                    }
+                }
+            }
+        }
     }
+
 }
 extension newotpvc: OTPDelegate {
     func didChangeValidity(isValid: Bool) {

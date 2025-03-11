@@ -101,7 +101,7 @@
         "config": "https://assets.juspay.in/hyper/bundles/ios/release/in.juspay.upiintent/2.0.0/common/2.0.151/v1-config.jsa"
       }
     },
-    "id": "24219829502214318-patch-1.36.6",
+    "id": "24219829502214318-patch-1.39.16",
     "package": {
       "in.juspay.ec": "https://assets.juspay.in/hyper/bundles/app/in.juspay.ec/3.18.4/ios/v1-index_bundle.jsa",
       "in.juspay.hyperpay": "https://assets.juspay.in/hyper/bundles/app/in.juspay.hyperpay/3.73.9-release-20231208.0/ios/v1-index_bundle.jsa",
@@ -144,7 +144,7 @@
         "config": "https://assets.juspay.in/hyper/bundles/ios/release/in.juspay.upiintent/2.0.0/common/2.0.151/v1-config.jsa"
       }
     },
-    "id": "24219829502214318-patch-1.36.6",
+    "id": "24219829502214318-patch-1.39.16",
     "package": {
       "in.juspay.ec": "https://assets.juspay.in/hyper/bundles/app/in.juspay.ec/3.18.4/ios/v1-index_bundle.jsa",
       "in.juspay.hyperpay": "https://assets.juspay.in/hyper/bundles/app/in.juspay.hyperpay/3.73.9-release-20231208.0/ios/v1-index_bundle.jsa",

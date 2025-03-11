@@ -9,7 +9,7 @@
 import UIKit
 import GoogleMobileAds
 
-class TBshortsVC: UIViewController,GADFullScreenContentDelegate {
+class TBshortsVC: UIViewController,FullScreenContentDelegate {
     
     var refreshControl = UIRefreshControl()
     
@@ -25,7 +25,7 @@ class TBshortsVC: UIViewController,GADFullScreenContentDelegate {
     var shortVideos = [ShortVideo]()
     var userLikeStatus: [String: Bool] = [:]
     let adUnitID = "ca-app-pub-1618767157139570/5766265057"
-     var rewardedAd: GADRewardedAd?
+    var rewardedAd: RewardedAd?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,7 +68,7 @@ class TBshortsVC: UIViewController,GADFullScreenContentDelegate {
     
     
     func loadAndShowRewardedAd() {
-           GADRewardedAd.load(withAdUnitID: adUnitID, request: GADRequest()) { [weak self] ad, error in
+        GADRewardedAd.load(with: adUnitID, request: GADRequest()) { [weak self] ad, error in
                if let error = error {
                    print("Failed to load rewarded ad with error: \(error.localizedDescription)")
                    return
