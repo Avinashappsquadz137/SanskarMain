@@ -332,21 +332,20 @@ class TBOTPVC: TBInternetViewController {
         dict["otp_verification"] = "1"
         dict["otp"] = nil
         let url = APIManager.sharedInstance.KBASEURL + APIManager.sharedInstance.KOTPAPI
-        
+
         DispatchQueue.main.async {
             loader.shareInstance.showLoading(self.view)
         }
-        
+
         AF.upload(multipartFormData: { multipartFormData in
             for (key, value) in self.dict {
                 if key == "profile_picture", let image = value as? UIImage {
-                    let milliseconds = Int64(Date().timeIntervalSince1970 * 1000.0)
-                    let filename = "\(milliseconds).png"
-                    if let imageData = image.UIImagePNGRepresentation() {
+                    if let imageData = UIImagePNGRepresentation(image) {
+                        let milliseconds = Int64(Date().timeIntervalSince1970 * 1000.0)
+                        let filename = "\(milliseconds).png"
                         multipartFormData.append(imageData, withName: key, fileName: filename, mimeType: "image/png")
-                    } else {
-                        print("Failed to convert image to PNG data")
                     }
+
                 } else if let stringValue = value as? String, let data = stringValue.data(using: .utf8) {
                     multipartFormData.append(data, withName: key)
                 } else {
@@ -361,22 +360,22 @@ class TBOTPVC: TBInternetViewController {
             DispatchQueue.main.async {
                 loader.shareInstance.hideLoading()
             }
-            
+
             switch response.result {
             case .success(let jsonResponse):
                 guard let resultDict = jsonResponse as? [String: Any] else {
                     print("Invalid response format")
                     return
                 }
-                
+
                 let status = resultDict["status"] as? Bool ?? false
                 let message = resultDict["message"] as? String ?? "Unknown error"
-                
+
                 if status {
                     currentUser = User(dictionary: resultDict as NSDictionary)
                     TBSharedPreference.sharedIntance.setUserData(currentUser)
                     isComeFromProfile = 0
-                    
+
                     DispatchQueue.main.async {
                         let vc = storyBoard.instantiateViewController(withIdentifier: CONTROLLERNAMES.KHOME)
                         self.navigationController?.pushViewController(vc, animated: true)
@@ -386,15 +385,24 @@ class TBOTPVC: TBInternetViewController {
                         self.addAlert(appName, message: message, buttonTitle: ALERTS.kAlertOK)
                     }
                 }
-                
+
             case .failure(let error):
                 print("Upload failed with error: \(error.localizedDescription)")
-//                if let err = encodingError as? URLError, err.code == .notConnectedToInternet || err.code == .timedOut {
-//                    self.addAlert(appName , message: ALERTS.kNoInterNetConnection, buttonTitle: ALERTS.kAlertOK)
-//                } 
+
+                if let urlError = error.asAFError?.underlyingError as? URLError {
+                    switch urlError.code {
+                    case .notConnectedToInternet:
+                        self.addAlert(appName, message: ALERTS.kNoInterNetConnection, buttonTitle: ALERTS.kAlertOK)
+                    case .timedOut:
+                        self.addAlert(appName, message: "Request timed out. Please try again.", buttonTitle: ALERTS.kAlertOK)
+                    default:
+                        break
+                    }
+                }
             }
         }
     }
+
 
     //MARK:- resendOtp.
     func resendOtp() {

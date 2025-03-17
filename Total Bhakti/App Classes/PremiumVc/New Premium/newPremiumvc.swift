@@ -117,14 +117,17 @@ class newPremiumvc: TBInternetViewController, WKYTPlayerViewDelegate,FullScreenC
            loadAndShowRewardedAd()
        }
 
-       func adDidPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-           print("Ad did present full screen content.")
-       }
+//    func adDidPresentFullScreenContent(_ ad: FullScreenPresentingAd) {
+//            print("Ad is presented.")
+//        }
 
-       func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-           print("Ad did dismiss full screen content.")
-          presentAlert()
-       }
+    func adDidDismissFullScreenContent(_ ad: FullScreenPresentingAd) {
+            print("Ad dismissed. Reloading new ad...")
+          //  loadRewardedAd() // Reload new ad after dismissal
+            DispatchQueue.main.async {
+                self.presentAlert()
+            }
+        }
     
     func presentAlert() {
             let alert = UIAlertController(title: "", message: "To Continue Enjoying Ads-free Subscribe to Premium", preferredStyle: .alert)

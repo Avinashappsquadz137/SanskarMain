@@ -68,7 +68,7 @@ class TBshortsVC: UIViewController,FullScreenContentDelegate {
     
     
     func loadAndShowRewardedAd() {
-        GADRewardedAd.load(with: adUnitID, request: GADRequest()) { [weak self] ad, error in
+        RewardedAd.load(with: adUnitID, request: Request()) { [weak self] ad, error in
                if let error = error {
                    print("Failed to load rewarded ad with error: \(error.localizedDescription)")
                    return
@@ -81,7 +81,7 @@ class TBshortsVC: UIViewController,FullScreenContentDelegate {
        }
     func showRewardedAd() {
            if let ad = rewardedAd {
-               ad.present(fromRootViewController: self) {
+               ad.present(from: self) {
                    let reward = ad.adReward
                    print("User earned reward of \(reward.amount) \(reward.type).")
                }
@@ -91,16 +91,16 @@ class TBshortsVC: UIViewController,FullScreenContentDelegate {
            }
        }
     
-    func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
+    func ad(_ ad: FullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
            print("Ad did fail to present full screen content with error: \(error.localizedDescription)")
            loadAndShowRewardedAd()
        }
 
-       func adDidPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-           print("Ad did present full screen content.")
-       }
+//    func adDidPresentFullScreenContent(_ ad: FullScreenPresentingAd) {
+//           print("Ad did present full screen content.")
+//       }
 
-       func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+    func adDidDismissFullScreenContent(_ ad: FullScreenPresentingAd) {
            print("Ad did dismiss full screen content.")
           presentAlert()
        }

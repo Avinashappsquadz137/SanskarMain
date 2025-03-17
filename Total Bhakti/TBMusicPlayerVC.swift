@@ -1391,7 +1391,7 @@ extension TBMusicPlayerVC{
                             AF.download(tempData.media_file, to: destination)
                                 .downloadProgress { progress in
                                     DispatchQueue.main.async {
-                                        self.downloadProgress.progress = Float(progress.fractionCompleted)
+                                        self.downloadProgress.progress = Double(Float(progress.fractionCompleted))
                                     }
                                     print("Download Progress: \(progress.fractionCompleted)")
                                 }
@@ -1493,7 +1493,7 @@ extension TBMusicPlayerVC{
                             AF.download(mediaFileURL, to: destination)
                                 .downloadProgress { progress in
                                     DispatchQueue.main.async {
-                                        self.downloadProgress.progress = Float(progress.fractionCompleted)
+                                        self.downloadProgress.progress = Double(Float(progress.fractionCompleted))
                                     }
                                     print("Download Progress: \(progress.fractionCompleted)")
                                 }
@@ -2435,28 +2435,28 @@ extension UIView {
 
 
 
-extension TBMusicPlayerVC: BannerViewDelegate{
-    func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
-        print("bannerViewDidReceiveAd")
-    }
-    
-    func bannerView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: Error) {
-        print("bannerView:didFailToReceiveAdWithError: \(error.localizedDescription)")
-    }
-    
-    func bannerViewDidRecordImpression(_ bannerView: GADBannerView) {
-        print("bannerViewDidRecordImpression")
-    }
-    
-    func bannerViewWillPresentScreen(_ bannerView: GADBannerView) {
-        print("bannerViewWillPresentScreen")
-    }
-    
-    func bannerViewWillDismissScreen(_ bannerView: GADBannerView) {
-        print("bannerViewWillDIsmissScreen")
-    }
-    
-    func bannerViewDidDismissScreen(_ bannerView: GADBannerView) {
-        print("bannerViewDidDismissScreen")
-    }
-}
+//extension TBMusicPlayerVC: BannerViewDelegate{
+//    func bannerViewDidReceiveAd(_ bannerView: BannerView) {
+//        print("bannerViewDidReceiveAd")
+//    }
+//    
+//    func bannerView(_ bannerView: BannerView, didFailToReceiveAdWithError error: Error) {
+//        print("bannerView:didFailToReceiveAdWithError: \(error.localizedDescription)")
+//    }
+//    
+//    func bannerViewDidRecordImpression(_ bannerView: GADBannerView) {
+//        print("bannerViewDidRecordImpression")
+//    }
+//    
+//    func bannerViewWillPresentScreen(_ bannerView: GADBannerView) {
+//        print("bannerViewWillPresentScreen")
+//    }
+//    
+//    func bannerViewWillDismissScreen(_ bannerView: GADBannerView) {
+//        print("bannerViewWillDIsmissScreen")
+//    }
+//    
+//    func bannerViewDidDismissScreen(_ bannerView: GADBannerView) {
+//        print("bannerViewDidDismissScreen")
+//    }
+//}

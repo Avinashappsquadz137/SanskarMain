@@ -270,44 +270,48 @@ class TBHomeVC: TBInternetViewController,AAPlayerDelegate,shortCutDelegate,MMPla
         loginuserrecordapi(param1)
         setupPiP()
     }
-    func loadAndShowRewardedAd() {
-        GADRewardedAd.load(with: adUnitID, request: GADRequest()) { [weak self] ad, error in
-            if let error = error {
-                print("Failed to load rewarded ad with error: \(error.localizedDescription)")
-                return
-            }
-            self?.rewardedAd = ad
-            self?.rewardedAd?.fullScreenContentDelegate = self
-            print("Rewarded ad loaded.")
-            self?.showRewardedAd()
-        }
-    }
-    func showRewardedAd() {
-        if let ad = rewardedAd {
-            ad.present(fromRootViewController: self) {
-                let reward = ad.adReward
-                print("User earned reward of \(reward.amount) \(reward.type).")
-            }
-        } else {
-            print("Ad wasn't ready.")
-            loadAndShowRewardedAd()
-        }
-    }
+ 
+//    func loadAndShowRewardedAd() {
+//        let request = Request()
+//        GADRewardedAd.load(with: adUnitID, request: request) { [weak self] ad, error in
+//                if let error = error {
+//                    print("Failed to load rewarded ad: \(error.localizedDescription)")
+//                    return
+//                }
+//                self?.rewardedAd = ad
+//                self?.rewardedAd?.fullScreenContentDelegate = self
+//                print("Rewarded ad successfully loaded.")
+//            }
+//        }
+   
+//    func showRewardedAd() {
+//            guard let ad = rewardedAd else {
+//                print("Ad wasn't ready. Reloading...")
+//               //loadRewardedAd()
+//                return
+//            }
+//            ad.present(fromRootViewController: self) {
+//                let reward = ad.adReward
+//                print("User earned reward: \(reward.amount) \(reward.type)")
+//            }
+//        }
     
-    func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
-        print("Ad did fail to present full screen content with error: \(error.localizedDescription)")
-        loadAndShowRewardedAd()
-    }
+//    func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
+//            print("Ad failed to present: \(error.localizedDescription)")
+//        loadAndShowRewardedAd() // Reload ad if it fails to present
+//        }
+//
+//        func adDidPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+//            print("Ad is presented.")
+//        }
     
-    func adDidPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-        print("Ad did present full screen content.")
-    }
-    
-    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-        print("Ad did dismiss full screen content.")
-        presentAlert()
-    }
-    
+//    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+//            print("Ad dismissed. Reloading new ad...")
+//            //loadRewardedAd() // Reload new ad after dismissal
+//            DispatchQueue.main.async {
+//                self.presentAlert()
+//            }
+//        }
     func presentAlert() {
         let alert = UIAlertController(title: "", message: "To Continue Enjoying Ads-free Subscribe to Premium", preferredStyle: .alert)
         let goPremiumAction = UIAlertAction(title: "Subscribe", style: .default, handler: { action in
@@ -1347,7 +1351,7 @@ class TBHomeVC: TBInternetViewController,AAPlayerDelegate,shortCutDelegate,MMPla
             print(value)
             if value == 0 {
                 
-                loadAndShowRewardedAd()
+               // loadAndShowRewardedAd()
             }
             else {
                 print("no ads")

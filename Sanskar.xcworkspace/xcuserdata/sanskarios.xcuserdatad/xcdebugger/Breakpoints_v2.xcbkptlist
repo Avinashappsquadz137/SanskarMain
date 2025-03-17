@@ -14,8 +14,8 @@
             filePath = "Total Bhakti/App Classes/login&amp;signup/TBHomeVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1226"
-            endingLineNumber = "1226"
+            startingLineNumber = "1230"
+            endingLineNumber = "1230"
             landmarkName = "tableHeaderBtnAction(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -30,10 +30,40 @@
             filePath = "Total Bhakti/App Classes/PremiumVc/New Premium/newPremiumvc.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "182"
-            endingLineNumber = "182"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
             landmarkName = "hitPremiumData(_:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B4483418-DF79-4A0F-8932-D52A12E6812B - bf5bcac95ad82a51"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Sanskar.newPremiumvc.hitPremiumData(Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; ()"
+                  moduleName = "Sanskar"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sanskarios/Documents/Appsquadz/SanskarTV/Total%20Bhakti/App%20Classes/PremiumVc/New%20Premium/newPremiumvc.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "185"
+                  endingLineNumber = "185">
+               </Location>
+               <Location
+                  uuid = "B4483418-DF79-4A0F-8932-D52A12E6812B - f1ff0d2576968da4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Optional&lt;Any&gt;) -&gt; () in Sanskar.newPremiumvc.hitPremiumData(Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; ()"
+                  moduleName = "Sanskar"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sanskarios/Documents/Appsquadz/SanskarTV/Total%20Bhakti/App%20Classes/PremiumVc/New%20Premium/newPremiumvc.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "186"
+                  endingLineNumber = "186">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -50,6 +80,64 @@
             endingLineNumber = "160"
             landmarkName = "getPremiumListApi(_:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "0BFCF137-4B52-4153-B4E8-B46F5FB8B107 - 79e6216c7b3dc4bd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Sanskar.TBPremiumVc.viewDidLoad() -&gt; ()"
+                  moduleName = "Sanskar"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sanskarios/Documents/Appsquadz/SanskarTV/Total%20Bhakti/App%20Classes/PremiumVc/TBPremiumVc.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "160"
+                  endingLineNumber = "160">
+               </Location>
+               <Location
+                  uuid = "0BFCF137-4B52-4153-B4E8-B46F5FB8B107 - 46501b7eaa946c34"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Sanskar.TBPremiumVc.successfullPayment(notification: Foundation.Notification) -&gt; ()"
+                  moduleName = "Sanskar"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sanskarios/Documents/Appsquadz/SanskarTV/Total%20Bhakti/App%20Classes/PremiumVc/TBPremiumVc.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "160"
+                  endingLineNumber = "160">
+               </Location>
+               <Location
+                  uuid = "0BFCF137-4B52-4153-B4E8-B46F5FB8B107 - 3d128bc56474c8bc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Sanskar.TBPremiumVc.refresh() -&gt; ()"
+                  moduleName = "Sanskar"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sanskarios/Documents/Appsquadz/SanskarTV/Total%20Bhakti/App%20Classes/PremiumVc/TBPremiumVc.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "160"
+                  endingLineNumber = "160">
+               </Location>
+               <Location
+                  uuid = "0BFCF137-4B52-4153-B4E8-B46F5FB8B107 - 8df82aa31d76e9cc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Any&gt;) -&gt; () in Sanskar.TBPremiumVc.getPremiumListApi(Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; ()"
+                  moduleName = "Sanskar"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sanskarios/Documents/Appsquadz/SanskarTV/Total%20Bhakti/App%20Classes/PremiumVc/TBPremiumVc.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "161"
+                  endingLineNumber = "161">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

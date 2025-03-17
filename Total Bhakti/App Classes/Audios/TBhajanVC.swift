@@ -430,7 +430,7 @@ class TBhajanVC: TBInternetViewController {
             return
         }
         
-        downloadAudio()
+       // downloadAudio()
         
     }
     
@@ -913,213 +913,213 @@ extension TBhajanVC {
 extension TBhajanVC {
     
     //MARK:- Download all audio data.
-    func downloadAudio()
-    {
-//        if downloadProgress.progress != 0.00
-//        {
-//            self.download_Btn.isUserInteractionEnabled = true
-//            _ = SweetAlert().showAlert("", subTitle: "Another Audio is Already added on Queue", style: AlertStyle.error)
-//            return
+   // func downloadAudio()
+//    {
+////        if downloadProgress.progress != 0.00
+////        {
+////            self.download_Btn.isUserInteractionEnabled = true
+////            _ = SweetAlert().showAlert("", subTitle: "Another Audio is Already added on Queue", style: AlertStyle.error)
+////            return
+////        }
+//        
+//        if  MusicPlayerManager.shared.trendingBhajanString == "trending bhajan"{
+//            let tempData = MusicPlayerManager.shared.Bhajan_Track_Trending[MusicPlayerManager.shared.song_no]
+//            
+//            let context = appDelegate.persistentContainer.viewContext
+//            if let tempAudio = try? context.fetch(Audio.fetchRequest()) as? [Audio] {
+//                
+//                if let theAudio = tempAudio {
+//                    
+//                    if let audioUrl = URL(string: tempData.media_file) {
+//                        // MARK:-  then lets create your document folder url
+//                        let documentsDirectoryURL =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+//                        // MARK:- lets create your destination file url
+//                        let destinationUrl = documentsDirectoryURL.appendingPathComponent(audioUrl.lastPathComponent)
+//                        print(destinationUrl)
+//                        
+//                        // MARK:- to check if it exists before downloading it
+//                        if FileManager.default.fileExists(atPath: destinationUrl.path) {
+//                            print("The file already exists at path")
+////                            self.download_Btn.isUserInteractionEnabled = true
+//                            _ = SweetAlert().showAlert("", subTitle: "This Audio Already Downloaded", style: AlertStyle.success)
+//                        }
+//                        else
+//                        {
+//                            guard let mediaFileURL = tempData.media_file, !mediaFileURL.isEmpty else {
+//                                print("Invalid or empty media file URL")
+//                                return
+//                            }
+//
+//                            let destination: DownloadRequest.Destination = { _, _ in
+//                                let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+//                                let fileURL = documentsURL.appendingPathComponent("\(tempData.id).mp3")
+//                                return (fileURL, [.removePreviousFile, .createIntermediateDirectories])
+//                            }
+//
+//                            AF.download(mediaFileURL, to: destination)
+//                                .downloadProgress { progress in
+//                                    DispatchQueue.main.async {
+//                                        print("Download Progress: \(progress.fractionCompleted)")
+//                                        // Uncomment if using UI progress indicator
+//                                        // self.downloadProgress.progress = Float(progress.fractionCompleted)
+//                                    }
+//                                }
+//                                .response { response in
+//                                    DispatchQueue.main.async {
+//                                        // Uncomment if using UI progress indicator
+//                                        // self.downloadProgress.progress = 0.00
+//                                    }
+//
+//                                    if let error = response.error {
+//                                        print("Download failed: \(error.localizedDescription)")
+//                                        return
+//                                    }
+//
+//                                    guard let filePath = response.fileURL?.path else {
+//                                        print("File path not found")
+//                                        return
+//                                    }
+//
+//                                    print("Downloaded file path: \(filePath)")
+//
+//                                    // Save to Core Data
+//                                    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+//                                    let entity = NSEntityDescription.entity(forEntityName: "Audio", in: context)!
+//                                    let audio = NSManagedObject(entity: entity, insertInto: context)
+//
+//                                    audio.setValue(tempData.id, forKey: "id")
+//                                    audio.setValue(tempData.title, forKey: "title")
+//                                    audio.setValue(filePath, forKey: "media_file")
+//                                    audio.setValue(tempData.artist_name, forKey: "artist_name")
+//                                    audio.setValue(tempData.image, forKey: "image")
+//                                    audio.setValue(tempData.is_like, forKey: "is_like")
+//                                    audio.setValue(tempData.likes, forKey: "likes")
+//                                    audio.setValue(tempData.artist_name, forKey: "desp")
+//
+//                                    do {
+//                                        try context.save()
+//                                        print("Audio file saved to Core Data")
+//                                    } catch {
+//                                        print("Failed to save audio file: \(error.localizedDescription)")
+//                                    }
+//
+//                                    // UI Updates
+//                                    DispatchQueue.main.async {
+//                                        self.downloadbtn.isUserInteractionEnabled = true
+//                                        // Uncomment if using UI elements
+//                                        // self.downloadbtn.setImage(UIImage(named: "downloaded_complete"), for: .normal)
+//                                        // self.downloadbtn.text = "Downloaded"
+//                                    }
+//                                }
+//                        }
+//                        do {
+//                            try context.save()
+//                        } catch {
+//                            print("Failed saving")
+//                        }
+//                        
+//                    }
+//                }
+//                
+//            }
 //        }
-        
-        if  MusicPlayerManager.shared.trendingBhajanString == "trending bhajan"{
-            let tempData = MusicPlayerManager.shared.Bhajan_Track_Trending[MusicPlayerManager.shared.song_no]
-            
-            let context = appDelegate.persistentContainer.viewContext
-            if let tempAudio = try? context.fetch(Audio.fetchRequest()) as? [Audio] {
-                
-                if let theAudio = tempAudio {
-                    
-                    if let audioUrl = URL(string: tempData.media_file) {
-                        // MARK:-  then lets create your document folder url
-                        let documentsDirectoryURL =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-                        // MARK:- lets create your destination file url
-                        let destinationUrl = documentsDirectoryURL.appendingPathComponent(audioUrl.lastPathComponent)
-                        print(destinationUrl)
-                        
-                        // MARK:- to check if it exists before downloading it
-                        if FileManager.default.fileExists(atPath: destinationUrl.path) {
-                            print("The file already exists at path")
-//                            self.download_Btn.isUserInteractionEnabled = true
-                            _ = SweetAlert().showAlert("", subTitle: "This Audio Already Downloaded", style: AlertStyle.success)
-                        }
-                        else
-                        {
-                            guard let mediaFileURL = tempData.media_file else {
-                                print("Invalid media file URL")
-                                return
-                            }
-
-                            let destination: DownloadRequest.Destination = { _, _ in
-                                let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-                                let fileURL = documentsURL.appendingPathComponent("\(tempData.id).mp3")
-                                return (fileURL, [.removePreviousFile, .createIntermediateDirectories])
-                            }
-
-                            AF.download(mediaFileURL, to: destination)
-                                .downloadProgress { progress in
-                                    DispatchQueue.main.async {
-                                        print("Download Progress: \(progress.fractionCompleted)")
-                                        // Uncomment if using UI progress indicator
-                                        // self.downloadProgress.progress = Float(progress.fractionCompleted)
-                                    }
-                                }
-                                .response { response in
-                                    DispatchQueue.main.async {
-                                        // Uncomment if using UI progress indicator
-                                        // self.downloadProgress.progress = 0.00
-                                    }
-
-                                    if let error = response.error {
-                                        print("Download failed: \(error.localizedDescription)")
-                                        return
-                                    }
-
-                                    guard let filePath = response.fileURL?.path else {
-                                        print("File path not found")
-                                        return
-                                    }
-
-                                    print("Downloaded file path: \(filePath)")
-
-                                    // Save to Core Data
-                                    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-                                    let entity = NSEntityDescription.entity(forEntityName: "Audio", in: context)!
-                                    let audio = NSManagedObject(entity: entity, insertInto: context)
-
-                                    audio.setValue(tempData.id, forKey: "id")
-                                    audio.setValue(tempData.title, forKey: "title")
-                                    audio.setValue(filePath, forKey: "media_file")
-                                    audio.setValue(tempData.artist_name, forKey: "artist_name")
-                                    audio.setValue(tempData.image, forKey: "image")
-                                    audio.setValue(tempData.is_like, forKey: "is_like")
-                                    audio.setValue(tempData.likes, forKey: "likes")
-                                    audio.setValue(tempData.artist_name, forKey: "desp")
-
-                                    do {
-                                        try context.save()
-                                        print("Audio file saved to Core Data")
-                                    } catch {
-                                        print("Failed to save audio file: \(error.localizedDescription)")
-                                    }
-
-                                    // UI Updates
-                                    DispatchQueue.main.async {
-                                        self.downloadbtn.isUserInteractionEnabled = true
-                                        // Uncomment if using UI elements
-                                        // self.downloadbtn.setImage(UIImage(named: "downloaded_complete"), for: .normal)
-                                        // self.downloadbtn.text = "Downloaded"
-                                    }
-                                }
-                        }
-                        do {
-                            try context.save()
-                        } catch {
-                            print("Failed saving")
-                        }
-                        
-                    }
-                }
-                
-            }
-        }
-        else{
-            let tempData = MusicPlayerManager.shared.Bhajan_Track[MusicPlayerManager.shared.song_no]
-            
-            let context = appDelegate.persistentContainer.viewContext
-            if let tempAudio = try? context.fetch(Audio.fetchRequest()) as? [Audio] {
-                
-                if let theAudio = tempAudio {
-                    
-                    if let audioUrl = URL(string: tempData.media_file!) {
-                        // MARK:-  then lets create your document folder url
-                        let documentsDirectoryURL =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-                        // MARK:- lets create your destination file url
-                        let destinationUrl = documentsDirectoryURL.appendingPathComponent(audioUrl.lastPathComponent)
-                        print(destinationUrl)
-                        
-                        // MARK:- to check if it exists before downloading it
-                        if FileManager.default.fileExists(atPath: destinationUrl.path) {
-                            print("The file already exists at path")
-                            self.downloadbtn.isUserInteractionEnabled = true
-                            _ = SweetAlert().showAlert("", subTitle: "This Audio Already Downloaded", style: AlertStyle.success)
-                        }
-                        else
-                        {
-                            guard let mediaFileURL = tempData.media_file else {
-                                print("Invalid media file URL")
-                                return
-                            }
-
-                            let destination: DownloadRequest.Destination = { _, _ in
-                                let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-                                let fileURL = documentsURL.appendingPathComponent("\(tempData.id).mp3")
-                                return (fileURL, [.removePreviousFile, .createIntermediateDirectories])
-                            }
-
-                            AF.download(mediaFileURL, to: destination)
-                                .downloadProgress { progress in
-                                    DispatchQueue.main.async {
-                                        print("Download Progress: \(progress.fractionCompleted)")
-                                        // Uncomment if using a UI progress indicator
-                                        // self.downloadProgress.progress = Float(progress.fractionCompleted)
-                                    }
-                                }
-                                .response { response in
-                                    if let error = response.error {
-                                        print("Download failed: \(error.localizedDescription)")
-                                        return
-                                    }
-
-                                    guard let filePath = response.fileURL?.path else {
-                                        print("File path not found")
-                                        return
-                                    }
-
-                                    print("Downloaded file path: \(filePath)")
-
-                                    // Save to Core Data
-                                    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-                                    let entity = NSEntityDescription.entity(forEntityName: "Audio", in: context)!
-                                    let audio = NSManagedObject(entity: entity, insertInto: context)
-
-                                    audio.setValue(tempData.id, forKey: "id")
-                                    audio.setValue(tempData.title, forKey: "title")
-                                    audio.setValue(filePath, forKey: "media_file")
-                                    audio.setValue(tempData.artist_name, forKey: "artist_name")
-                                    audio.setValue(tempData.image, forKey: "image")
-                                    audio.setValue(tempData.is_like, forKey: "is_like")
-                                    audio.setValue(tempData.likes, forKey: "likes")
-                                    audio.setValue(tempData.artist_name, forKey: "desp")
-
-                                    do {
-                                        try context.save()
-                                        print("Audio file saved to Core Data")
-                                    } catch {
-                                        print("Failed to save audio file: \(error.localizedDescription)")
-                                    }
-
-                                    // UI Updates
-                                    DispatchQueue.main.async {
-                                        self.downloadbtn.isUserInteractionEnabled = true
-                                        // Uncomment if using UI elements
-                                        // self.downloadbtn.setImage(UIImage(named: "downloaded_complete"), for: .normal)
-                                        // self.downloadbtn.text = "Downloaded"
-                                    }
-                                }
-                        }
-                        do {
-                            try context.save()
-                        } catch {
-                            print("Failed saving")
-                        }
-                        
-                    }
-                }
-                
-            }
-        }
-        
-    }
+//        else{
+//            let tempData = MusicPlayerManager.shared.Bhajan_Track[MusicPlayerManager.shared.song_no]
+//            
+//            let context = appDelegate.persistentContainer.viewContext
+//            if let tempAudio = try? context.fetch(Audio.fetchRequest()) as? [Audio] {
+//                
+//                if let theAudio = tempAudio {
+//                    
+//                    if let audioUrl = URL(string: tempData.media_file!) {
+//                        // MARK:-  then lets create your document folder url
+//                        let documentsDirectoryURL =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+//                        // MARK:- lets create your destination file url
+//                        let destinationUrl = documentsDirectoryURL.appendingPathComponent(audioUrl.lastPathComponent)
+//                        print(destinationUrl)
+//                        
+//                        // MARK:- to check if it exists before downloading it
+//                        if FileManager.default.fileExists(atPath: destinationUrl.path) {
+//                            print("The file already exists at path")
+//                            self.downloadbtn.isUserInteractionEnabled = true
+//                            _ = SweetAlert().showAlert("", subTitle: "This Audio Already Downloaded", style: AlertStyle.success)
+//                        }
+//                        else
+//                        {
+//                            guard let mediaFileURL = tempData.media_file else {
+//                                print("Invalid media file URL")
+//                                return
+//                            }
+//
+//                            let destination: DownloadRequest.Destination = { _, _ in
+//                                let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+//                                let fileURL = documentsURL.appendingPathComponent("\(tempData.id).mp3")
+//                                return (fileURL, [.removePreviousFile, .createIntermediateDirectories])
+//                            }
+//
+//                            AF.download(mediaFileURL, to: destination)
+//                                .downloadProgress { progress in
+//                                    DispatchQueue.main.async {
+//                                        print("Download Progress: \(progress.fractionCompleted)")
+//                                        // Uncomment if using a UI progress indicator
+//                                        // self.downloadProgress.progress = Float(progress.fractionCompleted)
+//                                    }
+//                                }
+//                                .response { response in
+//                                    if let error = response.error {
+//                                        print("Download failed: \(error.localizedDescription)")
+//                                        return
+//                                    }
+//
+//                                    guard let filePath = response.fileURL?.path else {
+//                                        print("File path not found")
+//                                        return
+//                                    }
+//
+//                                    print("Downloaded file path: \(filePath)")
+//
+//                                    // Save to Core Data
+//                                    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+//                                    let entity = NSEntityDescription.entity(forEntityName: "Audio", in: context)!
+//                                    let audio = NSManagedObject(entity: entity, insertInto: context)
+//
+//                                    audio.setValue(tempData.id, forKey: "id")
+//                                    audio.setValue(tempData.title, forKey: "title")
+//                                    audio.setValue(filePath, forKey: "media_file")
+//                                    audio.setValue(tempData.artist_name, forKey: "artist_name")
+//                                    audio.setValue(tempData.image, forKey: "image")
+//                                    audio.setValue(tempData.is_like, forKey: "is_like")
+//                                    audio.setValue(tempData.likes, forKey: "likes")
+//                                    audio.setValue(tempData.artist_name, forKey: "desp")
+//
+//                                    do {
+//                                        try context.save()
+//                                        print("Audio file saved to Core Data")
+//                                    } catch {
+//                                        print("Failed to save audio file: \(error.localizedDescription)")
+//                                    }
+//
+//                                    // UI Updates
+//                                    DispatchQueue.main.async {
+//                                        self.downloadbtn.isUserInteractionEnabled = true
+//                                        // Uncomment if using UI elements
+//                                        // self.downloadbtn.setImage(UIImage(named: "downloaded_complete"), for: .normal)
+//                                        // self.downloadbtn.text = "Downloaded"
+//                                    }
+//                                }
+//                        }
+//                        do {
+//                            try context.save()
+//                        } catch {
+//                            print("Failed saving")
+//                        }
+//                        
+//                    }
+//                }
+//                
+//            }
+//        }
+//        
+//    }
     
 }

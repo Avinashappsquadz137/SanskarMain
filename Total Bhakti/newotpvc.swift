@@ -415,9 +415,12 @@ class newotpvc: UIViewController {
                     let milliseconds = Int64(Date().timeIntervalSince1970 * 1000.0)
                     let filename = "\(milliseconds).png"
                     
-                    if let imageData = image.UIImagePNGRepresentation() {
+                    if let imageData = UIImagePNGRepresentation(image) {
+                        let milliseconds = Int64(Date().timeIntervalSince1970 * 1000.0)
+                        let filename = "\(milliseconds).png"
                         multipartFormData.append(imageData, withName: key, fileName: filename, mimeType: "image/png")
                     }
+
                 } else if let stringValue = value as? String, let data = stringValue.data(using: .utf8) {
                     multipartFormData.append(data, withName: key)
                 }

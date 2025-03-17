@@ -515,13 +515,6 @@
 			remoteGlobalIDString = 549A3FA98AF267DA963342150FAB0E70;
 			remoteInfo = CountryPickerView;
 		};
-		4ADBA7C722FC10B80084C652 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A3F8CAAB2267169500B7DE49 /* Pods.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = CC7F69FF15F9D2AE352C23AB08EAEB8F;
-			remoteInfo = "CountryPickerView-CountryPickerView";
-		};
 		4ADBA7DF22FC10B80084C652 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A3F8D1D7226716C000B7DE49 /* Pods.xcodeproj */;
@@ -529,26 +522,12 @@
 			remoteGlobalIDString = 549A3FA98AF267DA963342150FAB0E70;
 			remoteInfo = CountryPickerView;
 		};
-		4ADBA7E122FC10B80084C652 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A3F8D1D7226716C000B7DE49 /* Pods.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = CC7F69FF15F9D2AE352C23AB08EAEB8F;
-			remoteInfo = "CountryPickerView-CountryPickerView";
-		};
 		4ADBA7F922FC10B80084C652 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A3F8CE40226716A200B7DE49 /* Pods.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 549A3FA98AF267DA963342150FAB0E70;
 			remoteInfo = CountryPickerView;
-		};
-		4ADBA7FB22FC10B80084C652 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A3F8CE40226716A200B7DE49 /* Pods.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = CC7F69FF15F9D2AE352C23AB08EAEB8F;
-			remoteInfo = "CountryPickerView-CountryPickerView";
 		};
 		5A5C06A624111AD000659A0C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1046,6 +1025,174 @@
 			proxyType = 2;
 			remoteGlobalIDString = F8259F35F3ADF2F59917707D4214827B;
 			remoteInfo = SlideMenuControllerSwift;
+		};
+		C76B67522D87F1F2001E4C19 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A3F8CAAB2267169500B7DE49 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 085DBCE7DD98588B2ED103B1C1F36026;
+			remoteInfo = "Alamofire-Alamofire";
+		};
+		C76B67542D87F1F2001E4C19 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A3F8CAAB2267169500B7DE49 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 920624790A09310F9E506BCF1D4CC9E7;
+			remoteInfo = "CountryPickerView-CountryPickerView_CountryPickerView";
+		};
+		C76B67562D87F1F2001E4C19 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A3F8CAAB2267169500B7DE49 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 409A40F21065BFF2199E91A10A27F9DA;
+			remoteInfo = "CryptoSwift-CryptoSwift";
+		};
+		C76B67582D87F1F2001E4C19 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A3F8CAAB2267169500B7DE49 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F8ECCB3B4E33C0FDD00B394CC2C7EA2E;
+			remoteInfo = "Google-Mobile-Ads-SDK";
+		};
+		C76B675A2D87F1F2001E4C19 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A3F8CAAB2267169500B7DE49 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3998091512768CD07733CB4F02B4BD9F;
+			remoteInfo = "Google-Mobile-Ads-SDK-GoogleMobileAdsResources";
+		};
+		C76B675C2D87F1F2001E4C19 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A3F8CAAB2267169500B7DE49 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8A377C18F92A8A511869ADA54B5652D2;
+			remoteInfo = "GoogleUserMessagingPlatform-UserMessagingPlatformResources";
+		};
+		C76B675E2D87F1F2001E4C19 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A3F8CAAB2267169500B7DE49 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = FD694DB3E09A81036691F823E3211D44;
+			remoteInfo = "MarqueeLabel-MarqueeLabel";
+		};
+		C76B67602D87F1F2001E4C19 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A3F8CAAB2267169500B7DE49 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 17F4B5FA2011EB672FE8854D1EDBA1BF;
+			remoteInfo = "YoutubePlayer-in-WKWebView-WKYTPlayerView_privacy";
+		};
+		C76B67A52D87F1F2001E4C19 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A3F8D1D7226716C000B7DE49 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 085DBCE7DD98588B2ED103B1C1F36026;
+			remoteInfo = "Alamofire-Alamofire";
+		};
+		C76B67A72D87F1F2001E4C19 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A3F8D1D7226716C000B7DE49 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 920624790A09310F9E506BCF1D4CC9E7;
+			remoteInfo = "CountryPickerView-CountryPickerView_CountryPickerView";
+		};
+		C76B67A92D87F1F2001E4C19 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A3F8D1D7226716C000B7DE49 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 409A40F21065BFF2199E91A10A27F9DA;
+			remoteInfo = "CryptoSwift-CryptoSwift";
+		};
+		C76B67AB2D87F1F2001E4C19 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A3F8D1D7226716C000B7DE49 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F8ECCB3B4E33C0FDD00B394CC2C7EA2E;
+			remoteInfo = "Google-Mobile-Ads-SDK";
+		};
+		C76B67AD2D87F1F2001E4C19 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A3F8D1D7226716C000B7DE49 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3998091512768CD07733CB4F02B4BD9F;
+			remoteInfo = "Google-Mobile-Ads-SDK-GoogleMobileAdsResources";
+		};
+		C76B67AF2D87F1F2001E4C19 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A3F8D1D7226716C000B7DE49 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8A377C18F92A8A511869ADA54B5652D2;
+			remoteInfo = "GoogleUserMessagingPlatform-UserMessagingPlatformResources";
+		};
+		C76B67B12D87F1F2001E4C19 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A3F8D1D7226716C000B7DE49 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = FD694DB3E09A81036691F823E3211D44;
+			remoteInfo = "MarqueeLabel-MarqueeLabel";
+		};
+		C76B67B32D87F1F2001E4C19 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A3F8D1D7226716C000B7DE49 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 17F4B5FA2011EB672FE8854D1EDBA1BF;
+			remoteInfo = "YoutubePlayer-in-WKWebView-WKYTPlayerView_privacy";
+		};
+		C76B67F82D87F1F2001E4C19 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A3F8CE40226716A200B7DE49 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 085DBCE7DD98588B2ED103B1C1F36026;
+			remoteInfo = "Alamofire-Alamofire";
+		};
+		C76B67FA2D87F1F2001E4C19 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A3F8CE40226716A200B7DE49 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 920624790A09310F9E506BCF1D4CC9E7;
+			remoteInfo = "CountryPickerView-CountryPickerView_CountryPickerView";
+		};
+		C76B67FC2D87F1F2001E4C19 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A3F8CE40226716A200B7DE49 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 409A40F21065BFF2199E91A10A27F9DA;
+			remoteInfo = "CryptoSwift-CryptoSwift";
+		};
+		C76B67FE2D87F1F2001E4C19 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A3F8CE40226716A200B7DE49 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F8ECCB3B4E33C0FDD00B394CC2C7EA2E;
+			remoteInfo = "Google-Mobile-Ads-SDK";
+		};
+		C76B68002D87F1F2001E4C19 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A3F8CE40226716A200B7DE49 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3998091512768CD07733CB4F02B4BD9F;
+			remoteInfo = "Google-Mobile-Ads-SDK-GoogleMobileAdsResources";
+		};
+		C76B68022D87F1F2001E4C19 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A3F8CE40226716A200B7DE49 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8A377C18F92A8A511869ADA54B5652D2;
+			remoteInfo = "GoogleUserMessagingPlatform-UserMessagingPlatformResources";
+		};
+		C76B68042D87F1F2001E4C19 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A3F8CE40226716A200B7DE49 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = FD694DB3E09A81036691F823E3211D44;
+			remoteInfo = "MarqueeLabel-MarqueeLabel";
+		};
+		C76B68062D87F1F2001E4C19 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A3F8CE40226716A200B7DE49 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 17F4B5FA2011EB672FE8854D1EDBA1BF;
+			remoteInfo = "YoutubePlayer-in-WKWebView-WKYTPlayerView_privacy";
 		};
 		C78884A52C24658C007B3FFF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -6476,11 +6623,13 @@
 			children = (
 				A3F8CBDC2267169600B7DE49 /* AAPlayer.framework */,
 				A3F8CBDE2267169600B7DE49 /* Alamofire.framework */,
+				C76B67532D87F1F2001E4C19 /* Alamofire.bundle */,
 				A3F8CBE22267169600B7DE49 /* CircleProgressView.framework */,
 				076B0AF727034BD8007CB8CF /* CLTypingLabel.framework */,
 				4ADBA7C622FC10B80084C652 /* CountryPickerView.framework */,
-				4ADBA7C822FC10B80084C652 /* CountryPickerView.bundle */,
+				C76B67552D87F1F2001E4C19 /* CountryPickerView_CountryPickerView.bundle */,
 				0754AC732705E45900564419 /* CryptoSwift.framework */,
+				C76B67572D87F1F2001E4C19 /* CryptoSwift.bundle */,
 				07005D3727AD06BF00ACFB50 /* DropDown.framework */,
 				5A5C06A724111AD000659A0C /* ExpandableLabel.framework */,
 				A3F8CBE42267169600B7DE49 /* FacebookCore.framework */,
@@ -6489,13 +6638,17 @@
 				A3F8CBEA2267169600B7DE49 /* FBSDKLoginKit.framework */,
 				073C069A26EA3E460048C60B /* FittedSheets.framework */,
 				0767C17926FCB8D60080CE3A /* FSPagerView.framework */,
+				C76B67592D87F1F2001E4C19 /* Google_Mobile_Ads_SDK.framework */,
+				C76B675B2D87F1F2001E4C19 /* GoogleMobileAdsResources.bundle */,
 				A3F8CBEE2267169600B7DE49 /* GoogleToolboxForMac.framework */,
+				C76B675D2D87F1F2001E4C19 /* UserMessagingPlatformResources.bundle */,
 				9397B85D26943EFC0037A511 /* GoogleUtilities.framework */,
 				C78884A62C24658C007B3FFF /* GoogleUtilities_Privacy.bundle */,
 				A3F8CBF02267169600B7DE49 /* GTMOAuth2.framework */,
 				A3F8CBF22267169600B7DE49 /* GTMSessionFetcher.framework */,
 				A3F8CBF42267169600B7DE49 /* IQKeyboardManagerSwift.framework */,
 				07CC649A27B63896009F3186 /* MarqueeLabel.framework */,
+				C76B675F2D87F1F2001E4C19 /* MarqueeLabel.bundle */,
 				A3F8CBF62267169600B7DE49 /* MICountryPicker.framework */,
 				FADB9B72243482FA00020AA3 /* MMPlayerView.framework */,
 				9397B85F26943EFC0037A511 /* nanopb.framework */,
@@ -6514,6 +6667,7 @@
 				D5DE32812A80EE7D00FDBD9E /* Assets.bundle */,
 				FA78AC9A243F3BDE0068B2FD /* YouTubePlayer.framework */,
 				87F199AC262ECC440049D4A5 /* YoutubePlayer_in_WKWebView.framework */,
+				C76B67612D87F1F2001E4C19 /* WKYTPlayerView_privacy.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -8289,11 +8443,13 @@
 			children = (
 				A3F8CF71226716A300B7DE49 /* AAPlayer.framework */,
 				A3F8CF73226716A300B7DE49 /* Alamofire.framework */,
+				C76B67F92D87F1F2001E4C19 /* Alamofire.bundle */,
 				A3F8CF77226716A300B7DE49 /* CircleProgressView.framework */,
 				076B0B5D27034BD8007CB8CF /* CLTypingLabel.framework */,
 				4ADBA7FA22FC10B80084C652 /* CountryPickerView.framework */,
-				4ADBA7FC22FC10B80084C652 /* CountryPickerView.bundle */,
+				C76B67FB2D87F1F2001E4C19 /* CountryPickerView_CountryPickerView.bundle */,
 				0754ACDB2705E45900564419 /* CryptoSwift.framework */,
+				C76B67FD2D87F1F2001E4C19 /* CryptoSwift.bundle */,
 				07005DA127AD06BF00ACFB50 /* DropDown.framework */,
 				5A5C06F524111AD000659A0C /* ExpandableLabel.framework */,
 				A3F8CF79226716A300B7DE49 /* FacebookCore.framework */,
@@ -8302,13 +8458,17 @@
 				A3F8CF7F226716A300B7DE49 /* FBSDKLoginKit.framework */,
 				073C06FC26EA3E460048C60B /* FittedSheets.framework */,
 				0767C1DD26FCB8D60080CE3A /* FSPagerView.framework */,
+				C76B67FF2D87F1F2001E4C19 /* Google_Mobile_Ads_SDK.framework */,
+				C76B68012D87F1F2001E4C19 /* GoogleMobileAdsResources.bundle */,
 				A3F8CF83226716A300B7DE49 /* GoogleToolboxForMac.framework */,
+				C76B68032D87F1F2001E4C19 /* UserMessagingPlatformResources.bundle */,
 				9397B8C326943EFC0037A511 /* GoogleUtilities.framework */,
 				C78885282C24658C007B3FFF /* GoogleUtilities_Privacy.bundle */,
 				A3F8CF85226716A300B7DE49 /* GTMOAuth2.framework */,
 				A3F8CF87226716A300B7DE49 /* GTMSessionFetcher.framework */,
 				A3F8CF89226716A300B7DE49 /* IQKeyboardManagerSwift.framework */,
 				07CC650627B63896009F3186 /* MarqueeLabel.framework */,
+				C76B68052D87F1F2001E4C19 /* MarqueeLabel.bundle */,
 				A3F8CF8B226716A300B7DE49 /* MICountryPicker.framework */,
 				FADB9BC2243482FA00020AA3 /* MMPlayerView.framework */,
 				9397B8C526943EFC0037A511 /* nanopb.framework */,
@@ -8327,6 +8487,7 @@
 				D5DE32F92A80EE7D00FDBD9E /* Assets.bundle */,
 				FA78ACEA243F3BDE0068B2FD /* YouTubePlayer.framework */,
 				87F199FE262ECC440049D4A5 /* YoutubePlayer_in_WKWebView.framework */,
+				C76B68072D87F1F2001E4C19 /* WKYTPlayerView_privacy.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -10119,11 +10280,13 @@
 			children = (
 				A3F8D308226716C100B7DE49 /* AAPlayer.framework */,
 				A3F8D30A226716C100B7DE49 /* Alamofire.framework */,
+				C76B67A62D87F1F2001E4C19 /* Alamofire.bundle */,
 				A3F8D30E226716C100B7DE49 /* CircleProgressView.framework */,
 				076B0B2A27034BD8007CB8CF /* CLTypingLabel.framework */,
 				4ADBA7E022FC10B80084C652 /* CountryPickerView.framework */,
-				4ADBA7E222FC10B80084C652 /* CountryPickerView.bundle */,
+				C76B67A82D87F1F2001E4C19 /* CountryPickerView_CountryPickerView.bundle */,
 				0754ACA72705E45900564419 /* CryptoSwift.framework */,
+				C76B67AA2D87F1F2001E4C19 /* CryptoSwift.bundle */,
 				07005D6C27AD06BF00ACFB50 /* DropDown.framework */,
 				5A5C06CE24111AD000659A0C /* ExpandableLabel.framework */,
 				A3F8D310226716C100B7DE49 /* FacebookCore.framework */,
@@ -10132,13 +10295,17 @@
 				A3F8D316226716C100B7DE49 /* FBSDKLoginKit.framework */,
 				073C06CB26EA3E460048C60B /* FittedSheets.framework */,
 				0767C1AB26FCB8D60080CE3A /* FSPagerView.framework */,
+				C76B67AC2D87F1F2001E4C19 /* Google_Mobile_Ads_SDK.framework */,
+				C76B67AE2D87F1F2001E4C19 /* GoogleMobileAdsResources.bundle */,
 				A3F8D31A226716C100B7DE49 /* GoogleToolboxForMac.framework */,
+				C76B67B02D87F1F2001E4C19 /* UserMessagingPlatformResources.bundle */,
 				9397B89026943EFC0037A511 /* GoogleUtilities.framework */,
 				C78884E72C24658C007B3FFF /* GoogleUtilities_Privacy.bundle */,
 				A3F8D31C226716C100B7DE49 /* GTMOAuth2.framework */,
 				A3F8D31E226716C100B7DE49 /* GTMSessionFetcher.framework */,
 				A3F8D320226716C100B7DE49 /* IQKeyboardManagerSwift.framework */,
 				07CC64D027B63896009F3186 /* MarqueeLabel.framework */,
+				C76B67B22D87F1F2001E4C19 /* MarqueeLabel.bundle */,
 				A3F8D322226716C100B7DE49 /* MICountryPicker.framework */,
 				FADB9B9A243482FA00020AA3 /* MMPlayerView.framework */,
 				9397B89226943EFC0037A511 /* nanopb.framework */,
@@ -10157,6 +10324,7 @@
 				D5DE32BD2A80EE7D00FDBD9E /* Assets.bundle */,
 				FA78ACC2243F3BDE0068B2FD /* YouTubePlayer.framework */,
 				87F199D5262ECC440049D4A5 /* YoutubePlayer_in_WKWebView.framework */,
+				C76B67B42D87F1F2001E4C19 /* WKYTPlayerView_privacy.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -11161,13 +11329,6 @@
 			remoteRef = 4ADBA7C522FC10B80084C652 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		4ADBA7C822FC10B80084C652 /* CountryPickerView.bundle */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = CountryPickerView.bundle;
-			remoteRef = 4ADBA7C722FC10B80084C652 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		4ADBA7E022FC10B80084C652 /* CountryPickerView.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -11175,25 +11336,11 @@
 			remoteRef = 4ADBA7DF22FC10B80084C652 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		4ADBA7E222FC10B80084C652 /* CountryPickerView.bundle */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = CountryPickerView.bundle;
-			remoteRef = 4ADBA7E122FC10B80084C652 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		4ADBA7FA22FC10B80084C652 /* CountryPickerView.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = CountryPickerView.framework;
 			remoteRef = 4ADBA7F922FC10B80084C652 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		4ADBA7FC22FC10B80084C652 /* CountryPickerView.bundle */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = CountryPickerView.bundle;
-			remoteRef = 4ADBA7FB22FC10B80084C652 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		5A5C06A724111AD000659A0C /* ExpandableLabel.framework */ = {
@@ -11677,6 +11824,174 @@
 			fileType = wrapper.framework;
 			path = SlideMenuControllerSwift.framework;
 			remoteRef = A3F8D32D226716C100B7DE49 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C76B67532D87F1F2001E4C19 /* Alamofire.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = Alamofire.bundle;
+			remoteRef = C76B67522D87F1F2001E4C19 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C76B67552D87F1F2001E4C19 /* CountryPickerView_CountryPickerView.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = CountryPickerView_CountryPickerView.bundle;
+			remoteRef = C76B67542D87F1F2001E4C19 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C76B67572D87F1F2001E4C19 /* CryptoSwift.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = CryptoSwift.bundle;
+			remoteRef = C76B67562D87F1F2001E4C19 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C76B67592D87F1F2001E4C19 /* Google_Mobile_Ads_SDK.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Google_Mobile_Ads_SDK.framework;
+			remoteRef = C76B67582D87F1F2001E4C19 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C76B675B2D87F1F2001E4C19 /* GoogleMobileAdsResources.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = GoogleMobileAdsResources.bundle;
+			remoteRef = C76B675A2D87F1F2001E4C19 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C76B675D2D87F1F2001E4C19 /* UserMessagingPlatformResources.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = UserMessagingPlatformResources.bundle;
+			remoteRef = C76B675C2D87F1F2001E4C19 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C76B675F2D87F1F2001E4C19 /* MarqueeLabel.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = MarqueeLabel.bundle;
+			remoteRef = C76B675E2D87F1F2001E4C19 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C76B67612D87F1F2001E4C19 /* WKYTPlayerView_privacy.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = WKYTPlayerView_privacy.bundle;
+			remoteRef = C76B67602D87F1F2001E4C19 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C76B67A62D87F1F2001E4C19 /* Alamofire.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = Alamofire.bundle;
+			remoteRef = C76B67A52D87F1F2001E4C19 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C76B67A82D87F1F2001E4C19 /* CountryPickerView_CountryPickerView.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = CountryPickerView_CountryPickerView.bundle;
+			remoteRef = C76B67A72D87F1F2001E4C19 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C76B67AA2D87F1F2001E4C19 /* CryptoSwift.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = CryptoSwift.bundle;
+			remoteRef = C76B67A92D87F1F2001E4C19 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C76B67AC2D87F1F2001E4C19 /* Google_Mobile_Ads_SDK.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Google_Mobile_Ads_SDK.framework;
+			remoteRef = C76B67AB2D87F1F2001E4C19 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C76B67AE2D87F1F2001E4C19 /* GoogleMobileAdsResources.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = GoogleMobileAdsResources.bundle;
+			remoteRef = C76B67AD2D87F1F2001E4C19 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C76B67B02D87F1F2001E4C19 /* UserMessagingPlatformResources.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = UserMessagingPlatformResources.bundle;
+			remoteRef = C76B67AF2D87F1F2001E4C19 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C76B67B22D87F1F2001E4C19 /* MarqueeLabel.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = MarqueeLabel.bundle;
+			remoteRef = C76B67B12D87F1F2001E4C19 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C76B67B42D87F1F2001E4C19 /* WKYTPlayerView_privacy.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = WKYTPlayerView_privacy.bundle;
+			remoteRef = C76B67B32D87F1F2001E4C19 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C76B67F92D87F1F2001E4C19 /* Alamofire.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = Alamofire.bundle;
+			remoteRef = C76B67F82D87F1F2001E4C19 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C76B67FB2D87F1F2001E4C19 /* CountryPickerView_CountryPickerView.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = CountryPickerView_CountryPickerView.bundle;
+			remoteRef = C76B67FA2D87F1F2001E4C19 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C76B67FD2D87F1F2001E4C19 /* CryptoSwift.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = CryptoSwift.bundle;
+			remoteRef = C76B67FC2D87F1F2001E4C19 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C76B67FF2D87F1F2001E4C19 /* Google_Mobile_Ads_SDK.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Google_Mobile_Ads_SDK.framework;
+			remoteRef = C76B67FE2D87F1F2001E4C19 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C76B68012D87F1F2001E4C19 /* GoogleMobileAdsResources.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = GoogleMobileAdsResources.bundle;
+			remoteRef = C76B68002D87F1F2001E4C19 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C76B68032D87F1F2001E4C19 /* UserMessagingPlatformResources.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = UserMessagingPlatformResources.bundle;
+			remoteRef = C76B68022D87F1F2001E4C19 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C76B68052D87F1F2001E4C19 /* MarqueeLabel.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = MarqueeLabel.bundle;
+			remoteRef = C76B68042D87F1F2001E4C19 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C76B68072D87F1F2001E4C19 /* WKYTPlayerView_privacy.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = WKYTPlayerView_privacy.bundle;
+			remoteRef = C76B68062D87F1F2001E4C19 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		C78884A62C24658C007B3FFF /* GoogleUtilities_Privacy.bundle */ = {
@@ -12575,7 +12890,7 @@
 					"@executable_path/Frameworks",
 				);
 				LIBRARY_SEARCH_PATHS = "";
-				MARKETING_VERSION = 1.56;
+				MARKETING_VERSION = 1.57;
 				OTHER_CODE_SIGN_FLAGS = "--generate-entitlement-der";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -12778,7 +13093,7 @@
 					"@executable_path/Frameworks",
 				);
 				LIBRARY_SEARCH_PATHS = "";
-				MARKETING_VERSION = 1.56;
+				MARKETING_VERSION = 1.57;
 				OTHER_CODE_SIGN_FLAGS = "--generate-entitlement-der";
 				OTHER_LDFLAGS = (
 					"$(inherited)",

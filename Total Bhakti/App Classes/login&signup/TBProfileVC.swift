@@ -454,14 +454,16 @@ class TBProfileVC: TBInternetViewController {
 
         AF.upload(multipartFormData: { multipartFormData in
             for (key, value) in param {
-                if key == "profile_picture", let image = value as? UIImage, let imageData = image.pngData() {
-                    let filename = "\(Int64(Date().timeIntervalSince1970 * 1000)).png"
-                    multipartFormData.append(imageData, withName: key, fileName: filename, mimeType: "image/png")
-                } else if let stringValue = value as? String, let data = stringValue.data(using: .utf8) {
-                    multipartFormData.append(data, withName: key)
-                } else {
-                    print("Unsupported value type for key: \(key)")
+                if key == "profile_picture", let image = value as? UIImage {
+                    if let imageData = UIImagePNGRepresentation(image) {
+                        let milliseconds = Int64(Date().timeIntervalSince1970 * 1000.0)
+                        let filename = "\(milliseconds).png"
+                        multipartFormData.append(imageData, withName: key, fileName: filename, mimeType: "image/png")
+                    } else {
+                        print("Error: Failed to convert UIImage to PNG data.")
+                    }
                 }
+
             }
         }, to: url, method: .post)
         .uploadProgress { progress in
