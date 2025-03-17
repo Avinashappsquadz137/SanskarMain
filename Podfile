@@ -24,7 +24,7 @@ target 'Sanskar' do
   pod 'CountryPickerView'
   pod 'ExpandableLabel'
   pod 'PaddingLabel', '1.1'
-  pod 'razorpay-pod', '1.2.5'
+  pod 'razorpay-pod', '1.4'
   pod 'FittedSheets'
   pod 'DropDown'
   pod 'Fabric', '~> 1.10.2'
@@ -56,6 +56,7 @@ post_install do |installer|
     project.targets.each do |target|
       target.build_configurations.each do |config|
         config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.0'
+        config.build_settings['DEBUG_INFORMATION_FORMAT'] = 'dwarf-with-dsym'
       end
     end
   end

@@ -154,7 +154,7 @@ PODS:
   - PaddingLabel (1.1)
   - PromisesObjC (2.4.0)
   - Protobuf (3.29.3)
-  - razorpay-pod (1.2.5)
+  - razorpay-pod (1.4.0)
   - ReadMoreTextView (3.0.1)
   - Salvator (1.0.3)
   - SDWebImage (4.4.8):
@@ -201,7 +201,7 @@ DEPENDENCIES:
   - OTPFieldView
   - PaddingLabel (= 1.1)
   - PromisesObjC
-  - razorpay-pod (= 1.2.5)
+  - razorpay-pod (= 1.4)
   - ReadMoreTextView
   - SDWebImage (~> 4.0)
   - SlideMenuControllerSwift
@@ -315,7 +315,7 @@ SPEC CHECKSUMS:
   PaddingLabel: d11fee9d2be54122a037bb4a429fb5d3f2c73d58
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
   Protobuf: e2de96d939c642ce8da186343ff8929b35223212
-  razorpay-pod: aa2df076ea44baab6cc8296c1ccc715fe2ca818c
+  razorpay-pod: cb5b5439697bdda9c57d68a92b3e5b0ce1d2f2f3
   ReadMoreTextView: 19147adf93abce6d7271e14031a00303fe28720d
   Salvator: 97f82dc7c75b9bb52b41a74ac355c69443a2ecd1
   SDWebImage: 783af2c3fa36291a250030c4752ee370a9a51d13
@@ -325,6 +325,6 @@ SPEC CHECKSUMS:
   YouTubePlayer: 2b5f2830d8f9b2cde942083211291e382c9e6bd5
   YoutubePlayer-in-WKWebView: 2c3aa1d5ad8dded9f95ef12033af5dd8e55864b7
 
-PODFILE CHECKSUM: 99848f7600cd460f9c3b9be70867a4be64f9bad2
+PODFILE CHECKSUM: 6de1f35d1b7dc21f38e93388d83282ce95dacbfd
 
 COCOAPODS: 1.16.2
