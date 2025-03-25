@@ -3305,7 +3305,6 @@ extension TBHomeVC : UICollectionViewDelegateFlowLayout {
                     
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "hideOrizine"), object: nil)
                     
-                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TBHomePagerCollectionViewCell", for: indexPath) as! TBHomePagerCollectionViewCell
                     let po = categoryDataArray[collectionView.tag].channelList[indexPath.row]
                     
                     if po.channel_url != ""{
