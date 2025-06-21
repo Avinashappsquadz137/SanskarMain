@@ -24,7 +24,7 @@ class TBshortsVC: UIViewController,FullScreenContentDelegate {
     var status = Int ()
     var shortVideos = [ShortVideo]()
     var userLikeStatus: [String: Bool] = [:]
-    let adUnitID = "ca-app-pub-1618767157139570/5766265057"
+    let adUnitID = "ca-app-pub-9400717366398319/2085394511"
     var rewardedAd: RewardedAd?
 
     override func viewDidLoad() {

@@ -124,7 +124,7 @@ class TBHomeVC: TBInternetViewController,AAPlayerDelegate,shortCutDelegate,MMPla
     var profile_id = ""
     var shortsvalue = ""
     var holivalue = ""
-    let adUnitID = "ca-app-pub-1618767157139570/5766265057"
+    let adUnitID = "ca-app-pub-9400717366398319/2085394511"
     var rewardedAd: InterstitialAd? //GADInterstitialAd
     var record: Int?
     var playerLayer : AVPlayerLayer? = nil
@@ -904,7 +904,7 @@ class TBHomeVC: TBInternetViewController,AAPlayerDelegate,shortCutDelegate,MMPla
                     dateform.insert(":", at: dateform.index(dateform.endIndex, offsetBy: -2))
                     print(dateform)
                     if let urlSting = channelTableArr[0].channel_url {
-                        dataUrl = "\(urlSting)?start=\(dateform)&end="
+                        dataUrl = "\(urlSting)"
                         
                     }
                     exact = exactTime()
@@ -3316,7 +3316,7 @@ extension TBHomeVC : UICollectionViewDelegateFlowLayout {
                         //                selectedIndex = adIndex
                         var nDataUrl = ""
                         if let urlString = po.channel_url {
-                            nDataUrl = "\(urlString)?start=\(dateform)&end="
+                            nDataUrl = "\(urlString)"
                             //                    let url = URL(string: data)
                         }
                         //                let url = URL(string: po.channel_url ?? "")
