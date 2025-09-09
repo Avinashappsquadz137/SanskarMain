@@ -1232,6 +1232,11 @@ class TBHomeVC: TBInternetViewController,AAPlayerDelegate,shortCutDelegate,MMPla
                     print(param)
                     vc.param = param
                     isComeFrom = 2
+                } else if categoryDataArray[sender.tag].menu_title == "continue watching episodes" {
+                    let param: Parameters  = ["user_id":currentUser.result?.id ?? "","menu_master_id":categoryDataArray[sender.tag].id,"category":"4","page_no":"1","limit":"50","menu_type_id":"6"]
+                    print(param)
+                    vc.param = param
+                    isComeFrom = 2
                 }
                 else
                 {
@@ -1704,6 +1709,9 @@ extension TBHomeVC : UICollectionViewDataSource {
             let itemCount = min(10, categoryDataArray[collectionView.tag].catwise.count)
             return itemCount
             
+        case "continue watching episodes":
+            let itemCount = min(10, categoryDataArray[collectionView.tag].videoList.count)
+            return itemCount
 
         default:
             return 0
@@ -1988,7 +1996,14 @@ extension TBHomeVC : UICollectionViewDataSource {
                     cell.liveLbl.isHidden = false
                     cell.tvImage.isHidden = false
                 }
-                
+                if let playPush = cell.viewWithTag(97534) as? UIImageView {
+                    let selectedIndex = UserDefaults.standard.value(forKey: "continueEpisodesPlay") as? Int
+                    if indexPath.row == selectedIndex {
+                        playPush.isHidden = true
+                    } else {
+                        playPush.isHidden = true
+                    }
+                }
                 cell.contentView.layer.cornerRadius = 10.0
                 //  MARK  this is comment by AVI TYAGI
 //                let onePost = categoryDataArray[collectionView.tag].channelList[indexPath.row]
@@ -2052,6 +2067,76 @@ extension TBHomeVC : UICollectionViewDataSource {
                     image?.sd_setImage(with: URL(string: posts.season_thumbnail ?? ""), placeholderImage: UIImage(named: "default_image"), options: .refreshCached, completed: nil)
                 }
                 return cell
+            } else  if categoryDataArray[collectionView.tag].menu_title == "continue watching episodes" {
+                
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: KEYS.KCELL1, for: indexPath)
+                
+                // MARK: - Views
+                let imageView   = cell.viewWithTag(100) as? UIImageView
+                let mainView    = cell.viewWithTag(300)
+                let logoView    = cell.viewWithTag(201) as? UIImageView
+                let playPush    = cell.viewWithTag(97534) as? UIImageView
+                let latestImage = cell.viewWithTag(4000) as? UIImageView
+                let progressBar = cell.viewWithTag(1000) as? UIProgressView
+                
+                // MARK: - Styling
+                shadow(cell)
+                mainView?.layer.cornerRadius = 5.0
+                imageView?.layer.cornerRadius = 5.0
+                imageView?.clipsToBounds = true
+                
+                // MARK: - Logo
+                logoView?.isHidden = false
+                if #available(iOS 13.0, *) {
+                    logoView?.image = UIImage(systemName: "tatacrown")
+                }
+                
+                // MARK: - Data
+                let categoryIndex = collectionView.tag
+                let seasonList    = categoryDataArray[categoryIndex].seasonList
+                let post          = seasonList[indexPath.row]
+                
+                // MARK: - Play / Lock Icon
+                let selectedIndex = UserDefaults.standard.value(forKey: "continueEpisodesPlay") as? Int
+                if post.is_locked == "1" {
+                    playPush?.isHidden = false
+                    playPush?.image = UIImage(systemName: "lock.fill")
+                    playPush?.tintColor = .gray
+                } else if indexPath.row == selectedIndex {
+                    playPush?.isHidden = false
+                    playPush?.image = UIImage(named: "white_play")
+                } else {
+                    playPush?.isHidden = true
+                }
+                
+                // MARK: - Newly Released Badge
+                if post.newly_released == "1" {
+                    latestImage?.isHidden = false
+                    latestImage?.image = UIImage(named: "newlyReleased")
+                } else {
+                    latestImage?.isHidden = true
+                }
+                
+                // MARK: - Progress
+                if let progressValueString = post.progress,
+                   let progressValue = Float(progressValueString) {
+                    progressBar?.progress = progressValue / 100.0
+                } else {
+                    progressBar?.progress = 0.0
+                }
+                print("posts.progress:", post.progress ?? "nil")
+                
+                // MARK: - Thumbnail
+                imageView?.sd_setIndicatorStyle(.gray)
+                imageView?.sd_setShowActivityIndicatorView(true)
+                imageView?.sd_setImage(
+                    with: URL(string: post.thumbnail_url ?? ""),
+                    placeholderImage: UIImage(named: "default_image"),
+                    options: .refreshCached,
+                    completed: nil
+                )
+                
+                return cell
             }
             else {
                 
@@ -2071,7 +2156,8 @@ extension TBHomeVC : UICollectionViewDataSource {
                 
                 //  MARK  this is comment by AVI TYAGI
                 //     let posts = categoryDataArray[collectionView.tag].seasonList[indexPath.row]
-                
+                let img = cell.viewWithTag(97534) as? UIImageView
+                img?.isHidden = true
                 
                 let categoryIndex = collectionView.tag
                 let seasonList = categoryDataArray[categoryIndex].seasonList
@@ -2303,7 +2389,60 @@ extension TBHomeVC : UICollectionViewDataSource {
                 
                 return cell
             }
-            else{
+        else if categoryDataArray[collectionView.tag].type == "continue watching episodes" {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: KEYS.KCELL1, for: indexPath)
+            
+            // Outlets via tags
+            let imageView = cell.viewWithTag(100) as? UIImageView
+            let titleLabel = cell.viewWithTag(200) as? UILabel
+            let mainView = cell.viewWithTag(300)
+            let subtitleLabel = cell.viewWithTag(101) as? UILabel
+            let playIcon = cell.viewWithTag(500) as? UIImageView
+            let playOverlay = cell.viewWithTag(97534) as? UIImageView
+            
+            // Basic UI setup
+            shadow(cell)
+            mainView?.layer.cornerRadius = 5
+            imageView?.layer.cornerRadius = 5
+            imageView?.clipsToBounds = true
+            
+            // Hide unused labels
+            titleLabel?.isHidden = true
+            subtitleLabel?.isHidden = true
+            
+            // Show play icon
+            playIcon?.isHidden = false
+            
+            // Fetch post data
+            let post = categoryDataArray[collectionView.tag].seasonList[indexPath.row]
+            let selectedIndex = UserDefaults.standard.value(forKey: "continueEpisodesPlay") as? Int
+            
+            // Lock / Play overlay logic
+            if let overlay = playOverlay {
+                if post.is_locked == "1" {
+                    overlay.isHidden = false
+                    overlay.image = UIImage(systemName: "lock.fill")
+                    overlay.tintColor = .gray
+                } else if indexPath.row == selectedIndex {
+                    overlay.isHidden = false
+                    overlay.image = UIImage(named: "white_play")
+                } else {
+                    overlay.isHidden = true
+                }
+            }
+            
+            // Image loading
+            imageView?.sd_setIndicatorStyle(.gray)
+            imageView?.sd_setShowActivityIndicatorView(true)
+            imageView?.sd_setImage(
+                with: URL(string: post.thumbnail_url),
+                placeholderImage: UIImage(named: "default_image"),
+                options: .refreshCached,
+                completed: nil
+            )
+            
+            return cell
+        } else{
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "dummyCell", for: indexPath)
                 return cell
                 
@@ -2311,6 +2450,13 @@ extension TBHomeVC : UICollectionViewDataSource {
         
        
     }
+    //MARK: ContinueWatching Add
+    func continuewatching(_ param : Parameters){
+            self.uplaodData1(APIManager.sharedInstance.KContinuewatchingpremium, param) { (response) in
+                DispatchQueue.main.async(execute: { loader.shareInstance.hideLoading()})
+                print(response as Any)
+            }
+        }
     
     func adDecreaseCounting(urlStr:String ){
         //        adIndex += 1
@@ -2677,7 +2823,7 @@ extension TBHomeVC : UICollectionViewDelegateFlowLayout {
             }
 
         case "season":
-            if category.menu_title == "continue watching" {
+            if category.menu_title == "continue watching" || category.menu_title == "continue watching episodes" {
                 if deviceType == .pad {
                     return CGSize(width: 250, height: 140)
                 } else if deviceType == .phone {
@@ -3688,6 +3834,137 @@ extension TBHomeVC : UICollectionViewDelegateFlowLayout {
                 }
                 
                 chTap = 0
+            } else if categoryDataArray[collectionView.tag].menu_title == "continue watching episodes" {
+                
+                let po = categoryDataArray[collectionView.tag].seasonList[indexPath.row]
+                if currentUser.result?.id == "163" {
+                    let sms = UserDefaults.standard.value(forKey: "sms") as? String ?? ""
+                    if sms == "1" {
+                                        let record = UserDefaults.standard.integer(forKey: "recorddata")
+                                            print(record)
+                        
+                                            if record == 1 {
+                                            self.dismiss(animated: true) {
+                                                let vc = self.storyboard!.instantiateViewController(withIdentifier: "usersuggestionlogin") as! usersuggestionlogin
+                                                if #available(iOS 15.0, *) {
+                                                    if let sheet = vc.sheetPresentationController {
+                                                        var customDetent: UISheetPresentationController.Detent?
+                                                        if #available(iOS 16.0, *) {
+                                                            customDetent = UISheetPresentationController.Detent.custom { context in
+                                                                return 450 // Replace with your desired height
+                                                            }
+                                                            sheet.detents = [customDetent!]
+                                                            sheet.largestUndimmedDetentIdentifier = customDetent!.identifier
+                                                        }
+                                                        sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+                                                        sheet.prefersGrabberVisible = true
+                                                        sheet.preferredCornerRadius = 24
+                                                    }
+                                                }
+                                                UIApplication.shared.keyWindow?.rootViewController?.present(vc, animated: true, completion: nil)
+                                            }
+                                        }
+                                        else {
+                                            self.dismiss(animated: true) {
+                                                let vc = self.storyboard!.instantiateViewController(withIdentifier: "newloginpage") as! newloginpage
+                                                if #available(iOS 15.0, *) {
+                                                    if let sheet = vc.sheetPresentationController {
+                                                        var customDetent: UISheetPresentationController.Detent?
+                                                        if #available(iOS 16.0, *) {
+                                                            customDetent = UISheetPresentationController.Detent.custom { context in
+                                                                return 450 // Replace with your desired height
+                                                            }
+                                                            sheet.detents = [customDetent!]
+                                                            sheet.largestUndimmedDetentIdentifier = customDetent!.identifier
+                                                        }
+                                                        sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+                                                        sheet.prefersGrabberVisible = true
+                                                        sheet.preferredCornerRadius = 24
+                                                    }
+                                                }
+                                                UIApplication.shared.keyWindow?.rootViewController?.present(vc, animated: true, completion: nil)
+                                            }
+                                        }
+                                    }
+
+                    
+                    else{
+                        let vc = storyBoard.instantiateViewController(withIdentifier: CONTROLLERNAMES.KMOBILEVARIFICATION)
+                        navigationController?.pushViewController(vc, animated: true)
+                    }
+                    
+                    chTap = 0
+                } else  {
+                    let nDataUrl: String? = po.custom_episode_url
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "hideOrizine"), object: nil)
+                    newTime.invalidate()
+                    homePlayer.isHidden = false
+                    
+                    let posts = categoryDataArray[collectionView.tag].seasonList[indexPath.row]
+
+                    if posts.is_locked == "1" {
+                        AlertController.alert(
+                            title: "Subscription",
+                            message: "Please purchase Premium to play video/Live TV",
+                            buttons: ["Cancel", "Go Premium"]
+                        ) { [weak self] result, index in
+                            guard let self = self else { return }
+                            if index == 1 {
+                                if let vc = storyBoard.instantiateViewController(withIdentifier: "TBPremiumPaymentVC") as? TBPremiumPaymentVC {
+                                    self.navigationController?.pushViewController(vc, animated: true)
+                                } else {
+                                    print("❌ Could not instantiate TBPremiumPaymentVC")
+                                }
+                            }
+                        }
+                        return
+                    }
+                    
+                    UserDefaults.standard.setValue(indexPath.row, forKey: "continueEpisodesPlay")
+                    print(" UserDefaults.standard.setValue(indexPath.row, forKey:)\(indexPath.row)")
+                    if let urlString = nDataUrl, !urlString.isEmpty {
+                        collectionView.reloadData()
+
+                        if let playTime = UserDefaults.standard.value(forKey: "EpsplayTime") as? Int {
+                            let total = exact - playTime
+                            let param: Parameters = [
+                                "user_id": "\(currentUser.result?.id ?? "")",
+                                "media_id": po.episode_id,
+                                "season_id": po.season_id,
+                                "pause_at": "\(total)",
+                                "status": "0",
+                                "type": "2",
+                                "total_duration": "\(total)"
+                            ]
+                            
+                            print(param)
+                            continuewatching(param)
+                        }
+
+                        self.playVideo(hlsUrl: urlString)
+                        UserDefaults.standard.set(exact, forKey: "EpsplayTime")
+                    } else {
+                        // Show alert if no URL (user needs premium)
+                        AlertController.alert(
+                            title: "Subscription",
+                            message: "Please purchase Premium to play video/Live TV",
+                            buttons: ["Cancel", "Go Premium"]
+                        ) { [weak self] result, index in
+                            guard let self = self else { return }
+                            if index == 1 {
+                                if let vc = storyBoard.instantiateViewController(withIdentifier: "TBPremiumPaymentVC") as? TBPremiumPaymentVC {
+                                    self.navigationController?.pushViewController(vc, animated: true)
+                                } else {
+                                    print("❌ Could not instantiate TBPremiumPaymentVC")
+                                }
+                            }
+                        }
+                    }
+
+                }
+                
+                
+                
             }
             else {
                 
@@ -3807,6 +4084,7 @@ extension TBHomeVC : UICollectionViewDelegateFlowLayout {
                 //                vc.previoueData = post
                 //                vc.delegate = self
                 //                navigationController?.pushViewController(vc, animated: true)
+                //
                 //
                 //            case 2://bhajan
                 //
@@ -4000,6 +4278,15 @@ extension TBHomeVC : UITableViewDataSource {
             cell.dataCollectionView.reloadData()
             cell.dataCollectionView.collectionViewLayout.invalidateLayout()
             return cell
+        }
+        else if categoryDataArray[indexPath.section].type == "continue watching episodes"{
+            let cell = tableView.dequeueReusableCell(withIdentifier: KEYS.KCELL, for: indexPath) as! TBHomeTableViewCell
+            cell.dataCollectionView.tag = indexPath.section
+            cell.dataCollectionView.delegate = self
+            cell.dataCollectionView.dataSource = self
+            cell.dataCollectionView.reloadData()
+            cell.dataCollectionView.collectionViewLayout.invalidateLayout()
+            return cell
         }else if categoryDataArray[indexPath.section].type == "author wise season" {
             let cell = tableView.dequeueReusableCell(withIdentifier: "PremiumCell", for: indexPath) as! TBHomeTableViewCell
             cell.premiumCollectionView.tag = indexPath.section
@@ -4092,7 +4379,7 @@ extension TBHomeVC : UITableViewDelegate {
         }
 
         if type == "season" || type == "promotion" {
-            if menutitle == "continue watching" {
+            if menutitle == "continue watching" || menutitle == "continue watching episodes" {
                 if deviceType == .pad {
                     return 150 // You can adjust this height for iPad if needed
                 } else if deviceType == .phone {

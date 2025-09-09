@@ -950,20 +950,46 @@ class CoverA: UIView, MMPlayerCoverViewProtocol, AVRoutePickerViewDelegate {
         }
     }
     
+//    func statictimerObserver(time: CMTime) {
+//        currentTime = time
+//        if let duration = self.playLayer?.player?.currentItem?.asset.duration ,
+//           !isUpdateTime {
+//            if self.playSlider.maximumValue != Float(duration.seconds) {
+//                self.playSlider.maximumValue = Float(duration.seconds)
+//            }
+//            self.labCurrent.text = self.convert(second: time.seconds)
+//            self.labTotal.text = self.convert(second: duration.seconds-time.seconds)
+//            self.playSlider.value = Float(time.seconds)
+//            LiveBtn.isHidden = true
+//        }
+//    }
     func statictimerObserver(time: CMTime) {
         currentTime = time
-        if let duration = self.playLayer?.player?.currentItem?.asset.duration ,
-           !isUpdateTime {
-            if self.playSlider.maximumValue != Float(duration.seconds) {
-                self.playSlider.maximumValue = Float(duration.seconds)
+        
+        guard let duration = self.playLayer?.player?.currentItem?.asset.duration else {
+            return
+        }
+        
+        // Make sure duration is valid
+        let totalSeconds = duration.seconds
+        let currentSeconds = time.seconds
+        
+        guard totalSeconds.isFinite, totalSeconds > 0 else {
+            // Invalid duration (e.g., still loading)
+            return
+        }
+        
+        if !isUpdateTime {
+            if self.playSlider.maximumValue != Float(totalSeconds) {
+                self.playSlider.maximumValue = Float(totalSeconds)
             }
-            self.labCurrent.text = self.convert(second: time.seconds)
-            self.labTotal.text = self.convert(second: duration.seconds-time.seconds)
-            self.playSlider.value = Float(time.seconds)
+            
+            self.labCurrent.text = self.convert(second: currentSeconds)
+            self.labTotal.text = self.convert(second: totalSeconds - currentSeconds)
+            self.playSlider.value = Float(currentSeconds)
             LiveBtn.isHidden = true
         }
     }
-    
     
     
     fileprivate func convert(second: Double) -> String {
