@@ -1233,10 +1233,12 @@ class TBHomeVC: TBInternetViewController,AAPlayerDelegate,shortCutDelegate,MMPla
                     vc.param = param
                     isComeFrom = 2
                 } else if categoryDataArray[sender.tag].menu_title == "continue watching episodes" {
-                    let param: Parameters  = ["user_id":currentUser.result?.id ?? "","menu_master_id":categoryDataArray[sender.tag].id,"category":"4","page_no":"1","limit":"50","menu_type_id":"6"]
-                    print(param)
-                    vc.param = param
-                    isComeFrom = 2
+                    if let storedSeasonId = UserDefaults.standard.string(forKey: "season_IdForEP") {
+                        let param: Parameters  = ["user_id":currentUser.result?.id ?? "","season_id":storedSeasonId,"page_no":"1","limit":"10"]
+                        print(param)
+                        vc.param = param
+                        isComeFrom = 3
+                        }
                 }
                 else
                 {
@@ -2095,7 +2097,11 @@ extension TBHomeVC : UICollectionViewDataSource {
                 let categoryIndex = collectionView.tag
                 let seasonList    = categoryDataArray[categoryIndex].seasonList
                 let post          = seasonList[indexPath.row]
+                let setSessonId = "\(seasonList[indexPath.row].season_id)"
+                //MARK: Setdata
                 
+                let seasonId = seasonList[indexPath.row].season_id
+                   UserDefaults.standard.set(seasonId, forKey: "season_IdForEP")
                 // MARK: - Play / Lock Icon
                 let selectedIndex = UserDefaults.standard.value(forKey: "continueEpisodesPlay") as? Int
                 if post.is_locked == "1" {

@@ -41,6 +41,10 @@ class TBPremiumEpisodeFree: TBInternetViewController {
     
             getSeasonsListByMenuMasterApi(param)
             categoryHeading.text = headingSting
+        }else if isComeFrom == 3 {
+            
+            getPremiumlist(param)
+            categoryHeading.text = headingSting
         }
         else{
             
@@ -64,6 +68,10 @@ class TBPremiumEpisodeFree: TBInternetViewController {
         if  isComeFrom == 2{
       //      seeMoreApi(param)
             getSeasonsListByMenuMasterApi(param)
+        }else if isComeFrom == 3 {
+            
+            getPremiumlist(param)
+            categoryHeading.text = headingSting
         }
         else{
             getSeasonsListByMenuMasterApi(param)
@@ -129,7 +137,60 @@ class TBPremiumEpisodeFree: TBInternetViewController {
     @IBAction func logoBtnAction(_ sender: UIButton) {
       self.navigationController?.popToRootViewController(animated: true)
     }
-    
+    //MARK: Episodes
+    func getPremiumlist(_ param: Parameters) {
+        self.uplaodData1(APIManager.sharedInstance.KEpisodeBySeasonId, param) { (response) in
+            DispatchQueue.main.async(execute: { loader.shareInstance.hideLoading()})
+            DispatchQueue.main.async(execute: { self.refreshControl.endRefreshing()})
+
+            print(response as Any)
+            if let JSON = response as? NSDictionary {
+                print(JSON)
+
+                if JSON.value(forKey: "status") as? Bool == true {
+                    self.premiumData.removeAll()
+                    let data = JSON.ArrayofDict("data")
+                    
+                    _ = data.filter({ (dict) -> Bool in
+                        
+                        self.premiumData.append(freeModel(dict: dict))
+//                        let list = dict.ArrayofDict("")
+//                        if list.count == 0{
+//
+//                        }else{
+//                            self.premiumData.append(seeMoreModel(dict: dict))
+//                        }
+                        
+                        
+                        return true
+                    })
+//                    self.pagerViewUIsetup()
+                    self.colltnView.reloadData()
+                    
+                    if self.pullToRefreshOn == true {
+                        self.pullToRefreshOn = false
+                    }
+                    self.colltnView.reloadData()
+                    
+                }else {
+                    if self.pullToRefreshOn == true {
+                        self.pullToRefreshOn = false
+                    }
+//                    self.searchClicked = false
+                    
+                    
+                    self.addAlert(ALERTS.KERROR, message: (JSON.value(forKey: "message") as? String)!, buttonTitle: ALERTS.kAlertOK)
+                }
+            }else {
+                if self.pullToRefreshOn == true {
+                    self.pullToRefreshOn = false
+                }
+//                self.searchClicked = false
+//                self.addAlert(ALERTS.KERROR, message: ALERTS.KSOMETHINGWRONG, buttonTitle: ALERTS.kAlertOK)
+            }
+        }
+    }
+
     //MARK:- Api Method.
     func getSeasonsListByMenuMasterApi(_ param : Parameters){
         //        if  self.searchClicked == true {
@@ -218,35 +279,41 @@ extension TBPremiumEpisodeFree: UICollectionViewDelegate, UICollectionViewDataSo
         cell.title.isHidden = true
 
         cell.lockImg?.tintColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
-        if post.is_locked! == "0"{
+        if post.is_locked == "0" {
+            // Unlocked post
             cell.lockImg?.isHidden = true
             cell.isUserInteractionEnabled = true
-        }
-        else{
-            if isComeFromHome == 1{
+        } else if isComeFrom == 3 {
+            // Coming from screen type 3
+            cell.lockImg?.isHidden = false
+            cell.isUserInteractionEnabled = true
+        } else {
+            if isComeFromHome == 1 {
                 cell.lockImg?.isHidden = true
                 cell.isUserInteractionEnabled = true
                 isComeFromHome = 0
-            }
-            else{
+            } else {
                 cell.lockImg?.isHidden = true
                 cell.isUserInteractionEnabled = true
             }
-
         }
+
 
         print("is_locked:::",post.is_locked ?? "")
         if post.episode_title != ""{
             cell.title.text = post.episode_title
             cell.title.isHidden = true
-        //    cell.img.sd_setImage(with: URL(string: post.thumbnail_url ?? ""), placeholderImage: UIImage(named: "default_image"), options: .refreshCached, completed: nil)
             cell.img.sd_setImage(with: URL(string: post.season_thumbnail ?? ""), placeholderImage: UIImage(named: "default_image"), options: .refreshCached, completed: nil)
         }
         else{
             cell.title.text = post.season_title
             cell.img.sd_setImage(with: URL(string: post.season_thumbnail ?? ""), placeholderImage: UIImage(named: "default_image"), options: .refreshCached, completed: nil)
         }
-        
+        if post.thumbnail_url != ""{
+            cell.title.text = post.episode_title
+            cell.title.isHidden = true
+            cell.img.sd_setImage(with: URL(string: post.thumbnail_url ?? ""), placeholderImage: UIImage(named: "default_image"), options: .refreshCached, completed: nil)
+        }
         cell.contentView.layer.cornerRadius = 10
         cell.contentView.layer.borderWidth = 1.0
         
@@ -265,44 +332,33 @@ extension TBPremiumEpisodeFree: UICollectionViewDelegate, UICollectionViewDataSo
         TV_PlayerHelper.shared.mmPlayer.player?.allowsExternalPlayback = true
         TV_PlayerHelper.shared.mmPlayer.player?.usesExternalPlaybackWhileExternalScreenIsActive = true
         let chanNo = UserDefaults.standard.value(forKey: "channelNumb") as? Int
-//        if  isComeFrom == 0{
-////            isComeFrom = 0
-//
-//            let post = premiumData[indexPath.row]
-//
-//            let vc = storyBoard.instantiateViewController(withIdentifier: "newPreDetails") as! newPreDetails
-//            vc.selectedData = post
-//            vc.selectedString = type
-//
-//            vc.premiumData = premiumData
-//            print(vc.premiumData)
-//            //            vc.delegate = self
-//
-//            self.navigationController?.pushViewController(vc, animated: true)
-//        }
-//
-//       else{
         print("indexPath.row:::",indexPath.row)
-       
-            let post = premiumData[indexPath.row]
-
-            let vc = storyBoard.instantiateViewController(withIdentifier: "newPreDetails") as! newPreDetails
-            vc.selectedData = post
-            vc.selectedString = "premiumSeeMore"
+        
+        let post = premiumData[indexPath.row]
+        if post.is_locked == "1" {
+            AlertController.alert(
+                title: "Subscription",
+                message: "Please purchase Premium to play video/Live TV",
+                buttons: ["Cancel", "Go Premium"]
+            ) { [weak self] result, index in
+                guard let self = self else { return }
+                if index == 1 {
+                    if let vc = storyBoard.instantiateViewController(withIdentifier: "TBPremiumPaymentVC") as? TBPremiumPaymentVC {
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    } else {
+                        print("❌ Could not instantiate TBPremiumPaymentVC")
+                    }
+                }
+            }
+            return  // 🚨 Stop navigation if locked
+        }
+        let vc = storyBoard.instantiateViewController(withIdentifier: "newPreDetails") as! newPreDetails
+        vc.selectedData = post
+        vc.selectedString = "premiumSeeMore"
             type = "premiumDetail"
-        //    vc.premiumData = premiumData
-            //            vc.delegate = self
 
             self.navigationController?.pushViewController(vc, animated: true)
-//        }
-//        else{
-//            delegate?.passData(premiumData[indexPath.row])
-//            self.navigationController?.popViewController(animated: true)
-//        }
-//       }
+
     }
     
 }
-/*
- func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int 
- */
