@@ -530,7 +530,11 @@ extension newPremiumvc: UICollectionViewDelegate {
                     var model = ((premiumDataArr[collectionView.tag] as [String:Any])["season_details"] as? [[String:Any]] ?? [[:]])
                     model.remove(at: indexPath.row)
                     vc.data = data
-                    vc.allListData = model
+                    if let moreList = model as? [MoreLikeThis] {
+                        vc.allListData = moreList
+                    } else {
+                        vc.allListData = []
+                    }
                     vc.selectedString = "premiumSeeMore"
                     //             vc.season_id = selectedSeasonID
                     type = ""

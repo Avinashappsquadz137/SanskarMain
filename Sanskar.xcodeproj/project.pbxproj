@@ -294,6 +294,7 @@
 		C7559B7C2D0325B800DF5907 /* TBDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7559B7A2D0325B800DF5907 /* TBDetailCell.xib */; };
 		C75641052D4CCDCE0083898C /* GoogleCastSDK-ios-4.6.1_static in Resources */ = {isa = PBXBuildFile; fileRef = C756404D2D4CCDCE0083898C /* GoogleCastSDK-ios-4.6.1_static */; };
 		C75879432B91BE7E00F94D0E /* JuapayStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75879422B91BE7E00F94D0E /* JuapayStatusViewController.swift */; };
+		C7598EBA2E978E95002A0B4B /* MoreLikeThisModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7598EB92E978E8D002A0B4B /* MoreLikeThisModels.swift */; };
 		C75B0D562BF4C89C00FBA92F /* shortscommentvc.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75B0D552BF4C89C00FBA92F /* shortscommentvc.swift */; };
 		C75B0E062BF4CCEE00FBA92F /* commenttableviewcell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75B0E052BF4CCEE00FBA92F /* commenttableviewcell.swift */; };
 		C75B0E082BF4CF1200FBA92F /* shortscommentmodel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75B0E072BF4CF1200FBA92F /* shortscommentmodel.swift */; };
@@ -3976,6 +3977,7 @@
 		C7559B7A2D0325B800DF5907 /* TBDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TBDetailCell.xib; sourceTree = "<group>"; };
 		C756404D2D4CCDCE0083898C /* GoogleCastSDK-ios-4.6.1_static */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "GoogleCastSDK-ios-4.6.1_static"; sourceTree = "<group>"; };
 		C75879422B91BE7E00F94D0E /* JuapayStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuapayStatusViewController.swift; sourceTree = "<group>"; };
+		C7598EB92E978E8D002A0B4B /* MoreLikeThisModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreLikeThisModels.swift; sourceTree = "<group>"; };
 		C75B0D552BF4C89C00FBA92F /* shortscommentvc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shortscommentvc.swift; sourceTree = "<group>"; };
 		C75B0E052BF4CCEE00FBA92F /* commenttableviewcell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = commenttableviewcell.swift; sourceTree = "<group>"; };
 		C75B0E072BF4CF1200FBA92F /* shortscommentmodel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shortscommentmodel.swift; sourceTree = "<group>"; };
@@ -4385,6 +4387,7 @@
 		877E1D8725D13D60000ADE33 /* PremiumVc */ = {
 			isa = PBXGroup;
 			children = (
+				C7598DEF2E978E77002A0B4B /* MoreLikeThisModel */,
 				078A6B42271AE02100758F36 /* New Premium Detail */,
 				072F8BF8270B028700BC41DA /* New Premium */,
 				87FF41D025D28C0C00E80734 /* TBPremiumDetailVc.swift */,
@@ -10889,6 +10892,14 @@
 			path = newpayment;
 			sourceTree = "<group>";
 		};
+		C7598DEF2E978E77002A0B4B /* MoreLikeThisModel */ = {
+			isa = PBXGroup;
+			children = (
+				C7598EB92E978E8D002A0B4B /* MoreLikeThisModels.swift */,
+			);
+			path = MoreLikeThisModel;
+			sourceTree = "<group>";
+		};
 		C75E93172C1722B9009AA8D3 /* Splashscreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -12555,6 +12566,7 @@
 				A36C988320170CA20052FE3B /* User.swift in Sources */,
 				07769AAE271D8BD4005EBC28 /* seasonData.swift in Sources */,
 				7DDA6C2229BF4B2E005E698D /* scanViewControllertest.swift in Sources */,
+				C7598EBA2E978E95002A0B4B /* MoreLikeThisModels.swift in Sources */,
 				A38115E8207224850081DC99 /* ChannelsData.swift in Sources */,
 				077733E927D33774008CF204 /* CustomOtpClass.swift in Sources */,
 				0707284027461E9900396D5B /* EpProgram.swift in Sources */,

@@ -42,7 +42,7 @@ class newPreDetails: UIViewController, EpisodeDelegate,GetVideoQualityList, MMPl
     var darshanList : LiveDarshan!
     var bandwidthArray = [String]()
     var resolutionArray = [String]()
-    var allListData: [[String:Any]] = [[:]]
+    var allListData: [MoreLikeThis] = []
     var allListCount: Int = 0
     var newData: [String:Any] = [:]
     var param: Parameters = [:]
@@ -662,32 +662,32 @@ class newPreDetails: UIViewController, EpisodeDelegate,GetVideoQualityList, MMPl
             }
         }
     }
-    
-    func hitDatamorelike(_ param : Parameters){
-    //    self.allListData.removeAll()
+    func hitDatamorelike(_ param: Parameters) {
         self.uplaodData1(APIManager.sharedInstance.Kmorelikethisapi, param) { response in
-            
-            if let JSON = response as?  [String: Any]{
-                print(JSON)
-                if let status = JSON["status"] as? Bool, status {
-                    let dataArray = JSON["data"] as? [[String: Any]] ?? [[:]]
-                    print(dataArray)
-                    self.allListData = dataArray
-                    print(self.allListData)
-                
-//                            self.allListData = seasonDetails
-//                            print(self.allListData)
-                            // Now you can access the season details and perform any further operations.
-                        
+            if let JSON = response {
+                do {
+                    let jsonData = try JSONSerialization.data(withJSONObject: JSON, options: [])
+                    let decodedModel = try JSONDecoder().decode(MoreLikeThisModels.self, from: jsonData)
+                    if decodedModel.status == true {
+                        self.allListData = decodedModel.data ?? []
+                        print("Decoded MoreLikeThis count:", self.allListData.count)
+                        self.allListCount = self.allListData.isEmpty ? 1 : 2
+                    } else {
+                        print("API returned error:", decodedModel.error ?? [])
                     }
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                        loader.shareInstance.hideLoading()
+                    }
+                } catch {
+                    print("Decoding error:", error)
+                    loader.shareInstance.hideLoading()
                 }
-
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                    DispatchQueue.main.async(execute: {loader.shareInstance.hideLoading()})
-                }
+            } else {
+                loader.shareInstance.hideLoading()
             }
         }
+    }
     
     func hitcheckpaymentapi(_ param : Parameters){
         self.uplaodData1(APIManager.sharedInstance.Kcheckpaymentstatusapi, param) { (response) in
@@ -961,12 +961,7 @@ extension newPreDetails: UITableViewDataSource, AllListTableCellDelegate {
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if premiumData.count > 0 {
-            return allListCount
-        }else{
-            return 0
-        }
-        
+        return allListCount
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
@@ -982,7 +977,7 @@ extension newPreDetails: UITableViewDataSource, AllListTableCellDelegate {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "AllListTableCell", for: indexPath) as? AllListTableCell else {
                 return UITableViewCell()
             }
-            cell.allDataList = allListData
+            cell.configure(with: allListData)
             print(cell.allDataList)
             cell.delegate = self
             return cell
@@ -998,12 +993,10 @@ extension newPreDetails: UITableViewDataSource, AllListTableCellDelegate {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    func didTapCollection(_ cell: AllListTableCell, data: [String : Any]) {
+    func didTapCollection(_ cell: AllListTableCell, data: MoreLikeThis) {
        
-        print(data)
-        let seasonId = data["season_id"] as? String ?? ""
-        print(seasonId)
-        let seasontitledata = data["season_title"] as? String ?? ""
+        let seasonId = data.season_id ?? ""
+        let seasontitledata = data.season_title ?? ""
         self.titleLbl.text = seasontitledata
         param = ["user_id":currentUser.result?.id ?? "","season_id":seasonId,"page_no":"1","limit":"10"]
         selectIndex = 0
@@ -1021,7 +1014,7 @@ extension newPreDetails: UITableViewDataSource, AllListTableCellDelegate {
             let eposideide = UserDefaults.standard.string(forKey: "eposidekey") ?? ""
             UserDefaults.standard.set(selectedData?.season_id ?? "", forKey: "seasonkey")
             UserDefaults.standard.synchronize()
-            let seasonId = data["season_id"] as? String ?? ""
+            let seasonId = data.season_id ?? ""
             watchedId = seasonId
             UserDefaults.standard.set(seasonId, forKey: "season_Id")
             UserDefaults.standard.synchronize()
@@ -1035,6 +1028,7 @@ extension newPreDetails: UITableViewDataSource, AllListTableCellDelegate {
                 let param: Parameters = [
                     "user_id": "\(currentUser.result?.id ?? "")","media_id": eposideide,"season_id": sesiondata,"pause_at": "\(videotime.seconds)","status": "0","type": "2","total_duration": "\(totaltime?.seconds ?? 0)"]
                 print(param)
+                
                 continuewatching(param)
             } else if let sesiondataa = UserDefaults.standard.string(forKey: "seasonkey"), !sesiondataa.isEmpty {
                 print(sesiondataa)
@@ -1088,7 +1082,8 @@ extension newPreDetails: UICollectionViewDataSource {
         UserDefaults.standard.set(episodedata, forKey: "eposidekey")
                     UserDefaults.standard.synchronize()
         print(UserDefaults.standard.object(forKey: "eposidekey"))
-        
+        UserDefaults.standard.setValue(episodedata, forKey: "currentlyPlayingId")
+        UserDefaults.standard.synchronize()
         let post = premiumData[indexPath.row]
         // Commenteed By Avinash
         //        if selectIndex == indexPath.row {

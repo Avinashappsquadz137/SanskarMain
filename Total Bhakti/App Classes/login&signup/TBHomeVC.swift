@@ -2103,12 +2103,17 @@ extension TBHomeVC : UICollectionViewDataSource {
                 let seasonId = seasonList[indexPath.row].season_id
                    UserDefaults.standard.set(seasonId, forKey: "season_IdForEP")
                 // MARK: - Play / Lock Icon
+                let currentPlayingId = UserDefaults.standard.string(forKey: "currentlyPlayingId")
                 let selectedIndex = UserDefaults.standard.value(forKey: "continueEpisodesPlay") as? Int
                 if post.is_locked == "1" {
                     playPush?.isHidden = false
                     playPush?.image = UIImage(systemName: "lock.fill")
                     playPush?.tintColor = .gray
                 } else if indexPath.row == selectedIndex {
+                    UserDefaults.standard.removeObject(forKey: "currentlyPlayingId")
+                    playPush?.isHidden = false
+                    playPush?.image = UIImage(named: "white_play")
+                } else if post.episode_id == currentPlayingId {
                     playPush?.isHidden = false
                     playPush?.image = UIImage(named: "white_play")
                 } else {

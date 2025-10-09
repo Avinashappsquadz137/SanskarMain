@@ -10,7 +10,7 @@ import UIKit
 import SDWebImage
 
 protocol AllListTableCellDelegate {
-    func didTapCollection(_ cell: AllListTableCell, data: [String:Any] )
+    func didTapCollection(_ cell: AllListTableCell, data: MoreLikeThis)
 }
 
 
@@ -18,12 +18,11 @@ class AllListTableCell: UITableViewCell {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var allDataList: [[String:Any]] = [[:]]
+    var allDataList: [MoreLikeThis] = []
     var delegate: AllListTableCellDelegate?
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        print(allDataList)
         collectionView.dataSource = self
         collectionView.delegate = self
         
@@ -35,13 +34,12 @@ class AllListTableCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configure(with model: [[String:Any]]) {
-        allDataList = model
-        print(allDataList)
-        DispatchQueue.main.async {
-            self.collectionView.reloadData()
+    func configure(with model: [MoreLikeThis]) {
+            allDataList = model
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
         }
-    }
 
 }
 
@@ -52,26 +50,24 @@ extension AllListTableCell: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AllListData", for: indexPath) as? AllListData else {
-            return UICollectionViewCell()
-        }
-        let model = allDataList[indexPath.row]["vertical_banner"] as? String ?? ""
-        cell.posterImg.sd_setImage(with: URL(string: model), placeholderImage: UIImage(named: ""), options: .refreshCached, completed: nil)
- //       shadow(cell)
-        return cell
-    }
+          guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AllListData", for: indexPath) as? AllListData else {
+              return UICollectionViewCell()
+          }
+
+          let model = allDataList[indexPath.item]
+          if let banner = model.vertical_banner, let url = URL(string: banner) {
+              cell.posterImg.sd_setImage(with: url, placeholderImage: UIImage(named: "placeholder"))
+          }
+          return cell
+      }
     
 }
 
 extension AllListTableCell: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        let model = allDataList[indexPath.row]
-        DispatchQueue.main.async {
-            self.collectionView.reloadData()
-        }
-        delegate?.didTapCollection(self, data: model)
-    }
+          let model = allDataList[indexPath.item]
+          delegate?.didTapCollection(self, data: model)
+      }
 }
 
 extension AllListTableCell: UICollectionViewDelegateFlowLayout {
