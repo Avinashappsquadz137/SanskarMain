@@ -309,6 +309,8 @@
 		C78938862CF7026500CD973D /* LiveDarshanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78938852CF7026500CD973D /* LiveDarshanViewController.swift */; };
 		C78938892CF7062300CD973D /* LiveBhajanModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78938882CF7062300CD973D /* LiveBhajanModel.swift */; };
 		C79574DA2CF8457400EF4EB3 /* live.gif in Resources */ = {isa = PBXBuildFile; fileRef = C79574222CF8457400EF4EB3 /* live.gif */; };
+		C7ADE5A42E9A680A00AB807E /* preContinueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7ADE5A32E9A680A00AB807E /* preContinueCell.swift */; };
+		C7ADE5A62E9A732C00AB807E /* preContinueTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7ADE5A52E9A732C00AB807E /* preContinueTableCell.swift */; };
 		C7B00A192AA31788007FAB19 /* editCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B00A172AA31788007FAB19 /* editCollectionCell.swift */; };
 		C7B00A1A2AA31788007FAB19 /* editCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7B00A182AA31788007FAB19 /* editCollectionCell.xib */; };
 		C7B618FB2A16012900A927FB /* TBsearchviedeoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B618FA2A16012900A927FB /* TBsearchviedeoViewController.swift */; };
@@ -3993,6 +3995,8 @@
 		C78938852CF7026500CD973D /* LiveDarshanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveDarshanViewController.swift; sourceTree = "<group>"; };
 		C78938882CF7062300CD973D /* LiveBhajanModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveBhajanModel.swift; sourceTree = "<group>"; };
 		C79574222CF8457400EF4EB3 /* live.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = live.gif; sourceTree = "<group>"; };
+		C7ADE5A32E9A680A00AB807E /* preContinueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = preContinueCell.swift; sourceTree = "<group>"; };
+		C7ADE5A52E9A732C00AB807E /* preContinueTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = preContinueTableCell.swift; sourceTree = "<group>"; };
 		C7B00A172AA31788007FAB19 /* editCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = editCollectionCell.swift; sourceTree = "<group>"; };
 		C7B00A182AA31788007FAB19 /* editCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = editCollectionCell.xib; sourceTree = "<group>"; };
 		C7B618FA2A16012900A927FB /* TBsearchviedeoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TBsearchviedeoViewController.swift; sourceTree = "<group>"; };
@@ -4170,6 +4174,8 @@
 				078A6AA6271AA39200758F36 /* premiumDataCell.swift */,
 				078A6B3E271AA93200758F36 /* tableHeader.swift */,
 				078A6B40271ABDE600758F36 /* preCell.swift */,
+				C7ADE5A32E9A680A00AB807E /* preContinueCell.swift */,
+				C7ADE5A52E9A732C00AB807E /* preContinueTableCell.swift */,
 			);
 			path = "New Premium";
 			sourceTree = "<group>";
@@ -12487,6 +12493,7 @@
 				07A80A7427CF743C00C47B19 /* customPop.swift in Sources */,
 				5AFD225B23BF4DAD00942350 /* TBYoutubeVideoVC.swift in Sources */,
 				C716DC4D2B3465DC000222D5 /* Newpaymentvc.swift in Sources */,
+				C7ADE5A62E9A732C00AB807E /* preContinueTableCell.swift in Sources */,
 				072F8C90270B02C300BC41DA /* newPremiumvc.swift in Sources */,
 				7DBEA75B29506E19006A4457 /* TBViewController.swift in Sources */,
 				C7FFBC952CF5CC61009CDCC1 /* TBHomeVC+Extension.swift in Sources */,
@@ -12629,6 +12636,7 @@
 				878F678926AAF905000E358E /* FSPagerViewCell.swift in Sources */,
 				A3839A60205F872F0015230A /* Category.swift in Sources */,
 				A3406C572003894400F5A0E6 /* AppDelegate.swift in Sources */,
+				C7ADE5A42E9A680A00AB807E /* preContinueCell.swift in Sources */,
 				878F678726AAF905000E358E /* FSPagerView.swift in Sources */,
 				7DE7CCB3298A49C600C2BA89 /* livepoojadetailViewController.swift in Sources */,
 				C7598EBC2E97C713002A0B4B /* PremiumPurchaseViewCell.swift in Sources */,

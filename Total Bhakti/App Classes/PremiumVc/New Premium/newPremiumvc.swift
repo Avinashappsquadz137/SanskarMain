@@ -37,13 +37,10 @@ class newPremiumvc: TBInternetViewController, WKYTPlayerViewDelegate,FullScreenC
     let adUnitID = "ca-app-pub-9400717366398319/2085394511"
     var rewardedAd: RewardedAd?
    
-  
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
      
-        
+
         if UIDevice.current.userInterfaceIdiom == .pad {
             premiumbannerheight.constant = 300
             pagerviewheight.constant = 200
@@ -61,20 +58,16 @@ class newPremiumvc: TBInternetViewController, WKYTPlayerViewDelegate,FullScreenC
         hitPremiumData(param)
         prePum = "premium"
         self.showadsinios()
-        
-        
+     
+      //  sliderCollection.register(UINib(nibName: "sliderCell", bundle: nil), forCellWithReuseIdentifier: "sliderCell")
+
     }
    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(self.successfullPayment(notification:)), name: Notification.Name("paymentDone"), object: nil)
         liveTap = ""
-//        prePum = "premium"
     }
-    
-    
-    
-    
     func loadAndShowRewardedAd() {
         RewardedAd.load(with: adUnitID, request: Request()) { [weak self] ad, error in
                if let error = error {
@@ -144,21 +137,9 @@ class newPremiumvc: TBInternetViewController, WKYTPlayerViewDelegate,FullScreenC
             let value = UserDefaults.standard.value(forKey: "prim") as? Int ?? 0
             print(value)
             if value == 0 {
-                
                 loadAndShowRewardedAd()
             }
-            else {
-                print("no ads")
             }
-            
-            }else {
-    //                   presentAlert()
-                
-            }
-            
-            
-            
-        
     }
     
 //MARK: Api Method.
@@ -177,15 +158,6 @@ class newPremiumvc: TBInternetViewController, WKYTPlayerViewDelegate,FullScreenC
                     if let promoIds = JSON["season_promo_id"] as? [[String: Any]] {
                         print(promoIds)
                         self.sliderimgid = promoIds
-                        print(self.sliderimgid)
-                        // Accessing each dictionary in the array
-//                        for promoId in promoIds {
-//                            // Accessing the value of "season_id" key for each dictionary
-//                            if let seasonId = promoId["season_id"] as? String {
-//                                print(seasonId)
-//
-//                            }
-//                        }
                     } else {
                         print("Warning: JSON['season_promo_id'] is nil or not of type [String: Any], defaulting to an empty dictionary")
                     }
@@ -275,9 +247,6 @@ class newPremiumvc: TBInternetViewController, WKYTPlayerViewDelegate,FullScreenC
                             UIApplication.shared.keyWindow?.rootViewController?.present(vc, animated: true, completion: nil)
                         }
                     }
-                }else{
-//                    let vc = storyBoard.instantiateViewController(withIdentifier: CONTROLLERNAMES.KMOBILEVARIFICATION)
-//                    self.navigationController?.pushViewController(vc, animated: true)
                 }
             }else{
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "ScannerControl") as! ScannerControl
@@ -363,6 +332,18 @@ class newPremiumvc: TBInternetViewController, WKYTPlayerViewDelegate,FullScreenC
                 navigationController?.pushViewController(vc, animated: true)
             }
             
+        }else if ((premiumDataArr[sender.tag] as [String: Any])["cat_name"] as? String ?? "").lowercased() == "continue watching episodes"{
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "TBPremiumEpisodeFree") as! TBPremiumEpisodeFree
+            let heading = ((premiumDataArr[sender.tag] as [String:Any] )["cat_name"] as? String ?? "")
+            if let storedSeasonId = UserDefaults.standard.string(forKey: "season_IdForEPPre") {
+                let param: Parameters  = ["user_id":currentUser.result?.id ?? "","season_id":storedSeasonId,"page_no":"1","limit":"10"]
+                print(param)
+                vc.param = param
+                isComeFrom = 3
+                vc.selectedString = "seeAll"
+                vc.headingSting = heading.capitalizingFirstLetter()
+                }
+            self.navigationController?.pushViewController(vc, animated: true)
         }
         else {
             print("sender.tag::::\(sender.tag)\((premiumDataArr[sender.tag] as [String:Any] )["cat_name"] as? String ?? "")")
@@ -393,7 +374,7 @@ extension newPremiumvc: UICollectionViewDataSource {
         }
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if collectionView == sliderCollection{
+        if collectionView == sliderCollection {
             guard let cell = sliderCollection.dequeueReusableCell(withReuseIdentifier: "sliderCell", for: indexPath) as? sliderCell else {
                 return UICollectionViewCell()
             }
@@ -402,57 +383,56 @@ extension newPremiumvc: UICollectionViewDataSource {
                 cell.silderImg.sd_setShowActivityIndicatorView(true)
                 if sliderImgData.count > indexPath.row {
                     let image = sliderImgData[indexPath.row]
-                    cell.silderImg.sd_setImage(with: URL(string: image ), placeholderImage: UIImage(named: ""), options: .refreshCached, completed: nil)
-                    // Use the image...
-                } else {
-                    // Handle the situation where indexPath.row is out of bounds.
-                    print("Index out of range for sliderImgData")
-                  
+                    cell.silderImg.sd_setImage(with: URL(string: image), placeholderImage: UIImage(named: ""), options: .refreshCached)
                 }
             }
             return cell
-        }else{
-            print(((premiumDataArr[collectionView.tag] as [String:Any])["season_details"] as? [[String:Any]] ?? [[:]])[indexPath.row])
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "preCell", for: indexPath) as? preCell else {
-                return UICollectionViewCell()
-            }
+        } else {
+            // ✅ Identify category
             let categoryName = ((premiumDataArr[collectionView.tag] as [String:Any])["cat_name"] as? String ?? "").lowercased()
-
-            // Get season details array
             let seasonDetails = ((premiumDataArr[collectionView.tag] as [String:Any])["season_details"] as? [[String:Any]] ?? [[:]])
             let currentData = seasonDetails[indexPath.row]
-            cell.dataImg.contentMode = .scaleAspectFill
-            cell.dataImg.clipsToBounds = true
-            // Choose image key based on category
-            var imageURL = ""
+
             if categoryName == "continue watching episodes" {
-                // ✅ Use thumbnail_url for episode thumbnails
-                imageURL = currentData["thumbnail_url"] as? String ?? ""
-            } else {
-                // Default (season vertical banner)
-                imageURL = currentData["vertical_banner"] as? String ?? ""
-            }
-            
-//            let data = (((premiumDataArr[collectionView.tag] as [String:Any])["season_details"] as? [[String:Any]] ?? [[:]])[indexPath.row]["vertical_banner"] as? String ?? "")
-            
-            let datas = (((premiumDataArr[collectionView.tag] as [String:Any])["season_details"] as? [[String:Any]] ?? [[:]])[indexPath.row]["newly_released"] as? String ?? "")
-            
-            if let imagelatest = cell.viewWithTag(201) as? UIImageView {
-                if datas == "1" {
-                    imagelatest.isHidden = false
-                    imagelatest.image = UIImage(named: "newlyReleased")
-                }else {
-                    imagelatest.isHidden = true
+                // ✅ Use your custom preContinueCell
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "preContinueCell", for: indexPath) as? preContinueCell else {
+                    return UICollectionViewCell()
                 }
+
+                let imageURL = currentData["thumbnail_url"] as? String ?? ""
+                
+                cell.imgThumblin.clipsToBounds = true
+                cell.imgThumblin.sd_setImage(with: URL(string: imageURL), placeholderImage: UIImage(named: ""), options: .refreshCached)
+
+                // Optional: Customize size directly if needed
+                if UIDevice.current.userInterfaceIdiom == .pad {
+                    cell.imgWidth.constant = 300
+                    cell.imgheight.constant = 200
+                } else {
+                    cell.imgWidth.constant = 250
+                    cell.imgheight.constant = 160
+                }
+                let progressString = currentData["progress"] as? String ?? "0"
+                let progressValue = Float(progressString) ?? 0.0
+                cell.progressBar.progress = progressValue
+
+                return cell
+            } else {
+                // ✅ Default cell (preCell)
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "preCell", for: indexPath) as? preCell else {
+                    return UICollectionViewCell()
+                }
+
+                let imageURL = currentData["vertical_banner"] as? String ?? ""
+               
+                cell.dataImg.clipsToBounds = true
+                cell.dataImg.sd_setImage(with: URL(string: imageURL), placeholderImage: UIImage(named: ""), options: .refreshCached)
+
+                return cell
             }
-            
-            cell.dataImg.sd_setImage(with: URL(string: imageURL), placeholderImage: UIImage(named: ""), options: .refreshCached, completed: nil)
-//            cell.dataView.layer.cornerRadius = 5.0
-//            cell.dataView.clipsToBounds = true
-//            shadow(cell)
-            return cell
         }
     }
+
 }
 
 //MARK: UICollectionView Delegate
@@ -536,7 +516,6 @@ extension newPremiumvc: UICollectionViewDelegate {
                         vc.allListData = []
                     }
                     vc.selectedString = "premiumSeeMore"
-                    //             vc.season_id = selectedSeasonID
                     type = ""
                     self.navigationController?.pushViewController(vc, animated: true)
                 } else {
@@ -588,9 +567,6 @@ extension newPremiumvc: UICollectionViewDelegate {
                                     UIApplication.shared.keyWindow?.rootViewController?.present(vc, animated: true, completion: nil)
                                 }
                             }
-                        } else {
-                            //                        let vc = storyBoard.instantiateViewController(withIdentifier: CONTROLLERNAMES.KMOBILEVARIFICATION)
-                            //                        self.navigationController?.pushViewController(vc, animated: true)
                         }
                     }
                 }
@@ -633,7 +609,7 @@ extension newPremiumvc: UICollectionViewDelegateFlowLayout {
                 if UIDevice.current.userInterfaceIdiom == .pad {
                     return CGSize(width: 300, height: 130)
                 } else {
-                    return CGSize(width: 300, height: 130)
+                    return CGSize(width: 250, height: 130)
                 }
             } else {
                 // Default size for other sections
@@ -655,18 +631,40 @@ extension newPremiumvc: UITableViewDataSource {
         return 1
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "premiumDataCell", for: indexPath) as? premiumDataCell else {
-            return UITableViewCell()
-        }
-        cell.premiumCollection.tag = indexPath.section
-        cell.premiumCollection.delegate = self
-        cell.premiumCollection.dataSource = self
-        cell.premiumCollection.reloadData()
-        cell.premiumCollection.collectionViewLayout.invalidateLayout()
         
-        return cell
+        let categoryName = ((premiumDataArr[indexPath.section] as? [String: Any])?["cat_name"] as? String ?? "").lowercased()
+        let seasonDetails = ((premiumDataArr[indexPath.section] as? [String:Any])?["season_details"] as? [[String:Any]] ?? [[:]])
+        let currentData = seasonDetails[indexPath.row]
+        if categoryName == "continue watching episodes" {
+            // Use preContinueTableCell
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "preContinueTableCell", for: indexPath) as? preContinueTableCell else {
+                return UITableViewCell()
+            }
+            let seasonId = currentData["season_id"] as? String ?? ""
+               UserDefaults.standard.set(seasonId, forKey: "season_IdForEPPre")
+            cell.preContinueCollCEll.tag = indexPath.section
+            cell.preContinueCollCEll.delegate = self
+            cell.preContinueCollCEll.dataSource = self
+            cell.preContinueCollCEll.reloadData()
+            cell.preContinueCollCEll.collectionViewLayout.invalidateLayout()
+            return cell
+        } else {
+            // Use premiumDataCell
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "premiumDataCell", for: indexPath) as? premiumDataCell else {
+                return UITableViewCell()
+            }
+            cell.premiumCollection.tag = indexPath.section
+            cell.premiumCollection.delegate = self
+            cell.premiumCollection.dataSource = self
+            cell.premiumCollection.reloadData()
+            cell.premiumCollection.collectionViewLayout.invalidateLayout()
+            return cell
+        }
     }
+
+
 }
+    
 //MARK: TableView Delegate
 extension newPremiumvc : UITableViewDelegate{
     
