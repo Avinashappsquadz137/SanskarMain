@@ -180,6 +180,7 @@ struct KEYS {
     static let KCELL2          : String   =     "KCELL2"
     static let KCELL3          : String   =     "KCELL3"
     static let KROTATIONKEY    : String   =     "orientation"
+    static let PPViewCell       : String  =     "PPViewCell"
 }
 
 struct ALERTS {

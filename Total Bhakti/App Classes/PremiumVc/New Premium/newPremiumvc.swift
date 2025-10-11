@@ -57,22 +57,9 @@ class newPremiumvc: TBInternetViewController, WKYTPlayerViewDelegate,FullScreenC
         let notification_counter = UserDefaults.standard.value(forKey: "notification_counter") as! Int
         notificationLbl.text = String(notification_counter)
         let device_id = UserDefaults.standard.string(forKey: "device_id")
-        let param : Parameters = ["user_id": currentUser.result?.id ?? "163","device_id": "\(device_id ?? "")"]
+        let param : Parameters = ["user_id": currentUser.result?.id ?? "163","device_id": "\(device_id ?? "")","device_type" : "2" ]
         hitPremiumData(param)
-//        searchHolder.isHidden = true
-//        notificationLbl.layer.cornerRadius = notificationLbl.layer.bounds.width/2
-//        notificationLbl.clipsToBounds = true
         prePum = "premium"
-//        if qrStatus == "0"{
-//            if #available(iOS 13.0, *) {
-//                barCodeBtn.setImage(UIImage(systemName: "barcode.viewfinder"), for: .normal)
-//            } else {
-//                // Fallback on earlier versions
-//            }
-//            searchBtn.isHidden = true
-//        }else{
-//            searchBtn.isHidden = false
-//        }
         self.showadsinios()
         
         
@@ -116,10 +103,6 @@ class newPremiumvc: TBInternetViewController, WKYTPlayerViewDelegate,FullScreenC
            print("Ad did fail to present full screen content with error: \(error.localizedDescription)")
            loadAndShowRewardedAd()
        }
-
-//    func adDidPresentFullScreenContent(_ ad: FullScreenPresentingAd) {
-//            print("Ad is presented.")
-//        }
 
     func adDidDismissFullScreenContent(_ ad: FullScreenPresentingAd) {
             print("Ad dismissed. Reloading new ad...")
@@ -231,7 +214,7 @@ class newPremiumvc: TBInternetViewController, WKYTPlayerViewDelegate,FullScreenC
     @objc func successfullPayment(notification: Notification) {
         if ((notification.userInfo?["Bool"]) != nil) == true{
             print("payment Done")
-            let params = ["user_id":currentUser.result!.id!]
+            let params = ["user_id":currentUser.result!.id! , "device_type" : "2"]
             hitPremiumData(params)
         }
     }
@@ -433,7 +416,24 @@ extension newPremiumvc: UICollectionViewDataSource {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "preCell", for: indexPath) as? preCell else {
                 return UICollectionViewCell()
             }
-            let data = (((premiumDataArr[collectionView.tag] as [String:Any])["season_details"] as? [[String:Any]] ?? [[:]])[indexPath.row]["vertical_banner"] as? String ?? "")
+            let categoryName = ((premiumDataArr[collectionView.tag] as [String:Any])["cat_name"] as? String ?? "").lowercased()
+
+            // Get season details array
+            let seasonDetails = ((premiumDataArr[collectionView.tag] as [String:Any])["season_details"] as? [[String:Any]] ?? [[:]])
+            let currentData = seasonDetails[indexPath.row]
+            cell.dataImg.contentMode = .scaleAspectFill
+            cell.dataImg.clipsToBounds = true
+            // Choose image key based on category
+            var imageURL = ""
+            if categoryName == "continue watching episodes" {
+                // ✅ Use thumbnail_url for episode thumbnails
+                imageURL = currentData["thumbnail_url"] as? String ?? ""
+            } else {
+                // Default (season vertical banner)
+                imageURL = currentData["vertical_banner"] as? String ?? ""
+            }
+            
+//            let data = (((premiumDataArr[collectionView.tag] as [String:Any])["season_details"] as? [[String:Any]] ?? [[:]])[indexPath.row]["vertical_banner"] as? String ?? "")
             
             let datas = (((premiumDataArr[collectionView.tag] as [String:Any])["season_details"] as? [[String:Any]] ?? [[:]])[indexPath.row]["newly_released"] as? String ?? "")
             
@@ -446,7 +446,7 @@ extension newPremiumvc: UICollectionViewDataSource {
                 }
             }
             
-            cell.dataImg.sd_setImage(with: URL(string: data), placeholderImage: UIImage(named: ""), options: .refreshCached, completed: nil)
+            cell.dataImg.sd_setImage(with: URL(string: imageURL), placeholderImage: UIImage(named: ""), options: .refreshCached, completed: nil)
 //            cell.dataView.layer.cornerRadius = 5.0
 //            cell.dataView.clipsToBounds = true
 //            shadow(cell)
@@ -623,20 +623,29 @@ extension newPremiumvc: UICollectionViewDelegate {
 extension newPremiumvc: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if collectionView == sliderCollection{
+        if collectionView == sliderCollection {
             return CGSize(width: self.sliderCollection.frame.width, height: self.sliderCollection.frame.height)
-        }else{
+        } else {
+            let categoryName = ((premiumDataArr[collectionView.tag] as [String:Any])["cat_name"] as? String ?? "").lowercased()
             
-            if UIDevice.current.userInterfaceIdiom == .pad {
-                return CGSize(width: 200 , height: 300)
-                   } else {
-                       return CGSize(width: 150 , height: 250)
-                   }
-            
-            
-           
+            if categoryName == "continue watching episodes" {
+                // ✅ Smaller horizontal thumbnails for episodes
+                if UIDevice.current.userInterfaceIdiom == .pad {
+                    return CGSize(width: 300, height: 130)
+                } else {
+                    return CGSize(width: 300, height: 130)
+                }
+            } else {
+                // Default size for other sections
+                if UIDevice.current.userInterfaceIdiom == .pad {
+                    return CGSize(width: 200 , height: 300)
+                } else {
+                    return CGSize(width: 150 , height: 250)
+                }
+            }
         }
     }
+
  }
 
 //MARK: UITableView Datasource
@@ -666,16 +675,26 @@ extension newPremiumvc : UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-        if UIDevice.current.userInterfaceIdiom == .pad {
-            return 300
-               } else {
-                   return 250
-               }
-        
-     
-        
+        // Get category name for the current section
+        let categoryName = ((premiumDataArr[indexPath.section] as? [String: Any])?["cat_name"] as? String ?? "").lowercased()
+
+        // Special case for "continue watching episodes"
+        if categoryName == "continue watching episodes" {
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                return 180   // smaller height for iPad
+            } else {
+                return 140   // smaller height for iPhone
+            }
+        } else {
+            // Default heights for other categories
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                return 300
+            } else {
+                return 250
+            }
+        }
     }
+
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "tableHeader") as? tableHeader else {
             return UITableViewCell()

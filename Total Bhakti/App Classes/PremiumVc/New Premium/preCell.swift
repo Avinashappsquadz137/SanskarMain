@@ -25,9 +25,9 @@ class preCell: UICollectionViewCell {
         if UIDevice.current.userInterfaceIdiom == .pad {
             imageweightsize.constant = 200
             imageheightsize.constant = 300
-               } else {
-                   imageheightsize.constant = 250
-                   imageweightsize.constant = 150
-               }
+        } else {
+            imageheightsize.constant = 250
+            imageweightsize.constant = 150
+        }
     }
 }

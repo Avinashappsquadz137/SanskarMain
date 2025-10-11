@@ -295,6 +295,7 @@
 		C75641052D4CCDCE0083898C /* GoogleCastSDK-ios-4.6.1_static in Resources */ = {isa = PBXBuildFile; fileRef = C756404D2D4CCDCE0083898C /* GoogleCastSDK-ios-4.6.1_static */; };
 		C75879432B91BE7E00F94D0E /* JuapayStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75879422B91BE7E00F94D0E /* JuapayStatusViewController.swift */; };
 		C7598EBA2E978E95002A0B4B /* MoreLikeThisModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7598EB92E978E8D002A0B4B /* MoreLikeThisModels.swift */; };
+		C7598EBC2E97C713002A0B4B /* PremiumPurchaseViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7598EBB2E97C713002A0B4B /* PremiumPurchaseViewCell.swift */; };
 		C75B0D562BF4C89C00FBA92F /* shortscommentvc.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75B0D552BF4C89C00FBA92F /* shortscommentvc.swift */; };
 		C75B0E062BF4CCEE00FBA92F /* commenttableviewcell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75B0E052BF4CCEE00FBA92F /* commenttableviewcell.swift */; };
 		C75B0E082BF4CF1200FBA92F /* shortscommentmodel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75B0E072BF4CF1200FBA92F /* shortscommentmodel.swift */; };
@@ -3978,6 +3979,7 @@
 		C756404D2D4CCDCE0083898C /* GoogleCastSDK-ios-4.6.1_static */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "GoogleCastSDK-ios-4.6.1_static"; sourceTree = "<group>"; };
 		C75879422B91BE7E00F94D0E /* JuapayStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuapayStatusViewController.swift; sourceTree = "<group>"; };
 		C7598EB92E978E8D002A0B4B /* MoreLikeThisModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreLikeThisModels.swift; sourceTree = "<group>"; };
+		C7598EBB2E97C713002A0B4B /* PremiumPurchaseViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumPurchaseViewCell.swift; sourceTree = "<group>"; };
 		C75B0D552BF4C89C00FBA92F /* shortscommentvc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shortscommentvc.swift; sourceTree = "<group>"; };
 		C75B0E052BF4CCEE00FBA92F /* commenttableviewcell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = commenttableviewcell.swift; sourceTree = "<group>"; };
 		C75B0E072BF4CF1200FBA92F /* shortscommentmodel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shortscommentmodel.swift; sourceTree = "<group>"; };
@@ -5073,6 +5075,7 @@
 				C7F0DEE72D2669B1000656B8 /* TBAllVideosTableViewCell.swift */,
 				C7F0DFA02D2669C3000656B8 /* TBBhajanTableViewCell.swift */,
 				C7F0DFA22D2669CB000656B8 /* TBGuruListTableViewCell.swift */,
+				C7598EBB2E97C713002A0B4B /* PremiumPurchaseViewCell.swift */,
 			);
 			path = HomeVC;
 			sourceTree = "<group>";
@@ -12628,6 +12631,7 @@
 				A3406C572003894400F5A0E6 /* AppDelegate.swift in Sources */,
 				878F678726AAF905000E358E /* FSPagerView.swift in Sources */,
 				7DE7CCB3298A49C600C2BA89 /* livepoojadetailViewController.swift in Sources */,
+				C7598EBC2E97C713002A0B4B /* PremiumPurchaseViewCell.swift in Sources */,
 				5A2A642823F55B02006A01AA /* AlertController.swift in Sources */,
 				5A4812FE24237DB800C03B1A /* MusicPlayerManager.swift in Sources */,
 				077E4EB22885351000D2F1B0 /* SubsciptVc.swift in Sources */,

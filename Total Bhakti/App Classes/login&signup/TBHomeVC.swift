@@ -269,6 +269,7 @@ class TBHomeVC: TBInternetViewController,AAPlayerDelegate,shortCutDelegate,MMPla
         print(param1)
         loginuserrecordapi(param1)
         setupPiP()
+     
     }
  
 //    func loadAndShowRewardedAd() {
@@ -4143,12 +4144,46 @@ extension TBHomeVC : UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("numberof rows hit")
+      
+        let userId = currentUser.result?.id?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        if userId != "" && userId != "163" {
+            if (section + 1) % 5 == 0 || section == 0 {
+                return 2
+            }
+        }
+        
         return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+        let userId = currentUser.result?.id?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        if userId != "" && userId != "163" {
+            if (indexPath.section + 1) % 5 == 0 || indexPath.section == 0 {
+                if indexPath.row == 1 {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: KEYS.PPViewCell, for: indexPath) as! PremiumPurchaseViewCell
+                    cell.configureButton {
+                        print("User ID:", userId)
+                        print("Premium button tapped at section \(indexPath.section)")
+                        AlertController.alert(
+                            title: "Subscription",
+                            message: "Please purchase Premium to play video/Live TV",
+                            buttons: ["Cancel", "Go Premium"]
+                        ) { [weak self] result, index in
+                            guard let self = self else { return }
+                            if index == 1 {
+                                if let vc = storyBoard.instantiateViewController(withIdentifier: "TBPremiumPaymentVC") as? TBPremiumPaymentVC {
+                                    self.navigationController?.pushViewController(vc, animated: true)
+                                } else {
+                                    print("❌ Could not instantiate TBPremiumPaymentVC")
+                                }
+                            }
+                        }
+                    }
+                    return cell
+                }
+            }
+        }
+
         if categoryDataArray[indexPath.section].type == "bhajan"{
             let cell = tableView.dequeueReusableCell(withIdentifier: KEYS.KCELL, for: indexPath) as! TBHomeTableViewCell
             cell.dataCollectionView.tag = indexPath.section
@@ -4249,16 +4284,6 @@ extension TBHomeVC : UITableViewDataSource {
             cell.dataCollectionView.reloadData()
             cell.dataCollectionView.collectionViewLayout.invalidateLayout()
             return cell
-            
-            
-            
-            //            let cell = tableView.dequeueReusableCell(withIdentifier: "PremiumCell", for: indexPath) as! TBHomeTableViewCell
-            //            cell.premiumCollectionView.tag = indexPath.section
-            //            cell.premiumCollectionView.delegate = self
-            //            cell.premiumCollectionView.dataSource = self
-            //            cell.premiumCollectionView.reloadData()
-            //            cell.premiumCollectionView.collectionViewLayout.invalidateLayout()
-            //            return cell
             
         }
         else if categoryDataArray[indexPath.section].type == "trending video"{
@@ -4381,40 +4406,30 @@ extension TBHomeVC : UITableViewDelegate {
         let menutitle = categoryDataArray[indexPath.section].menu_title
         let deviceType = UIDevice.current.userInterfaceIdiom
 
-        if type == "channel" {
-            if deviceType == .pad {
-                return 100
-            } else if deviceType == .phone {
-                return 80
+        // 👇 Handle PremiumPurchaseViewCell height here
+        if (indexPath.section + 1) % 5 == 0 || indexPath.section == 0 {
+            if indexPath.row == 1 {
+                // Fixed height for PremiumPurchaseViewCell
+                return deviceType == .pad ? 140 : 100
             }
+        }
+
+        if type == "channel" {
+            return deviceType == .pad ? 100 : 80
         }
 
         if type == "season" || type == "promotion" {
             if menutitle == "continue watching" || menutitle == "continue watching episodes" {
-                if deviceType == .pad {
-                    return 150 // You can adjust this height for iPad if needed
-                } else if deviceType == .phone {
-                    return 126
-                }
+                return deviceType == .pad ? 150 : 126
             } else {
-                if deviceType == .pad {
-                    return 300 // Adjust for iPad if necessary
-                } else if deviceType == .phone {
-                    return 250
-                }
+                return deviceType == .pad ? 300 : 250
             }
         }
 
-        // Default case to handle all other types
-        if deviceType == .pad {
-            return 150 // Adjust this default value for iPad if needed
-        } else if deviceType == .phone {
-            return 126
-        }
-
-        // Fallback return value
-        return 126
+        // Default case
+        return deviceType == .pad ? 150 : 126
     }
+
 
 }
 
