@@ -155,27 +155,29 @@ class TBHomeTabBar: UITabBarController,UITabBarControllerDelegate {
         TV_PlayerHelper.shared.mmPlayer.setCoverView(enable: false)
         self.MiniTVView.isHidden = true
     }
-    func customTabbar(){
-        let origin =  self.tabBar.frame.origin.y
-        let size = self.tabBar.frame.size
-        CustomTabbarView.frame.origin.y = origin
-        CustomTabbarView.frame.origin.x = 0
-        CustomTabbarView.frame.size.height = size.height
-        CustomTabbarView.frame.size.width = self.tabBar.frame.size.width
-        if UIScreen.main.nativeBounds.height >= 1792{
- //            stackViewTopConstrant.constant = 5.0
-            
-//            liveViewtop.constant = -20.0
-            
-//            liveViewHeight.constant = 60.0
-//            liveViewWidth.constant = 60.0
-            
-            CustomTabbarView.frame.origin.y = origin-30
-            CustomTabbarView.frame.size.height = size.height+30
+
+    func customTabbar() {
+        let tabBarOriginY = self.tabBar.frame.origin.y
+        let tabBarSize = self.tabBar.frame.size
+
+        var customHeight: CGFloat = tabBarSize.height - 10
+        var customOriginY = tabBarOriginY
+
+        if UIScreen.main.nativeBounds.height >= 1792 {
+            customHeight = tabBarSize.height - 15
+            customOriginY = tabBarOriginY - 10
             self.tabBar.alpha = 0
         }
-        
-        self.view.addSubview(CustomTabbarView)
+
+        CustomTabbarView.frame = CGRect(
+            x: 0,
+            y: customOriginY,
+            width: tabBarSize.width,
+            height: customHeight + 30
+        )
+        if CustomTabbarView.superview == nil {
+            self.view.addSubview(CustomTabbarView)
+        }
     }
     @objc func DidmoveTVView(_ sender:UIPanGestureRecognizer){
         let point = sender.location(in: view)

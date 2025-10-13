@@ -6,7 +6,6 @@
 //  Copyright © 2018 MAC MINI. All rights reserved.
 //
 
-
 import UIKit
 import AVKit
 import MMPlayerView
@@ -66,8 +65,6 @@ class TBHomeVC: TBInternetViewController,AAPlayerDelegate,shortCutDelegate,MMPla
     var dataArray: [Any] = []
     var videoDict : [String : Any] = [:]
     var dataUrl : String = ""
-    var labeldata = ["Avi tyagi","vaibhav","Manish","ashish","pankaj"]
-    var imagedata = ["profilelogo1","profilelogo2","profilelogo3","profilelogo4","profilelogo4"]
     var datalist  = [[String:Any]]()
     var recorduserdata = 1
     
@@ -125,7 +122,10 @@ class TBHomeVC: TBInternetViewController,AAPlayerDelegate,shortCutDelegate,MMPla
     var shortsvalue = ""
     var holivalue = ""
     let adUnitID = "ca-app-pub-9400717366398319/2085394511"
-    var rewardedAd: InterstitialAd? //GADInterstitialAd
+//    var rewardedAd: InterstitialAd? //GADInterstitialAd
+    var rewardedAd: RewardedAd?
+    var bannerView: BannerView!
+
     var record: Int?
     var playerLayer : AVPlayerLayer? = nil
     var pipController: AVPictureInPictureController?
@@ -269,9 +269,29 @@ class TBHomeVC: TBInternetViewController,AAPlayerDelegate,shortCutDelegate,MMPla
         print(param1)
         loginuserrecordapi(param1)
         setupPiP()
-     
     }
- 
+    
+    func setupBannerAd() {
+        bannerView = BannerView(adSize: AdSizeBanner)
+        bannerView.adUnitID = "ca-app-pub-1618767157139570/9815554845"
+        bannerView.rootViewController = self
+        bannerView.delegate = self
+        bannerView.load(Request())
+
+        let headerContainer = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 60))
+        headerContainer.backgroundColor = .clear
+
+        bannerView.translatesAutoresizingMaskIntoConstraints = false
+        headerContainer.addSubview(bannerView)
+
+        NSLayoutConstraint.activate([
+            bannerView.centerXAnchor.constraint(equalTo: headerContainer.centerXAnchor),
+            bannerView.centerYAnchor.constraint(equalTo: headerContainer.centerYAnchor)
+        ])
+
+        tableView.tableHeaderView = headerContainer
+    }
+
 //    func loadAndShowRewardedAd() {
 //        let request = Request()
 //        GADRewardedAd.load(with: adUnitID, request: request) { [weak self] ad, error in
@@ -1358,7 +1378,7 @@ class TBHomeVC: TBInternetViewController,AAPlayerDelegate,shortCutDelegate,MMPla
             let value = UserDefaults.standard.value(forKey: "prim") as? Int ?? 0
             print(value)
             if value == 0 {
-                
+                setupBannerAd()
                // loadAndShowRewardedAd()
             }
             else {
@@ -4590,5 +4610,25 @@ func formatNumber(_ n: Int) -> String {
         
     default:
         return "\(sign)\(n)"
+    }
+}
+extension TBHomeVC: BannerViewDelegate {
+    func bannerViewDidReceiveAd(_ bannerView: BannerView) {
+        print("✅ Banner ad loaded successfully.")
+        // Restore header height when ad loads
+        if let header = tableView.tableHeaderView {
+            header.frame.size.height = 60
+            tableView.tableHeaderView = header // Important: must re-assign
+        }
+    }
+
+    func bannerView(_ bannerView: BannerView,
+                    didFailToReceiveAdWithError error: Error) {
+        print("❌ Failed to load banner ad: \(error.localizedDescription)")
+        // Remove header height when ad fails
+        if let header = tableView.tableHeaderView {
+            header.frame.size.height = 0
+            tableView.tableHeaderView = header // Important: must re-assign
+        }
     }
 }

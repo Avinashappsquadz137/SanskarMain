@@ -73,7 +73,7 @@
 	<key>FirebaseScreenReportingEnabled</key>
 	<false/>
 	<key>GADApplicationIdentifier</key>
-	<string>ca-app-pub-9400717366398319~8921431450</string>
+	<string>ca-app-pub-9400717366398319~1234567890</string>
 	<key>GADIsAdManagerApp</key>
 	<true/>
 	<key>LSApplicationCategoryType</key>
