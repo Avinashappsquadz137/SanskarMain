@@ -4166,17 +4166,21 @@ extension TBHomeVC : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
       
         let userId = currentUser.result?.id?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-        if userId != "" && userId != "163" {
-            if (section + 1) % 5 == 0 || section == 0 {
-                return 2
+        let value = UserDefaults.standard.value(forKey: "prim") as? Int ?? 0
+        if value == 0 {
+            if userId != "" && userId != "163" {
+                if (section + 1) % 5 == 0 || section == 0 {
+                    return 2
+                }
             }
         }
-        
         return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let userId = currentUser.result?.id?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        let value = UserDefaults.standard.value(forKey: "prim") as? Int ?? 0
+        if value == 0 {
         if userId != "" && userId != "163" {
             if (indexPath.section + 1) % 5 == 0 || indexPath.section == 0 {
                 if indexPath.row == 1 {
@@ -4203,6 +4207,7 @@ extension TBHomeVC : UITableViewDataSource {
                 }
             }
         }
+    }
 
         if categoryDataArray[indexPath.section].type == "bhajan"{
             let cell = tableView.dequeueReusableCell(withIdentifier: KEYS.KCELL, for: indexPath) as! TBHomeTableViewCell
