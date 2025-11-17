@@ -96,64 +96,64 @@ class TBCouponListVC: UIViewController,UITextFieldDelegate {
         self.navigationController?.popViewController(animated: true)
     }
     
-    //MARK:- Promo code Api Method.
+    //MARK: - Promo code Api Method.
     func applyPromocodeApi(_ param : Parameters){
         
-        self.uplaodData1(APIManager.sharedInstance.KPromoCodeValidate, param) { (response) in
-            DispatchQueue.main.async(execute: { loader.shareInstance.hideLoading()})
+        self.uplaodData1(APIManager.sharedInstance.KPromoCodeValidate, param) { response in
+            DispatchQueue.main.async { loader.shareInstance.hideLoading() }
+
+            guard let JSON = response as? [String: Any] else { return }
+            print(JSON)
             
-            print(response as Any)
-            if let JSON = response as? NSDictionary {
-                print(JSON)
-                
-                self.promoField.text?.removeAll()
-                if JSON.value(forKey: "status") as? Bool == true {
-                    let data = ((JSON as? NSDictionary)?["data"] as? NSDictionary)
-                                        
-//                    _ = data?.filter({ (dict) -> Bool in
-//                        
-//                        self.couponListArray.append(couponListModel(dict: dict))
-//                        
-//                        return true
-//                    })
-                    self.tableView.reloadData()
-                }else {
-                    
-                    self.addAlert(ALERTS.KERROR, message: (JSON.value(forKey: "message") as? String)!, buttonTitle: ALERTS.kAlertOK)
+            self.promoField.text?.removeAll()
+            
+            if let status = JSON["status"] as? Bool, status == true {
+
+                if let data = JSON["data"] as? [String: Any] {
+                    let model = couponListModel(dict: data)
+                    self.couponListArray.removeAll()
+                    self.couponListArray.append(model)
                 }
-            }else {
+
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+                
+            } else {
+                let message = JSON["message"] as? String ?? "Something went wrong"
+                self.addAlert(ALERTS.KERROR, message: message, buttonTitle: ALERTS.kAlertOK)
             }
         }
     }
-    //MARK:- Api Method.
-    func couponListApi(_ param : Parameters){
-        
-        self.uplaodData1(APIManager.sharedInstance.KCouponListApi, param) { (response) in
-            DispatchQueue.main.async(execute: { loader.shareInstance.hideLoading()})
+
+    //MARK: - Api Method.
+    func couponListApi(_ param : Parameters) {
+        self.uplaodData1(APIManager.sharedInstance.KCouponListApi, param) { response in
+            DispatchQueue.main.async { loader.shareInstance.hideLoading() }
             
-            print(response as Any)
-            if let JSON = response as? NSDictionary {
-                print(JSON)
+            guard let JSON = response as? [String: Any] else { return }
+            print(JSON)
+            
+            if let status = JSON["status"] as? Bool, status == true {
                 
-                if JSON.value(forKey: "status") as? Bool == true {
-                    let data = JSON.ArrayofDict("data")
-                    
-                    _ = data.filter({ (dict) -> Bool in
-                        
+                self.couponListArray.removeAll()
+                
+                if let data = JSON["data"] as? [[String: Any]] {
+                    for dict in data {
                         self.couponListArray.append(couponListModel(dict: dict))
-                        
-                        return true
-                    })
-                    self.tableView.reloadData()
-                }else {
-                    
-//                    self.addAlert(ALERTS.KERROR, message: (JSON.value(forKey: "message") as? String)!, buttonTitle: ALERTS.kAlertOK)
-                    self.noDataLbl.text = "Sorry! No Coupoun here..."
-                    
+                    }
+                } else if let data = JSON["data"] as? [String: Any] {
+                    self.couponListArray.append(couponListModel(dict: data))
                 }
-            }else {
+                
+                DispatchQueue.main.async {
+                    self.noDataLbl.isHidden = !(self.couponListArray.isEmpty)
+                    self.tableView.reloadData()
+                }
+               
+            } else {
+                self.noDataLbl.text = "Sorry! No Coupon here..."
             }
-            self.tableView.reloadData()
         }
     }
     
@@ -192,7 +192,7 @@ extension TBCouponListVC: UITableViewDelegate, UITableViewDataSource{
         let couponValueLbl = cell.viewWithTag(3) as? UILabel
         
         let couponArray = couponListArray[indexPath.row ]
-        couponNameLbl?.text = couponArray.coupon_tilte
+        couponNameLbl?.text = couponArray.coupon_title
         
         if couponArray.coupon_type == "2"{ //Percentile
             couponValueLbl?.text = "\(couponArray.coupon_value ?? "")% off"
@@ -245,7 +245,7 @@ extension TBCouponListVC: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let couponArray = couponListArray[indexPath.row - 2]
+        let couponArray = couponListArray[indexPath.row]
         
         delegate?.dataPass(couponModel: couponArray)
         self.navigationController?.popViewController(animated: true)

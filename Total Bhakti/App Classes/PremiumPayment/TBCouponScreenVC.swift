@@ -23,7 +23,7 @@ class TBCouponScreenVC: UIViewController, RazorpayPaymentCompletionProtocol, sel
     var qrscan : Bool = false
     @IBOutlet weak var amountlbl: UILabel!
     @IBOutlet weak var totalAmountlbl: UILabel!
- //   @IBOutlet weak var applyCouponlbl: UILabel!
+    @IBOutlet weak var applyCouponlbl: UILabel!
     
     var staticProductIDs: [String]? = ["com.sanskartvapp1","com.sanskartvapp2","com.sanskartvapp3"]
     var productToPurchage : SKProduct?
@@ -282,13 +282,13 @@ class TBCouponScreenVC: UIViewController, RazorpayPaymentCompletionProtocol, sel
 
     }
 
-//    @IBAction func couponBtn(_ sender:UIButton) {
-//        print("Coupon button clicked")
-//        let vc = storyBoard.instantiateViewController(withIdentifier: CONTROLLERNAMES.KTBCouponListVC) as? TBCouponListVC
-//        vc?.delegate = self
-//        navigationController?.pushViewController(vc!, animated: true)
-//
-//    }
+    @IBAction func couponBtn(_ sender:UIButton) {
+        print("Coupon button clicked")
+        let vc = storyBoard.instantiateViewController(withIdentifier: CONTROLLERNAMES.KTBCouponListVC) as? TBCouponListVC
+        vc?.delegate = self
+        navigationController?.pushViewController(vc!, animated: true)
+
+    }
 }
 
 

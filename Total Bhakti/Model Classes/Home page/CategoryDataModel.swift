@@ -1013,7 +1013,7 @@ class seeMoreModel{
 
 class couponListModel{
     var id: String?
-    var coupon_tilte: String?
+    var coupon_title: String?
     var coupon_type: String?
     var coupon_value: String?
     var start: String?
@@ -1021,15 +1021,15 @@ class couponListModel{
     var promocode_applied: String?
     var promocode: String?
     
-    init(dict: Dictionary<String,Any>) {
-        self.id = dict.validatedValue("id")
-        self.coupon_tilte = dict.validatedValue("coupon_tilte")
-        self.coupon_type = dict.validatedValue("coupon_type")
-        self.coupon_value = dict.validatedValue("coupon_value")
-        self.start = dict.validatedValue("start")
-        self.promocode_applied = dict.validatedValue("promocode_applied")
-        self.promocode = dict.validatedValue("promocode")
-
+    init(dict: [String: Any]) {
+        self.id = "\(dict["id"] ?? "")"
+        self.coupon_title = "\(dict["title"] ?? "")"
+        self.coupon_type = "\(dict["promocode_type"] ?? "")"
+        self.coupon_value = "\(dict["promocode_value"] ?? "")"
+        self.start = "\(dict["start"] ?? "")"
+        self.end = "\(dict["end"] ?? "")"
+        self.promocode_applied = "\(dict["promocode_applied"] ?? "")"
+        self.promocode = "\(dict["promocode"] ?? "")"
     }
 }
 
