@@ -127,38 +127,50 @@ class TBCouponScreenVC: UIViewController, RazorpayPaymentCompletionProtocol, sel
       
     }
     
-    //MARK:- Api Method.
-    func initializePaymentApi(_ param : Parameters){
+    //MARK: - Api Method.
+    func initializePaymentApi(_ param: Parameters) {
 
-        self.uplaodData1(APIManager.sharedInstance.KInitializePaymentApi, param) { (response) in
-            DispatchQueue.main.async(execute: { loader.shareInstance.hideLoading()})
-
-            print(response as Any)
-            if let JSON = response as? NSDictionary {
-                print(JSON)
-
-                if JSON.value(forKey: "status") as? Bool == true {
-                    self.preTranstionId = ((JSON["data"] as! NSDictionary)["pre_transaction_id"] as! String)
-                    DispatchQueue.main.async(execute: { loader.shareInstance.showLoading(self.view) })
-
-//                    print("pre_transaction_id:::::",self.pre_transaction_id)
-                    let adskey = UserDefaults.standard.value(forKey: "iosads") as? String ?? ""
-                    if adskey == "1"{
-                        let amount = "\(self.paymentData?.amount ?? "")00"
-                        self.showPaymentForm(order_id: self.preTranstionId, amount:amount, contact:currentUser.result?.mobile ?? "", email: currentUser.result?.email ?? "")
-                    }
-                    else
-                    {
-                        let amount = "\(self.paymentData?.ios_amount ?? "")00"
-                        self.showPaymentForm(order_id: self.preTranstionId, amount:amount, contact:currentUser.result?.mobile ?? "", email: currentUser.result?.email ?? "")
-                    }
-                    
-                }else {
-                    
-                    self.addAlert(ALERTS.KERROR, message: (JSON.value(forKey: "message") as? String)!, buttonTitle: ALERTS.kAlertOK)
-                }
-            }else {
+        self.uplaodData1(APIManager.sharedInstance.KInitializePaymentApi, param) { response in
+            
+            DispatchQueue.main.async {
+                loader.shareInstance.hideLoading()
             }
+
+            guard let json = response as? NSDictionary else { return }
+            print(json)
+
+            let status = json["status"] as? Bool ?? false
+            guard status else {
+                self.addAlert(ALERTS.KERROR,
+                              message: json["message"] as? String ?? "Something went wrong",
+                              buttonTitle: ALERTS.kAlertOK)
+                return
+            }
+            
+            guard let data = json["data"] as? NSDictionary else { return }
+            self.preTranstionId = data["pre_transaction_id"] as? String ?? ""
+            let subscriptionId = data["subscription_id"] as? String
+
+            DispatchQueue.main.async {
+                loader.shareInstance.showLoading(self.view)
+            }
+            // Intigratea Auto Pay
+            if let subId = subscriptionId, !subId.isEmpty {
+                self.showSubscriptionForm(
+                    subscription_id: subId,
+                    contact: currentUser.result?.mobile ?? "",
+                    email: currentUser.result?.email ?? ""
+                )
+                return
+            }
+            let amount = "\(self.paymentData?.ios_amount ?? "")00"
+
+            self.showPaymentForm(
+                order_id: self.preTranstionId,
+                amount: amount,
+                contact: currentUser.result?.mobile ?? "",
+                email: currentUser.result?.email ?? ""
+            )
         }
     }
     
@@ -177,7 +189,7 @@ class TBCouponScreenVC: UIViewController, RazorpayPaymentCompletionProtocol, sel
                 "email": email
             ],
             "theme": [
-                "color": "#1DA1F2"
+                "color": "#FFA500"
             ]
         ]
         DispatchQueue.main.async {
@@ -296,45 +308,76 @@ class TBCouponScreenVC: UIViewController, RazorpayPaymentCompletionProtocol, sel
  
 extension TBCouponScreenVC {
     func initializeCourseTransaction() {
-        let param: Parameters = [
-            "user_id": currentUser.result?.id ?? "163",
-            "plan_id": paymentData?.plan_id ?? "",
-            "amount": self.totalAmountlbl.text ?? "",
-            "pay_via": "0",
-            "device_type": "2",
-            "validity": paymentData?.validity ?? "",
-            "currency": paymentData?.currency ?? "",
-            "coupon_applied": couponID ?? "",
-            "promocode_applied": promocode_applied ?? "",
-            "promocode": promocode ?? ""
-        ]
+          let param: Parameters = [
+              "user_id": currentUser.result?.id ?? "163",
+              "plan_id": paymentData?.plan_id ?? "",
+              "amount": self.totalAmountlbl.text ?? "",
+              "pay_via": "0",
+              "device_type": "2",
+              "validity": paymentData?.validity ?? "",
+              "currency": paymentData?.currency ?? "",
+              "coupon_applied": couponID ?? "",
+              "promocode_applied": promocode_applied ?? "",
+              "promocode": promocode ?? ""
+          ]
+          
+          DispatchQueue.main.async {
+              loader.shareInstance.showLoading(self.view)
+          }
+          
+          self.uplaodData1(APIManager.sharedInstance.KInitializePaymentApi, param) { response in
+              print(response as Any)
+              if let JSON = response as? NSDictionary {
+                  print(JSON)
+                  
+                  if JSON.value(forKey: "status") as? Bool == true {
         
-        DispatchQueue.main.async {
-            loader.shareInstance.showLoading(self.view)
-        }
-        
-        self.uplaodData1(APIManager.sharedInstance.KInitializePaymentApi, param) { response in
-            print(response as Any)
-            if let JSON = response as? NSDictionary {
-                print(JSON)
-                
-                if JSON.value(forKey: "status") as? Bool == true {
-                    self.preTranstionId = ((JSON["data"] as! NSDictionary)["pre_transaction_id"] as! String)
-                    self.initializeIAP()
-                } else {
-                    self.addAlert(ALERTS.KERROR, message: (JSON.value(forKey: "message") as? String)!, buttonTitle: ALERTS.kAlertOK)
-                    DispatchQueue.main.async {
-                        loader.shareInstance.hideLoading()
-                    }
-                }
-            } else {
-                DispatchQueue.main.async {
-                    loader.shareInstance.hideLoading()
-                }
-            }
-        }
-    }
+                      let subscriptionId = ((JSON["data"] as! NSDictionary)["subscription_id"] as! String)
+                      
+                      DispatchQueue.main.async {
+                          loader.shareInstance.showLoading(self.view)
+                      }
 
+                      self.showSubscriptionForm(subscription_id: subscriptionId,
+                                                contact: currentUser.result?.mobile ?? "",
+                                                email: currentUser.result?.email ?? "")
+                  } else {
+                      self.addAlert(ALERTS.KERROR, message: (JSON.value(forKey: "message") as? String)!, buttonTitle: ALERTS.kAlertOK)
+                      DispatchQueue.main.async {
+                          loader.shareInstance.hideLoading()
+                      }
+                  }
+              } else {
+                  DispatchQueue.main.async {
+                      loader.shareInstance.hideLoading()
+                  }
+              }
+          }
+      }
+    func showSubscriptionForm(subscription_id: String, contact: String, email: String) {
+        let options: [String: Any] = [
+            "subscription_id": subscription_id,
+            "name": "Sanskar TV Info Pvt. Ltd.",
+            "description": "Subscription Plan: \(paymentData?.plan_name ?? "")",
+            "image": UIImage(named:"AppIcon") ,
+            "prefill": [
+                "contact": contact,
+                "email": email
+            ],
+            "notes": [
+                "plan_id": paymentData?.plan_id ?? "",
+                "user_id": currentUser.result?.id ?? ""
+            ],
+
+            "theme": [
+                "color": "#FFA500"
+            ]
+        ]
+          DispatchQueue.main.async {
+              loader.shareInstance.hideLoading()
+              self.razorpay.open(options, displayController: self)
+          }
+      }
     private func initializeIAP() {
         DispatchQueue.main.async {
             loader.shareInstance.showLoading(self.view)
