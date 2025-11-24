@@ -8,15 +8,13 @@
 
 import UIKit
 
-import YouTubePlayer
-import YoutubePlayer_in_WKWebView
+import youtube_ios_player_helper
 
-
-class TBYoutubeVideoVC: UIViewController,UITableViewDelegate,UITableViewDataSource,YouTubePlayerDelegate,MMPlayerLayerProtocol{
+class TBYoutubeVideoVC: UIViewController,UITableViewDelegate,UITableViewDataSource,MMPlayerLayerProtocol{
     
     
     static let instance = TBYoutubeVideoVC()
-    @IBOutlet weak var playerView: WKYTPlayerView!
+    @IBOutlet weak var playerView: YTPlayerView!
     var isLoadingList : Bool = false
     //    var postID = ""
     @IBOutlet weak var searchBar: UISearchBar!
@@ -150,7 +148,7 @@ class TBYoutubeVideoVC: UIViewController,UITableViewDelegate,UITableViewDataSour
         
         MyTableView.dataSource = self
         MyTableView.dataSource = self
-        playerView.delegate = self
+       // playerView.delegate = self
         let playvarsDic = ["playsinline": 1]
         if videoType == 1{
             lbl_video_title.text = post!.video_title
@@ -414,17 +412,22 @@ class TBYoutubeVideoVC: UIViewController,UITableViewDelegate,UITableViewDataSour
         let currentPauseTime = "\(self.playerCurrentTime ?? 0.0)"
         var param: Parameters = ["user_id":currentUser.result?.id ?? "","type":"\(videoType)","media_id":self.media_Id ?? "","pause_at":currentPauseTime ,"status":"0"]
         
-        playerView.getDuration { (timeinterval, err) in
-            print(timeinterval)
-            self.playerTotalDuraion = Float(timeinterval)
-            if Int(self.playerCurrentTime ?? 0.00) != Int(self.playerTotalDuraion){
-                
-                param.updateValue("1", forKey: "status")
+        playerView.duration { duration, error in
+            print("Duration:", duration)
+
+            self.playerTotalDuraion = Float(duration)
+
+            self.playerView.currentTime { currentTime, err in
+                self.playerCurrentTime = Float(currentTime)
+
+                if Int(self.playerCurrentTime ?? 0) != Int(self.playerTotalDuraion) {
+                    param.updateValue("1", forKey: "status")
+                } else {
+                    param.updateValue("0", forKey: "status")
+                }
+
+                self.continueWatchingApi(param)
             }
-            else{
-                param.updateValue("0", forKey: "status")
-            }
-            self.continueWatchingApi(param)
         }
     }
     @objc func backAction(){
@@ -1010,17 +1013,7 @@ extension TBYoutubeVideoVC {
                     if  JSON.value(forKey: "message") as? String == "User liked." {
                         //                        self.likeImg.tintColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
                         self.likeImg.image = UIImage(named: "like_active-1")
-                        
-                        //                            imageLiteral(resourceName: "like_active-1")
-                        
-                        // mark comment by Avi tyagi it shoud be crash
-                        
-//                        let like = Int(self.post!.likes!) ?? 0
-//                        self.lbl_likes.text = "\(like+1) like"
-//                        self.post!.is_like = "1"
-//                        self.post!.likes = "\(like+1)"
-                        
-                        
+ 
                         if let post = self.post {
                             let like = Int(post.likes ?? "0") ?? 0
                             self.lbl_likes.text = "\(like + 1)"
@@ -1032,23 +1025,7 @@ extension TBYoutubeVideoVC {
                     else if JSON.value(forKey: "message") as? String == "Unlike Successfully."{
                         //                        self.likeImg.tintColor = #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1)
                         self.likeImg.image = UIImage(named: "like_gray")
-                        //                            imageLiteral( ≥≤: "like_gray")
-                        
-                        
-                    // mark comment by Avi tyagi it shoud be crash
-                        
-//                        let like = Int(self.post!.likes!) ?? 0
-//                        if like != 0{
-//                            self.lbl_likes.text = "\(like-1) like"
-//                            self.post?.likes = "\(like-1)"
-//                            let is_like = Int(((self.post?.is_like)!))
-//                            self.post?.is_like = "\(is_like! - 1)"
-//                        }else{
-//                            self.lbl_likes.text = "0 like"
-//                            self.post?.is_like = "0"
-//
-//                        }
-                        
+
                         if let post = self.post, let likesString = post.likes, let likes = Int(likesString) {
                             if likes != 0 {
                                 self.lbl_likes.text = "\(likes - 1)"
@@ -1078,71 +1055,6 @@ extension TBYoutubeVideoVC {
     }
 }
 
-extension TBYoutubeVideoVC{
-    
-    
-    
-    
-    func playerReady(_ videoPlayer: YouTubePlayerView) {
-        //        playerView.play()
-        //
-        //        isBool = true
-        //        if landscapeBool == true{
-        //            UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
-        //            playerView.playerVars = (["playsinline" : 1] as AnyObject) as! YouTubePlayerView.YouTubePlayerParameters
-        //        }
-        //
-        //        let playerCurrentTime:Float = Float(post!.pause_at ?? "0.00") ?? 0.00
-        //        if playerCurrentTime != 0{
-        //            print("CurrentTime::",videoPlayer.getCurrentTime())
-        //            videoPlayer.seekTo(playerCurrentTime, seekAhead: true)
-        //        }
-        //        forward_btn.isHidden = true
-        //        backward_btn.isHidden = true
-        //        playPause_btn.isHidden = true
-    }
-    func playerStateChanged(_ videoPlayer: YouTubePlayerView, playerState: YouTubePlayerState) {
-        if playerState == .Paused{
-            playPause_btn.setImage(UIImage(named: "audio_play"), for: .normal)
-        }else{
-            playPause_btn.setImage(UIImage(named: "audio_pause"), for: .normal)
-        }
-        
-    }
-}
-//MARK:- UISearchBarDelegates.
-//extension TBYoutubeVideoVC : UISearchBarDelegate {
-//    func searchBar(_ searchBar: UISearchBar, textDidChange Text: String) {
-//
-//    }
-//    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-//        searchBar.setShowsCancelButton(true, animated: true)
-//
-//    }
-//
-//    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-//        //
-//        //        videosArr = searchResultVideosArr
-//        //        searchClicked = 0
-//        //        searchBar.text = ""
-//        //        self.view.endEditing(true)
-//        //        searchBar.endEditing(true)
-//        //        searchBar.setShowsCancelButton(false, animated: true)
-//        //        MyTableView.reloadData()
-//    }
-//
-//
-//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-//        //        self.view.endEditing(true)
-//        //        searchBar.endEditing(true)
-//        //        searchResultVideosArr = videosArr
-//        //        searchClicked = 1
-//        //        let param : Parameters
-//        //        param  = ["user_id": currentUser.result!.id!,"search_content" : searchBar.text!, "last_video_id" : "", "video_category" : "","limit":"10"]
-//        //        getVideosApi(param)
-//
-//    }
-//}
 
 extension UILabel {
     func setHTML(html: String) {
@@ -1155,8 +1067,8 @@ extension UILabel {
     }
 }
 
-extension TBYoutubeVideoVC: WKYTPlayerViewDelegate{
-    func playerViewDidBecomeReady(_ playerView: WKYTPlayerView) {
+extension TBYoutubeVideoVC: YTPlayerViewDelegate {
+    func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
         print("playerViewDidBecomeReady")
         //                let pause_at = Float(post?.pause_at ?? "") ?? 0.0
         let pause_at = Float(0.0)
@@ -1164,13 +1076,13 @@ extension TBYoutubeVideoVC: WKYTPlayerViewDelegate{
         
         playerView.playVideo()
     }
-    func playerView(_ playerView: WKYTPlayerView, didPlayTime playTime: Float) {
+    func playerView(_ playerView: YTPlayerView, didPlayTime playTime: Float) {
         print("didPlayTime\(playTime)")
         self.playerCurrentTime = playTime
     }
-    func playerView(_ playerView: WKYTPlayerView, didChangeTo state: WKYTPlayerState) {
+    func playerView(_ playerView: YTPlayerView, didChangeTo state: YTPlayerState) {
         print("didChangeTo")
-        if state == .ended{
+        if state == .ended {
             let currentPauseTime = "\(self.playerCurrentTime ?? 0.0)"
             var param: Parameters = ["user_id":currentUser.result?.id ?? "","type":"\(videoType)","media_id":self.media_Id ?? "","pause_at":currentPauseTime ,"status":"0"]
             if self.didselectBool == false{
@@ -1259,9 +1171,8 @@ extension TBYoutubeVideoVC: WKYTPlayerViewDelegate{
                     playerView.pauseVideo()
                 }
                 
-                playerView.getDuration { (timeinterval, err) in
-                    print(timeinterval)
-                    self.playerTotalDuraion = Float(timeinterval)
+                playerView.duration { duration, error in
+                    self.playerTotalDuraion = Float(duration)
                     if Int(self.playerCurrentTime ?? 0.00) != Int(self.playerTotalDuraion){
                         
                         param.updateValue("1", forKey: "status")
@@ -1284,12 +1195,7 @@ extension TBYoutubeVideoVC: WKYTPlayerViewDelegate{
             
         }
     }
-    func playerView(_ playerView: WKYTPlayerView, receivedError error: WKYTPlayerError) {
-        print("receivedError")
-    }
-    func playerView(_ playerView: WKYTPlayerView, didChangeTo quality: WKYTPlaybackQuality) {
-        print("didChangeTo quality")
-    }
+  
     
     func hitPlayTime(_ parm: Parameters) {
         

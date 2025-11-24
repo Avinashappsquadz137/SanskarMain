@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24128" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8Gm-Ru-7ZB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24412" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8Gm-Ru-7ZB">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24063"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24405"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -9519,7 +9519,7 @@
                                     <constraint firstItem="yOp-ce-s3g" firstAttribute="trailing" secondItem="MuY-cj-QwX" secondAttribute="trailing" id="ycU-YE-DQe"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MkE-YR-dX4" customClass="WKYTPlayerView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MkE-YR-dX4" customClass="YTPlayerView">
                                 <rect key="frame" x="0.0" y="154" width="375" height="220"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -20850,7 +20850,7 @@
         <image name="switch_camera_button" width="45" height="45"/>
         <image name="tatacrown" width="100" height="100"/>
         <image name="text.badge.plus" catalog="system" width="128" height="109"/>
-        <image name="top_bar_logo" width="190" height="82"/>
+        <image name="top_bar_logo" width="95" height="28.666666030883789"/>
         <image name="torch_on_button" width="45" height="45"/>
         <image name="tv2" width="30" height="30"/>
         <image name="usericonios" width="24" height="24"/>
