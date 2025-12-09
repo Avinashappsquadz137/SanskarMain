@@ -391,6 +391,15 @@ class CategoryModel{
                 return true
             }
          }
+        
+        if type == "continue watching episodes"{
+            
+            let data = dict.ArrayofDict("list")
+            _ = data.filter{(dictData) -> Bool in
+                self.videoList.append(videosResult(dictionary:dictData as NSDictionary)!)
+                return true
+            }
+         }
 }
 }
 

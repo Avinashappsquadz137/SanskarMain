@@ -7,48 +7,64 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "3ED09C3A-F1FC-49CE-9810-B3AC646B86EF"
+            uuid = "A73CB988-3212-4350-A1F1-CA2CA101C4C0"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Total Bhakti/App Classes/newpayment/Newpaymentvc.swift"
+            filePath = "Total Bhakti/App Classes/login&amp;signup/TBHomeVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "121"
-            endingLineNumber = "121"
-            landmarkName = "getPaymentPlanjuspay(_:)"
+            startingLineNumber = "3979"
+            endingLineNumber = "3979"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "C6AD625B-2EFD-433B-98CA-4ED8B0889D87"
+            uuid = "4F286D55-0745-4749-A487-E2764C966139"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Total Bhakti/App Classes/newpayment/Newpaymentvc.swift"
+            filePath = "Total Bhakti/App Classes/login&amp;signup/TBHomeVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "190"
-            endingLineNumber = "190"
-            landmarkName = "hyperCallbackHandler(response:)"
+            startingLineNumber = "4003"
+            endingLineNumber = "4003"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "4BB7AA7D-DF09-4443-A89E-769F9E63BC25"
+            uuid = "466870EC-D0E7-4CD0-8513-F05115FB0CCC"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Total Bhakti/App Classes/PremiumPayment/TBCouponScreenVC.swift"
+            filePath = "Total Bhakti/App Classes/login&amp;signup/TBHomeVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "152"
-            endingLineNumber = "152"
-            landmarkName = "initializePaymentApi(_:)"
+            startingLineNumber = "4026"
+            endingLineNumber = "4026"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "87D15293-CB30-40E6-9414-190C2F07E297"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Total Bhakti/App Classes/login&amp;signup/TBHomeVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "4115"
+            endingLineNumber = "4115"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

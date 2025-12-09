@@ -48,6 +48,15 @@ public class videosResult {
     var type : String?
     var yt_episode_url: String?
     var episode_title: String?
+    
+    //Continue watching ep
+    var is_locked : Int?
+    var episode_id : String?
+    var season_id : String?
+    var custom_episode_url : String?
+    var newly_released : String?
+    var progress : Int?
+    
     public class func modelsFromDictionaryArray(array:NSArray) -> [videosResult]
     {
         var models:[videosResult] = []
@@ -97,7 +106,13 @@ public class videosResult {
         type = dictionary["type"] as? String
         yt_episode_url = dictionary["yt_episode_url"] as? String
         episode_title = dictionary["yt_episode_url"] as? String
-
+        is_locked = dictionary["is_locked"] as? Int
+        episode_id = dictionary["episode_id"] as? String
+        season_id = dictionary["season_id"] as? String
+        custom_episode_url = dictionary["custom_episode_url"] as? String
+        newly_released = dictionary["newly_released"] as? String
+        progress = dictionary["progress"] as? Int
+        
         
         let data = dictionary["multiple_videos"]
         
