@@ -17,8 +17,8 @@ class APIManager : NSObject {
 
     
     let KHTTPSUCCESS             = 200
-   // let KBASEURL                 = "https://app.sanskargroup.in/sanskar_development/data_model/" //Stagging
-    let KBASEURL                 = "https://app.sanskargroup.in/data_model/" //LIVE URL
+    let KBASEURL                 = "https://app.sanskargroup.in/sanskar_development/data_model/" //Stagging
+   // let KBASEURL                 = "https://app.sanskargroup.in/data_model/" //LIVE URL
 //        let KBASEURL                 = "https://dev.sanskargroup.in/data_model/" //Stagging
 //    let KLOGINAPI                = "user/registration/login_authentication"
     let KLOGINAPI                = "user/Registration/login_authentication"
@@ -40,6 +40,8 @@ class APIManager : NSObject {
     let KUNLIKEGURU              = "guru/guru/unlike_guru"
     let KNEWSAPI                 = "news/news/get_news_list"
     let KBHAJANAPI               = "bhajan/bhajan/get_bhajan_list"
+    let KBHAJANLISTCATEGORYAPI   = "bhajan/Bhajan/get_bhajan_list_by_category"
+    let KBHAJANCATEGORYAPI       = "bhajan/bhajan/bhajan_category"
     let KVIDEOLIKEAPI            = "videos/video_control/like_video"
     let KVIDEODISLIKEAPI         = "videos/video_control/unlike_video"
     let KRECENTVIEWAPI           = "videos/video_control/recent_views"

@@ -118,6 +118,7 @@ struct CONTROLLERNAMES {
     static let KGRURDETAILVC              =     "TBGuruDetailVC"
     static let KNEWSVC                    =     "TBNewsVC"//
     static let KBHAJANVC                  =     "TBhajanVC"//
+    static let KBHAJANVCUI                  =     "BhajanVCUI"//
     static let KBHAJANLISTVC              =     "TBbhajanListVC"
     static let KNEWSDETAILSVC             =     "TBNewsDetailVC"
     static let KAUDIOPLAYERVC             =     "TBAudioPlayerVC"

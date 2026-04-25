@@ -6,6 +6,7 @@
 
 
 import UIKit
+import SwiftUI
 var sideMenuType = Int()
 class TBSideMenuVC: TBInternetViewController {
     
@@ -132,14 +133,23 @@ class TBSideMenuVC: TBInternetViewController {
                 }
                 
                 
-                if let profileUrl = currentUser.result!.profile_picture, profileUrl != ""{
+                if let profileUrl = currentUser?.result?.profile_picture,
+                   !profileUrl.isEmpty,
+                   let encodedUrl = profileUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+                   let url = URL(string: encodedUrl) {
+                    
                     profileImage.contentMode = .scaleAspectFill
                     profileImage.sd_setShowActivityIndicatorView(true)
                     profileImage.sd_setIndicatorStyle(.gray)
-                    profileImage.sd_setImage(with: URL(string: profileUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)!, placeholderImage: UIImage(named: "Profile_img"), options: .refreshCached, completed: nil)
+                    profileImage.sd_setImage(
+                        with: url,
+                        placeholderImage: UIImage(named: "Profile_img"),
+                        options: .refreshCached,
+                        completed: nil
+                    )
                     
-                } else{
-                    
+                } else {
+                    profileImage.image = UIImage(named: "Profile_img") // fallback
                 }
                 
                 if currentUser.result?.go_live == "1" {
@@ -170,65 +180,48 @@ class TBSideMenuVC: TBInternetViewController {
     
     
     //MARK:- MoveToControllerFromSideMenu.
-    func moveToNextScreenScreen(_ indentifier : String)  {
-        let vc = storyBoard.instantiateViewController(withIdentifier: indentifier)
+    func moveToNextScreenScreen(_ identifier: String) {
         
+        // SwiftUI screen case
+        if identifier == CONTROLLERNAMES.KBHAJANVCUI {
+            pushSwiftUIView(BhajanVCUI())
+            return
+        }
         
-        if vc is TBHomeTabBar{
-
+        let vc = storyBoard.instantiateViewController(withIdentifier: identifier)
+        
+        // TabBar case
+        if let tabBar = vc as? TBHomeTabBar {
+            
             let button = UIButton()
             button.tag = sideMenuType
+            
             TBHomeTabBar.currentInstance?.TabBarActionButton(button)
             slideMenuController()?.closeLeft()
-            vc.navigationController?.popViewController(animated: true)
-           
-        }else{
             
-            (TBHomeTabBar.currentInstance?.selectedViewController as? UINavigationController)?.pushViewController(vc, animated: true)
+            // No need to pop using vc.navigationController (it will be nil)
+            navigationController?.popViewController(animated: true)
+            
+        } else {
+            
+            // Normal push case
+            if let nav = TBHomeTabBar.currentInstance?.selectedViewController as? UINavigationController {
+                nav.pushViewController(vc, animated: true)
+            } else {
+                navigationController?.pushViewController(vc, animated: true)
+            }
+            
             slideMenuController()?.closeLeft()
         }
-        return
-        
-//        if let nav = self.slideMenuController()?.navigationController {
-//            
-//            var didGet: Bool = false
-//            
-//            for controller in nav.viewControllers
-//            {
-//                if controller is TBHomeTabBar //&& vc is TBHomeTabBar
-//                {
-//                    
-//                    if vc is TBbhajanListVC{
-//                        didGet = true
-//                        let button = UIButton()
-//                        button.tag = sideMenuType
-//                        (controller as! TBHomeTabBar).TabBarActionButton(button)
-//                        nav.popToViewController(controller, animated: true)
-//                    }else{
-//                        (TBHomeTabBar.currentInstance?.selectedViewController as? UINavigationController)?.pushViewController(vc, animated: true)
-//                    }
-////                    didGet = true
-////                    let button = UIButton()
-////                    button.tag = sideMenuType
-////                    (controller as! TBHomeTabBar).TabBarActionButton(button)
-////                    nav.popToViewController(controller, animated: true)
-//                }
-//            }
-//            if let home = vc as? TBHomeTabBar {
-//                if !didGet
-//                {
-//                    home.selectedIndex = sideMenuType
-//                }
-//            }
-//            
-//            if !didGet
-//            {
-//                (TBHomeTabBar.currentInstance?.selectedViewController as? UINavigationController)?.pushViewController(vc, animated: true)
-//                
-//            }
-//            
-//            slideMenuController()?.closeLeft()
-//        }
+    }
+    private func pushSwiftUIView<Content: View>(_ view: Content) {
+        let hostingController = UIHostingController(rootView: view)
+        if let nav = (TBHomeTabBar.currentInstance?.selectedViewController as? UINavigationController) {
+            nav.pushViewController(hostingController, animated: true)
+        } else {
+            navigationController?.pushViewController(hostingController, animated: true)
+        }
+        slideMenuController()?.closeLeft()
     }
     
     //MARK:- LogoutApi.
@@ -447,7 +440,8 @@ extension TBSideMenuVC : UITableViewDelegate {
                         moveToNextScreenScreen(CONTROLLERNAMES.KGRURVC)
                     case 3://bhajan
                         sideMenuType = 3
-                        moveToNextScreenScreen(CONTROLLERNAMES.KBHAJANVC)
+                    //KBHAJANVC
+                        moveToNextScreenScreen(CONTROLLERNAMES.KBHAJANVCUI)
                     case 4://news
                         sideMenuType = 4
                         moveToNextScreenScreen(CONTROLLERNAMES.KTABBARVC)

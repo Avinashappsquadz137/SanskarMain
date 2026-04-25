@@ -317,6 +317,9 @@
 		C7C6E20F2AA5A9F800D4AE43 /* holishowdetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C6E20E2AA5A9F800D4AE43 /* holishowdetail.swift */; };
 		C7C6E2B92AA5AED600D4AE43 /* editnameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C6E2B82AA5AED600D4AE43 /* editnameVC.swift */; };
 		C7C9C6F62C478DBC00F1B872 /* PKIAPHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C9C6F52C478DBC00F1B872 /* PKIAPHandler.swift */; };
+		C7D5ABF92F9B7FBE000D7D79 /* BhajanVCUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D5ABF82F9B7FB1000D7D79 /* BhajanVCUI.swift */; };
+		C7D5AC3B2F9C8111000D7D79 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D5AC3A2F9C810F000D7D79 /* ApiClient.swift */; };
+		C7D5ACBC2F9C83F1000D7D79 /* GetBhajanListCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D5ACBB2F9C83D9000D7D79 /* GetBhajanListCategory.swift */; };
 		C7E2DF322C41102000CEA89E /* OTPTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E2DE7A2C41101F00CEA89E /* OTPTextField.swift */; };
 		C7E2DF342C41109100CEA89E /* OTPStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E2DF332C41109100CEA89E /* OTPStackView.swift */; };
 		C7E2DF362C4110C000CEA89E /* newotpvc.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E2DF352C4110C000CEA89E /* newotpvc.swift */; };
@@ -4003,6 +4006,9 @@
 		C7C6E20E2AA5A9F800D4AE43 /* holishowdetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = holishowdetail.swift; sourceTree = "<group>"; };
 		C7C6E2B82AA5AED600D4AE43 /* editnameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = editnameVC.swift; sourceTree = "<group>"; };
 		C7C9C6F52C478DBC00F1B872 /* PKIAPHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PKIAPHandler.swift; sourceTree = "<group>"; };
+		C7D5ABF82F9B7FB1000D7D79 /* BhajanVCUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BhajanVCUI.swift; sourceTree = "<group>"; };
+		C7D5AC3A2F9C810F000D7D79 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
+		C7D5ACBB2F9C83D9000D7D79 /* GetBhajanListCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBhajanListCategory.swift; sourceTree = "<group>"; };
 		C7E2DE7A2C41101F00CEA89E /* OTPTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTPTextField.swift; sourceTree = "<group>"; };
 		C7E2DF332C41109100CEA89E /* OTPStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTPStackView.swift; sourceTree = "<group>"; };
 		C7E2DF352C4110C000CEA89E /* newotpvc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newotpvc.swift; sourceTree = "<group>"; };
@@ -4752,6 +4758,7 @@
 		A35FB33F203FE84200F05E45 /* Audios */ = {
 			isa = PBXGroup;
 			children = (
+				C7D5ABF72F9B7F7A000D7D79 /* BhajanVCUI */,
 				077E210826F5BCA000EFC8D7 /* NewPlayervc */,
 				A36C31D9203D7C00008A9C05 /* TBhajanVC.swift */,
 				A35FB340203FE89F00F05E45 /* TBbhajanListVC.swift */,
@@ -4800,6 +4807,7 @@
 		A36C988120170C510052FE3B /* Model Classes */ = {
 			isa = PBXGroup;
 			children = (
+				C7D5ACBA2F9C83A4000D7D79 /* BhajanModels */,
 				C78938872CF705DE00CD973D /* LiveBhajans */,
 				A364375120593A9A007CAF5A /* videos */,
 				A38115E6207219A20081DC99 /* Home page */,
@@ -10850,6 +10858,7 @@
 		C011D6672003E080003151E3 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				C7D5AC3A2F9C810F000D7D79 /* ApiClient.swift */,
 				C7C9C6F52C478DBC00F1B872 /* PKIAPHandler.swift */,
 				A3576AB5200486D200D7FFA7 /* ApiManager.swift */,
 				A36C987F2017072C0052FE3B /* TBSharedPreference.swift */,
@@ -10966,6 +10975,22 @@
 				C775FE6C2CFB413300AAEB8C /* TBLiveDetailCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		C7D5ABF72F9B7F7A000D7D79 /* BhajanVCUI */ = {
+			isa = PBXGroup;
+			children = (
+				C7D5ABF82F9B7FB1000D7D79 /* BhajanVCUI.swift */,
+			);
+			path = BhajanVCUI;
+			sourceTree = "<group>";
+		};
+		C7D5ACBA2F9C83A4000D7D79 /* BhajanModels */ = {
+			isa = PBXGroup;
+			children = (
+				C7D5ACBB2F9C83D9000D7D79 /* GetBhajanListCategory.swift */,
+			);
+			path = BhajanModels;
 			sourceTree = "<group>";
 		};
 		E10351F61ED00E09B002785D /* Frameworks */ = {
@@ -12466,6 +12491,7 @@
 				C7C9C6F62C478DBC00F1B872 /* PKIAPHandler.swift in Sources */,
 				A30A941C214297B90056E461 /* TBchannelTableView.swift in Sources */,
 				C775FDB02CFB28A500AAEB8C /* LiveArtiDetails.swift in Sources */,
+				C7D5ABF92F9B7FBE000D7D79 /* BhajanVCUI.swift in Sources */,
 				FA2F8FA1242E3247008E1F86 /* TBGoLiveViewController.swift in Sources */,
 				C0F5A5B821287305000B6976 /* SwipeAnimationType.swift in Sources */,
 				875EA0EC25DAC2CB0086A597 /* TBTrendingBhajanVc.swift in Sources */,
@@ -12562,6 +12588,7 @@
 				A3406C592003894400F5A0E6 /* ViewController.swift in Sources */,
 				A33E849E20331DA8009E42E0 /* guruData.swift in Sources */,
 				A3231ACA206E553D00A300E4 /* videoCategoryData.swift in Sources */,
+				C7D5ACBC2F9C83F1000D7D79 /* GetBhajanListCategory.swift in Sources */,
 				FA1598DB24335FDF00ED4838 /* TB_ChannelListCell.swift in Sources */,
 				A3839A62205F872F0015230A /* VideosData1.swift in Sources */,
 				0723800A288161F3008575B0 /* AllListTableCell.swift in Sources */,
@@ -12670,6 +12697,7 @@
 				07D4BF5627B11E0C008C658C /* ChannelFlowLayout.swift in Sources */,
 				87F3903825ADAF5D00292328 /* CategoryDataModel.swift in Sources */,
 				C775FDA72CFB0F5000AAEB8C /* TBLiveDarshanListVC.swift in Sources */,
+				C7D5AC3B2F9C8111000D7D79 /* ApiClient.swift in Sources */,
 				5AC312F723B4F02900D3D5A4 /* TBHomePagerCollectionViewCell.swift in Sources */,
 				A3E27F9F220175BB00F1FDE4 /* TBMinimizePlayerView.swift in Sources */,
 				A36C988520170CCF0052FE3B /* Result.swift in Sources */,
@@ -12922,7 +12950,7 @@
 					"@executable_path/Frameworks",
 				);
 				LIBRARY_SEARCH_PATHS = "";
-				MARKETING_VERSION = 1.64;
+				MARKETING_VERSION = 1.65;
 				OTHER_CODE_SIGN_FLAGS = "--generate-entitlement-der";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -13125,7 +13153,7 @@
 					"@executable_path/Frameworks",
 				);
 				LIBRARY_SEARCH_PATHS = "";
-				MARKETING_VERSION = 1.64;
+				MARKETING_VERSION = 1.65;
 				OTHER_CODE_SIGN_FLAGS = "--generate-entitlement-der";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
