@@ -320,6 +320,7 @@
 		C7D5ABF92F9B7FBE000D7D79 /* BhajanVCUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D5ABF82F9B7FB1000D7D79 /* BhajanVCUI.swift */; };
 		C7D5AC3B2F9C8111000D7D79 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D5AC3A2F9C810F000D7D79 /* ApiClient.swift */; };
 		C7D5ACBC2F9C83F1000D7D79 /* GetBhajanListCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D5ACBB2F9C83D9000D7D79 /* GetBhajanListCategory.swift */; };
+		C7D5AD6D2F9CC7C7000D7D79 /* HeaderViewUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D5AD6C2F9CC7C4000D7D79 /* HeaderViewUI.swift */; };
 		C7E2DF322C41102000CEA89E /* OTPTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E2DE7A2C41101F00CEA89E /* OTPTextField.swift */; };
 		C7E2DF342C41109100CEA89E /* OTPStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E2DF332C41109100CEA89E /* OTPStackView.swift */; };
 		C7E2DF362C4110C000CEA89E /* newotpvc.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E2DF352C4110C000CEA89E /* newotpvc.swift */; };
@@ -4009,6 +4010,7 @@
 		C7D5ABF82F9B7FB1000D7D79 /* BhajanVCUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BhajanVCUI.swift; sourceTree = "<group>"; };
 		C7D5AC3A2F9C810F000D7D79 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		C7D5ACBB2F9C83D9000D7D79 /* GetBhajanListCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBhajanListCategory.swift; sourceTree = "<group>"; };
+		C7D5AD6C2F9CC7C4000D7D79 /* HeaderViewUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderViewUI.swift; sourceTree = "<group>"; };
 		C7E2DE7A2C41101F00CEA89E /* OTPTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTPTextField.swift; sourceTree = "<group>"; };
 		C7E2DF332C41109100CEA89E /* OTPStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTPStackView.swift; sourceTree = "<group>"; };
 		C7E2DF352C4110C000CEA89E /* newotpvc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newotpvc.swift; sourceTree = "<group>"; };
@@ -4587,6 +4589,7 @@
 		A3406C552003894400F5A0E6 /* Total Bhakti */ = {
 			isa = PBXGroup;
 			children = (
+				C7D5AD6B2F9CC797000D7D79 /* HeaderViewUI */,
 				0734411F27B139E900E701F3 /* HTTP */,
 				07D4BF4127B0F4C1008C658C /* Mx TV */,
 				07A73B652744D816003A7680 /* Live TV  */,
@@ -10993,6 +10996,14 @@
 			path = BhajanModels;
 			sourceTree = "<group>";
 		};
+		C7D5AD6B2F9CC797000D7D79 /* HeaderViewUI */ = {
+			isa = PBXGroup;
+			children = (
+				C7D5AD6C2F9CC7C4000D7D79 /* HeaderViewUI.swift */,
+			);
+			path = HeaderViewUI;
+			sourceTree = "<group>";
+		};
 		E10351F61ED00E09B002785D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -12576,6 +12587,7 @@
 				8771091325E7F31E00D00BB8 /* TBSeeMoreVideoVc.swift in Sources */,
 				A3663E8F20355BA300298716 /* TBGuruDetailVC.swift in Sources */,
 				7DB79A8C29C32901002DD2C7 /* RelatedphotosTableViewCell.swift in Sources */,
+				C7D5AD6D2F9CC7C7000D7D79 /* HeaderViewUI.swift in Sources */,
 				073C066926EA3E450048C60B /* VideoControlVc.swift in Sources */,
 				075B17CD27D097EC00B3FD2A /* IosAlertView.swift in Sources */,
 				D59F1B632A614CA300770311 /* TBshortsVC.swift in Sources */,

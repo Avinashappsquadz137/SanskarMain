@@ -105,8 +105,11 @@ class TBProfileVC: TBInternetViewController {
                 if currentUser.result?.email != "" {
                     emailTF.text = currentUser.result?.email
                 }
-                if currentUser.result?.mobile != "" {
-                    mobileTF.text = currentUser.result!.mobile
+//                if currentUser.result?.mobile != "" {
+//                    mobileTF.text = currentUser.result!.mobile
+//                }
+                if let mobile = currentUser.result?.mobile, !mobile.isEmpty {
+                    mobileTF.text = mobile
                 }
 //                if currentUser.result?.about != "" {
 //                    aboutTV.text = currentUser.result?.about

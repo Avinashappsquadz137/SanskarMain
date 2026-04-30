@@ -22,7 +22,7 @@ class TBSideMenuVC: TBInternetViewController {
     var sideMenuActiveArray = [String]()
     var sideMenuData = NSMutableArray()
     var devicetokent = String()
-    
+    let uiState = AppUIState()
     //MARK:- lifeCycle Methods.
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -215,7 +215,9 @@ class TBSideMenuVC: TBInternetViewController {
         }
     }
     private func pushSwiftUIView<Content: View>(_ view: Content) {
-        let hostingController = UIHostingController(rootView: view)
+        let hostingController = UIHostingController(
+            rootView: view.environmentObject(uiState) // ✅ inject here
+        )
         if let nav = (TBHomeTabBar.currentInstance?.selectedViewController as? UINavigationController) {
             nav.pushViewController(hostingController, animated: true)
         } else {
@@ -399,7 +401,7 @@ extension TBSideMenuVC : UITableViewDelegate {
                         moveToNextScreenScreen(CONTROLLERNAMES.KTABBARVC)
                     case 3://bhajan
                         sideMenuType = 3
-                        moveToNextScreenScreen(CONTROLLERNAMES.KTABBARVC)
+                        moveToNextScreenScreen(CONTROLLERNAMES.KBHAJANVCUI)
                     case 4://news
                         // sideMenuType = 4
                         moveToNextScreenScreen(CONTROLLERNAMES.KNEWSVC)

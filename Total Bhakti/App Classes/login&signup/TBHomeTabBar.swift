@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SwiftUI
 class TBHomeTabBar: UITabBarController,UITabBarControllerDelegate {
     
     @IBOutlet var minimizePlayerView: TBMinimizePlayerView!
@@ -62,7 +62,7 @@ class TBHomeTabBar: UITabBarController,UITabBarControllerDelegate {
         return coordinate
     }()
     var top = CGFloat()
-    
+    let uiState = AppUIState()
     let fullScreenOrigin = CGPoint.init(x: 0, y: 0)
     
     override func viewDidLoad() {
@@ -392,9 +392,9 @@ class TBHomeTabBar: UITabBarController,UITabBarControllerDelegate {
         else if sender.tag == 4{ // bhajan
             
             if selectedIndex == 3{
-                popAllpushVCFromTabbar()
+                pushSwiftUIView(BhajanVCUI())
             }else{
-                self.selectedIndex = 3
+                pushSwiftUIView(BhajanVCUI())
             }
             UIView.animate(withDuration: 0.6) {
                 
@@ -449,7 +449,17 @@ class TBHomeTabBar: UITabBarController,UITabBarControllerDelegate {
             
         }
     }
-    
+    private func pushSwiftUIView<Content: View>(_ view: Content) {
+            let hostingController = UIHostingController(
+                rootView: view.environmentObject(uiState) // ✅ inject here
+            )
+            if let nav = (TBHomeTabBar.currentInstance?.selectedViewController as? UINavigationController) {
+                nav.pushViewController(hostingController, animated: true)
+            } else {
+                navigationController?.pushViewController(hostingController, animated: true)
+            }
+            
+        }
     // UITabBarDelegate
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         print("Selected item")

@@ -22,7 +22,7 @@ class MusicPlayerManager{
      
     
     static let shared = MusicPlayerManager()
-    
+   
     var nowPlayingInfo = [String:Any]()
     var myPlayer = AVPlayer()
     var Slider: UISlider!
@@ -244,7 +244,7 @@ class MusicPlayerManager{
 //
 //            }   // comment by avi tyagi
             else {
-                let param : Parameters = ["user_id": currentUser.result!.id! , "type": "1" ]
+                let param : Parameters = ["user_id": currentUser.result!.id! , "type": "1" , "media_id" : Bhajan_Track[song_no].id]
                 recentViewHit(param)
             }
         }
