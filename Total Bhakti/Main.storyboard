@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24412" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8Gm-Ru-7ZB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24765" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8Gm-Ru-7ZB">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24405"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24743"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -14844,13 +14844,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sign-up-background" translatesAutoresizingMaskIntoConstraints="NO" id="Zae-XU-fo6">
-                                <rect key="frame" x="0.0" y="94" width="390" height="682"/>
+                                <rect key="frame" x="0.0" y="94" width="390" height="835.66666666666663"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BeL-2N-3lp">
-                                <rect key="frame" x="0.0" y="94" width="390" height="72"/>
+                                <rect key="frame" x="0.0" y="94" width="390" height="88.333333333333314"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wUQ-X8-d3t">
-                                        <rect key="frame" x="0.0" y="16" width="40" height="40"/>
+                                        <rect key="frame" x="0.0" y="24" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="gPK-aW-MJs"/>
                                             <constraint firstAttribute="height" constant="40" id="yEr-hL-6ao"/>
@@ -14864,14 +14864,14 @@
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sanskar logo new" translatesAutoresizingMaskIntoConstraints="NO" id="oXt-zj-T2d">
-                                        <rect key="frame" x="40" y="23.666666666666671" width="100" height="25"/>
+                                        <rect key="frame" x="40" y="31.666666666666671" width="100" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="i8R-9p-TQV"/>
                                             <constraint firstAttribute="height" constant="25" id="sel-Ns-d73"/>
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hkb-8Y-Khr">
-                                        <rect key="frame" x="238" y="19.000000000000004" width="132" height="34.333333333333343"/>
+                                        <rect key="frame" x="238" y="27.000000000000004" width="132" height="34.333333333333343"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Apply Coupon"/>
@@ -14892,10 +14892,10 @@
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="naE-d1-Puu">
-                                <rect key="frame" x="0.0" y="166" width="390" height="610"/>
+                                <rect key="frame" x="0.0" y="182.33333333333331" width="390" height="747.33333333333348"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tlH-s3-jAc">
-                                        <rect key="frame" x="0.0" y="0.0" width="390" height="610"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="747.33333333333337"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QII-Xz-hkT">
                                                 <rect key="frame" x="10" y="10" width="370" height="43"/>
@@ -15125,7 +15125,7 @@
                                                 </constraints>
                                             </view>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sign-up-welcome" translatesAutoresizingMaskIntoConstraints="NO" id="9yR-Sx-J0f">
-                                                <rect key="frame" x="119" y="83" width="152" height="121.33333333333331"/>
+                                                <rect key="frame" x="119" y="82.999999999999972" width="152" height="157"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -15140,7 +15140,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="77z-Md-rPn">
-                                        <rect key="frame" x="30" y="224.33333333333331" width="330" height="174"/>
+                                        <rect key="frame" x="30" y="260" width="330" height="210"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Npb-6o-cjS">
                                                 <rect key="frame" x="8" y="20" width="74.666666666666671" height="21"/>
@@ -15169,7 +15169,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Amount :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ECd-k1-ZPu">
-                                                <rect key="frame" x="10.000000000000007" y="73" width="118.66666666666669" height="20.666666666666671"/>
+                                                <rect key="frame" x="10.000000000000007" y="73.000000000000057" width="118.66666666666669" height="20.333333333333329"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="118.5" id="6SG-tU-45y"/>
                                                     <constraint firstAttribute="height" constant="20.5" id="hFA-60-X3g"/>
@@ -15179,7 +15179,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Rs 100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6re-db-zz2">
-                                                <rect key="frame" x="148.66666666666666" y="73" width="55.333333333333343" height="21"/>
+                                                <rect key="frame" x="148.66666666666666" y="73.000000000000057" width="55.333333333333343" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="55.5" id="ggt-7o-TAr"/>
                                                     <constraint firstAttribute="height" constant="21" id="yLE-1r-28i"/>
@@ -15205,7 +15205,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IjD-oq-qiv" customClass="CustomButton" customModule="Sanskar" customModuleProvider="target">
-                                        <rect key="frame" x="30" y="418.33333333333337" width="330" height="40"/>
+                                        <rect key="frame" x="30" y="490" width="330" height="40"/>
                                         <color key="backgroundColor" red="0.97254901959999995" green="0.62745098040000002" blue="0.17254901959999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="gHB-Wu-J8m"/>
@@ -18509,7 +18509,7 @@
                                                         </connections>
                                                     </tableViewCell>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="channel" rowHeight="95" id="anx-bM-eX3" customClass="TBHomeTableViewCell" customModule="Sanskar" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="577.33333206176758" width="320" height="95"/>
+                                                        <rect key="frame" x="0.0" y="521.33333206176758" width="320" height="95"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="anx-bM-eX3" id="6OU-LC-ziC">
                                                             <rect key="frame" x="0.0" y="0.0" width="320" height="95"/>
@@ -18634,7 +18634,7 @@
                                                         </connections>
                                                     </tableViewCell>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PPViewCell" rowHeight="95" id="pfG-xE-yZm" customClass="PremiumPurchaseViewCell" customModule="Sanskar" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="672.33333206176758" width="320" height="95"/>
+                                                        <rect key="frame" x="0.0" y="616.33333206176758" width="320" height="95"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pfG-xE-yZm" id="02r-gV-vhm">
                                                             <rect key="frame" x="0.0" y="0.0" width="320" height="95"/>
@@ -18705,12 +18705,13 @@
                                                         </tableViewCellContentView>
                                                         <connections>
                                                             <outlet property="btnSubscribe" destination="72J-4w-5db" id="zYb-iY-FPf"/>
+                                                            <outlet property="lblMonthPrice" destination="sn6-Le-Ypj" id="wMl-Cu-aUn"/>
                                                             <outlet property="lblSubNow" destination="HLs-XF-ZK4" id="XjF-89-eJ0"/>
                                                             <outlet property="logoSanskar" destination="HmW-T3-8Oy" id="G64-eD-mYV"/>
                                                         </connections>
                                                     </tableViewCell>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="dummyCell" rowHeight="80" id="Fq6-lZ-Zet">
-                                                        <rect key="frame" x="0.0" y="767.33333206176758" width="320" height="80"/>
+                                                        <rect key="frame" x="0.0" y="711.33333206176758" width="320" height="80"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Fq6-lZ-Zet" id="6ZH-gR-HFN">
                                                             <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
@@ -20791,7 +20792,7 @@
         <image name="hand.thumbsup.fill" catalog="system" width="128" height="121"/>
         <image name="holilogo" width="300" height="169"/>
         <image name="holilogo2" width="1920" height="1080"/>
-        <image name="home_active" width="43" height="40"/>
+        <image name="home_active" width="20.666666030883789" height="19"/>
         <image name="home_inactive" width="20.666666030883789" height="19"/>
         <image name="icloud.and.arrow.down.fill" catalog="system" width="128" height="111"/>
         <image name="image_slider1" width="358" height="203.66667175292969"/>
@@ -20859,7 +20860,7 @@
         <image name="switch_camera_button" width="45" height="45"/>
         <image name="tatacrown" width="100" height="100"/>
         <image name="text.badge.plus" catalog="system" width="128" height="109"/>
-        <image name="top_bar_logo" width="95" height="28.666666030883789"/>
+        <image name="top_bar_logo" width="190" height="82"/>
         <image name="torch_on_button" width="45" height="45"/>
         <image name="tv2" width="30" height="30"/>
         <image name="usericonios" width="24" height="24"/>
@@ -20875,49 +20876,49 @@
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="linkColor">
-            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="quaternaryLabelColor">
-            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.1764705882" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.17647058823529413" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="secondarySystemBackgroundColor">
-            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.53333333333333333" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray4Color">
-            <color red="0.81960784310000001" green="0.81960784310000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray6Color">
-            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGrayColor">
-            <color red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGreenColor">
-            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGroupedBackgroundColor">
-            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemIndigoColor">
-            <color red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.38039215686274508" green="0.33333333333333331" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemMintColor">
-            <color red="0.0" green="0.78039215689999997" blue="0.74509803919999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.78431372549019607" blue="0.70196078431372544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.55294117647058827" blue="0.15686274509803921" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemPinkColor">
-            <color red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.2196078431372549" blue="0.23529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

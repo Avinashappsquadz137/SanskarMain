@@ -1499,6 +1499,8 @@ class TBHomeVC: TBInternetViewController,AAPlayerDelegate,shortCutDelegate,MMPla
                                   let isPremium = JSON["is_premium"],
                                   let adStatus = JSON["advertisement_status"],
                                   let qrdata  = JSON["qr_scanner"],
+                                  let subNowPrice  = JSON["subNowPrice"],
+                                  let subNowTitle  = JSON["subNowTitle"],
                                   let epg = JSON["tv_guide_ios"] else {return}
                             AdStatus = adStatus as? Int
                             epgIos = epg as? String
@@ -1539,6 +1541,8 @@ class TBHomeVC: TBInternetViewController,AAPlayerDelegate,shortCutDelegate,MMPla
                             UserDefaults.standard.setValue(web_view_bhajan, forKey: "web_view_bhajan")
                             UserDefaults.standard.setValue(web_view_news, forKey: "web_view_news")
                             UserDefaults.standard.setValue(web_view_video, forKey: "web_view_video")
+                            UserDefaults.standard.setValue(subNowTitle, forKey: "subNowTitle")
+                            UserDefaults.standard.setValue(subNowPrice, forKey: "subNowPrice")
                             //                    UserDefaults.standard.setValue(is_premium_active, forKey: "is_premium_active")
                         }else {
                             if self.pullToRefreshOn == true {
@@ -4337,6 +4341,7 @@ extension TBHomeVC : UITableViewDataSource {
             if (indexPath.section + 1) % 5 == 0 || indexPath.section == 0 {
                 if indexPath.row == 1 {
                     let cell = tableView.dequeueReusableCell(withIdentifier: KEYS.PPViewCell, for: indexPath) as! PremiumPurchaseViewCell
+                    cell.setupUI()
                     cell.configureButton {
                         print("User ID:", userId)
                         print("Premium button tapped at section \(indexPath.section)")

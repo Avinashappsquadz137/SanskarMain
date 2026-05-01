@@ -174,8 +174,12 @@ class TBCouponScreenVC: UIViewController, RazorpayPaymentCompletionProtocol, sel
         }
     }
     
-    func showPaymentForm(order_id : String,amount :String, contact: String, email: String ){
+    private func safeEmail(_ email: String?) -> String {
+        let trimmed = email?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        return trimmed.isEmpty ? "unspecified@noreply.com" : trimmed
+    }
 
+    func showPaymentForm(order_id : String,amount :String, contact: String, email: String? ){
         let options: [String:Any] = [
 //            "amount": amount, //This is in currency subunits. 100 = 100 paise= INR 1.
             "amount": amount, //This is in currency subunits. 100 = 100 paise= INR 1.
@@ -186,7 +190,7 @@ class TBCouponScreenVC: UIViewController, RazorpayPaymentCompletionProtocol, sel
             "name": currentUser.result?.name ?? "",
             "prefill": [
                 "contact": contact,
-                "email": email
+                "email": safeEmail(email)
             ],
             "theme": [
                 "color": "#FFA500"
@@ -362,7 +366,7 @@ extension TBCouponScreenVC {
             "image": UIImage(named:"AppIcon") ,
             "prefill": [
                 "contact": contact,
-                "email": email
+                "email": safeEmail(email)
             ],
             "notes": [
                 "plan_id": paymentData?.plan_id ?? "",

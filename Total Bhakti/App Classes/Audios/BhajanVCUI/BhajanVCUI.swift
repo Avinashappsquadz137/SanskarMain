@@ -11,6 +11,7 @@ import SwiftUI
 struct AudioTrack: Identifiable, Hashable, Codable {
     let id: String
     let title: String
+    let description: String
     let artist: String
     let categoryID: String
     let categoryName: String
@@ -146,20 +147,23 @@ final class BhajanPlayerViewModel: ObservableObject {
 
             let mappedTracks: [AudioTrack] = response.flattenedBhajansWithCategory.map { payload in
                 let bhajan = payload.item
-                
+                let titleText = (bhajan.title ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
+                let artistText = (bhajan.artist_name ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
+                let categoryNameText = payload.categoryName ?? "Bhajan"
+                let imageURLText = bhajan.thumbnail1 ?? bhajan.thumbnail2 ?? bhajan.image ?? ""
+                let mediaURLText = bhajan.media_file ?? ""
+                let publishedDateText = bhajan.published_date ?? bhajan.creation_time ?? ""
+
                 return AudioTrack(
                     id: bhajan.id ?? UUID().uuidString,
-                    title: bhajan.title?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty == false
-                        ? (bhajan.title ?? "")
-                        : "Untitled Bhajan",
-                    artist: bhajan.artist_name?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty == false
-                        ? (bhajan.artist_name ?? "")
-                        : "Default Artist",
-                    categoryID: categoryID, // ✅ FIX
-                    categoryName: payload.categoryName ?? "Bhajan",
-                    imageURL: bhajan.thumbnail1 ?? bhajan.thumbnail2 ?? bhajan.image ?? "",
-                    mediaURL: bhajan.media_file ?? "",
-                    publishedDate: bhajan.published_date ?? bhajan.creation_time ?? ""
+                    title: titleText.isEmpty ? "Untitled Bhajan" : titleText,
+                    description: bhajan.description ?? "",
+                    artist: artistText.isEmpty ? "Default Artist" : artistText,
+                    categoryID: categoryID,
+                    categoryName: categoryNameText,
+                    imageURL: imageURLText,
+                    mediaURL: mediaURLText,
+                    publishedDate: publishedDateText
                 )
             }
 
@@ -356,10 +360,6 @@ struct BhajanVCUI: View {
 
     private var allBhajanSection: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("All Bhajan")
-                .font(.system(size: 36, weight: .bold))
-                .foregroundColor(.black)
-
             if viewModel.isLoadingTracks {
                 HStack {
                     Spacer()
@@ -390,7 +390,7 @@ struct BhajanVCUI: View {
                                         .foregroundColor(.black)
                                         .lineLimit(1)
 
-                                    Text(track.artist)
+                                    Text(track.description)
                                         .font(.system(size: 15, weight: .regular))
                                         .foregroundColor(.gray)
                                         .lineLimit(1)
@@ -472,7 +472,5 @@ struct BhajanVCUI: View {
             }
         }
     }
-    
-        // MARK: Audio Player
- 
+
 }
